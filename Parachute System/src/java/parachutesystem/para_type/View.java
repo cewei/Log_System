@@ -170,6 +170,23 @@ public class View extends AbstractPageBean {
         // case name where null will return to the same page.
         return "case1";
     }
+
+    public String edit_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case2";
+    }
+
+    public String hyperlink1_action() {
+        // TODO: Replace with your code
+        return null;
+    }
+
+    public String hyperlink2_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
     
 }
 
