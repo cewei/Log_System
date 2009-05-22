@@ -2,13 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_type;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
+import javax.faces.event.ValueChangeEvent;
 import parachutesystem.SessionBean1;
 import parachutesystem.RequestBean1;
 import parachutesystem.ApplicationBean1;
@@ -20,12 +22,11 @@ import parachutesystem.ApplicationBean1;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on May 21, 2009, 11:44:14 AM
+ * @version Add.java
+ * @version Created on May 21, 2009, 11:47:11 AM
  * @author Dell
  */
-
-public class View extends AbstractPageBean {
+public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -34,10 +35,19 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
         para_typeRowSet.setTableName("para_type");
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Add.para_typeRowSet}"));
+    }
+    private TextField typePrefixText = new TextField();
+
+    public TextField getTypePrefixText() {
+        return typePrefixText;
+    }
+
+    public void setTypePrefixText(TextField tf) {
+        this.typePrefixText = tf;
     }
     private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
 
@@ -57,13 +67,48 @@ public class View extends AbstractPageBean {
     public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
         this.para_typeRowSet = crsxi;
     }
+    private TextField nameText = new TextField();
+
+    public TextField getNameText() {
+        return nameText;
+    }
+
+    public void setNameText(TextField tf) {
+        this.nameText = tf;
+    }
+    private TextField lifeSpanText = new TextField();
+
+    public TextField getLifeSpanText() {
+        return lifeSpanText;
+    }
+
+    public void setLifeSpanText(TextField tf) {
+        this.lifeSpanText = tf;
+    }
+    private TextField maxJumpText = new TextField();
+
+    public TextField getMaxJumpText() {
+        return maxJumpText;
+    }
+
+    public void setMaxJumpText(TextField tf) {
+        this.maxJumpText = tf;
+    }
+    private TextField repackCycleText = new TextField();
+
+    public TextField getRepackCycleText() {
+        return repackCycleText;
+    }
+
+    public void setRepackCycleText(TextField tf) {
+        this.repackCycleText = tf;
+    }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Add() {
     }
 
     /**
@@ -85,21 +130,21 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            log("Add Initialization Failure", e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -166,10 +211,46 @@ public class View extends AbstractPageBean {
     }
 
     public String add_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case1";
+//        try {
+//            RowKey rk = para_typeDataProvider.appendRow();
+//            para_typeDataProvider.setCursorRow(rk);
+//
+//            para_typeDataProvider.setValue("PARA_TYPE.PARA_TYPE_NO", new Integer(0));
+//            para_typeDataProvider.setValue("PARA_TYPE.TYPE_PREFIX", typePrefixText.getText());
+//            para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
+//            para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
+//            para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
+//            para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
+//
+//            para_typeDataProvider.commitChanges();
+//            para_typeDataProvider.refresh();
+//        } catch (Exception ex) {
+//            log("Error Description", ex);
+//            error(ex.getMessage());
+//        }
+        try {
+            if ( para_typeDataProvider.canAppendRow() ) {
+                RowKey appendedRow = para_typeDataProvider.appendRow();
+            if ( appendedRow != null ) {
+                para_typeDataProvider.setCursorRow(appendedRow);
+                para_typeDataProvider.setValue("type_prefix", appendedRow, typePrefixText.getText());
+                para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
+                para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
+                para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
+                para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
+                // set values of other fields, if any
+                para_typeDataProvider.commitChanges();
+                para_typeDataProvider.refresh();
+            }
+            } else {
+                error("Cannot append row");
+                log("Cannot append row");
+            }
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error(ex.getMessage());
+        }
+        return null;
     }
-    
 }
 

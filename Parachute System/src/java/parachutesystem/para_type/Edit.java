@@ -5,13 +5,8 @@
 
 package parachutesystem.para_type;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.ApplicationBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -20,12 +15,12 @@ import parachutesystem.ApplicationBean1;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on May 21, 2009, 11:44:14 AM
+ * @version Edit.java
+ * @version Created on May 22, 2009, 10:00:10 AM
  * @author Dell
  */
 
-public class View extends AbstractPageBean {
+public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -34,28 +29,6 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
-        para_typeRowSet.setTableName("para_type");
-    }
-    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_typeDataProvider() {
-        return para_typeDataProvider;
-    }
-
-    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_typeDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
-    }
-
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
     }
 
     // </editor-fold>
@@ -63,7 +36,7 @@ public class View extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Edit() {
     }
 
     /**
@@ -92,7 +65,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Edit Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -135,40 +108,6 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_typeDataProvider.close();
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
-
-    public String add_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case1";
     }
     
 }
