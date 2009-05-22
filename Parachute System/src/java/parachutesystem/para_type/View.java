@@ -203,7 +203,7 @@ public class View extends AbstractPageBean {
         // Store Value in Request
         // An example of storing an object value in the Request scope
         // This stores the String "value" with the key "name" in the Request
-        setValue("#{requestScope.type_no}", rk);
+        setValue("#{sessionScope.type_no}", rk);
         return "case2";
     }
 

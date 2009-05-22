@@ -31,10 +31,10 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Edit.para_typeRowSet}"));
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM para_type");
         para_typeRowSet.setTableName("para_type");
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Edit.para_typeRowSet}"));
     }
     private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
 
@@ -44,15 +44,6 @@ public class Edit extends AbstractPageBean {
 
     public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_typeDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
-    }
-
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
     }
     private TextField typePrefixText = new TextField();
 
@@ -98,6 +89,15 @@ public class Edit extends AbstractPageBean {
 
     public void setRepackCycleText(TextField tf) {
         this.repackCycleText = tf;
+    }
+    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_typeRowSet() {
+        return para_typeRowSet;
+    }
+
+    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
+        this.para_typeRowSet = crsxi;
     }
 
     // </editor-fold>
@@ -154,8 +154,6 @@ public class Edit extends AbstractPageBean {
     public void preprocess() {
     }
 
-    private RowKey temp = null;
-
     /**
      * <p>Callback method that is called just before rendering takes place.
      * This method will <strong>only</strong> be called for the page that
@@ -169,9 +167,9 @@ public class Edit extends AbstractPageBean {
         // Retrieve Value from Application
         // An example of retrieving an object's value from the Request scope
         // This retrieves the String object myReqValue using the key "name" from the Application
-        RowKey myReqValue = (RowKey) getValue("#{requestScope.type_no}");
+        RowKey myReqValue = (RowKey) getValue("#{sessionScope.type_no}");
         para_typeDataProvider.setCursorRow(myReqValue);
-        temp = myReqValue;
+        para_typeDataProvider.refresh();
     }
 
     /**
@@ -207,8 +205,8 @@ public class Edit extends AbstractPageBean {
 
     public String edit_action() {
         try {
-            RowKey myReqValue = (RowKey) getValue("#{requestScope.type_no}");
-            para_typeDataProvider.setCursorRow(temp);
+            RowKey myReqValue = (RowKey) getValue("#{sessionScope.type_no}");
+            para_typeDataProvider.setCursorRow(myReqValue);
             para_typeDataProvider.setValue("type_prefix", typePrefixText.getText());
             para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
             para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
