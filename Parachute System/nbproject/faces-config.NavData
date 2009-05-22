@@ -5,9 +5,10 @@
         <Node id="para_type/Add.jsp" x="135" y="322" zoom="true"/>
     </Scope>
     <Scope Scope="Project">
+        <Node id="para_type/Edit.jsp" x="150" y="300" zoom="false"/>
         <Node id="para_type/View.jsp" x="400" y="150" zoom="false"/>
         <Node id="Page1.jsp" x="150" y="150" zoom="false"/>
-        <Node id="para_type/Add.jsp" x="135" y="322" zoom="false"/>
+        <Node id="para_type/Add.jsp" x="665" y="320" zoom="false"/>
     </Scope>
     <Scope Scope="All Faces Configurations">
         <Node id="para_type/View.jsp" x="400" y="150" zoom="true"/>

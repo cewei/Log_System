@@ -23,4 +23,14 @@
         <managed-bean-class>parachutesystem.Page1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_type$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_type.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_type$Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_type.Edit</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
