@@ -17,6 +17,10 @@
             <from-outcome>case1</from-outcome>
             <to-view-id>/para_type/Add.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/para_type/Edit.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>Page1</managed-bean-name>

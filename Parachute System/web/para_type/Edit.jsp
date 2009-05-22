@@ -19,6 +19,17 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:label for="typePrefixText" id="typePrefixLbl" style="left: 25px; top: 48px; position: absolute" text="Type Prefix"/>
+                        <webuijsf:label for="nameText" id="nameLbl" style="left: 25px; top: 96px; position: absolute" text="Name"/>
+                        <webuijsf:label for="lifeSpanText" id="lifeSpanLbl" style="left: 25px; top: 144px; position: absolute" text="Life Span"/>
+                        <webuijsf:label for="maxJumpText" id="maxJumpLbl" style="left: 25px; top: 192px; position: absolute" text="Max Jump"/>
+                        <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 25px; top: 240px; position: absolute" text="Repack Cycle"/>
+                        <webuijsf:textField id="typePrefixText" required="true" style="left: 121px; top: 48px; position: absolute"/>
+                        <webuijsf:textField id="nameText" required="true" style="left: 121px; top: 96px; position: absolute"/>
+                        <webuijsf:textField id="lifeSpanText" required="true" style="left: 121px; top: 144px; position: absolute"/>
+                        <webuijsf:textField id="maxJumpText" required="true" style="left: 121px; top: 192px; position: absolute"/>
+                        <webuijsf:textField id="repackCycleText" required="true" style="left: 121px; top: 240px; position: absolute"/>
+                        <webuijsf:button actionExpression="#{para_type$Edit.add_action}" id="add1" style="left: 24px; top: 288px; position: absolute" text="Add"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
