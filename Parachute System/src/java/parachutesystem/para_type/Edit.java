@@ -2,10 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_type;
 
+import com.sun.data.provider.RowKey;
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
 
 /**
@@ -19,7 +22,6 @@ import javax.faces.FacesException;
  * @version Created on May 22, 2009, 10:00:10 AM
  * @author Dell
  */
-
 public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -29,10 +31,76 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Edit.para_typeRowSet}"));
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_typeRowSet.setCommand("SELECT * FROM para_type");
+        para_typeRowSet.setTableName("para_type");
+    }
+    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_typeDataProvider() {
+        return para_typeDataProvider;
+    }
+
+    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_typeDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_typeRowSet() {
+        return para_typeRowSet;
+    }
+
+    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
+        this.para_typeRowSet = crsxi;
+    }
+    private TextField typePrefixText = new TextField();
+
+    public TextField getTypePrefixText() {
+        return typePrefixText;
+    }
+
+    public void setTypePrefixText(TextField tf) {
+        this.typePrefixText = tf;
+    }
+    private TextField nameText = new TextField();
+
+    public TextField getNameText() {
+        return nameText;
+    }
+
+    public void setNameText(TextField tf) {
+        this.nameText = tf;
+    }
+    private TextField lifeSpanText = new TextField();
+
+    public TextField getLifeSpanText() {
+        return lifeSpanText;
+    }
+
+    public void setLifeSpanText(TextField tf) {
+        this.lifeSpanText = tf;
+    }
+    private TextField maxJumpText = new TextField();
+
+    public TextField getMaxJumpText() {
+        return maxJumpText;
+    }
+
+    public void setMaxJumpText(TextField tf) {
+        this.maxJumpText = tf;
+    }
+    private TextField repackCycleText = new TextField();
+
+    public TextField getRepackCycleText() {
+        return repackCycleText;
+    }
+
+    public void setRepackCycleText(TextField tf) {
+        this.repackCycleText = tf;
     }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -58,7 +126,7 @@ public class Edit extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -66,13 +134,13 @@ public class Edit extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Edit Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -86,6 +154,8 @@ public class Edit extends AbstractPageBean {
     public void preprocess() {
     }
 
+    private RowKey temp = null;
+
     /**
      * <p>Callback method that is called just before rendering takes place.
      * This method will <strong>only</strong> be called for the page that
@@ -96,6 +166,12 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        // Retrieve Value from Application
+        // An example of retrieving an object's value from the Request scope
+        // This retrieves the String object myReqValue using the key "name" from the Application
+        RowKey myReqValue = (RowKey) getValue("#{requestScope.type_no}");
+        para_typeDataProvider.setCursorRow(myReqValue);
+        temp = myReqValue;
     }
 
     /**
@@ -108,13 +184,45 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_typeDataProvider.close();
     }
 
-    public String add_action() {
+    public String hyperlink1_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return null;
     }
-    
+
+    public String hyperlink2_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String hyperlink3_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String edit_action() {
+        try {
+            RowKey myReqValue = (RowKey) getValue("#{requestScope.type_no}");
+            para_typeDataProvider.setCursorRow(temp);
+            para_typeDataProvider.setValue("type_prefix", typePrefixText.getText());
+            para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
+            para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
+            para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
+            para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
+            // set values of other fields, if any
+            para_typeDataProvider.commitChanges();
+            para_typeDataProvider.refresh();
+
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error(ex.getMessage());
+        }
+        return "case1";
+    }
 }
 

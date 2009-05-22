@@ -25,10 +25,10 @@
                         <webuijsf:textField binding="#{para_type$Add.maxJumpText}" id="maxJumpText" required="true" style="left: 120px; top: 192px; position: absolute"/>
                         <webuijsf:textField binding="#{para_type$Add.repackCycleText}" id="repackCycleText" required="true" style="left: 120px; top: 240px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_type$Add.add_action}" id="add" style="left: 23px; top: 288px; position: absolute" text="Add"/>
-                        <webuijsf:messageGroup id="messageGroup1" style="left: 312px; top: 72px; position: absolute"/>
+                        <webuijsf:messageGroup id="messageGroup1" style="left: 288px; top: 48px; position: absolute"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="para_type/View" url="/faces/para_type/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_type$Add.hyperlink1_action}" id="hyperlink1" text="para_type/View" url="/faces/para_type/View.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_type$Add.hyperlink2_action}" id="hyperlink2" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
                         </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>

@@ -37,4 +37,18 @@
         <managed-bean-class>parachutesystem.para_type.Edit</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_type/Add.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/para_type/View.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/para_type/Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/para_type/View.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

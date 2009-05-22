@@ -15,21 +15,27 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_type$Edit.hyperlink1_action}" id="hyperlink1" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_type$Edit.hyperlink2_action}" id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_type$Edit.hyperlink3_action}" id="hyperlink3" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:label for="typePrefixText" id="typePrefixLbl" style="left: 25px; top: 48px; position: absolute" text="Type Prefix"/>
                         <webuijsf:label for="nameText" id="nameLbl" style="left: 25px; top: 96px; position: absolute" text="Name"/>
                         <webuijsf:label for="lifeSpanText" id="lifeSpanLbl" style="left: 25px; top: 144px; position: absolute" text="Life Span"/>
                         <webuijsf:label for="maxJumpText" id="maxJumpLbl" style="left: 25px; top: 192px; position: absolute" text="Max Jump"/>
                         <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 25px; top: 240px; position: absolute" text="Repack Cycle"/>
-                        <webuijsf:textField id="typePrefixText" required="true" style="left: 121px; top: 48px; position: absolute"/>
-                        <webuijsf:textField id="nameText" required="true" style="left: 121px; top: 96px; position: absolute"/>
-                        <webuijsf:textField id="lifeSpanText" required="true" style="left: 121px; top: 144px; position: absolute"/>
-                        <webuijsf:textField id="maxJumpText" required="true" style="left: 121px; top: 192px; position: absolute"/>
-                        <webuijsf:textField id="repackCycleText" required="true" style="left: 121px; top: 240px; position: absolute"/>
-                        <webuijsf:button actionExpression="#{para_type$Edit.add_action}" id="add1" style="left: 24px; top: 288px; position: absolute" text="Add"/>
+                        <webuijsf:textField binding="#{para_type$Edit.typePrefixText}" id="typePrefixText" required="true"
+                            style="left: 121px; top: 48px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.type_prefix']}"/>
+                        <webuijsf:textField binding="#{para_type$Edit.nameText}" id="nameText" required="true"
+                            style="left: 121px; top: 96px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.name']}"/>
+                        <webuijsf:textField binding="#{para_type$Edit.lifeSpanText}" id="lifeSpanText" required="true"
+                            style="left: 121px; top: 144px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.life_span']}" valueChangeListenerExpression="#{para_type$Edit.lifeSpanText_processValueChange}"/>
+                        <webuijsf:textField binding="#{para_type$Edit.maxJumpText}" id="maxJumpText" required="true"
+                            style="left: 121px; top: 192px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.max_jump']}"/>
+                        <webuijsf:textField binding="#{para_type$Edit.repackCycleText}" id="repackCycleText" required="true"
+                            style="left: 121px; top: 240px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.repack_cycle']}"/>
+                        <webuijsf:button actionExpression="#{para_type$Edit.edit_action}" id="edit" style="left: 24px; top: 288px; position: absolute" text="edit"/>
+                        <webuijsf:messageGroup id="messageGroup1" style="left: 288px; top: 48px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

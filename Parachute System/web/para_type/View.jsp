@@ -15,7 +15,8 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 120px; position: absolute; width: 0px" title="Parachute Types" width="0">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
+                            <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
+                                sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>
@@ -35,7 +36,7 @@
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" id="tableColumn7" valign="middle">
-                                    <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" text="Edit"/>
+                                    <webuijsf:button actionExpression="#{para_type$View.edit_action}" binding="#{para_type$View.edit}" id="edit" text="Edit"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

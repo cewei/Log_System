@@ -10,7 +10,6 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
-import javax.faces.event.ValueChangeEvent;
 import parachutesystem.SessionBean1;
 import parachutesystem.RequestBean1;
 import parachutesystem.ApplicationBean1;
@@ -211,37 +210,20 @@ public class Add extends AbstractPageBean {
     }
 
     public String add_action() {
-//        try {
-//            RowKey rk = para_typeDataProvider.appendRow();
-//            para_typeDataProvider.setCursorRow(rk);
-//
-//            para_typeDataProvider.setValue("PARA_TYPE.PARA_TYPE_NO", new Integer(0));
-//            para_typeDataProvider.setValue("PARA_TYPE.TYPE_PREFIX", typePrefixText.getText());
-//            para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
-//            para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
-//            para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
-//            para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
-//
-//            para_typeDataProvider.commitChanges();
-//            para_typeDataProvider.refresh();
-//        } catch (Exception ex) {
-//            log("Error Description", ex);
-//            error(ex.getMessage());
-//        }
         try {
-            if ( para_typeDataProvider.canAppendRow() ) {
+            if (para_typeDataProvider.canAppendRow()) {
                 RowKey appendedRow = para_typeDataProvider.appendRow();
-            if ( appendedRow != null ) {
-                para_typeDataProvider.setCursorRow(appendedRow);
-                para_typeDataProvider.setValue("type_prefix", appendedRow, typePrefixText.getText());
-                para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
-                para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
-                para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
-                para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
-                // set values of other fields, if any
-                para_typeDataProvider.commitChanges();
-                para_typeDataProvider.refresh();
-            }
+                if (appendedRow != null) {
+                    para_typeDataProvider.setCursorRow(appendedRow);
+                    para_typeDataProvider.setValue("type_prefix", appendedRow, typePrefixText.getText());
+                    para_typeDataProvider.setValue("PARA_TYPE.NAME", nameText.getText());
+                    para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
+                    para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
+                    para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
+                    // set values of other fields, if any
+                    para_typeDataProvider.commitChanges();
+                    para_typeDataProvider.refresh();
+                }
             } else {
                 error("Cannot append row");
                 log("Cannot append row");
@@ -250,6 +232,18 @@ public class Add extends AbstractPageBean {
             log("Error Description", ex);
             error(ex.getMessage());
         }
+        return "case1";
+    }
+
+    public String hyperlink1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String hyperlink2_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
         return null;
     }
 }
