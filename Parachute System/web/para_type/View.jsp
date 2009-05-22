@@ -14,7 +14,7 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 120px; position: absolute; width: 0px" title="Parachute Types" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
                             <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
@@ -40,7 +40,7 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:button actionExpression="#{para_type$View.add_action}" id="add" style="left: 23px; top: 72px; position: absolute" text="Add new entry"/>
+                        <webuijsf:button actionExpression="#{para_type$View.add_action}" id="add" style="left: 23px; top: 48px; position: absolute" text="Add new entry"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink actionExpression="#{para_type$View.hyperlink1_action}" id="hyperlink1" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
                             <webuijsf:hyperlink actionExpression="#{para_type$View.hyperlink2_action}" id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
