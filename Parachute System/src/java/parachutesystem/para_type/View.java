@@ -5,9 +5,12 @@
 
 package parachutesystem.para_type;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
 import parachutesystem.SessionBean1;
 import parachutesystem.RequestBean1;
@@ -56,6 +59,24 @@ public class View extends AbstractPageBean {
 
     public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
         this.para_typeRowSet = crsxi;
+    }
+    private Button edit = new Button();
+
+    public Button getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Button b) {
+        this.edit = b;
+    }
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
     }
 
     // </editor-fold>
@@ -172,8 +193,17 @@ public class View extends AbstractPageBean {
     }
 
     public String edit_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
+        RowKey rk = null;
+        try {
+            rk = tableRowGroup1.getRowKey();
+        } catch (Exception ex) {
+            log("ErrorDescription", ex);
+            error(ex.getMessage());
+        }
+        // Store Value in Request
+        // An example of storing an object value in the Request scope
+        // This stores the String "value" with the key "name" in the Request
+        setValue("#{requestScope.type_no}", rk);
         return "case2";
     }
 
