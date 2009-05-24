@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Faces Configuration Only" version="2">
     <Scope Scope="Faces Configuration Only">
-        <Node id="para_type/View.jsp" x="521" y="46" zoom="false"/>
         <Node id="para_type/Edit.jsp" x="113" y="324" zoom="false"/>
+        <Node id="para_type/View.jsp" x="521" y="46" zoom="false"/>
         <Node id="para_type/Add.jsp" x="668" y="388" zoom="false"/>
     </Scope>
     <Scope Scope="Project">

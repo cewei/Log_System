@@ -33,18 +33,18 @@ public class SessionBean1 extends AbstractSessionBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT * FROM para_type");
-        para_typeRowSet.setTableName("para_type");
+        para_overviewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_overviewRowSet.setCommand("SELECT * FROM para_overview");
+        para_overviewRowSet.setTableName("para_overview");
     }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+    private CachedRowSetXImpl para_overviewRowSet = new CachedRowSetXImpl();
 
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
+    public CachedRowSetXImpl getPara_overviewRowSet() {
+        return para_overviewRowSet;
     }
 
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
+    public void setPara_overviewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_overviewRowSet = crsxi;
     }
     // </editor-fold>
 

@@ -27,8 +27,9 @@
                         <webuijsf:button actionExpression="#{para_type$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
                         <webuijsf:messageGroup id="messageGroup1" style="left: 288px; top: 48px; position: absolute"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink actionExpression="#{para_type$Add.hyperlink1_action}" id="hyperlink1" text="para_type/View" url="/faces/para_type/View.jsp"/>
-                            <webuijsf:hyperlink actionExpression="#{para_type$Add.hyperlink2_action}" id="hyperlink2" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/faces/para_type/Page1.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_type/View" url="/faces/para_type/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink5" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
                         </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
