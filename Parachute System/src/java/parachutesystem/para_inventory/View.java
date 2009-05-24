@@ -3,18 +3,12 @@
  * and open the template in the editor.
  */
 
-package parachutesystem.para_type;
+package parachutesystem.para_inventory;
 
-import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.Button;
-import com.sun.webui.jsf.component.TableRowGroup;
+import com.sun.webui.jsf.model.DefaultTableDataProvider;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.ApplicationBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -24,8 +18,8 @@ import parachutesystem.ApplicationBean1;
  * to respond to incoming events.</p>
  *
  * @version View.java
- * @version Created on May 21, 2009, 11:44:14 AM
- * @author Dell
+ * @version Created on May 24, 2009, 10:01:36 PM
+ * @author Lancer-Matrix
  */
 
 public class View extends AbstractPageBean {
@@ -37,46 +31,16 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
-        para_typeRowSet.setTableName("para_type");
+        para_overviewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_overviewRowSet}"));
     }
-    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
+    private CachedRowSetDataProvider para_overviewDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetDataProvider getPara_typeDataProvider() {
-        return para_typeDataProvider;
+    public CachedRowSetDataProvider getPara_overviewDataProvider() {
+        return para_overviewDataProvider;
     }
 
-    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_typeDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
-    }
-
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
-    }
-    private Button edit = new Button();
-
-    public Button getEdit() {
-        return edit;
-    }
-
-    public void setEdit(Button b) {
-        this.edit = b;
-    }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
-
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
+    public void setPara_overviewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_overviewDataProvider = crsdp;
     }
 
     // </editor-fold>
@@ -156,55 +120,8 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_typeDataProvider.close();
+        para_overviewDataProvider.close();
     }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
-
-    public String add_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case1";
-    }
-
-    public String edit_action() {
-        RowKey rk = null;
-        try {
-            rk = tableRowGroup1.getRowKey();
-        } catch (Exception ex) {
-            log("ErrorDescription", ex);
-            error(ex.getMessage());
-        }
-        // Store Value in Request
-        // An example of storing an object value in the Request scope
-        // This stores the String "value" with the key "name" in the Request
-        setValue("#{sessionScope.type_no}", rk);
-        return "case2";
-    }   
+    
 }
 

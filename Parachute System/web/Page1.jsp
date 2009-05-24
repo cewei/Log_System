@@ -15,6 +15,7 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:anchor id="para_type_link" style="position: absolute; left: 24px; top: 24px" text="Parachute Type" url="/faces/para_type/View.jsp"/>
+                        <webuijsf:anchor id="para_inventory_link" style="left: 24px; top: 48px; position: absolute" text="Parachute Inventory" url="/faces/para_inventory/View.jsp"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
