@@ -18,20 +18,19 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink5" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 450px"
-                            title="Parachute Inventory" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$View.para_overviewDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="type_prefix" id="tableColumn1" sort="para_type.type_prefix">
-                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.type_prefix']}"/>
+                                <webuijsf:tableColumn headerText="type_prefix" id="tableColumn1" sort="para_overview.type_prefix">
+                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_overview.type_prefix']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="chute_no" id="tableColumn2" sort="para_inventory.chute_no">
-                                    <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_inventory.chute_no']}"/>
+                                <webuijsf:tableColumn headerText="chute_no" id="tableColumn2" sort="para_overview.chute_no">
+                                    <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_overview.chute_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="serial_no" id="tableColumn3" sort="para_inventory.serial_no">
-                                    <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_inventory.serial_no']}"/>
+                                <webuijsf:tableColumn headerText="serial_no" id="tableColumn3" sort="para_overview.serial_no">
+                                    <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_overview.serial_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="date_of_mfg" id="tableColumn4" sort="para_inventory.date_of_mfg">
-                                    <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_inventory.date_of_mfg']}"/>
+                                <webuijsf:tableColumn headerText="date_of_mfg" id="tableColumn4" sort="para_overview.date_of_mfg">
+                                    <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_overview.date_of_mfg']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
