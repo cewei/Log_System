@@ -5,9 +5,7 @@
 
 package parachutesystem.para_inventory;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.DefaultTableDataProvider;
 import javax.faces.FacesException;
 
 /**
@@ -31,16 +29,6 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_overviewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_overviewRowSet}"));
-    }
-    private CachedRowSetDataProvider para_overviewDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_overviewDataProvider() {
-        return para_overviewDataProvider;
-    }
-
-    public void setPara_overviewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_overviewDataProvider = crsdp;
     }
 
     // </editor-fold>
@@ -120,7 +108,6 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_overviewDataProvider.close();
     }
     
 }

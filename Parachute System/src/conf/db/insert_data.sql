@@ -7,3 +7,5 @@ INSERT INTO parachute_system.para_inventory (type_prefix_no, chute_no, serial_no
 INSERT INTO parachute_system.para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg) VALUES(2, 'B', 'B2', '2009-04-12 00:00:00.0');
 INSERT INTO parachute_system.para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg) VALUES(3, 'C', 'C3', '2009-04-12 00:00:00.0');
 INSERT INTO parachute_system.para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg) VALUES(4, 'D', 'D4', '2009-04-12 00:00:00.0');
+
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, 'A', 'A1', '2009-04-12 00:00:00.0', 'packed', 'inspected', 'repacking');
