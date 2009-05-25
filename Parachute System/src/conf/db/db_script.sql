@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
+
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_loan`;
@@ -23,6 +25,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   `chute_no` varchar(45) NOT NULL,
   `serial_no` varchar(45) NOT NULL,
   `date_of_mfg` datetime NOT NULL,
+  `no_of_jumps` int(10) unsigned NOT NULL,
   PRIMARY KEY (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -65,7 +68,11 @@ CREATE TABLE  `parachute_system`.`para_packing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE VIEW `parachute_system`.`para_overview` AS
-SELECT para_type.type_prefix, para_inventory.chute_no, para_inventory.serial_no, para_inventory.date_of_mfg
+SELECT para_inventory.serial_no, para_type.name,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS para_serial,
+para_type.life_span, para_type.max_jump,
+para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left, para_inventory.date_of_mfg,
+para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS 'Replacement Date'
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
