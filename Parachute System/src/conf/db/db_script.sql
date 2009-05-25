@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS `parachute_system`.`para_overview_packing`;
+
 DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
@@ -26,6 +28,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   `serial_no` varchar(45) NOT NULL,
   `date_of_mfg` datetime NOT NULL,
   `no_of_jumps` int(10) unsigned NOT NULL,
+  `status` varchar(45) NOT NULL,
   PRIMARY KEY (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,11 +71,37 @@ CREATE TABLE  `parachute_system`.`para_packing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE VIEW `parachute_system`.`para_overview` AS
-SELECT para_inventory.serial_no, para_type.name,
+SELECT
+para_inventory.serial_no,
+para_type.name,
 CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS para_serial,
-para_type.life_span, para_type.max_jump,
-para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left, para_inventory.date_of_mfg,
-para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS 'Replacement Date'
+para_type.life_span,
+para_type.max_jump,
+para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left,
+para_inventory.date_of_mfg,
+para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
+
+CREATE VIEW `parachute_system`.`para_overview_packing` AS
+SELECT
+para_inventory.serial_no,
+para_type.name,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS para_serial,
+para_type.life_span,
+para_type.max_jump,
+para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left,
+para_inventory.date_of_mfg,
+para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`,
+para_packing.date_packed,
+para_packing.pack_by,
+para_packing.inspect_by,
+para_packing.check_type
+FROM para_inventory
+INNER JOIN para_type
+ON para_inventory.type_prefix_no=para_type.para_type_no
+LEFT JOIN para_packing
+ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
+para_inventory.chute_no=para_packing.chute_no AND
+para_inventory.serial_no=para_packing.serial_no;
