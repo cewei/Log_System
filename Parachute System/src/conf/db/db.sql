@@ -1,13 +1,4 @@
-﻿DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
-
-DROP TABLE IF EXISTS `parachute_system`.`para_loan`;
-
-DROP TABLE IF EXISTS `parachute_system`.`para_borrowers`;
-
-DROP TABLE IF EXISTS `parachute_system`.`para_inventory`;
-
 DROP TABLE IF EXISTS `parachute_system`.`para_type`;
-
 CREATE TABLE  `parachute_system`.`para_type` (
   `para_type_no` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_prefix` varchar(45) NOT NULL,
@@ -18,6 +9,7 @@ CREATE TABLE  `parachute_system`.`para_type` (
   PRIMARY KEY (`para_type_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `parachute_system`.`para_inventory`;
 CREATE TABLE  `parachute_system`.`para_inventory` (
   `type_prefix_no` int(10) unsigned NOT NULL,
   `chute_no` varchar(45) NOT NULL,
@@ -27,6 +19,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `parachute_system`.`para_borrowers`;
 CREATE TABLE  `parachute_system`.`para_borrowers` (
   `NRIC` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -35,6 +28,7 @@ CREATE TABLE  `parachute_system`.`para_borrowers` (
   PRIMARY KEY (`NRIC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `parachute_system`.`para_loan`;
 CREATE TABLE  `parachute_system`.`para_loan` (
   `para_loan_no` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NRIC` varchar(45) NOT NULL,
@@ -50,6 +44,7 @@ CREATE TABLE  `parachute_system`.`para_loan` (
   CONSTRAINT `FK_para_loan_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
 CREATE TABLE  `parachute_system`.`para_packing` (
   `para_packing_no` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_prefix_no` int(10) unsigned NOT NULL,
@@ -63,3 +58,9 @@ CREATE TABLE  `parachute_system`.`para_packing` (
   KEY `FK_para_packing_inventory_no` (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE VIEW `parachute_system`.`para_overview` AS
+SELECT para_type.type_prefix, para_inventory.chute_no, para_inventory.serial_no, para_inventory.date_of_mfg
+FROM para_inventory
+INNER JOIN para_type
+ON para_inventory.type_prefix_no=para_type.para_type_no;
