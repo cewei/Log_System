@@ -33,6 +33,30 @@ public class SessionBean1 extends AbstractSessionBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_typeRowSet.setCommand("SELECT * FROM para_type");
+        para_typeRowSet.setTableName("para_type");
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT ALL para_inventory.type_prefix_no, para_inventory.chute_no, para_inventory.serial_no, para_inventory.date_of_mfg, para_inventory.no_of_jumps, para_inventory.status  FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
+    }
+    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_typeRowSet() {
+        return para_typeRowSet;
+    }
+
+    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
+        this.para_typeRowSet = crsxi;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
     }
     // </editor-fold>
 

@@ -2,14 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package parachutesystem.para_type;
+package parachutesystem.para_inventory;
 
-import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.component.DropDown;
 import javax.faces.FacesException;
+import javax.faces.convert.LongConverter;
+import parachutesystem.SessionBean1;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.RequestBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -18,11 +20,11 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version Edit.java
- * @version Created on May 22, 2009, 10:00:10 AM
+ * @version Add.java
+ * @version Created on May 26, 2009, 3:22:17 PM
  * @author Dell
  */
-public class Edit extends AbstractPageBean {
+public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -31,10 +33,8 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT * FROM para_type");
-        para_typeRowSet.setTableName("para_type");
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Edit.para_typeRowSet}"));
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_typeRowSet}"));
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_inventoryRowSet}"));
     }
     private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
 
@@ -45,66 +45,55 @@ public class Edit extends AbstractPageBean {
     public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_typeDataProvider = crsdp;
     }
-    private TextField typePrefixText = new TextField();
+    private LongConverter typeDropDownConverter = new LongConverter();
 
-    public TextField getTypePrefixText() {
-        return typePrefixText;
+    public LongConverter getTypeDropDownConverter() {
+        return typeDropDownConverter;
     }
 
-    public void setTypePrefixText(TextField tf) {
-        this.typePrefixText = tf;
+    public void setTypeDropDownConverter(LongConverter lc) {
+        this.typeDropDownConverter = lc;
     }
-    private TextField nameText = new TextField();
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
-    public TextField getNameText() {
-        return nameText;
-    }
-
-    public void setNameText(TextField tf) {
-        this.nameText = tf;
-    }
-    private TextField lifeSpanText = new TextField();
-
-    public TextField getLifeSpanText() {
-        return lifeSpanText;
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
     }
 
-    public void setLifeSpanText(TextField tf) {
-        this.lifeSpanText = tf;
-    }
-    private TextField maxJumpText = new TextField();
-
-    public TextField getMaxJumpText() {
-        return maxJumpText;
-    }
-
-    public void setMaxJumpText(TextField tf) {
-        this.maxJumpText = tf;
-    }
-    private TextField repackCycleText = new TextField();
-
-    public TextField getRepackCycleText() {
-        return repackCycleText;
-    }
-
-    public void setRepackCycleText(TextField tf) {
-        this.repackCycleText = tf;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
-    }
-
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
     }
 
     // </editor-fold>
+    private String chute_no;
+
+    /**
+     * @return the chute_no
+     */
+    public String getChute_no() {
+        return chute_no;
+    }
+
+    /**
+     * @param chute_no the chute_no to set
+     */
+    public void setChute_no(String chute_no) {
+        this.chute_no = chute_no;
+    }
+    private DropDown typeDropDown = new DropDown();
+
+    public DropDown getTypeDropDown() {
+        return typeDropDown;
+    }
+
+    public void setTypeDropDown(DropDown dd) {
+        this.typeDropDown = dd;
+    }
+
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Edit() {
+    public Add() {
     }
 
     /**
@@ -133,7 +122,7 @@ public class Edit extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Edit Initialization Failure", e);
+            log("Add Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
 
@@ -164,12 +153,18 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        // Retrieve Value from Application
-        // An example of retrieving an object's value from the Request scope
-        // This retrieves the String object myReqValue using the key "name" from the Application
-        RowKey myReqValue = (RowKey) getValue("#{sessionScope.type_no}");
-        para_typeDataProvider.setCursorRow(myReqValue);
-        para_typeDataProvider.refresh();
+        Object selectedTypeId = typeDropDown.getSelected();
+        try {
+//            personDataProvider.setCursorRow(
+//                    personDataProvider.findFirst("PERSON.PERSONID",
+//                    selectedPersonId));
+//            getSessionBean1().getTripRowSet().setObject(1, selectedPersonId);
+//            tripDataProvider.refresh();
+//            form1.discardSubmittedValues("save");
+        } catch (Exception e) {
+//            error("Cannot switch to person " + selectedPersonId);
+//            log("Cannot switch to person " + selectedPersonId, e);
+        }
     }
 
     /**
@@ -182,27 +177,39 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_typeDataProvider.close();
     }
 
-    public String edit_action() {
-        try {
-            RowKey myReqValue = (RowKey) getValue("#{sessionScope.type_no}");
-            //para_typeDataProvider.setCursorRow(myReqValue);
-            para_typeDataProvider.setValue("type_prefix", myReqValue, typePrefixText.getText());
-            para_typeDataProvider.setValue("PARA_TYPE.NAME", myReqValue, nameText.getText());
-            para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", myReqValue, lifeSpanText.getText());
-            para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", myReqValue, maxJumpText.getText());
-            para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", myReqValue, repackCycleText.getText());
-            // set values of other fields, if any
-            para_typeDataProvider.commitChanges();
-            para_typeDataProvider.refresh();
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
 
-        } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
-        }
-        return "case1";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
+    }
+
+    public String add_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
     }
 }
 
