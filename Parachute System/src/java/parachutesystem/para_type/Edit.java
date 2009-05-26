@@ -185,24 +185,6 @@ public class Edit extends AbstractPageBean {
         para_typeDataProvider.close();
     }
 
-    public String hyperlink1_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String hyperlink2_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String hyperlink3_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
     public String edit_action() {
         try {
             RowKey myReqValue = (RowKey) getValue("#{sessionScope.type_no}");

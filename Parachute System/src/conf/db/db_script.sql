@@ -74,13 +74,13 @@ CREATE TABLE  `parachute_system`.`para_packing` (
 
 CREATE VIEW `parachute_system`.`para_overview` AS
 SELECT
-para_inventory.serial_no,
-para_type.name,
-CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS para_serial,
-para_type.life_span,
-para_type.max_jump,
-para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left,
-para_inventory.date_of_mfg,
+para_inventory.serial_no AS `Serial No`,
+para_type.name AS `Name`,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS `Chute No`,
+para_type.life_span AS `Life Span`,
+para_type.max_jump AS `Max Jumps`,
+para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
+para_inventory.date_of_mfg AS `Manufactured Date`,
 para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`
 FROM para_inventory
 INNER JOIN para_type
@@ -95,18 +95,18 @@ GROUP by type_prefix_no,chute_no,serial_no);
 
 CREATE VIEW `parachute_system`.`para_overview_packing` AS
 SELECT
-para_inventory.serial_no,
-para_type.name,
-CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS para_serial,
-para_type.life_span,
-para_type.max_jump,
-para_type.max_jump-para_inventory.no_of_jumps AS para_jumps_left,
-para_inventory.date_of_mfg,
+para_inventory.serial_no AS `Serial No`,
+para_type.name AS `Name`,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS `Chute No`,
+para_type.life_span AS `Life Span`,
+para_type.max_jump AS `Max Jumps`,
+para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
+para_inventory.date_of_mfg AS `Manufactured Date`,
 para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`,
-para_packing.date_packed,
-para_packing.pack_by,
-para_packing.inspect_by,
-para_packing.check_type
+para_packing.date_packed AS `Repacked Date`,
+para_packing.date_packed +INTERVAL para_type.repack_cycle DAY AS `Repack Due Date`,
+para_packing.pack_by AS `Pack By`,
+para_packing.inspect_by AS `Inspect By`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no
