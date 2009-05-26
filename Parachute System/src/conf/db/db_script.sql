@@ -1,5 +1,7 @@
 DROP VIEW IF EXISTS `parachute_system`.`para_overview_packing`;
 
+DROP VIEW IF EXISTS `parachute_system`.`para_packing_view`;
+
 DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
@@ -84,6 +86,13 @@ FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
 
+CREATE VIEW `parachute_system`.`para_packing_view` AS
+SELECT * FROM para_packing as p1
+where date_packed =
+(SELECT MAX(date_packed) FROM para_packing as p2
+where p1.type_prefix_no=p2.type_prefix_no AND p1.chute_no=p2.chute_no AND p1.serial_no=p2.serial_no
+GROUP by type_prefix_no,chute_no,serial_no);
+
 CREATE VIEW `parachute_system`.`para_overview_packing` AS
 SELECT
 para_inventory.serial_no,
@@ -101,7 +110,7 @@ para_packing.check_type
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no
-LEFT JOIN para_packing
+LEFT JOIN para_packing_view AS para_packing
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
 para_inventory.chute_no=para_packing.chute_no AND
 para_inventory.serial_no=para_packing.serial_no;
