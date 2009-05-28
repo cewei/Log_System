@@ -5,6 +5,10 @@
   <resource-ref>
     <res-ref-name>jdbc/parachute_system_MySQL</res-ref-name>
     <jndi-name>jdbc/parachute_system_MySQL</jndi-name>
+    <default-resource-principal>
+      <name>parachute_system</name>
+      <password>cdo</password>
+    </default-resource-principal>
   </resource-ref>
   <class-loader delegate="true"/>
   <jsp-config>

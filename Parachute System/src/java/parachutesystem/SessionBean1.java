@@ -39,6 +39,9 @@ public class SessionBean1 extends AbstractSessionBean {
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT ALL para_inventory.type_prefix_no, para_inventory.chute_no, para_inventory.serial_no, para_inventory.date_of_mfg, para_inventory.no_of_jumps, para_inventory.status  FROM para_inventory");
         para_inventoryRowSet.setTableName("para_inventory");
+        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view");
+        para_inventory_viewRowSet.setTableName("para_inventory_view");
     }
     private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
 
@@ -57,6 +60,15 @@ public class SessionBean1 extends AbstractSessionBean {
 
     public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
         this.para_inventoryRowSet = crsxi;
+    }
+    private CachedRowSetXImpl para_inventory_viewRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventory_viewRowSet() {
+        return para_inventory_viewRowSet;
+    }
+
+    public void setPara_inventory_viewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventory_viewRowSet = crsxi;
     }
     // </editor-fold>
 

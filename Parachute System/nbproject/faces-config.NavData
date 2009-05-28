@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Scene Scope="Faces Configuration Only" version="2">
-    <Scope Scope="Faces Configuration Only">
-        <Node id="para_type/Edit.jsp" x="113" y="324" zoom="false"/>
-        <Node id="para_type/View.jsp" x="521" y="46" zoom="false"/>
-        <Node id="para_type/Add.jsp" x="668" y="388" zoom="false"/>
-    </Scope>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="para_type/View.jsp" x="400" y="150" zoom="false"/>
-        <Node id="para_type/Edit.jsp" x="149" y="300" zoom="false"/>
-        <Node id="Page1.jsp" x="150" y="150" zoom="false"/>
-        <Node id="para_type/Add.jsp" x="665" y="320" zoom="false"/>
+        <Node id="para_type/View.jsp" x="35" y="100" zoom="true"/>
+        <Node id="para_type/Edit.jsp" x="34" y="325" zoom="true"/>
+        <Node id="Page1.jsp" x="36" y="38" zoom="false"/>
+        <Node id="para_inventory/Add.jsp" x="432" y="68" zoom="true"/>
+        <Node id="para_inventory/View.jsp" x="758" y="311" zoom="true"/>
+        <Node id="para_type/Add.jsp" x="265" y="327" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations">
-        <Node id="para_type/View.jsp" x="400" y="150" zoom="true"/>
-        <Node id="para_type/Edit.jsp" x="149" y="300" zoom="true"/>
-        <Node id="para_type/Add.jsp" x="135" y="322" zoom="true"/>
+        <Node id="para_type/View.jsp" x="136" y="50" zoom="true"/>
+        <Node id="para_type/Edit.jsp" x="599" y="278" zoom="true"/>
+        <Node id="para_type/Add.jsp" x="39" y="380" zoom="true"/>
     </Scope>
 </Scene>

@@ -1,8 +1,8 @@
-DROP VIEW IF EXISTS `parachute_system`.`para_overview_packing`;
+DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
 
 DROP VIEW IF EXISTS `parachute_system`.`para_packing_view`;
 
-DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
+DROP VIEW IF EXISTS `parachute_system`.`para_inventory_view`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
 
@@ -72,7 +72,7 @@ CREATE TABLE  `parachute_system`.`para_packing` (
   CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE VIEW `parachute_system`.`para_overview` AS
+CREATE VIEW `parachute_system`.`para_inventory_view` AS
 SELECT
 para_inventory.serial_no AS `Serial No`,
 para_type.name AS `Name`,
@@ -81,7 +81,8 @@ para_type.life_span AS `Life Span`,
 para_type.max_jump AS `Max Jumps`,
 para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
 para_inventory.date_of_mfg AS `Manufactured Date`,
-para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`
+para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`,
+para_inventory.status AS `Current Status`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
@@ -93,7 +94,7 @@ where date_packed =
 where p1.type_prefix_no=p2.type_prefix_no AND p1.chute_no=p2.chute_no AND p1.serial_no=p2.serial_no
 GROUP by type_prefix_no,chute_no,serial_no);
 
-CREATE VIEW `parachute_system`.`para_overview_packing` AS
+CREATE VIEW `parachute_system`.`para_overview` AS
 SELECT
 para_inventory.serial_no AS `Serial No`,
 para_type.name AS `Name`,
@@ -106,7 +107,8 @@ para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement D
 para_packing.date_packed AS `Repacked Date`,
 para_packing.date_packed +INTERVAL para_type.repack_cycle DAY AS `Repack Due Date`,
 para_packing.pack_by AS `Pack By`,
-para_packing.inspect_by AS `Inspect By`
+para_packing.inspect_by AS `Inspect By`,
+para_inventory.status AS `Current Status`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no

@@ -232,7 +232,7 @@ public class Add extends AbstractPageBean {
             log("Error Description", ex);
             error(ex.getMessage());
         }
-        return "case1";
+        return "addToView";
     }
 
 }
