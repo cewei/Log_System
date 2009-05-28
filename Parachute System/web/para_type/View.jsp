@@ -20,23 +20,20 @@
                                 <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="type_prefix" id="tableColumn2" sort="para_type.type_prefix">
+                                <webuijsf:tableColumn headerText="Type Prefix" id="tableColumn2" sort="para_type.type_prefix">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_type.type_prefix']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="name" id="tableColumn3" sort="para_type.name">
+                                <webuijsf:tableColumn headerText="Type Name" id="tableColumn3" sort="para_type.name">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_type.name']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="life_span" id="tableColumn4" sort="para_type.life_span">
+                                <webuijsf:tableColumn headerText="Life Span (Yrs)" id="tableColumn4" sort="para_type.life_span">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_type.life_span']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="max_jump" id="tableColumn5" sort="para_type.max_jump">
+                                <webuijsf:tableColumn headerText="Max No. Jumps" id="tableColumn5" sort="para_type.max_jump">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_type.max_jump']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="repack_cycle" id="tableColumn6" sort="para_type.repack_cycle">
+                                <webuijsf:tableColumn headerText="Repack Cycle (Days)" id="tableColumn6" sort="para_type.repack_cycle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_type.repack_cycle']}"/>
-                                </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" id="tableColumn7" valign="middle">
-                                    <webuijsf:button actionExpression="#{para_type$View.edit_action}" binding="#{para_type$View.edit}" id="edit" text="Edit"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
@@ -45,6 +42,7 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink5" text="para_type/View" url="/faces/para_type/View.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="position: absolute; left: 120px; top: 48px" text="Edit"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
