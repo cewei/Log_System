@@ -30,7 +30,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   `serial_no` varchar(45) NOT NULL,
   `date_of_mfg` date NOT NULL,
   `no_of_jumps` int(10) unsigned NOT NULL,
-  `status` varchar(45) NOT NULL,
+  `status` enum('serviceable','servicing', 'loan') NOT NULL,
   PRIMARY KEY (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -16,10 +16,12 @@
         <navigation-case>
             <from-outcome>case1</from-outcome>
             <to-view-id>/para_type/Add.jsp</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
             <from-outcome>case2</from-outcome>
             <to-view-id>/para_type/Edit.jsp</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
     <managed-bean>

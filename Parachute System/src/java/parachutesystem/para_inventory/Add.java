@@ -63,8 +63,6 @@ public class Add extends AbstractPageBean {
     public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_inventoryDataProvider = crsdp;
     }
-
-    // </editor-fold>
     private String chute_no;
 
     /**
@@ -90,6 +88,7 @@ public class Add extends AbstractPageBean {
         this.typeDropDown = dd;
     }
 
+    // </editor-fold>
     /**
      * <p>Construct a new Page bean instance.</p>
      */

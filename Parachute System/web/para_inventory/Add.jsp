@@ -15,7 +15,7 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1" virtualFormsConfig="virtualForm1 | typeDropDown | typeDropDown">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink5" text="Page1" url="/faces/para_inventory/Page1.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink5" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink1" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink6" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
                         </webuijsf:breadcrumbs>

@@ -13,29 +13,42 @@
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
-                    <webuijsf:form id="form1" virtualFormsConfig="save | typePrefixText repackCycleText maxJumpText lifeSpanText nameText | typePrefixText repackCycleText maxJumpText lifeSpanText nameText">
-                        <webuijsf:label for="typePrefixText" id="typePrefixLbl" style="left: 25px; top: 48px; position: absolute" text="Type Prefix"/>
-                        <webuijsf:label for="nameText" id="nameLbl" style="left: 24px; top: 72px; position: absolute" text="Name"/>
-                        <webuijsf:label for="lifeSpanText" id="lifeSpanLbl" style="left: 24px; top: 96px; position: absolute" text="Life Span"/>
-                        <webuijsf:label for="maxJumpText" id="maxJumpLbl" style="left: 24px; top: 120px; position: absolute" text="Max Jump"/>
-                        <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 24px; top: 144px; position: absolute" text="Repack Cycle"/>
-                        <webuijsf:textField binding="#{para_type$Edit.typePrefixText}" id="typePrefixText" required="true"
-                            style="left: 121px; top: 48px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.type_prefix']}"/>
-                        <webuijsf:textField binding="#{para_type$Edit.nameText}" id="nameText" required="true"
-                            style="left: 120px; top: 72px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.name']}"/>
-                        <webuijsf:textField binding="#{para_type$Edit.lifeSpanText}" id="lifeSpanText" required="true"
-                            style="left: 120px; top: 96px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.life_span']}"/>
-                        <webuijsf:textField binding="#{para_type$Edit.maxJumpText}" id="maxJumpText" required="true"
-                            style="left: 120px; top: 120px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.max_jump']}"/>
-                        <webuijsf:textField binding="#{para_type$Edit.repackCycleText}" id="repackCycleText" required="true"
-                            style="left: 120px; top: 144px; position: absolute" text="#{para_type$Edit.para_typeDataProvider.value['para_type.repack_cycle']}"/>
-                        <webuijsf:button actionExpression="#{para_type$Edit.edit_action}" id="edit" style="left: 23px; top: 192px; position: absolute" text="edit"/>
-                        <webuijsf:messageGroup id="messageGroup1" style="left: 288px; top: 48px; position: absolute"/>
+                    <webuijsf:form id="form1" virtualFormsConfig="save | table1:tableRowGroup1:tableColumn2:textField1 table1:tableRowGroup1:tableColumn3:textField2 table1:tableRowGroup1:tableColumn4:textField3 table1:tableRowGroup1:tableColumn5:textField4 table1:tableRowGroup1:tableColumn6:textField5 | save">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/faces/para_type/Page1.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink4" text="para_type/View" url="/faces/para_type/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink5" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
+                                <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
+                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Type Prefix" id="tableColumn2" sort="para_type.type_prefix">
+                                    <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_type.type_prefix']}"/>
+                                    <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Type Name" id="tableColumn3" sort="para_type.name">
+                                    <webuijsf:textField id="textField2" required="true" text="#{currentRow.value['para_type.name']}"/>
+                                    <webuijsf:message for="textField2" id="message2" showDetail="false" showSummary="true"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Life Span (Yrs)" id="tableColumn4" sort="para_type.life_span">
+                                    <webuijsf:textField id="textField3" required="true" text="#{currentRow.value['para_type.life_span']}"/>
+                                    <webuijsf:message for="textField3" id="message3" showDetail="false" showSummary="true"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Max No. Jumps" id="tableColumn5" sort="para_type.max_jump">
+                                    <webuijsf:textField id="textField4" required="true" text="#{currentRow.value['para_type.max_jump']}"/>
+                                    <webuijsf:message for="textField4" id="message4" showDetail="false" showSummary="true"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Repack Cycle (Days)" id="tableColumn6" sort="para_type.repack_cycle">
+                                    <webuijsf:textField id="textField5" required="true" text="#{currentRow.value['para_type.repack_cycle']}"/>
+                                    <webuijsf:message for="textField5" id="message5" showDetail="false" showSummary="true"/>
+                                </webuijsf:tableColumn>
+                            </webuijsf:tableRowGroup>
+                        </webuijsf:table>
+                        <webuijsf:button actionExpression="#{para_type$Edit.save_action}" binding="#{para_type$Edit.save}" id="save"
+                            style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
+                        <br/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
