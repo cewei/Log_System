@@ -9,6 +9,7 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.DropDown;
 import javax.faces.FacesException;
 import javax.faces.convert.LongConverter;
+import javax.faces.event.ValueChangeEvent;
 import parachutesystem.SessionBean1;
 import parachutesystem.ApplicationBean1;
 import parachutesystem.RequestBean1;
@@ -35,6 +36,7 @@ public class Add extends AbstractPageBean {
     private void _init() throws Exception {
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_typeRowSet}"));
         para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_inventoryRowSet}"));
+        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_inventory_viewRowSet}"));
     }
     private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
 
@@ -44,15 +46,6 @@ public class Add extends AbstractPageBean {
 
     public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_typeDataProvider = crsdp;
-    }
-    private LongConverter typeDropDownConverter = new LongConverter();
-
-    public LongConverter getTypeDropDownConverter() {
-        return typeDropDownConverter;
-    }
-
-    public void setTypeDropDownConverter(LongConverter lc) {
-        this.typeDropDownConverter = lc;
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
@@ -86,6 +79,15 @@ public class Add extends AbstractPageBean {
 
     public void setTypeDropDown(DropDown dd) {
         this.typeDropDown = dd;
+    }
+    private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventory_viewDataProvider() {
+        return para_inventory_viewDataProvider;
+    }
+
+    public void setPara_inventory_viewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventory_viewDataProvider = crsdp;
     }
 
     // </editor-fold>
@@ -176,6 +178,7 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_inventory_viewDataProvider.close();
     }
 
     /**
@@ -206,9 +209,20 @@ public class Add extends AbstractPageBean {
     }
 
     public String add_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
+        return "addToView";
+    }
+
+    public void typeDropDown_processValueChange(ValueChangeEvent event) {
+        Object selectedTypeID = typeDropDown.getSelected();
+
+        try {
+            para_inventoryDataProvider.setCursorRow(
+                    para_inventoryDataProvider.findFirst("name", selectedTypeID));
+            //().getPara_inventory_viewRowSet()
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error(ex.getMessage());
+        }
     }
 }
 

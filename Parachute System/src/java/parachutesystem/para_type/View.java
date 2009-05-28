@@ -176,11 +176,11 @@ public class View extends AbstractPageBean {
     }
 
     public String add_action() {
-        return "case1";
+        return "viewToAdd";
     }
 
     public String edit_action() {
-        return "case2";
+        return "viewToEdit";
     }   
 }
 

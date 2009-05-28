@@ -150,7 +150,7 @@ public class Edit extends AbstractPageBean {
             error("Error :" + ex.getMessage());
         }
 
-        return "case1";
+        return "editToView";
     }
 }
 
