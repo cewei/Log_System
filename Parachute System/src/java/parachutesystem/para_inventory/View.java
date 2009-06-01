@@ -7,6 +7,7 @@ package parachutesystem.para_inventory;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
 
 /**
@@ -30,7 +31,10 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.para_inventory_viewRowSet}"));
+        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View.para_inventory_viewRowSet}"));
+        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view");
+        para_inventory_viewRowSet.setTableName("para_inventory_view");
     }
     private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();
 
@@ -42,6 +46,15 @@ public class View extends AbstractPageBean {
         this.para_inventory_viewDataProvider = crsdp;
     }
 
+    private CachedRowSetXImpl para_inventory_viewRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventory_viewRowSet() {
+        return para_inventory_viewRowSet;
+    }
+
+    public void setPara_inventory_viewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventory_viewRowSet = crsxi;
+    }
     // </editor-fold>
 
     /**

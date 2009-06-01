@@ -75,11 +75,6 @@
         <managed-bean-class>parachutesystem.RequestBean1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_inventory$Add</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.Add</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
     <navigation-rule>
         <from-view-id>/para_inventory/View.jsp</from-view-id>
         <navigation-case>
