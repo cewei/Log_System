@@ -74,6 +74,7 @@ CREATE TABLE  `parachute_system`.`para_packing` (
 
 CREATE VIEW `parachute_system`.`para_inventory_view` AS
 SELECT
+para_inventory.type_prefix_no AS `Type Prefix No`,
 para_inventory.serial_no AS `Serial No`,
 para_type.name AS `Name`,
 CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS `Chute No`,
