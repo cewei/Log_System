@@ -28,11 +28,12 @@
                         <webuijsf:dropDown binding="#{para_inventory$Add.typeDD}" converter="#{para_inventory$Add.typeDDConverter}" id="typeDD"
                             items="#{para_inventory$Add.para_typeDataProvider.options['para_type.para_type_no,para_type.name']}"
                             onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'typeDD');" style="left: 168px; top: 48px; position: absolute" valueChangeListenerExpression="#{para_inventory$Add.typeDD_processValueChange}"/>
-                        <webuijsf:textField binding="#{para_inventory$Add.chuteNoTF}" id="chuteNoTF" required="true" style="left: 168px; top: 72px; position: absolute"/>
-                        <webuijsf:textField id="serialNoTF" required="true" style="left: 168px; top: 96px; position: absolute"/>
-                        <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="dateOfMfgCal" required="true" style="position: absolute; left: 168px; top: 120px"/>
-                        <webuijsf:textField id="noOfJumpsTF" required="true" style="position: absolute; left: 168px; top: 144px"/>
-                        <webuijsf:dropDown id="statusDD" items="#{para_inventory$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 168px; top: 168px"/>
+                        <webuijsf:textField binding="#{para_inventory$Add.chuteNoTF}" id="chuteNoTF" required="true"
+                            style="left: 168px; top: 72px; position: absolute" valueChangeListenerExpression="#{para_inventory$Add.chuteNoTF_processValueChange}"/>
+                        <webuijsf:textField binding="#{para_inventory$Add.serialNoTF}" id="serialNoTF" required="true" style="left: 168px; top: 96px; position: absolute"/>
+                        <webuijsf:calendar binding="#{para_inventory$Add.dateOfMfgCal}" dateFormatPattern="dd-MM-yyyy" id="dateOfMfgCal" required="true" style="position: absolute; left: 168px; top: 120px"/>
+                        <webuijsf:textField binding="#{para_inventory$Add.noOfJumpsTF}" id="noOfJumpsTF" required="true" style="position: absolute; left: 168px; top: 144px"/>
+                        <webuijsf:dropDown binding="#{para_inventory$Add.statusDD}" id="statusDD" items="#{para_inventory$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 168px; top: 168px"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Add.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="Type Prefix No" id="tableColumn1" sort="para_inventory_view.Type Prefix No">
