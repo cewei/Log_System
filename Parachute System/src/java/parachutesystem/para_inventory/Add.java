@@ -4,9 +4,11 @@
  */
 package parachutesystem.para_inventory;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.Form;
 import com.sun.webui.jsf.component.TextField;
@@ -43,6 +45,11 @@ public class Add extends AbstractPageBean {
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM para_type");
         para_typeRowSet.setTableName("para_type");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan")});
     }
     private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
 
@@ -125,6 +132,60 @@ public class Add extends AbstractPageBean {
     public void setChuteNoTF(TextField tf) {
         this.chuteNoTF = tf;
     }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
+    }
+    private TextField serialNoTF = new TextField();
+
+    public TextField getSerialNoTF() {
+        return serialNoTF;
+    }
+
+    public void setSerialNoTF(TextField tf) {
+        this.serialNoTF = tf;
+    }
+    private Calendar dateOfMfgCal = new Calendar();
+
+    public Calendar getDateOfMfgCal() {
+        return dateOfMfgCal;
+    }
+
+    public void setDateOfMfgCal(Calendar c) {
+        this.dateOfMfgCal = c;
+    }
+    private TextField noOfJumpsTF = new TextField();
+
+    public TextField getNoOfJumpsTF() {
+        return noOfJumpsTF;
+    }
+
+    public void setNoOfJumpsTF(TextField tf) {
+        this.noOfJumpsTF = tf;
+    }
+    private DropDown statusDD = new DropDown();
+
+    public DropDown getStatusDD() {
+        return statusDD;
+    }
+
+    public void setStatusDD(DropDown dd) {
+        this.statusDD = dd;
+    }
 
     // </editor-fold>
     /**
@@ -139,7 +200,7 @@ public class Add extends AbstractPageBean {
      * Customize this method to acquire resources that will be needed
      * for event handlers and lifecycle methods, whether or not this
      * page is performing post back processing.</p>
-     * 
+     *
      * <p>Note that, if the current request is a postback, the property
      * values of the components do <strong>not</strong> represent any
      * values submitted with this request.  Instead, they represent the
@@ -178,6 +239,30 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void preprocess() {
+        if (typeDD.getSelected() == null) {
+            Object firstSelected = null;
+            try {
+                para_typeDataProvider.cursorFirst();
+                firstSelected = para_typeDataProvider.getValue("para_type_no");
+                typeDD.setSelected(firstSelected);
+                getPara_inventory_viewRowSet().setObject(1, firstSelected);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log("Error Description", ex);
+                error(ex.getMessage());
+            }
+        } else {
+            Object typeID = typeDD.getSelected();
+            try {
+                para_typeDataProvider.setCursorRow(
+                        para_typeDataProvider.findFirst("para_type_no", typeID));
+                getPara_inventory_viewRowSet().setObject(1, typeID);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log("Error Description", ex);
+                error(ex.getMessage());
+            }
+        }
     }
 
     /**
@@ -217,10 +302,34 @@ public class Add extends AbstractPageBean {
     public void destroy() {
         para_inventory_viewDataProvider.close();
         para_typeDataProvider.close();
+        para_inventoryDataProvider.close();
     }
 
     public String add_action() {
-
+        try {
+            if (para_inventoryDataProvider.canAppendRow()) {
+                RowKey appendedRow = para_inventoryDataProvider.appendRow();
+                if (appendedRow != null) {
+                    para_inventoryDataProvider.setCursorRow(appendedRow);
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.TYPE_PREFIX_NO", appendedRow, typeDD.getSelected());
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.CHUTE_NO", chuteNoTF.getText());
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.SERIAL_NO", serialNoTF.getText());
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.DATE_OF_MFG", dateOfMfgCal.getText());
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.NO_OF_JUMPS", noOfJumpsTF.getText());
+                    para_inventoryDataProvider.setValue("PARA_INVENTORY.STATUS", statusDD.getSelected());
+                    // set values of other fields, if any
+                    para_inventoryDataProvider.commitChanges();
+                    para_inventoryDataProvider.refresh();
+                    para_inventory_viewDataProvider.refresh();
+                }
+            } else {
+                error("Cannot append row");
+                log("Cannot append row");
+            }
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error(ex.getMessage());
+        }
         return "addToView";
     }
 
@@ -231,7 +340,6 @@ public class Add extends AbstractPageBean {
                     para_typeDataProvider.findFirst("para_type_no", typeID));
             getPara_inventory_viewRowSet().setObject(1, typeID);
             para_inventory_viewDataProvider.refresh();
-            chuteNoTF.resetValue();
         } catch (Exception ex) {
             log("Error Description", ex);
             error(ex.getMessage());
