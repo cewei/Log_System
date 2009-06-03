@@ -38,15 +38,15 @@ public class Add extends AbstractPageBean {
      */
     private void _init() throws Exception {
         para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_inventory_viewRowSet}"));
-        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
         para_inventory_viewRowSet.setCommand("SELECT ALL para_inventory_view.`Type Prefix No`, para_inventory_view.`Serial No`, para_inventory_view.`Name`, para_inventory_view.`Chute No`, para_inventory_view.`Life Span`, para_inventory_view.`Max Jumps`, para_inventory_view.`Jumps Left`, para_inventory_view.`Manufactured Date`, para_inventory_view.`Replacement Date`, para_inventory_view.`Current Status`  FROM para_inventory_view WHERE para_inventory_view.`Type Prefix No` = ?");
         para_inventory_viewRowSet.setTableName("para_inventory_view");
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM para_type");
         para_typeRowSet.setTableName("para_type");
         para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_inventoryRowSet}"));
-        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
         para_inventoryRowSet.setTableName("para_inventory");
         statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan")});

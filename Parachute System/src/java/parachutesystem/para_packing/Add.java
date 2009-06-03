@@ -3,12 +3,13 @@
  * and open the template in the editor.
  */
 
-package parachutesystem.para_inventory;
+package parachutesystem.para_packing;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.RequestBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -17,12 +18,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on May 24, 2009, 10:01:36 PM
- * @author Lancer-Matrix
+ * @version Add.java
+ * @version Created on Jun 3, 2009, 3:50:26 PM
+ * @author Dell
  */
 
-public class View extends AbstractPageBean {
+public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -31,36 +32,14 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View.para_inventory_viewRowSet}"));
-        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
-        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view");
-        para_inventory_viewRowSet.setTableName("para_inventory_view");
-    }
-    private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_inventory_viewDataProvider() {
-        return para_inventory_viewDataProvider;
     }
 
-    public void setPara_inventory_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_inventory_viewDataProvider = crsdp;
-    }
-
-    private CachedRowSetXImpl para_inventory_viewRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_inventory_viewRowSet() {
-        return para_inventory_viewRowSet;
-    }
-
-    public void setPara_inventory_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_inventory_viewRowSet = crsxi;
-    }
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Add() {
     }
 
     /**
@@ -89,7 +68,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Add Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -132,25 +111,33 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_inventory_viewDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
-    public String edit_action() {
-        return "viewToEdit";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String hyperlink1_action() {
-        // TODO: Replace with your code
-        return null;
-    }
-
-    public String hyperlink2_action() {
-        // TODO: Replace with your code
-        return null;
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
     
 }

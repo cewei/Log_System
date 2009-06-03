@@ -7,60 +7,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
     <managed-bean>
-        <managed-bean-name>para_type$View</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_type.View</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <navigation-rule>
-        <from-view-id>/para_type/View.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>viewToAdd</from-outcome>
-            <to-view-id>/para_type/Add.jsp</to-view-id>
-            <redirect />
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>viewToEdit</from-outcome>
-            <to-view-id>/para_type/Edit.jsp</to-view-id>
-            <redirect></redirect>
-        </navigation-case>
-    </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>Page1</managed-bean-name>
-        <managed-bean-class>parachutesystem.Page1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_type$Add</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_type.Add</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_type$Edit</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_type.Edit</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <navigation-rule>
-        <from-view-id>/para_type/Add.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>addToView</from-outcome>
-            <to-view-id>/para_type/View.jsp</to-view-id>
-            <redirect></redirect>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/para_type/Edit.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>editToView</from-outcome>
-            <to-view-id>/para_type/View.jsp</to-view-id>
-            <redirect></redirect>
-        </navigation-case>
-    </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>para_inventory$View</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>parachutesystem.SessionBean1</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
@@ -73,6 +19,60 @@
     <managed-bean>
         <managed-bean-name>RequestBean1</managed-bean-name>
         <managed-bean-class>parachutesystem.RequestBean1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Page1</managed-bean-name>
+        <managed-bean-class>parachutesystem.Page1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_type$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_type.View</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_type/View.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_type/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_type/Edit.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_type$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_type.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_type/Add.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>addToView</from-outcome>
+            <to-view-id>/para_type/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_type$Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_type.Edit</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_type/Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_type/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <navigation-rule>
@@ -88,6 +88,11 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <navigation-rule>
         <from-view-id>/para_inventory/Add.jsp</from-view-id>
         <navigation-case>
@@ -96,11 +101,6 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>para_inventory$Add</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.Add</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
     <managed-bean>
         <managed-bean-name>para_inventory$Edit</managed-bean-name>
         <managed-bean-class>parachutesystem.para_inventory.Edit</managed-bean-class>
@@ -114,4 +114,19 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Edit</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

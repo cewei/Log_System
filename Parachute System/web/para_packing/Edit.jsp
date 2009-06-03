@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : Page1
-    Created on : May 21, 2009, 11:43:48 AM
+    Document   : Edit
+    Created on : Jun 3, 2009, 3:48:10 PM
     Author     : Dell
 -->
 <jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
@@ -9,14 +9,16 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1" title="Start Page">
+                <webuijsf:head id="head1">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:anchor id="para_type_link" style="position: absolute; left: 24px; top: 24px" text="Parachute Type" url="/faces/para_type/View.jsp"/>
-                        <webuijsf:anchor id="para_inventory_link" style="left: 24px; top: 48px; position: absolute" text="Parachute Inventory" url="/faces/para_inventory/View.jsp"/>
-                        <webuijsf:anchor id="para_packing_link" style="position: absolute; left: 24px; top: 72px" text="Parachute Packing" url="/faces/para_packing/View.jsp"/>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_packing/Edit" url="/faces/para_packing/Edit.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
