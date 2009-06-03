@@ -36,7 +36,7 @@ public class View extends AbstractPageBean {
      */
     private void _init() throws Exception {
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
         para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
         para_typeRowSet.setTableName("para_type");
     }

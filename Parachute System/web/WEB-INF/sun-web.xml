@@ -3,14 +3,6 @@
 <sun-web-app error-url="">
   <context-root>/Parachute_System</context-root>
   <resource-ref>
-    <res-ref-name>jdbc/parachute_system_MySQL</res-ref-name>
-    <jndi-name>jdbc/parachute_system_MySQL</jndi-name>
-    <default-resource-principal>
-      <name>parachute_system</name>
-      <password>cdo</password>
-    </default-resource-principal>
-  </resource-ref>
-  <resource-ref>
     <res-ref-name>jdbc/PARACHUTE_SYSTEM_MySQL</res-ref-name>
     <jndi-name>jdbc/PARACHUTE_SYSTEM_MySQL</jndi-name>
   </resource-ref>

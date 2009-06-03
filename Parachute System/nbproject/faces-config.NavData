@@ -2,10 +2,13 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="para_type/View.jsp" x="35" y="100" zoom="true"/>
         <Node id="para_type/Edit.jsp" x="34" y="325" zoom="true"/>
+        <Node id="para_type/View.jsp" x="35" y="100" zoom="true"/>
+        <Node id="para_packing/View.jsp" x="400" y="150" zoom="true"/>
         <Node id="para_inventory/Edit.jsp" x="704" y="602" zoom="true"/>
+        <Node id="para_packing/Add.jsp" x="150" y="150" zoom="true"/>
         <Node id="Page1.jsp" x="36" y="38" zoom="false"/>
+        <Node id="para_packing/Edit.jsp" x="150" y="300" zoom="true"/>
         <Node id="para_inventory/Add.jsp" x="770" y="62" zoom="true"/>
         <Node id="para_inventory/View.jsp" x="758" y="311" zoom="true"/>
         <Node id="para_type/Add.jsp" x="265" y="327" zoom="true"/>
