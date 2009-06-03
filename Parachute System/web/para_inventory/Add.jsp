@@ -16,8 +16,8 @@
                     <webuijsf:form binding="#{para_inventory$Add.form1}" id="form1" virtualFormsConfig="type | typeDD |">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink4" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink5" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:label for="typeDD" id="label1" style="left: 24px; top: 48px; position: absolute" text="Type Prefix"/>
                         <webuijsf:label for="chuteNoTF" id="label2" style="position: absolute; left: 24px; top: 72px" text="Chute No"/>

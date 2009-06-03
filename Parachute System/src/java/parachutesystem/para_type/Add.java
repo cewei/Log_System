@@ -182,33 +182,6 @@ public class Add extends AbstractPageBean {
         para_typeDataProvider.close();
     }
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
-
     public String add_action() {
         try {
             if (para_typeDataProvider.canAppendRow()) {

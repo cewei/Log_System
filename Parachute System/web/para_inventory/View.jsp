@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink actionExpression="#{para_inventory$View.hyperlink1_action}" id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink actionExpression="#{para_inventory$View.hyperlink5_action}" id="hyperlink5" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
+                            <webuijsf:hyperlink actionExpression="#{para_inventory$View.hyperlink2_action}" id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$View.para_inventory_viewDataProvider}" sourceVar="currentRow">
@@ -50,6 +50,7 @@
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:button actionExpression="#{para_inventory$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add new parachute"/>
+                        <webuijsf:button actionExpression="#{para_inventory$View.edit_action}" id="edit" style="position: absolute; left: 144px; top: 48px" text="Edit"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

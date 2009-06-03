@@ -28,8 +28,8 @@
                         <webuijsf:messageGroup id="messageGroup1" style="left: 312px; top: 48px; position: absolute"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_type/View" url="/faces/para_type/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink5" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
                         </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
