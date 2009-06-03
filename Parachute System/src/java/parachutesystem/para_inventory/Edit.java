@@ -5,8 +5,12 @@
 
 package parachutesystem.para_inventory;
 
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
+import javax.faces.convert.LongConverter;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -29,6 +33,72 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Edit.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Edit.para_typeRowSet}"));
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
+        para_typeRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_type");
+        para_typeRowSet.setTableName("para_type");
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan")});
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
+    }
+    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_typeDataProvider() {
+        return para_typeDataProvider;
+    }
+
+    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_typeDataProvider = crsdp;
+    }
+
+    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_typeRowSet() {
+        return para_typeRowSet;
+    }
+
+    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
+        this.para_typeRowSet = crsxi;
+    }
+    private LongConverter dropDown1Converter = new LongConverter();
+
+    public LongConverter getDropDown1Converter() {
+        return dropDown1Converter;
+    }
+
+    public void setDropDown1Converter(LongConverter lc) {
+        this.dropDown1Converter = lc;
+    }
+
+    private SingleSelectOptionsList statusDDDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getStatusDDDefaultOptions() {
+        return statusDDDefaultOptions;
+    }
+
+    public void setStatusDDDefaultOptions(SingleSelectOptionsList ssol) {
+        this.statusDDDefaultOptions = ssol;
     }
 
     // </editor-fold>
@@ -108,6 +178,19 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_inventoryDataProvider.close();
+        para_typeDataProvider.close();
+    }
+
+    public String save_action() {
+        try {
+            para_inventoryDataProvider.commitChanges();
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error("Error :" + ex.getMessage());
+        }
+
+        return "editToView";
     }
     
 }

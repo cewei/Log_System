@@ -10,6 +10,10 @@
       <password>cdo</password>
     </default-resource-principal>
   </resource-ref>
+  <resource-ref>
+    <res-ref-name>jdbc/PARACHUTE_SYSTEM_MySQL</res-ref-name>
+    <jndi-name>jdbc/PARACHUTE_SYSTEM_MySQL</jndi-name>
+  </resource-ref>
   <class-loader delegate="true"/>
   <jsp-config>
     <property name="keepgenerated" value="true">

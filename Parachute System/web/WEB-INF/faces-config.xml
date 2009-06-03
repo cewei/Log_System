@@ -106,4 +106,12 @@
         <managed-bean-class>parachutesystem.para_inventory.Edit</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_inventory/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
