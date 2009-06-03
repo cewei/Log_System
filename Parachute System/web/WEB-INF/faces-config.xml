@@ -82,6 +82,11 @@
             <to-view-id>/para_inventory/Add.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/para_inventory/Add.jsp</from-view-id>
@@ -94,6 +99,11 @@
     <managed-bean>
         <managed-bean-name>para_inventory$Add</managed-bean-name>
         <managed-bean-class>parachutesystem.para_inventory.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_inventory$Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.Edit</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>
