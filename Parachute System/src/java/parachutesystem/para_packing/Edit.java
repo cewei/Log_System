@@ -7,9 +7,6 @@ package parachutesystem.para_packing;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
-import parachutesystem.ApplicationBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -112,33 +109,5 @@ public class Edit extends AbstractPageBean {
     @Override
     public void destroy() {
     }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
     
 }
-

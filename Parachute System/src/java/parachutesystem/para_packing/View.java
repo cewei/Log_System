@@ -5,11 +5,10 @@
 
 package parachutesystem.para_packing;
 
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
-import parachutesystem.ApplicationBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -32,6 +31,29 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View.para_packing_viewRowSet}"));
+        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
+        para_packing_viewRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing_view");
+        para_packing_viewRowSet.setTableName("para_packing_view");
+    }
+    private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_packing_viewDataProvider() {
+        return para_packing_viewDataProvider;
+    }
+
+    public void setPara_packing_viewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_packing_viewDataProvider = crsdp;
+    }
+
+    private CachedRowSetXImpl para_packing_viewRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_packing_viewRowSet() {
+        return para_packing_viewRowSet;
+    }
+
+    public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_packing_viewRowSet = crsxi;
     }
 
     // </editor-fold>
@@ -111,6 +133,7 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_packing_viewDataProvider.close();
     }
     
 }
