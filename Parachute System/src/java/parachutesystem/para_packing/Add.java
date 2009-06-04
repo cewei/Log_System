@@ -5,7 +5,11 @@
 
 package parachutesystem.para_packing;
 
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 
 /**
@@ -29,6 +33,58 @@ public class Add extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"),new com.sun.webui.jsf.model.Option("returned", "returned")});
+        checkTypeDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repacking", "repacking"), new com.sun.webui.jsf.model.Option("inspection", "inspection")});
+        para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_packing_viewRowSet}"));
+        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
+        para_packing_viewRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing_view WHERE `Serial No`=? AND para_type_no=? AND chute_no=?");
+        para_packing_viewRowSet.setTableName("para_packing_view");
+    }
+    private SingleSelectOptionsList statusDDDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getStatusDDDefaultOptions() {
+        return statusDDDefaultOptions;
+    }
+
+    public void setStatusDDDefaultOptions(SingleSelectOptionsList ssol) {
+        this.statusDDDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList checkTypeDDDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getCheckTypeDDDefaultOptions() {
+        return checkTypeDDDefaultOptions;
+    }
+
+    public void setCheckTypeDDDefaultOptions(SingleSelectOptionsList ssol) {
+        this.checkTypeDDDefaultOptions = ssol;
+    }
+    private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_packing_viewDataProvider() {
+        return para_packing_viewDataProvider;
+    }
+
+    public void setPara_packing_viewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_packing_viewDataProvider = crsdp;
+    }
+
+    private CachedRowSetXImpl para_packing_viewRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_packing_viewRowSet() {
+        return para_packing_viewRowSet;
+    }
+
+    public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_packing_viewRowSet = crsxi;
+    }
+    private StaticText serialNoST = new StaticText();
+
+    public StaticText getSerialNoST() {
+        return serialNoST;
+    }
+
+    public void setSerialNoST(StaticText st) {
+        this.serialNoST = st;
     }
 
     // </editor-fold>
@@ -96,6 +152,8 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        serialNoST.setText(retrieveData("serial_no"));
+
     }
 
     /**
@@ -108,6 +166,7 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_packing_viewDataProvider.close();
     }
 
 }

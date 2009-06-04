@@ -106,7 +106,9 @@ para_packing.date_packed +INTERVAL para_type.repack_cycle DAY AS `Repack Due Dat
 para_packing.pack_by AS `Pack By`,
 para_packing.inspect_by AS `Inspect By`,
 para_packing.check_type AS `Check Type`,
-para_inventory.status AS `Status`
+para_inventory.status AS `Status`,
+para_type.para_type_no,
+para_packing.chute_no
 FROM para_packing_latest_view AS para_packing
 INNER JOIN para_type
 ON para_packing.type_prefix_no=para_type.para_type_no
