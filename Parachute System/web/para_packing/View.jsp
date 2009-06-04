@@ -18,6 +18,34 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Table" width="0">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$View.para_packing_viewDataProvider}" sourceVar="currentRow">
+                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_packing.Serial No">
+                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_packing.Serial No']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Chute No" id="tableColumn2" sort="Chute No">
+                                    <webuijsf:staticText id="staticText2" text="#{currentRow.value['Chute No']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Repacked Date" id="tableColumn3" sort="para_packing.Repacked Date">
+                                    <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_packing.Repacked Date']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Repack Due Date" id="tableColumn4" sort="Repack Due Date">
+                                    <webuijsf:staticText id="staticText4" text="#{currentRow.value['Repack Due Date']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Pack By" id="tableColumn5" sort="para_packing.Pack By">
+                                    <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_packing.Pack By']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Inspect By" id="tableColumn6" sort="para_packing.Inspect By">
+                                    <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_packing.Inspect By']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Check Type" id="tableColumn7" sort="para_packing.Check Type">
+                                    <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_packing.Check Type']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Status" id="tableColumn8" sort="para_inventory.Status">
+                                    <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_inventory.Status']}"/>
+                                </webuijsf:tableColumn>
+                            </webuijsf:tableRowGroup>
+                        </webuijsf:table>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

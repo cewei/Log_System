@@ -2,6 +2,8 @@ DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
 
 DROP VIEW IF EXISTS `parachute_system`.`para_packing_view`;
 
+DROP VIEW IF EXISTS `parachute_system`.`para_packing_latest_view`;
+
 DROP VIEW IF EXISTS `parachute_system`.`para_inventory_view`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
@@ -30,7 +32,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   `serial_no` varchar(45) NOT NULL,
   `date_of_mfg` date NOT NULL,
   `no_of_jumps` int(10) unsigned NOT NULL,
-  `status` enum('serviceable','servicing', 'loan') NOT NULL,
+  `status` enum('serviceable','servicing', 'loan', 'returned') NOT NULL,
   PRIMARY KEY (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -88,12 +90,31 @@ FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
 
-CREATE VIEW `parachute_system`.`para_packing_view` AS
-SELECT * FROM para_packing as p1
-where date_packed =
-(SELECT MAX(date_packed) FROM para_packing as p2
-where p1.type_prefix_no=p2.type_prefix_no AND p1.chute_no=p2.chute_no AND p1.serial_no=p2.serial_no
+CREATE VIEW `parachute_system`.`para_packing_latest_view` AS
+SELECT * FROM para_packing AS p1
+WHERE date_packed =
+(SELECT MAX(date_packed) FROM para_packing AS p2
+WHERE p1.type_prefix_no=p2.type_prefix_no AND p1.chute_no=p2.chute_no AND p1.serial_no=p2.serial_no
 GROUP by type_prefix_no,chute_no,serial_no);
+
+CREATE VIEW `parachute_system`.`para_packing_view` AS
+SELECT
+para_packing.serial_no AS `Serial No`,
+CONCAT_WS('-', para_type.type_prefix, para_packing.chute_no) AS `Chute No`,
+para_packing.date_packed AS `Repacked Date`,
+para_packing.date_packed +INTERVAL para_type.repack_cycle DAY AS `Repack Due Date`,
+para_packing.pack_by AS `Pack By`,
+para_packing.inspect_by AS `Inspect By`,
+para_packing.check_type AS `Check Type`,
+para_inventory.status AS `Status`
+FROM para_packing_latest_view AS para_packing
+INNER JOIN para_type
+ON para_packing.type_prefix_no=para_type.para_type_no
+INNER JOIN para_inventory
+ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
+para_inventory.chute_no=para_packing.chute_no AND
+para_inventory.serial_no=para_packing.serial_no
+ORDER BY `Repack Due Date`;
 
 CREATE VIEW `parachute_system`.`para_overview` AS
 SELECT
@@ -113,7 +134,7 @@ para_inventory.status AS `Current Status`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no
-LEFT JOIN para_packing_view AS para_packing
+LEFT JOIN para_packing_latest_view AS para_packing
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
 para_inventory.chute_no=para_packing.chute_no AND
 para_inventory.serial_no=para_packing.serial_no;
