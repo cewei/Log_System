@@ -27,6 +27,34 @@ import javax.faces.FacesException;
 public class RequestBean1 extends AbstractRequestBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
+    private String serialNo;
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
+    }
+    protected String chuteNo;
+
+    public String getChuteNo() {
+        return chuteNo;
+    }
+
+    public void setChuteNo(String chuteNo) {
+        this.chuteNo = chuteNo;
+    }
+    protected long paraTypeNo;
+
+    public long getParaTypeNo() {
+        return paraTypeNo;
+    }
+
+    public void setParaTypeNo(long paraTypeNo) {
+        this.paraTypeNo = paraTypeNo;
+    }
+
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted

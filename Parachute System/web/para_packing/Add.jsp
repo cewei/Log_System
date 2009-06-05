@@ -26,8 +26,8 @@
                         <webuijsf:label id="label5" style="position: absolute; left: 24px; top: 168px" text="Inspected by"/>
                         <webuijsf:label id="label6" style="position: absolute; left: 24px; top: 192px" text="Check Type"/>
                         <webuijsf:label id="label7" style="position: absolute; left: 24px; top: 216px" text="Status"/>
-                        <webuijsf:staticText binding="#{para_packing$Add.serialNoST}" id="serialNoST" style="position: absolute; left: 120px; top: 72px"/>
-                        <webuijsf:staticText id="chuteNoST" style="position: absolute; left: 120px; top: 96px"/>
+                        <webuijsf:staticText id="serialNoST" text="#{RequestBean1.serialNo}" style="position: absolute; left: 120px; top: 72px"/>
+                        <webuijsf:staticText id="chuteNoST" text="#{RequestBean1.chuteNo}-#{RequestBean1.paraTypeNo}" style="position: absolute; left: 120px; top: 96px"/>
                         <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="repackDateCal" required="true" style="position: absolute; left: 120px; top: 120px"/>
                         <webuijsf:dropDown id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 120px; top: 216px"/>
                         <webuijsf:textField id="inspectedByTF" style="position: absolute; left: 120px; top: 168px"/>
