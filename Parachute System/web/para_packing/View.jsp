@@ -19,10 +19,10 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Table" width="0">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$View.para_packing_viewDataProvider}" sourceVar="currentRow">
+                            <webuijsf:tableRowGroup binding="#{para_packing$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
+                                sourceData="#{para_packing$View.para_packing_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_packing.Serial No">
-                                    <webuijsf:hyperlink id="hyperlink3" text="#{currentRow.value['para_packing.Serial No']}"
-                                    url="/faces/para_packing/Add.jsp?serial_no=#{currentRow.value['para_packing.Serial No']}&amp;para_type_no=#{currentRow.value['para_type.para_type_no']}&amp;chute_no=#{currentRow.value['para_packing.chute_no']}"/>
+                                    <webuijsf:button actionExpression="#{para_packing$View.button1_action}" id="button1" text="#{currentRow.value['para_packing.Serial No']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="Chute No" id="tableColumn2" sort="Chute No">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['Chute No']}"/>

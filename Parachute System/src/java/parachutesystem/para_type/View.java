@@ -10,9 +10,6 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.ApplicationBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -146,15 +143,6 @@ public class View extends AbstractPageBean {
     @Override
     public void destroy() {
         para_typeDataProvider.close();
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
     public String add_action() {

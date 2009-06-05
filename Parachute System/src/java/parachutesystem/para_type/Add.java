@@ -10,9 +10,6 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
-import parachutesystem.RequestBean1;
-import parachutesystem.ApplicationBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This

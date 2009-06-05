@@ -5,10 +5,13 @@
 
 package parachutesystem.para_packing;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
+import parachutesystem.RequestBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -54,6 +57,15 @@ public class View extends AbstractPageBean {
 
     public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
         this.para_packing_viewRowSet = crsxi;
+    }
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
     }
 
     // </editor-fold>
@@ -135,6 +147,37 @@ public class View extends AbstractPageBean {
     public void destroy() {
         para_packing_viewDataProvider.close();
     }
-    
+
+    public String button1_action() {
+        try {
+            RowKey rk = tableRowGroup1.getRowKey();
+            if (rk != null) {
+                String serialNo = (String) para_packing_viewDataProvider.getValue("Serial No", rk);
+                String chuteNo = (String) para_packing_viewDataProvider.getValue("chute_no", rk);
+                Long paraTypeNo = (Long) para_packing_viewDataProvider.getValue("para_type_no", rk);
+                getRequestBean1().setSerialNo(serialNo);
+                getRequestBean1().setChuteNo(chuteNo);
+                getRequestBean1().setParaTypeNo(paraTypeNo);
+                return "viewToAdd";
+            }
+            else {
+                return null;
+            }
+        }
+        catch (Exception ex) {
+            log("ErrorDescription", ex);
+            error(ex.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
+    }
 }
 

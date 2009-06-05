@@ -142,16 +142,5 @@ public class View extends AbstractPageBean {
     public String edit_action() {
         return "viewToEdit";
     }
-
-    public String hyperlink1_action() {
-        // TODO: Replace with your code
-        return null;
-    }
-
-    public String hyperlink2_action() {
-        // TODO: Replace with your code
-        return null;
-    }
     
 }
-

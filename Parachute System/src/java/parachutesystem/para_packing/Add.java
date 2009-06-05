@@ -8,7 +8,6 @@ package parachutesystem.para_packing;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 
@@ -77,15 +76,6 @@ public class Add extends AbstractPageBean {
     public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
         this.para_packing_viewRowSet = crsxi;
     }
-    private StaticText serialNoST = new StaticText();
-
-    public StaticText getSerialNoST() {
-        return serialNoST;
-    }
-
-    public void setSerialNoST(StaticText st) {
-        this.serialNoST = st;
-    }
 
     // </editor-fold>
 
@@ -152,8 +142,6 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        serialNoST.setText(retrieveData("serial_no"));
-
     }
 
     /**

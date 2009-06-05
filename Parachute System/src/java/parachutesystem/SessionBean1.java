@@ -6,7 +6,6 @@
 package parachutesystem;
 
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
 
 /**

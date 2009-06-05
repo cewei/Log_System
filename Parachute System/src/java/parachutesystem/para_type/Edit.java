@@ -145,12 +145,12 @@ public class Edit extends AbstractPageBean {
     public String save_action() {
         try {
             para_typeDataProvider.commitChanges();
+            return "editToView";
         } catch (Exception ex) {
             log("Error Description", ex);
             error("Error :" + ex.getMessage());
+            return null;
         }
-
-        return "editToView";
     }
 }
 
