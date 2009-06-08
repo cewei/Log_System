@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_loan`;
 
+DROP TABLE IF EXISTS `parachute_system`.`para_riggers`;
+
 DROP TABLE IF EXISTS `parachute_system`.`para_borrowers`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_inventory`;
@@ -45,6 +47,15 @@ CREATE TABLE  `parachute_system`.`para_borrowers` (
   PRIMARY KEY (`NRIC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE  `parachute_system`.`para_riggers` (
+  `NRIC` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `rank` varchar(45) NOT NULL,
+  `rigger` tinyint(1) NOT NULL,
+  `inspector` tinyint(1) NOT NULL,
+  PRIMARY KEY (`NRIC`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE  `parachute_system`.`para_loan` (
   `para_loan_no` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NRIC` varchar(45) NOT NULL,
@@ -71,7 +82,11 @@ CREATE TABLE  `parachute_system`.`para_packing` (
   `check_type` enum('repacking','inspection') NOT NULL,
   PRIMARY KEY (`para_packing_no`),
   KEY `FK_para_packing_inventory_no` (`type_prefix_no`,`chute_no`,`serial_no`),
-  CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_para_packing_pack_by` (`pack_by`),
+  KEY `FK_para_packing_inspect_by` (`inspect_by`),
+  CONSTRAINT `FK_para_packing_inspect_by` FOREIGN KEY (`inspect_by`) REFERENCES `para_riggers` (`NRIC`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_para_packing_pack_by` FOREIGN KEY (`pack_by`) REFERENCES `para_riggers` (`NRIC`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE VIEW `parachute_system`.`para_inventory_view` AS
@@ -99,8 +114,8 @@ GROUP by type_prefix_no,chute_no,serial_no);
 
 CREATE VIEW `parachute_system`.`para_packing_view` AS
 SELECT
-para_packing.serial_no AS `Serial No`,
-CONCAT_WS('-', para_type.type_prefix, para_packing.chute_no) AS `Chute No`,
+para_inventory.serial_no AS `Serial No`,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS `Chute No`,
 para_packing.date_packed AS `Repacked Date`,
 para_packing.date_packed +INTERVAL para_type.repack_cycle DAY AS `Repack Due Date`,
 para_packing.pack_by AS `Pack By`,
@@ -108,11 +123,11 @@ para_packing.inspect_by AS `Inspect By`,
 para_packing.check_type AS `Check Type`,
 para_inventory.status AS `Status`,
 para_type.para_type_no,
-para_packing.chute_no
-FROM para_packing_latest_view AS para_packing
+para_inventory.chute_no
+FROM para_inventory
 INNER JOIN para_type
-ON para_packing.type_prefix_no=para_type.para_type_no
-INNER JOIN para_inventory
+ON para_inventory.type_prefix_no=para_type.para_type_no
+LEFT JOIN para_packing_latest_view AS para_packing
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
 para_inventory.chute_no=para_packing.chute_no AND
 para_inventory.serial_no=para_packing.serial_no

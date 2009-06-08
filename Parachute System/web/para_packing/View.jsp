@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="View Packing">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
@@ -21,8 +21,8 @@
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Table" width="0">
                             <webuijsf:tableRowGroup binding="#{para_packing$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_packing$View.para_packing_viewDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_packing.Serial No">
-                                    <webuijsf:button actionExpression="#{para_packing$View.button1_action}" id="button1" text="#{currentRow.value['para_packing.Serial No']}"/>
+                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_inventory.Serial No">
+                                    <webuijsf:button actionExpression="#{para_packing$View.button1_action}" id="button1" text="#{currentRow.value['para_inventory.Serial No']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="Chute No" id="tableColumn2" sort="Chute No">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['Chute No']}"/>

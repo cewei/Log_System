@@ -11,11 +11,11 @@
         <Node id="para_type/Add.jsp" x="265" y="327" zoom="true"/>
     </Scope>
     <Scope Scope="Project">
-        <Node id="para_type/Edit.jsp" x="34" y="325" zoom="true"/>
         <Node id="para_type/View.jsp" x="35" y="100" zoom="true"/>
-        <Node id="para_inventory/Edit.jsp" x="704" y="602" zoom="true"/>
+        <Node id="para_type/Edit.jsp" x="34" y="325" zoom="true"/>
         <Node id="para_packing/View.jsp" x="227" y="489" zoom="false"/>
-        <Node id="para_packing/Add.jsp" x="481" y="414" zoom="true"/>
+        <Node id="para_inventory/Edit.jsp" x="704" y="602" zoom="true"/>
+        <Node id="para_packing/Add.jsp" x="481" y="414" zoom="false"/>
         <Node id="Page1.jsp" x="36" y="38" zoom="false"/>
         <Node id="para_packing/Edit.jsp" x="31" y="412" zoom="true"/>
         <Node id="para_inventory/Add.jsp" x="770" y="62" zoom="true"/>
