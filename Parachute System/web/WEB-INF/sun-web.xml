@@ -3,8 +3,8 @@
 <sun-web-app error-url="">
   <context-root>/Parachute_System</context-root>
   <resource-ref>
-    <res-ref-name>jdbc/PARACHUTE_SYSTEM_MySQL</res-ref-name>
-    <jndi-name>jdbc/PARACHUTE_SYSTEM_MySQL</jndi-name>
+    <res-ref-name>jdbc/parachute_system_MySQL</res-ref-name>
+    <jndi-name>jdbc/parachute_system_MySQL</jndi-name>
   </resource-ref>
   <class-loader delegate="true"/>
   <jsp-config>

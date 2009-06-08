@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Add Packing">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
@@ -21,18 +21,21 @@
                         </webuijsf:breadcrumbs>
                         <webuijsf:label id="label1" style="position: absolute; left: 24px; top: 72px" text="Serial No"/>
                         <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 96px" text="Chute No"/>
-                        <webuijsf:label id="label3" style="position: absolute; left: 24px; top: 120px" text="Repacked Date"/>
+                        <webuijsf:label for="repackDateCal" id="label3" style="position: absolute; left: 24px; top: 120px" text="Repacked Date"/>
                         <webuijsf:label id="label4" style="position: absolute; left: 24px; top: 144px" text="Packed by"/>
                         <webuijsf:label id="label5" style="position: absolute; left: 24px; top: 168px" text="Inspected by"/>
                         <webuijsf:label id="label6" style="position: absolute; left: 24px; top: 192px" text="Check Type"/>
                         <webuijsf:label id="label7" style="position: absolute; left: 24px; top: 216px" text="Status"/>
-                        <webuijsf:staticText id="serialNoST" text="#{RequestBean1.serialNo}" style="position: absolute; left: 120px; top: 72px"/>
-                        <webuijsf:staticText id="chuteNoST" text="#{RequestBean1.chuteNo}-#{RequestBean1.paraTypeNo}" style="position: absolute; left: 120px; top: 96px"/>
-                        <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="repackDateCal" required="true" style="position: absolute; left: 120px; top: 120px"/>
+                        <webuijsf:staticText id="serialNoST" style="position: absolute; left: 120px; top: 72px" text="#{SessionBean1.serialNo}"/>
+                        <webuijsf:staticText id="chuteNoST" style="position: absolute; left: 120px; top: 96px" text="#{SessionBean1.chute_No} ** #{SessionBean1.paraTypeNo}-#{SessionBean1.chuteNo}"/>
+                        <webuijsf:calendar binding="#{para_packing$Add.repackDateCal}" dateFormatPattern="dd-MM-yyyy" id="repackDateCal" required="true"
+                            selectedDate="#{para_packing$Add.para_packing_viewDataProvider.value['para_packing_view.Repacked Date']}" style="position: absolute; left: 120px; top: 120px"/>
                         <webuijsf:dropDown id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 120px; top: 216px"/>
-                        <webuijsf:textField id="inspectedByTF" style="position: absolute; left: 120px; top: 168px"/>
-                        <webuijsf:textField id="packedByTF" style="position: absolute; left: 120px; top: 144px"/>
                         <webuijsf:dropDown id="checkTypeDD" items="#{para_packing$Add.checkTypeDDDefaultOptions.options}" style="position: absolute; left: 120px; top: 192px"/>
+                        <webuijsf:button actionExpression="#{para_packing$Add.update_action}" id="update" style="position: absolute; left: 24px; top: 264px" text="Update"/>
+                        <webuijsf:dropDown id="packByDD" items="#{para_packing$Add.para_riggersDataProvider.options['para_riggers.NRIC,para_riggers.name']}" style="position: absolute; left: 120px; top: 144px"/>
+                        <webuijsf:dropDown id="inspectByDD" items="#{para_packing$Add.para_riggersDataProvider1.options['para_riggers.NRIC,para_riggers.name']}" style="position: absolute; left: 120px; top: 168px"/>
+                        <webuijsf:message for="repackDateCal" id="message1" showDetail="false" showSummary="true" style="left: 288px; top: 120px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

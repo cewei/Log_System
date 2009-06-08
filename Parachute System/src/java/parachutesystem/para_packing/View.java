@@ -11,7 +11,7 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
-import parachutesystem.RequestBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -35,7 +35,7 @@ public class View extends AbstractPageBean {
      */
     private void _init() throws Exception {
         para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View.para_packing_viewRowSet}"));
-        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/PARACHUTE_SYSTEM_MySQL");
+        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_packing_viewRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing_view");
         para_packing_viewRowSet.setTableName("para_packing_view");
     }
@@ -155,9 +155,12 @@ public class View extends AbstractPageBean {
                 String serialNo = (String) para_packing_viewDataProvider.getValue("Serial No", rk);
                 String chuteNo = (String) para_packing_viewDataProvider.getValue("chute_no", rk);
                 Long paraTypeNo = (Long) para_packing_viewDataProvider.getValue("para_type_no", rk);
-                getRequestBean1().setSerialNo(serialNo);
-                getRequestBean1().setChuteNo(chuteNo);
-                getRequestBean1().setParaTypeNo(paraTypeNo);
+                String chute_No = (String) para_packing_viewDataProvider.getValue("Chute No", rk);
+                getSessionBean1().setSerialNo(serialNo);
+                getSessionBean1().setChuteNo(chuteNo);
+                getSessionBean1().setParaTypeNo(paraTypeNo);
+                getSessionBean1().setChute_No(chute_No);
+
                 return "viewToAdd";
             }
             else {
@@ -176,8 +179,8 @@ public class View extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 }
 

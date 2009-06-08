@@ -124,6 +124,7 @@
         <navigation-case>
             <from-outcome>viewToAdd</from-outcome>
             <to-view-id>/para_packing/Add.jsp</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -131,6 +132,14 @@
         <managed-bean-class>parachutesystem.para_packing.Add</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_packing/Add.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>addToView</from-outcome>
+            <to-view-id>/para_packing/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
     <managed-bean>
         <managed-bean-name>para_packing$Edit</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.Edit</managed-bean-class>

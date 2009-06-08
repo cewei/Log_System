@@ -26,6 +26,43 @@ import javax.faces.FacesException;
 public class SessionBean1 extends AbstractSessionBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
+    private String serialNo;
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
+    }
+    private String chuteNo;
+
+    public String getChuteNo() {
+        return chuteNo;
+    }
+
+    public void setChuteNo(String chuteNo) {
+        this.chuteNo = chuteNo;
+    }
+    private long paraTypeNo;
+
+    public long getParaTypeNo() {
+        return paraTypeNo;
+    }
+
+    public void setParaTypeNo(long paraTypeNo) {
+        this.paraTypeNo = paraTypeNo;
+    }
+    private String chute_No;
+
+    public String getChute_No() {
+        return chute_No;
+    }
+
+    public void setChute_No(String chute_No) {
+        this.chute_No = chute_No;
+    }
+
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted

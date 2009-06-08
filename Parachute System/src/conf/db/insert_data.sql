@@ -9,9 +9,15 @@ INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES(3, '0001', '3000', '2009-04-12', 0, 'loan');
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES(4, '0001', '4000', '2009-04-12', 0, 'servicing');
 
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0001', '1000', '2009-04-12', 'packer1', 'inspector1', 'inspection');
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0001', '1000', '2009-10-15', 'packer2', 'inspector2', 'repacking');
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0002', '1001', '2009-04-12', 'packer3', 'inspector3', 'inspection');
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (2, '0001', '2000', '2009-04-12', 'packer4', 'inspector4', 'inspection');
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (3, '0001', '3000', '2009-04-12', 'packer5', 'inspector5', 'inspection');
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (4, '0001', '4000', '2009-04-12', 'packer6', 'inspector6', 'inspection');
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S1234567A', 'Riggger A', '3SG', 1, 0);
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S2345678B', 'Inspector A', '3SG', 0, 1);
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S3456789C', 'Rigger B', '1SG', 1, 0);
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S4567890D', 'Inspector B', '1SG', 0, 1);
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S5678901E', 'Rigger & Inspector C', 'MWO', 1, 1);
+
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0001', '1000', '2009-04-12', 'S1234567A', 'S2345678B', 'inspection');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0001', '1000', '2009-10-15', 'S3456789C', 'S4567890D', 'repacking');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (1, '0002', '1001', '2009-04-12', 'S1234567A', 'S2345678B', 'inspection');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (2, '0001', '2000', '2009-04-12', 'S3456789C', 'S4567890D', 'inspection');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (3, '0001', '3000', '2009-04-12', 'S1234567A', 'S2345678B', 'inspection');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES (4, '0001', '4000', '2009-04-12', 'S3456789C', 'S4567890D', 'inspection');

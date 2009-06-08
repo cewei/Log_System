@@ -5,7 +5,10 @@
 
 package parachutesystem;
 
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.StaticText;
 import javax.faces.FacesException;
 
 /**
@@ -29,6 +32,82 @@ public class Page1 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{Page1.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"loan\"");
+        para_inventoryRowSet.setTableName("para_inventory");
+        para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet1.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"serviceable\"");
+        para_inventoryRowSet1.setTableName("para_inventory");
+        para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet2.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"servicing\" OR `status` = \"returned\"");
+        para_inventoryRowSet2.setTableName("para_inventory");
+    }
+    private StaticText loanT = new StaticText();
+
+    public StaticText getLoanT() {
+        return loanT;
+    }
+
+    public void setLoanT(StaticText st) {
+        this.loanT = st;
+    }
+    private StaticText serviceableT = new StaticText();
+
+    public StaticText getServiceableT() {
+        return serviceableT;
+    }
+
+    public void setServiceableT(StaticText st) {
+        this.serviceableT = st;
+    }
+    private StaticText servicingT = new StaticText();
+
+    public StaticText getServicingT() {
+        return servicingT;
+    }
+
+    public void setServicingT(StaticText st) {
+        this.servicingT = st;
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
+    }
+
+    private CachedRowSetXImpl para_inventoryRowSet1 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet1() {
+        return para_inventoryRowSet1;
+    }
+
+    public void setPara_inventoryRowSet1(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet1 = crsxi;
+    }
+
+    private CachedRowSetXImpl para_inventoryRowSet2 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet2() {
+        return para_inventoryRowSet2;
+    }
+
+    public void setPara_inventoryRowSet2(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet2 = crsxi;
     }
 
     // </editor-fold>
@@ -96,6 +175,11 @@ public class Page1 extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        loanT.setText(para_inventoryDataProvider.getValue("count(*)"));
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        serviceableT.setText(para_inventoryDataProvider.getValue("count(*)"));
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        servicingT.setText(para_inventoryDataProvider.getValue("count(*)"));
     }
 
     /**
@@ -108,6 +192,7 @@ public class Page1 extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_inventoryDataProvider.close();
     }
     
     /**
