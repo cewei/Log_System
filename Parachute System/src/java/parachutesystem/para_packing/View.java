@@ -10,8 +10,8 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.TableRowGroup;
+import java.util.Date;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -148,7 +148,7 @@ public class View extends AbstractPageBean {
         para_packing_viewDataProvider.close();
     }
 
-    public String button1_action() {
+    public synchronized String button1_action() {
         try {
             RowKey rk = tableRowGroup1.getRowKey();
             if (rk != null) {
@@ -156,10 +156,20 @@ public class View extends AbstractPageBean {
                 String chuteNo = (String) para_packing_viewDataProvider.getValue("chute_no", rk);
                 Long paraTypeNo = (Long) para_packing_viewDataProvider.getValue("para_type_no", rk);
                 String chute_No = (String) para_packing_viewDataProvider.getValue("Chute No", rk);
-                getSessionBean1().setSerialNo(serialNo);
-                getSessionBean1().setChuteNo(chuteNo);
-                getSessionBean1().setParaTypeNo(paraTypeNo);
-                getSessionBean1().setChute_No(chute_No);
+                Date datePacked = (Date) para_packing_viewDataProvider.getValue("Repacked Date", rk);
+                String packBy = (String) para_packing_viewDataProvider.getValue("Pack By", rk);
+                String inspectBy = (String) para_packing_viewDataProvider.getValue("Inspect By", rk);
+                String checkType = (String) para_packing_viewDataProvider.getValue("Check Type", rk);
+                String status = (String) para_packing_viewDataProvider.getValue("Status", rk);
+                getParaPackingBean().setSerialNo(serialNo);
+                getParaPackingBean().setChuteNo(chuteNo);
+                getParaPackingBean().setParaTypeNo(paraTypeNo);
+                getParaPackingBean().setChute_No(chute_No);
+                getParaPackingBean().setDatePacked(datePacked);
+                getParaPackingBean().setPackBy(packBy);
+                getParaPackingBean().setInspectBy(inspectBy);
+                getParaPackingBean().setCheckType(checkType);
+                getParaPackingBean().setStatus(status);
 
                 return "viewToAdd";
             }
@@ -174,13 +184,8 @@ public class View extends AbstractPageBean {
         }
     }
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    protected ParaPackingBean getParaPackingBean() {
+        return  (ParaPackingBean) getBean("para_packing$ParaPackingBean");
     }
 }
 
