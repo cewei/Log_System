@@ -150,4 +150,9 @@
         <managed-bean-class>parachutesystem.para_packing.ParaPackingBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_loan$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.View</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
