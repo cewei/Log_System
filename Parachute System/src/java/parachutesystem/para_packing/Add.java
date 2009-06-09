@@ -9,9 +9,9 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
-import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -35,10 +35,10 @@ public class Add extends AbstractPageBean {
     private void _init() throws Exception {
         statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"), new com.sun.webui.jsf.model.Option("returned", "returned")});
         checkTypeDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repacking", "repacking"), new com.sun.webui.jsf.model.Option("inspection", "inspection")});
-        para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_packing_viewRowSet}"));
-        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_packing_viewRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing_view WHERE `Serial No`=? AND para_type_no=? AND chute_no=?");
-        para_packing_viewRowSet.setTableName("para_packing_view");
+        para_packingDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_packingRowSet}"));
+        para_packingRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_packingRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing");
+        para_packingRowSet.setTableName("para_packing");
         para_riggersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_riggersRowSet}"));
         para_riggersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet.setCommand("SELECT ALL para_riggers.`NRIC`, para_riggers.name, para_riggers.rank, para_riggers.rigger, para_riggers.inspector  FROM para_riggers WHERE para_riggers.rigger = 1");
@@ -47,6 +47,10 @@ public class Add extends AbstractPageBean {
         para_riggersRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet1.setCommand("SELECT ALL para_riggers.`NRIC`, para_riggers.name, para_riggers.rank, para_riggers.rigger, para_riggers.inspector  FROM para_riggers WHERE para_riggers.inspector = 1");
         para_riggersRowSet1.setTableName("para_riggers");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
     }
     private SingleSelectOptionsList statusDDDefaultOptions = new SingleSelectOptionsList();
 
@@ -66,23 +70,23 @@ public class Add extends AbstractPageBean {
     public void setCheckTypeDDDefaultOptions(SingleSelectOptionsList ssol) {
         this.checkTypeDDDefaultOptions = ssol;
     }
-    private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
+    private CachedRowSetDataProvider para_packingDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetDataProvider getPara_packing_viewDataProvider() {
-        return para_packing_viewDataProvider;
+    public CachedRowSetDataProvider getpara_packingDataProvider() {
+        return para_packingDataProvider;
     }
 
-    public void setPara_packing_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_packing_viewDataProvider = crsdp;
+    public void setpara_packingDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_packingDataProvider = crsdp;
     }
-    private CachedRowSetXImpl para_packing_viewRowSet = new CachedRowSetXImpl();
+    private CachedRowSetXImpl para_packingRowSet = new CachedRowSetXImpl();
 
-    public CachedRowSetXImpl getPara_packing_viewRowSet() {
-        return para_packing_viewRowSet;
+    public CachedRowSetXImpl getpara_packingRowSet() {
+        return para_packingRowSet;
     }
 
-    public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_packing_viewRowSet = crsxi;
+    public void setpara_packingRowSet(CachedRowSetXImpl crsxi) {
+        this.para_packingRowSet = crsxi;
     }
     private CachedRowSetDataProvider para_riggersDataProvider = new CachedRowSetDataProvider();
 
@@ -128,6 +132,60 @@ public class Add extends AbstractPageBean {
 
     public void setRepackDateCal(Calendar c) {
         this.repackDateCal = c;
+    }
+    private DropDown packByDD = new DropDown();
+
+    public DropDown getPackByDD() {
+        return packByDD;
+    }
+
+    public void setPackByDD(DropDown dd) {
+        this.packByDD = dd;
+    }
+    private DropDown inspectByDD = new DropDown();
+
+    public DropDown getInspectByDD() {
+        return inspectByDD;
+    }
+
+    public void setInspectByDD(DropDown dd) {
+        this.inspectByDD = dd;
+    }
+    private DropDown checkTypeDD = new DropDown();
+
+    public DropDown getCheckTypeDD() {
+        return checkTypeDD;
+    }
+
+    public void setCheckTypeDD(DropDown dd) {
+        this.checkTypeDD = dd;
+    }
+    private DropDown statusDD = new DropDown();
+
+    public DropDown getStatusDD() {
+        return statusDD;
+    }
+
+    public void setStatusDD(DropDown dd) {
+        this.statusDD = dd;
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
     }
 
     // </editor-fold>
@@ -194,28 +252,6 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        try {
-            para_packing_viewRowSet.setObject(1, getSessionBean1().getParaTypeNo());
-            para_packing_viewRowSet.setObject(2, getSessionBean1().getChuteNo());
-            para_packing_viewRowSet.setObject(3, getSessionBean1().getSerialNo());
-            log(para_packing_viewRowSet.getCommand());
-            para_packing_viewRowSet.execute();
-            para_packing_viewDataProvider.refresh();
-            log(para_packing_viewRowSet.getCommand());
-//
-//            if (para_packing_viewDataProvider.getRowCount() > 1) {
-//                error("More rows than expected");
-//                log("More rows than expected");
-//            } else {
-//                para_packing_viewDataProvider.cursorFirst();
-//                getRepackDateCal().setValue(para_packing_viewDataProvider.getValue("Repacked Date"));
-//            }
-        } catch (Exception ex) {
-            log(para_packing_viewRowSet.getCommand());
-            log("Error Description", ex);
-            error(ex.getMessage());
-        }
-
     }
 
     /**
@@ -228,44 +264,56 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_packing_viewDataProvider.close();
+        para_packingDataProvider.close();
         para_riggersDataProvider.close();
         para_riggersDataProvider1.close();
+        para_inventoryDataProvider.close();
     }
 
     public String update_action() {
         try {
-            if (para_packing_viewDataProvider.canAppendRow()) {
-                RowKey appendedRow = para_packing_viewDataProvider.appendRow();
-                if (appendedRow != null) {
-                    para_packing_viewDataProvider.setCursorRow(appendedRow);
-                    para_packing_viewDataProvider.setValue("para_packing.type_prefix_no", getSessionBean1().getParaTypeNo());
-                    para_packing_viewDataProvider.setValue("para_packing.chute_no", getSessionBean1().getChuteNo());
-                    para_packing_viewDataProvider.setValue("para_packing.serial_no", getSessionBean1().getSerialNo());
-                    para_packing_viewDataProvider.setValue("para_packing.date_packed", getRepackDateCal().getValue());
+            if (para_packingDataProvider.canAppendRow()) {
+                RowKey appendedRow = para_packingDataProvider.appendRow();
+
+                String[] fieldKeys = {"para_inventory.type_prefix_no", "para_inventory.chute_no", "para_inventory.serial_no"};
+                Object[] values = {getParaPackingBean().getParaTypeNo(), getParaPackingBean().getChuteNo(), getParaPackingBean().getSerialNo()};
+                RowKey[] rks = para_inventoryDataProvider.findAll(fieldKeys, values);
+
+                if (appendedRow != null && rks.length == 1) {
+                    para_packingDataProvider.setCursorRow(appendedRow);
+                    para_packingDataProvider.setValue("para_packing.type_prefix_no", getParaPackingBean().getParaTypeNo());
+                    para_packingDataProvider.setValue("para_packing.chute_no", getParaPackingBean().getChuteNo());
+                    para_packingDataProvider.setValue("para_packing.serial_no", getParaPackingBean().getSerialNo());
+                    para_packingDataProvider.setValue("para_packing.date_packed", getRepackDateCal().getValue());
+                    para_packingDataProvider.setValue("para_packing.pack_by", getPackByDD().getSelected());
+                    para_packingDataProvider.setValue("para_packing.inspect_by", getInspectByDD().getSelected());
+                    para_packingDataProvider.setValue("para_packing.check_type", getCheckTypeDD().getSelected());
+
+                    para_inventoryDataProvider.setCursorRow(rks[0]);
+                    para_inventoryDataProvider.setValue("para_inventory.status", getStatusDD().getSelected());
                     // set values of other fields, if any
-                    para_packing_viewDataProvider.commitChanges();
-                    para_packing_viewDataProvider.refresh();
+                    para_packingDataProvider.commitChanges();
+                    para_packingDataProvider.refresh();
+
+                    para_inventoryDataProvider.commitChanges();
+                    para_inventoryDataProvider.refresh();
                 }
             } else {
-                error("Cannot append row");
-                log("Cannot append row");
+                error("Cannot append row or too many rows");
+                log("Cannot append row or too many rows");
+                return null;
             }
         } catch (Exception ex) {
             log("Error Description", ex);
             error(ex.getMessage());
+            return null;
         }
 
         return "addToView";
     }
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    protected ParaPackingBean getParaPackingBean() {
+        return (ParaPackingBean) getBean("para_packing$ParaPackingBean");
     }
 }
 

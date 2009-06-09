@@ -26,15 +26,21 @@
                         <webuijsf:label id="label5" style="position: absolute; left: 24px; top: 168px" text="Inspected by"/>
                         <webuijsf:label id="label6" style="position: absolute; left: 24px; top: 192px" text="Check Type"/>
                         <webuijsf:label id="label7" style="position: absolute; left: 24px; top: 216px" text="Status"/>
-                        <webuijsf:staticText id="serialNoST" style="position: absolute; left: 120px; top: 72px" text="#{SessionBean1.serialNo}"/>
-                        <webuijsf:staticText id="chuteNoST" style="position: absolute; left: 120px; top: 96px" text="#{SessionBean1.chute_No} ** #{SessionBean1.paraTypeNo}-#{SessionBean1.chuteNo}"/>
+                        <webuijsf:staticText id="serialNoST" style="position: absolute; left: 120px; top: 72px" text="#{para_packing$ParaPackingBean.serialNo}"/>
+                        <webuijsf:staticText id="chuteNoST" style="position: absolute; left: 120px; top: 96px" text="#{para_packing$ParaPackingBean.chute_No} ** #{para_packing$ParaPackingBean.paraTypeNo}-#{para_packing$ParaPackingBean.chuteNo}"/>
                         <webuijsf:calendar binding="#{para_packing$Add.repackDateCal}" dateFormatPattern="dd-MM-yyyy" id="repackDateCal" required="true"
-                            selectedDate="#{para_packing$Add.para_packing_viewDataProvider.value['para_packing_view.Repacked Date']}" style="position: absolute; left: 120px; top: 120px"/>
-                        <webuijsf:dropDown id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 120px; top: 216px"/>
-                        <webuijsf:dropDown id="checkTypeDD" items="#{para_packing$Add.checkTypeDDDefaultOptions.options}" style="position: absolute; left: 120px; top: 192px"/>
+                            selectedDate="#{para_packing$ParaPackingBean.datePacked}" style="position: absolute; left: 120px; top: 120px"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.statusDD}" id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}"
+                        selected="#{para_packing$ParaPackingBean.status}" style="position: absolute; left: 120px; top: 216px"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.checkTypeDD}" id="checkTypeDD"
+                            items="#{para_packing$Add.checkTypeDDDefaultOptions.options}" selected="#{para_packing$ParaPackingBean.checkType}" style="position: absolute; left: 120px; top: 192px"/>
                         <webuijsf:button actionExpression="#{para_packing$Add.update_action}" id="update" style="position: absolute; left: 24px; top: 264px" text="Update"/>
-                        <webuijsf:dropDown id="packByDD" items="#{para_packing$Add.para_riggersDataProvider.options['para_riggers.NRIC,para_riggers.name']}" style="position: absolute; left: 120px; top: 144px"/>
-                        <webuijsf:dropDown id="inspectByDD" items="#{para_packing$Add.para_riggersDataProvider1.options['para_riggers.NRIC,para_riggers.name']}" style="position: absolute; left: 120px; top: 168px"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.packByDD}" id="packByDD"
+                            items="#{para_packing$Add.para_riggersDataProvider.options['para_riggers.NRIC,para_riggers.name']}"
+                            selected="#{para_packing$ParaPackingBean.packBy}" style="position: absolute; left: 120px; top: 144px"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.inspectByDD}" id="inspectByDD"
+                            items="#{para_packing$Add.para_riggersDataProvider1.options['para_riggers.NRIC,para_riggers.name']}"
+                            selected="#{para_packing$ParaPackingBean.inspectBy}" style="position: absolute; left: 120px; top: 168px"/>
                         <webuijsf:message for="repackDateCal" id="message1" showDetail="false" showSummary="true" style="left: 288px; top: 120px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
