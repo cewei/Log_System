@@ -165,6 +165,19 @@
         </condition>
     </target>
     <target name="-post-init">
+        <sql
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/parachute_system"
+        userid="parachute_system"
+        password="cdo">
+            <classpath path="C:\Java\NetBeans 6.5.1\ide10\modules\ext\mysql-connector-java-5.1.6-bin.jar" />
+            <path>
+                <fileset dir="./src/conf/db/">
+                    <include name="*.sql" />
+                </fileset>
+            </path>
+
+        </sql>
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
