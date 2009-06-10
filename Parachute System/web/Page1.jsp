@@ -24,6 +24,7 @@
                         <webuijsf:staticText binding="#{Page1.serviceableT}" id="serviceableT" style="left: 120px; top: 72px; position: absolute"/>
                         <webuijsf:staticText binding="#{Page1.servicingT}" id="servicingT" style="left: 120px; top: 96px; position: absolute"/>
                         <webuijsf:anchor id="para_loan_link" style="position: absolute; left: 360px; top: 24px" text="Parachute Loan" url="/faces/para_loan/View.jsp"/>
+                        <webuijsf:anchor id="para_riggers_link" style="left: 456px; top: 24px; position: absolute" text="Parachute Riggers" url="/faces/para_riggers/View.jsp"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

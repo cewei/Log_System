@@ -155,4 +155,28 @@
         <managed-bean-class>parachutesystem.para_loan.View</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_riggers$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_riggers.View</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_riggers/View.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_riggers/Add.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_riggers$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_riggers.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_riggers/Add.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>addToView</from-outcome>
+            <to-view-id>/para_riggers/View.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
