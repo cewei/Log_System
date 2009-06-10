@@ -155,3 +155,14 @@ LEFT JOIN para_packing_latest_view AS para_packing
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
 para_inventory.chute_no=para_packing.chute_no AND
 para_inventory.serial_no=para_packing.serial_no;
+
+CREATE VIEW `parachute_system`.`para_loan_view` AS
+SELECT
+para_loan.serial_no AS `Serial No`,
+para_type.name AS `Name`,
+CONCAT_WS('-', para_type.type_prefix, para_loan.chute_no) AS `Chute No`,
+para_loan.date_out AS `Date Out`,
+para_loan.date_in AS `Date In`
+FROM para_loan
+INNER JOIN para_type
+ON para_loan.type_prefix_no = para_type.para_type_no;
