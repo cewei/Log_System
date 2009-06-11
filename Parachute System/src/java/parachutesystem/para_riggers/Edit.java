@@ -17,12 +17,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 10, 2009, 9:33:23 AM
+ * @version Edit.java
+ * @version Created on Jun 11, 2009, 1:18:08 PM
  * @author Dell
  */
 
-public class View extends AbstractPageBean {
+public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -31,7 +31,7 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_riggersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_riggers$View.para_riggersRowSet}"));
+        para_riggersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_riggers$Edit.para_riggersRowSet}"));
         para_riggersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet.setCommand("SELECT * FROM para_riggers");
         para_riggersRowSet.setTableName("para_riggers");
@@ -59,7 +59,7 @@ public class View extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Edit() {
     }
 
     /**
@@ -88,7 +88,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Edit Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -134,12 +134,15 @@ public class View extends AbstractPageBean {
         para_riggersDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
-    }
-
-    public String edit_action() {
-        return "viewToEdit";
+    public String save_action() {
+        try {
+            para_riggersDataProvider.commitChanges();
+            return "editToView";
+        } catch (Exception ex) {
+            log("Error Description", ex);
+            error("Error :" + ex.getMessage());
+            return null;
+        }
     }
     
 }

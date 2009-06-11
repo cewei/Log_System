@@ -165,6 +165,12 @@
         <navigation-case>
             <from-outcome>viewToAdd</from-outcome>
             <to-view-id>/para_riggers/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_riggers/Edit.jsp</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -177,6 +183,20 @@
         <navigation-case>
             <from-outcome>addToView</from-outcome>
             <to-view-id>/para_riggers/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_riggers$Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_riggers.Edit</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_riggers/Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_riggers/View.jsp</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
 </faces-config>

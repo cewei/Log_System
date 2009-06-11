@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS `parachute_system`.`para_loan_view`;
+
 DROP VIEW IF EXISTS `parachute_system`.`para_overview`;
 
 DROP VIEW IF EXISTS `parachute_system`.`para_packing_view`;
