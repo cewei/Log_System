@@ -151,11 +151,6 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>para_loan$View</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_loan.View</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>para_riggers$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_riggers.View</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -222,6 +217,32 @@
         <navigation-case>
             <from-outcome>addToView</from-outcome>
             <to-view-id>/para_borrowers/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_loan$View</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.View</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_loan/View.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_loan/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_loan$Add</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.Add</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_loan/Add.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>addToView</from-outcome>
+            <to-view-id>/para_loan/View.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>

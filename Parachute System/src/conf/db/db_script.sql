@@ -65,7 +65,7 @@ CREATE TABLE  `parachute_system`.`para_loan` (
   `chute_no` varchar(45) NOT NULL,
   `serial_no` varchar(45) NOT NULL,
   `date_out` date NOT NULL,
-  `date_in` date NOT NULL,
+  `date_in` date DEFAULT NULL,
   PRIMARY KEY (`para_loan_no`),
   KEY `FK_para_loan_NRIC` (`NRIC`),
   KEY `FK_para_loan_inventory_no` (`type_prefix_no`,`chute_no`,`serial_no`),
@@ -160,6 +160,10 @@ para_inventory.serial_no=para_packing.serial_no;
 
 CREATE VIEW `parachute_system`.`para_loan_view` AS
 SELECT
+para_borrowers.NRIC AS `NRIC`,
+para_borrowers.rank AS `Rank`,
+para_borrowers.name AS `Borrower`,
+para_borrowers.unit AS `Unit`,
 para_loan.serial_no AS `Serial No`,
 para_type.name AS `Name`,
 CONCAT_WS('-', para_type.type_prefix, para_loan.chute_no) AS `Chute No`,
@@ -167,4 +171,6 @@ para_loan.date_out AS `Date Out`,
 para_loan.date_in AS `Date In`
 FROM para_loan
 INNER JOIN para_type
-ON para_loan.type_prefix_no = para_type.para_type_no;
+ON para_loan.type_prefix_no = para_type.para_type_no
+INNER JOIN para_borrowers
+ON para_borrowers.nric = para_loan.nric;
