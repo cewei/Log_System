@@ -8,6 +8,7 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
+import javax.faces.event.ValueChangeEvent;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -16,11 +17,11 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 9, 2009, 5:04:44 PM
+ * @version Add.java
+ * @version Created on Jun 12, 2009, 2:45:09 PM
  * @author Dell
  */
-public class View extends AbstractPageBean {
+public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -29,35 +30,35 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_loan_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$View.para_loan_viewRowSet}"));
-        para_loan_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_loan_viewRowSet.setCommand("SELECT ALL para_loan_view.`NRIC`, para_loan_view.`Rank`, para_loan_view.`Borrower`, para_loan_view.`Unit`, para_loan_view.`Serial No`, para_loan_view.`Name`, para_loan_view.`Chute No`, para_loan_view.`Date Out`, para_loan_view.`Date In`  FROM para_loan_view");
-        para_loan_viewRowSet.setTableName("para_loan_view");
+        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Add.para_borrowersRowSet}"));
+        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
+        para_borrowersRowSet.setTableName("para_borrowers");
     }
-    private CachedRowSetDataProvider para_loan_viewDataProvider = new CachedRowSetDataProvider();
+    private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetDataProvider getPara_loan_viewDataProvider() {
-        return para_loan_viewDataProvider;
-    }
-
-    public void setPara_loan_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_loan_viewDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_loan_viewRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_loan_viewRowSet() {
-        return para_loan_viewRowSet;
+    public CachedRowSetDataProvider getPara_borrowersDataProvider() {
+        return para_borrowersDataProvider;
     }
 
-    public void setPara_loan_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_loan_viewRowSet = crsxi;
+    public void setPara_borrowersDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_borrowersDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_borrowersRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_borrowersRowSet() {
+        return para_borrowersRowSet;
+    }
+
+    public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
+        this.para_borrowersRowSet = crsxi;
     }
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Add() {
     }
 
     /**
@@ -86,7 +87,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Add Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
 
@@ -129,17 +130,9 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_loan_viewDataProvider.close();
+        para_borrowersDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
-    }
-
-    public String edit_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
+    public void nricDD_processValueChange(ValueChangeEvent vce) {
     }
 }
-
