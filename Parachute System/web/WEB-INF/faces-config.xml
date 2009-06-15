@@ -141,11 +141,6 @@
         </navigation-case>
     </navigation-rule>
     <managed-bean>
-        <managed-bean-name>para_packing$Edit</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_packing.Edit</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>para_packing$ParaPackingBean</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.ParaPackingBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>

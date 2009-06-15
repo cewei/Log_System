@@ -33,12 +33,12 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
+                        <webuijsf:button actionExpression="#{para_riggers$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_riggers/View" url="/faces/para_riggers/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_riggers/Edit" url="/faces/para_riggers/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:button actionExpression="#{para_riggers$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
