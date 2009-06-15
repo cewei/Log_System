@@ -14,12 +14,6 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Edit" url="/faces/para_inventory/Edit.jsp"/>
-                        </webuijsf:breadcrumbs>
-                        <webuijsf:button actionExpression="#{para_inventory$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Edit.para_inventoryDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="type_prefix_no" id="tableColumn1">
@@ -47,6 +41,12 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
+                        <webuijsf:button actionExpression="#{para_inventory$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Edit" url="/faces/para_inventory/Edit.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

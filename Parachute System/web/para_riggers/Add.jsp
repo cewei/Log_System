@@ -14,11 +14,6 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_riggers/View" url="/faces/para_riggers/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_riggers/Add" url="/faces/para_riggers/Add.jsp"/>
-                        </webuijsf:breadcrumbs>
                         <webuijsf:label for="nricTF" id="label1" style="left: 24px; top: 48px; position: absolute" text="NRIC"/>
                         <webuijsf:label for="nameTF" id="label2" style="left: 24px; top: 72px; position: absolute" text="Name"/>
                         <webuijsf:label for="rankTF" id="label3" style="left: 24px; top: 96px; position: absolute" text="Rank"/>
@@ -30,6 +25,11 @@
                         <webuijsf:checkbox binding="#{para_riggers$Add.riggerCB}" id="riggerCB" style="left: 96px; top: 120px; position: absolute"/>
                         <webuijsf:checkbox binding="#{para_riggers$Add.inspectorCB}" id="inspectorCB" style="left: 96px; top: 144px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_riggers$Add.add_action}" id="add" style="left: 23px; top: 168px; position: absolute" text="Add"/>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_riggers/View" url="/faces/para_riggers/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_riggers/Add" url="/faces/para_riggers/Add.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

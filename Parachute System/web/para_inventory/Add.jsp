@@ -14,11 +14,6 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form binding="#{para_inventory$Add.form1}" id="form1" virtualFormsConfig="type | typeDD |">
-                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
-                        </webuijsf:breadcrumbs>
                         <webuijsf:label for="typeDD" id="label1" style="left: 24px; top: 48px; position: absolute" text="Type Prefix"/>
                         <webuijsf:label for="chuteNoTF" id="label2" style="position: absolute; left: 24px; top: 72px" text="Chute No"/>
                         <webuijsf:label for="serialNoTF" id="label3" style="position: absolute; left: 24px; top: 96px" text="Serial No"/>
@@ -33,6 +28,7 @@
                         <webuijsf:calendar binding="#{para_inventory$Add.dateOfMfgCal}" dateFormatPattern="dd-MM-yyyy" id="dateOfMfgCal" required="true" style="position: absolute; left: 168px; top: 120px"/>
                         <webuijsf:textField binding="#{para_inventory$Add.noOfJumpsTF}" id="noOfJumpsTF" required="true" style="position: absolute; left: 168px; top: 144px"/>
                         <webuijsf:dropDown binding="#{para_inventory$Add.statusDD}" id="statusDD" items="#{para_inventory$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 168px; top: 168px"/>
+                        <webuijsf:button actionExpression="#{para_inventory$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Add.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="Type Prefix No" id="tableColumn1" sort="para_inventory_view.Type Prefix No">
@@ -67,8 +63,12 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:button actionExpression="#{para_inventory$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
                         <webuijsf:messageGroup id="messageGroup1" style="position: absolute; left: 456px; top: 72px"/>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

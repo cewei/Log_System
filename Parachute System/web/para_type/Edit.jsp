@@ -14,11 +14,6 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1" virtualFormsConfig="save | table1:tableRowGroup1:tableColumn2:textField1 table1:tableRowGroup1:tableColumn3:textField2 table1:tableRowGroup1:tableColumn4:textField3 table1:tableRowGroup1:tableColumn5:textField4 table1:tableRowGroup1:tableColumn6:textField5 | save">
-                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
-                        </webuijsf:breadcrumbs>
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
@@ -47,7 +42,12 @@
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:button actionExpression="#{para_type$Edit.save_action}" binding="#{para_type$Edit.save}" id="save"
-                            style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
+                                         style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_type/Edit" url="/faces/para_type/Edit.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

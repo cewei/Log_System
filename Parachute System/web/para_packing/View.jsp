@@ -14,10 +14,6 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
-                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
-                        </webuijsf:breadcrumbs>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Table" width="0">
                             <webuijsf:tableRowGroup binding="#{para_packing$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_packing$View.para_packing_viewDataProvider}" sourceVar="currentRow">
@@ -47,6 +43,10 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
+                        <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
+                            <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
+                            <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
+                        </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

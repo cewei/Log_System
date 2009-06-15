@@ -13,19 +13,20 @@
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
-                    <webuijsf:form id="form1">
+                    <webuijsf:form id="form1" virtualFormsConfig="">
+                        <webuijsf:label id="label1" style="left: 24px; top: 72px; position: absolute" text="NRIC"/>
+                        <webuijsf:dropDown binding="#{para_loan$Add.nricDD}" id="nricDD"
+                            items="#{para_loan$Add.para_borrowersDataProvider.options['para_borrowers.NRIC,para_borrowers.NRIC']}"
+                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'nricDD');" style="position: absolute; left: 72px; top: 72px" valueChangeListenerExpression="#{para_loan$Add.nricDD_processValueChange}"/>
+                        <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 96px" text="Name"/>
+                        <webuijsf:label id="label3" style="position: absolute; left: 24px; top: 120px" text="Unit"/>
+                        <webuijsf:staticText binding="#{para_loan$Add.nameST}" id="nameST" style="position: absolute; left: 72px; top: 96px"/>
+                        <webuijsf:staticText binding="#{para_loan$Add.unitST}" id="unitST" style="position: absolute; left: 72px; top: 120px"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_loan/Add" url="/faces/para_loan/Add.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:label id="label1" style="left: 24px; top: 72px; position: absolute" text="NRIC"/>
-                        <webuijsf:dropDown id="nricDD" items="#{para_loan$Add.para_borrowersDataProvider.options['para_borrowers.NRIC,para_borrowers.NRIC']}"
-                            style="position: absolute; left: 72px; top: 72px" valueChangeListenerExpression="#{para_loan$Add.nricDD_processValueChange}"/>
-                        <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 96px" text="Name"/>
-                        <webuijsf:label id="label3" style="position: absolute; left: 24px; top: 120px" text="Unit"/>
-                        <webuijsf:staticText id="nameST" style="position: absolute; left: 72px; top: 96px"/>
-                        <webuijsf:staticText id="unitST" style="position: absolute; left: 72px; top: 120px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

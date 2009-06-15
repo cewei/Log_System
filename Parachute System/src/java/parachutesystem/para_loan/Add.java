@@ -7,6 +7,8 @@ package parachutesystem.para_loan;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.StaticText;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -34,6 +36,9 @@ public class Add extends AbstractPageBean {
         para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
         para_borrowersRowSet.setTableName("para_borrowers");
+        para_borrowersRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersRowSet1.setCommand("SELECT * FROM para_borrowers WHERE `nric` = ?");
+        para_borrowersRowSet1.setTableName("para_borrowers");
     }
     private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
 
@@ -52,6 +57,42 @@ public class Add extends AbstractPageBean {
 
     public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
         this.para_borrowersRowSet = crsxi;
+    }
+    private CachedRowSetXImpl para_borrowersRowSet1 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_borrowersRowSet1() {
+        return para_borrowersRowSet1;
+    }
+
+    public void setPara_borrowersRowSet1(CachedRowSetXImpl crsxi) {
+        this.para_borrowersRowSet1 = crsxi;
+    }
+    private DropDown nricDD = new DropDown();
+
+    public DropDown getNricDD() {
+        return nricDD;
+    }
+
+    public void setNricDD(DropDown dd) {
+        this.nricDD = dd;
+    }
+    private StaticText nameST = new StaticText();
+
+    public StaticText getNameST() {
+        return nameST;
+    }
+
+    public void setNameST(StaticText st) {
+        this.nameST = st;
+    }
+    private StaticText unitST = new StaticText();
+
+    public StaticText getUnitST() {
+        return unitST;
+    }
+
+    public void setUnitST(StaticText st) {
+        this.unitST = st;
     }
     // </editor-fold>
 
@@ -118,6 +159,31 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        if (nricDD.getSelected() == null) {
+            Object firstSelected = null;
+            try {
+                para_borrowersDataProvider.cursorFirst();
+                firstSelected = para_borrowersDataProvider.getValue("nric");
+                nricDD.setSelected(firstSelected);
+                para_borrowersDataProvider.refresh();
+                nameST.setText((String)para_borrowersDataProvider.getValue("rank") +" " +(String)para_borrowersDataProvider.getValue("name"));
+                unitST.setText(para_borrowersDataProvider.getValue("unit"));
+            } catch (Exception ex) {
+                log("Error Description", ex);
+                error(ex.getMessage());
+            }
+        } else {
+            Object nric = nricDD.getSelected();
+            try {
+                para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
+                para_borrowersDataProvider.refresh();
+                nameST.setText((String)para_borrowersDataProvider.getValue("rank") +" " +(String)para_borrowersDataProvider.getValue("name"));
+                unitST.setText(para_borrowersDataProvider.getValue("unit"));
+            } catch (Exception ex) {
+                log("Error Description", ex);
+                error(ex.getMessage());
+            }
+        }
     }
 
     /**
