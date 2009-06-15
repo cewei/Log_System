@@ -4,11 +4,15 @@
  */
 package parachutesystem.para_loan;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Checkbox;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.Table;
+import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -36,9 +40,10 @@ public class Add extends AbstractPageBean {
         para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
         para_borrowersRowSet.setTableName("para_borrowers");
-        para_borrowersRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_borrowersRowSet1.setCommand("SELECT * FROM para_borrowers WHERE `nric` = ?");
-        para_borrowersRowSet1.setTableName("para_borrowers");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Add.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory WHERE `status` != 'loan'");
+        para_inventoryRowSet.setTableName("para_inventory");
     }
     private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
 
@@ -58,14 +63,23 @@ public class Add extends AbstractPageBean {
     public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
         this.para_borrowersRowSet = crsxi;
     }
-    private CachedRowSetXImpl para_borrowersRowSet1 = new CachedRowSetXImpl();
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetXImpl getPara_borrowersRowSet1() {
-        return para_borrowersRowSet1;
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
     }
 
-    public void setPara_borrowersRowSet1(CachedRowSetXImpl crsxi) {
-        this.para_borrowersRowSet1 = crsxi;
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
     }
     private DropDown nricDD = new DropDown();
 
@@ -93,6 +107,33 @@ public class Add extends AbstractPageBean {
 
     public void setUnitST(StaticText st) {
         this.unitST = st;
+    }
+    private Checkbox checkbox1 = new Checkbox();
+
+    public Checkbox getCheckbox1() {
+        return checkbox1;
+    }
+
+    public void setCheckbox1(Checkbox c) {
+        this.checkbox1 = c;
+    }
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
+    }
+    private Table table1 = new Table();
+
+    public Table getTable1() {
+        return table1;
+    }
+
+    public void setTable1(Table t) {
+        this.table1 = t;
     }
     // </editor-fold>
 
@@ -166,7 +207,7 @@ public class Add extends AbstractPageBean {
                 firstSelected = para_borrowersDataProvider.getValue("nric");
                 nricDD.setSelected(firstSelected);
                 para_borrowersDataProvider.refresh();
-                nameST.setText((String)para_borrowersDataProvider.getValue("rank") +" " +(String)para_borrowersDataProvider.getValue("name"));
+                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
                 unitST.setText(para_borrowersDataProvider.getValue("unit"));
             } catch (Exception ex) {
                 log("Error Description", ex);
@@ -177,7 +218,7 @@ public class Add extends AbstractPageBean {
             try {
                 para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
                 para_borrowersDataProvider.refresh();
-                nameST.setText((String)para_borrowersDataProvider.getValue("rank") +" " +(String)para_borrowersDataProvider.getValue("name"));
+                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
                 unitST.setText(para_borrowersDataProvider.getValue("unit"));
             } catch (Exception ex) {
                 log("Error Description", ex);
@@ -197,8 +238,17 @@ public class Add extends AbstractPageBean {
     @Override
     public void destroy() {
         para_borrowersDataProvider.close();
+        para_inventoryDataProvider.close();
     }
 
     public void nricDD_processValueChange(ValueChangeEvent vce) {
+    }
+
+    public String loan_action() {
+//        RowKey [] total = table1.getTableRowGroupChild().getSelectedRowKeys();
+//        for(int i=0; i < total.length; i++) {
+//            log(total[i].getRowId());
+//        }
+        return "addToView";
     }
 }
