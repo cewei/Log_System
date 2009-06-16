@@ -24,13 +24,10 @@
                         <webuijsf:staticText binding="#{para_loan$Add.unitST}" id="unitST" style="left: 72px; top: 120px; position: absolute"/>
                         <webuijsf:label id="label4" style="position: absolute; left: 24px; top: 144px" text="Date Loan"/>
                         <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="calendar1" style="left: 72px; top: 144px; position: absolute"/>
-                        <webuijsf:table augmentTitle="false" binding="#{para_loan$Add.table1}" id="table1"
+                        <webuijsf:table augmentTitle="false" deselectMultipleButton="true" id="table1" selectMultipleButton="true"
                             style="left: 24px; top: 192px; position: absolute; width: 0px" title="Inventory List" width="0">
                             <webuijsf:tableRowGroup binding="#{para_loan$Add.tableRowGroup1}" id="tableRowGroup1" rows="10"
-                                sourceData="#{para_loan$Add.para_inventoryDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn id="tableColumn7">
-                                    <webuijsf:checkbox binding="#{para_loan$Add.checkbox1}" id="checkbox1" selected="#{currentRow.value['para_inventory.type_prefix_no']}-#{currentRow.value['para_inventory.chute_no']}"/>
-                                </webuijsf:tableColumn>
+                                selected="#{para_loan$Add.selectedState}" sourceData="#{para_loan$Add.para_inventoryDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="type_prefix_no" id="tableColumn1" sort="para_inventory.type_prefix_no">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory.type_prefix_no']}"/>
                                 </webuijsf:tableColumn>
@@ -48,6 +45,10 @@
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="status" id="tableColumn6" sort="para_inventory.status">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory.status']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn id="tableRowGroup1SelectionColumn"
+                                    onClick="setTimeout(function(){document.getElementById('form1:table1').initAllRows()}, 0);" selectId="tableRowGroup1SelectionChild">
+                                    <webuijsf:checkbox id="tableRowGroup1SelectionChild" selected="#{para_loan$Add.selected}" selectedValue="#{para_loan$Add.selectedValue}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
