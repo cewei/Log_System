@@ -8,11 +8,10 @@ import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.Checkbox;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
-import com.sun.webui.jsf.component.Table;
 import com.sun.webui.jsf.component.TableRowGroup;
+import com.sun.webui.jsf.event.TableSelectPhaseListener;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -108,15 +107,6 @@ public class Add extends AbstractPageBean {
     public void setUnitST(StaticText st) {
         this.unitST = st;
     }
-    private Checkbox checkbox1 = new Checkbox();
-
-    public Checkbox getCheckbox1() {
-        return checkbox1;
-    }
-
-    public void setCheckbox1(Checkbox c) {
-        this.checkbox1 = c;
-    }
     private TableRowGroup tableRowGroup1 = new TableRowGroup();
 
     public TableRowGroup getTableRowGroup1() {
@@ -126,15 +116,32 @@ public class Add extends AbstractPageBean {
     public void setTableRowGroup1(TableRowGroup trg) {
         this.tableRowGroup1 = trg;
     }
-    private Table table1 = new Table();
+    private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
 
-    public Table getTable1() {
-        return table1;
+    public void setSelected(Object object) {
+        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        if (rowKey != null) {
+            tablePhaseListener.setSelected(rowKey, object);
+        }
     }
 
-    public void setTable1(Table t) {
-        this.table1 = t;
+    public Object getSelected(){
+        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.getSelected(rowKey);
+
     }
+
+    public Object getSelectedValue() {
+        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        return (rowKey != null) ? rowKey.getRowId() : null;
+
+    }
+
+    public boolean getSelectedState() {
+        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.isSelected(rowKey);
+    }
+
     // </editor-fold>
 
     /**
@@ -188,6 +195,18 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void preprocess() {
+        if (nricDD.getSelected() != null) {
+            Object nric = nricDD.getSelected();
+            try {
+                para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
+                para_borrowersDataProvider.refresh();
+                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
+                unitST.setText(para_borrowersDataProvider.getValue("unit"));
+            } catch (Exception ex) {
+                log("Error Description", ex);
+                error(ex.getMessage());
+            }
+        }
     }
 
     /**
@@ -213,17 +232,6 @@ public class Add extends AbstractPageBean {
                 log("Error Description", ex);
                 error(ex.getMessage());
             }
-        } else {
-            Object nric = nricDD.getSelected();
-            try {
-                para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
-                para_borrowersDataProvider.refresh();
-                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
-                unitST.setText(para_borrowersDataProvider.getValue("unit"));
-            } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
-            }
         }
     }
 
@@ -241,14 +249,23 @@ public class Add extends AbstractPageBean {
         para_inventoryDataProvider.close();
     }
 
-    public void nricDD_processValueChange(ValueChangeEvent vce) {
+    public String loan_action() {
+        RowKey [] total = tableRowGroup1.getRowKeys();
+        for(int i=0; i < total.length; i++) {
+            log(total[i].getRowId());
+        }
+
+        int selectedRows = getTableRowGroup1().getSelectedRowsCount();
+        RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
+        for(int i=0; i< selectedRowKeys.length; i++){
+            int rowId = Integer.parseInt(selectedRowKeys[i].getRowId()) + 1;
+            info("Row " + rowId  + " is selected");
+            log("Row " + rowId  + " is selected");
+        }
+
+        return "addToView";
     }
 
-    public String loan_action() {
-//        RowKey [] total = table1.getTableRowGroupChild().getSelectedRowKeys();
-//        for(int i=0; i < total.length; i++) {
-//            log(total[i].getRowId());
-//        }
-        return "addToView";
+    public void nricDD_processValueChange(ValueChangeEvent vce) {
     }
 }
