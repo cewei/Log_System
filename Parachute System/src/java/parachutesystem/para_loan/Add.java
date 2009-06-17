@@ -8,6 +8,7 @@ import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TableRowGroup;
@@ -43,6 +44,10 @@ public class Add extends AbstractPageBean {
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory WHERE `status` != 'loan'");
         para_inventoryRowSet.setTableName("para_inventory");
+        para_loanDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Add.para_loanRowSet}"));
+        para_loanRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_loanRowSet.setCommand("SELECT * FROM para_loan");
+        para_loanRowSet.setTableName("para_loan");
     }
     private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
 
@@ -119,29 +124,55 @@ public class Add extends AbstractPageBean {
     private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
 
     public void setSelected(Object object) {
-        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         if (rowKey != null) {
             tablePhaseListener.setSelected(rowKey, object);
         }
     }
 
-    public Object getSelected(){
-        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+    public Object getSelected() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         return tablePhaseListener.getSelected(rowKey);
 
     }
 
     public Object getSelectedValue() {
-        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         return (rowKey != null) ? rowKey.getRowId() : null;
 
     }
 
     public boolean getSelectedState() {
-        RowKey rowKey = (RowKey)getValue("#{currentRow.tableRow}");
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         return tablePhaseListener.isSelected(rowKey);
     }
+    private CachedRowSetDataProvider para_loanDataProvider = new CachedRowSetDataProvider();
 
+    public CachedRowSetDataProvider getPara_loanDataProvider() {
+        return para_loanDataProvider;
+    }
+
+    public void setPara_loanDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_loanDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_loanRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_loanRowSet() {
+        return para_loanRowSet;
+    }
+
+    public void setPara_loanRowSet(CachedRowSetXImpl crsxi) {
+        this.para_loanRowSet = crsxi;
+    }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
+    }
     // </editor-fold>
 
     /**
@@ -247,22 +278,42 @@ public class Add extends AbstractPageBean {
     public void destroy() {
         para_borrowersDataProvider.close();
         para_inventoryDataProvider.close();
+        para_loanDataProvider.close();
     }
 
     public String loan_action() {
-        RowKey [] total = tableRowGroup1.getRowKeys();
-        for(int i=0; i < total.length; i++) {
-            log(total[i].getRowId());
-        }
-
         int selectedRows = getTableRowGroup1().getSelectedRowsCount();
-        RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
-        for(int i=0; i< selectedRowKeys.length; i++){
-            int rowId = Integer.parseInt(selectedRowKeys[i].getRowId()) + 1;
-            info("Row " + rowId  + " is selected");
-            log("Row " + rowId  + " is selected");
-        }
+        if (selectedRows > 0) {
+            RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
+            for (int i = 0; i < selectedRowKeys.length; i++) {
+                int rowId = Integer.parseInt(selectedRowKeys[i].getRowId()) + 1;
+                info("Row " + rowId + " is selected");
+                log("Row " + rowId + " is selected");
 
+                if (para_loanDataProvider.canAppendRow()) {
+                    para_inventoryDataProvider.setCursorRow(selectedRowKeys[i]);
+
+                    RowKey appendRow = para_loanDataProvider.appendRow();
+                    para_loanDataProvider.setCursorRow(appendRow);
+                    para_loanDataProvider.setValue("nric", nricDD.getValue());
+                    para_loanDataProvider.setValue("type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
+                    para_loanDataProvider.setValue("chute_no", para_inventoryDataProvider.getValue("chute_no"));
+                    para_loanDataProvider.setValue("serial_no", para_inventoryDataProvider.getValue("serial_no"));
+                    para_loanDataProvider.setValue("date_out", calendar1.getValue());
+                    para_loanDataProvider.commitChanges();
+
+                    para_inventoryDataProvider.setValue("status", "loan");
+                    para_inventoryDataProvider.commitChanges();
+                } else {
+                    error("Cannot append row");
+                    log("Cannot append row");
+                }
+
+            }
+        } else {
+            log("No row selected");
+            return null;
+        }
         return "addToView";
     }
 

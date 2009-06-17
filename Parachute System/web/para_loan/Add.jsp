@@ -19,11 +19,11 @@
                         <webuijsf:label id="label3" style="position: absolute; left: 24px; top: 120px" text="Unit"/>
                         <webuijsf:dropDown binding="#{para_loan$Add.nricDD}" id="nricDD"
                             items="#{para_loan$Add.para_borrowersDataProvider.options['para_borrowers.NRIC,para_borrowers.NRIC']}"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'nricDD');" style="position: absolute; left: 72px; top: 72px" valueChangeListenerExpression="#{para_loan$Add.nricDD_processValueChange}"/>
-                        <webuijsf:staticText binding="#{para_loan$Add.nameST}" id="nameST" style="position: absolute; left: 72px; top: 96px"/>
-                        <webuijsf:staticText binding="#{para_loan$Add.unitST}" id="unitST" style="left: 72px; top: 120px; position: absolute"/>
-                        <webuijsf:label id="label4" style="position: absolute; left: 24px; top: 144px" text="Date Loan"/>
-                        <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="calendar1" style="left: 72px; top: 144px; position: absolute"/>
+                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'nricDD');" style="left: 96px; top: 72px; position: absolute" valueChangeListenerExpression="#{para_loan$Add.nricDD_processValueChange}"/>
+                        <webuijsf:staticText binding="#{para_loan$Add.nameST}" id="nameST" style="left: 96px; top: 96px; position: absolute"/>
+                        <webuijsf:staticText binding="#{para_loan$Add.unitST}" id="unitST" style="left: 96px; top: 120px; position: absolute"/>
+                        <webuijsf:label for="calendar1" id="label4" style="position: absolute; left: 24px; top: 144px" text="Date Loan"/>
+                        <webuijsf:calendar binding="#{para_loan$Add.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" required="true" style="left: 96px; top: 144px; position: absolute"/>
                         <webuijsf:table augmentTitle="false" deselectMultipleButton="true" id="table1" selectMultipleButton="true"
                             style="left: 24px; top: 192px; position: absolute; width: 0px" title="Inventory List" width="0">
                             <webuijsf:tableRowGroup binding="#{para_loan$Add.tableRowGroup1}" id="tableRowGroup1" rows="10"
