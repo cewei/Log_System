@@ -241,4 +241,7 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <application>
+        <message-bundle>parachutesystem.MyMessages</message-bundle>
+    </application>
 </faces-config>

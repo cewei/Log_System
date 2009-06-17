@@ -63,12 +63,16 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:messageGroup id="messageGroup1" style="position: absolute; left: 456px; top: 72px"/>
+                        <webuijsf:messageGroup id="messageGroup1" style="left: 648px; top: 48px; position: absolute"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_inventory/Add" url="/faces/para_inventory/Add.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:message for="chuteNoTF" id="message1" showDetail="false" showSummary="true" style="left: 336px; top: 72px; position: absolute"/>
+                        <webuijsf:message for="serialNoTF" id="message2" showDetail="false" showSummary="true" style="left: 336px; top: 96px; position: absolute"/>
+                        <webuijsf:message for="dateOfMfgCal" id="message3" showDetail="false" showSummary="true" style="left: 336px; top: 120px; position: absolute"/>
+                        <webuijsf:message for="noOfJumpsTF" id="message4" showDetail="false" showSummary="true" style="left: 336px; top: 144px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
