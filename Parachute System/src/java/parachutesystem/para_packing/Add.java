@@ -272,7 +272,7 @@ public class Add extends AbstractPageBean {
 
     public String update_action() {
         try {
-            if (para_packingDataProvider.canAppendRow()) {
+            if (para_packingDataProvider.canAppendRow() && getParaPackingBean().getDatePacked() != getRepackDateCal().getValue()) {
                 RowKey appendedRow = para_packingDataProvider.appendRow();
 
                 String[] fieldKeys = {"para_inventory.type_prefix_no", "para_inventory.chute_no", "para_inventory.serial_no"};
