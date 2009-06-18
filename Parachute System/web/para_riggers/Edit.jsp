@@ -17,13 +17,16 @@
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Riggers" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_riggers$Edit.para_riggersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
-                                    <webuijsf:textField id="textField1" text="#{currentRow.value['para_riggers.NRIC']}"/>
+                                    <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_riggers.NRIC']}"/>
+                                    <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="name" id="tableColumn2" sort="para_riggers.name">
-                                    <webuijsf:textField id="textField2" text="#{currentRow.value['para_riggers.name']}"/>
+                                    <webuijsf:textField id="textField2" required="true" text="#{currentRow.value['para_riggers.name']}"/>
+                                    <webuijsf:message for="textField2" id="message2" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="rank" id="tableColumn3" sort="para_riggers.rank">
-                                    <webuijsf:textField id="textField3" text="#{currentRow.value['para_riggers.rank']}"/>
+                                    <webuijsf:textField id="textField3" required="true" text="#{currentRow.value['para_riggers.rank']}"/>
+                                    <webuijsf:message for="textField3" id="message3" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="rigger" id="tableColumn4" sort="para_riggers.rigger">
                                     <webuijsf:checkbox id="checkbox1" selected="#{currentRow.value['para_riggers.rigger']}"/>

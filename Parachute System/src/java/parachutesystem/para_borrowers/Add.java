@@ -2,10 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_borrowers;
 
+import com.sun.data.provider.RowKey;
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
 
 /**
@@ -19,7 +22,6 @@ import javax.faces.FacesException;
  * @version Created on Jun 11, 2009, 3:18:11 PM
  * @author Dell
  */
-
 public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -29,8 +31,65 @@ public class Add extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_borrowers$Add.para_borrowersRowSet}"));
+        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
+        para_borrowersRowSet.setTableName("para_borrowers");
+    }
+    private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_borrowersDataProvider() {
+        return para_borrowersDataProvider;
     }
 
+    public void setPara_borrowersDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_borrowersDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_borrowersRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_borrowersRowSet() {
+        return para_borrowersRowSet;
+    }
+
+    public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
+        this.para_borrowersRowSet = crsxi;
+    }
+    private TextField nricTF = new TextField();
+
+    public TextField getNricTF() {
+        return nricTF;
+    }
+
+    public void setNricTF(TextField tf) {
+        this.nricTF = tf;
+    }
+    private TextField nameTF = new TextField();
+
+    public TextField getNameTF() {
+        return nameTF;
+    }
+
+    public void setNameTF(TextField tf) {
+        this.nameTF = tf;
+    }
+    private TextField rankTF = new TextField();
+
+    public TextField getRankTF() {
+        return rankTF;
+    }
+
+    public void setRankTF(TextField tf) {
+        this.rankTF = tf;
+    }
+    private TextField unitTF = new TextField();
+
+    public TextField getUnitTF() {
+        return unitTF;
+    }
+
+    public void setUnitTF(TextField tf) {
+        this.unitTF = tf;
+    }
     // </editor-fold>
 
     /**
@@ -58,7 +117,7 @@ public class Add extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -66,13 +125,13 @@ public class Add extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Add Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -108,10 +167,33 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_borrowersDataProvider.close();
     }
 
     public String add_action() {
-        return "addToView";
+        try {
+            if (para_borrowersDataProvider.canAppendRow()) {
+                RowKey appendedRow = para_borrowersDataProvider.appendRow();
+                if (appendedRow != null) {
+                    para_borrowersDataProvider.setCursorRow(appendedRow);
+                    para_borrowersDataProvider.setValue("para_borrowers.nric", nricTF.getText());
+                    para_borrowersDataProvider.setValue("para_borrowers.name", nameTF.getText());
+                    para_borrowersDataProvider.setValue("para_borrowers.rank", rankTF.getText());
+                    para_borrowersDataProvider.setValue("para_borrowers.unit", unitTF.getText());
+                    // set values of other fields, if any
+                    para_borrowersDataProvider.commitChanges();
+                    para_borrowersDataProvider.refresh();
+                }
+                return "addToView";
+            } else {
+                log(" ERROR - para_borrowers.Add : Cannot append row");
+                error(" ERROR - Cannot append row");
+                return null;
+            }
+        } catch (Exception ex) {
+            log(" ERROR - para_borrowers.Add : Error Description ", ex);
+            error(" ERROR - " +ex.getMessage());
+            return null;
+        }
     }
-    
 }

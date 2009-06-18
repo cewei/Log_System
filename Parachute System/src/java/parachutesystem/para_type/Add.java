@@ -194,16 +194,17 @@ public class Add extends AbstractPageBean {
                     para_typeDataProvider.commitChanges();
                     para_typeDataProvider.refresh();
                 }
+                return "addToView";
             } else {
-                error("Cannot append row");
-                log("Cannot append row");
+                log(" ERROR - para_type.Add : Cannot append row");
+                error(" ERROR : Cannot append row");
+                return null;
             }
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
+            log(" ERROR - para_type.Add : Error Description ", ex);
+            error(" ERROR : " +ex.getMessage());
+            return null;
         }
-        return "addToView";
     }
-
 }
 

@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -22,7 +21,6 @@ import javax.faces.FacesException;
  * @version Created on May 21, 2009, 11:43:48 AM
  * @author Dell
  */
-
 public class Page1 extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 

@@ -3,12 +3,12 @@
     <Scope Scope="Faces Configuration Only">
         <Node id="para_type/Edit.jsp" x="1150" y="150" zoom="true"/>
         <Node id="para_borrowers/Add.jsp" x="650" y="300" zoom="true"/>
-        <Node id="para_riggers/Edit.jsp" x="150" y="450" zoom="true"/>
         <Node id="para_packing/View.jsp" x="400" y="150" zoom="true"/>
+        <Node id="para_riggers/Edit.jsp" x="150" y="450" zoom="true"/>
         <Node id="para_riggers/Add.jsp" x="400" y="450" zoom="true"/>
         <Node id="para_inventory/Add.jsp" x="400" y="300" zoom="true"/>
-        <Node id="para_inventory/View.jsp" x="150" y="750" zoom="true"/>
         <Node id="para_loan/Add.jsp" x="400" y="600" zoom="true"/>
+        <Node id="para_inventory/View.jsp" x="150" y="750" zoom="true"/>
         <Node id="para_type/Add.jsp" x="150" y="600" zoom="true"/>
         <Node id="para_type/View.jsp" x="650" y="150" zoom="true"/>
         <Node id="para_borrowers/View.jsp" x="900" y="150" zoom="true"/>
@@ -18,16 +18,17 @@
         <Node id="para_riggers/View.jsp" x="900" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="Project">
-        <Node id="para_type/Edit.jsp" x="609" y="98" zoom="true"/>
+        <Node id="para_type/Edit.jsp" x="641" y="99" zoom="true"/>
         <Node id="para_borrowers/Add.jsp" x="355" y="579" zoom="true"/>
         <Node id="para_riggers/Edit.jsp" x="643" y="480" zoom="true"/>
         <Node id="para_packing/View.jsp" x="33" y="293" zoom="true"/>
         <Node id="para_riggers/Add.jsp" x="355" y="481" zoom="true"/>
         <Node id="Page1.jsp" x="34" y="33" zoom="false"/>
         <Node id="para_inventory/Add.jsp" x="355" y="192" zoom="true"/>
-        <Node id="para_loan/Add.jsp" x="323" y="387" zoom="true"/>
         <Node id="para_inventory/View.jsp" x="33" y="194" zoom="true"/>
-        <Node id="para_type/Add.jsp" x="326" y="98" zoom="true"/>
+        <Node id="para_borrowers/Edit.jsp" x="643" y="579" zoom="true"/>
+        <Node id="para_loan/Add.jsp" x="355" y="387" zoom="true"/>
+        <Node id="para_type/Add.jsp" x="354" y="98" zoom="true"/>
         <Node id="para_type/View.jsp" x="33" y="97" zoom="true"/>
         <Node id="para_borrowers/View.jsp" x="34" y="579" zoom="true"/>
         <Node id="para_inventory/Edit.jsp" x="643" y="194" zoom="true"/>
@@ -38,12 +39,12 @@
     <Scope Scope="All Faces Configurations">
         <Node id="para_type/Edit.jsp" x="400" y="150" zoom="true"/>
         <Node id="para_borrowers/Add.jsp" x="650" y="300" zoom="true"/>
-        <Node id="para_packing/View.jsp" x="150" y="300" zoom="true"/>
         <Node id="para_riggers/Edit.jsp" x="900" y="300" zoom="true"/>
+        <Node id="para_packing/View.jsp" x="150" y="300" zoom="true"/>
         <Node id="para_riggers/Add.jsp" x="150" y="150" zoom="true"/>
         <Node id="para_inventory/Add.jsp" x="150" y="450" zoom="true"/>
-        <Node id="para_inventory/View.jsp" x="1150" y="150" zoom="true"/>
         <Node id="para_loan/Add.jsp" x="400" y="600" zoom="true"/>
+        <Node id="para_inventory/View.jsp" x="1150" y="150" zoom="true"/>
         <Node id="para_type/Add.jsp" x="400" y="300" zoom="true"/>
         <Node id="para_type/View.jsp" x="150" y="600" zoom="true"/>
         <Node id="para_borrowers/View.jsp" x="650" y="450" zoom="true"/>

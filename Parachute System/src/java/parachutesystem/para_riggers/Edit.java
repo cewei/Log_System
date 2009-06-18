@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_riggers;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -21,7 +20,6 @@ import javax.faces.FacesException;
  * @version Created on Jun 11, 2009, 1:18:08 PM
  * @author Dell
  */
-
 public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -81,7 +79,7 @@ public class Edit extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -89,13 +87,13 @@ public class Edit extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Edit Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -139,11 +137,10 @@ public class Edit extends AbstractPageBean {
             para_riggersDataProvider.commitChanges();
             return "editToView";
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error("Error :" + ex.getMessage());
+            log(" ERROR - para_riggers.Edit : Error Description ", ex);
+            error(" Error - " + ex.getMessage());
             return null;
         }
     }
-    
 }
 

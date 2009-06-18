@@ -13,6 +13,7 @@ import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TableRowGroup;
 import com.sun.webui.jsf.event.TableSelectPhaseListener;
+import java.util.Date;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -226,18 +227,6 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void preprocess() {
-        if (nricDD.getSelected() != null) {
-            Object nric = nricDD.getSelected();
-            try {
-                para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
-                para_borrowersDataProvider.refresh();
-                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
-                unitST.setText(para_borrowersDataProvider.getValue("unit"));
-            } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
-            }
-        }
     }
 
     /**
@@ -256,12 +245,25 @@ public class Add extends AbstractPageBean {
                 para_borrowersDataProvider.cursorFirst();
                 firstSelected = para_borrowersDataProvider.getValue("nric");
                 nricDD.setSelected(firstSelected);
-                para_borrowersDataProvider.refresh();
+                //para_borrowersDataProvider.refresh();
                 nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
                 unitST.setText(para_borrowersDataProvider.getValue("unit"));
+                calendar1.setValue(new Date());
             } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
+                log(" ERROR - para_loan.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        } else {
+            Object nric = nricDD.getSelected();
+            try {
+                para_borrowersDataProvider.setCursorRow(para_borrowersDataProvider.findFirst("nric", nric));
+                //para_borrowersDataProvider.refresh();
+                nameST.setText((String) para_borrowersDataProvider.getValue("rank") + " " + (String) para_borrowersDataProvider.getValue("name"));
+                unitST.setText(para_borrowersDataProvider.getValue("unit"));
+                calendar1.setValue(new Date());
+            } catch (Exception ex) {
+                log(" ERROR - para_loan.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
             }
         }
     }
@@ -305,16 +307,17 @@ public class Add extends AbstractPageBean {
                     para_inventoryDataProvider.setValue("status", "loan");
                     para_inventoryDataProvider.commitChanges();
                 } else {
-                    error("Cannot append row");
-                    log("Cannot append row");
+                    log(" ERROR - para_loan.Add : Cannot append row");
+                    error(" ERROR - Cannot append row");
+                    return null;
                 }
-
             }
+            return "addToView";
         } else {
-            log("No row selected");
+            log(" INFO - para_loan.Add : No row selected");
+            info(" INFO - Please select a row.");
             return null;
         }
-        return "addToView";
     }
 
     public void nricDD_processValueChange(ValueChangeEvent vce) {

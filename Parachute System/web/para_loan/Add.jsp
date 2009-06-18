@@ -58,6 +58,8 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_loan/Add" url="/faces/para_loan/Add.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:message for="calendar1" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 264px; top: 144px"/>
+                        <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="position: absolute; left: 432px; top: 48px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
