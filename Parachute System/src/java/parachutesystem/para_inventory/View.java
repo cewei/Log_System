@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_inventory;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -21,7 +20,6 @@ import javax.faces.FacesException;
  * @version Created on May 24, 2009, 10:01:36 PM
  * @author Lancer-Matrix
  */
-
 public class View extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -45,7 +43,6 @@ public class View extends AbstractPageBean {
     public void setPara_inventory_viewDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_inventory_viewDataProvider = crsdp;
     }
-
     private CachedRowSetXImpl para_inventory_viewRowSet = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_inventory_viewRowSet() {
@@ -82,7 +79,7 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -90,13 +87,13 @@ public class View extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -142,5 +139,4 @@ public class View extends AbstractPageBean {
     public String edit_action() {
         return "viewToEdit";
     }
-    
 }

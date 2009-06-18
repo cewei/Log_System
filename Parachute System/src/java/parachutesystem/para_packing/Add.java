@@ -272,7 +272,7 @@ public class Add extends AbstractPageBean {
 
     public String update_action() {
         try {
-            if (para_packingDataProvider.canAppendRow() && getParaPackingBean().getDatePacked() != getRepackDateCal().getValue()) {
+            if (para_packingDataProvider.canAppendRow()) {
                 RowKey appendedRow = para_packingDataProvider.appendRow();
 
                 String[] fieldKeys = {"para_inventory.type_prefix_no", "para_inventory.chute_no", "para_inventory.serial_no"};
@@ -297,19 +297,23 @@ public class Add extends AbstractPageBean {
 
                     para_inventoryDataProvider.commitChanges();
                     para_inventoryDataProvider.refresh();
+                    return "addToView";
+                } else {
+                    log(" ERROR - para_packing.Add : Too many parachutes");
+                    error(" ERROR - Too many parachutes");
+                    return null;
                 }
+
             } else {
-                error("Cannot append row or too many rows");
-                log("Cannot append row or too many rows");
+                log(" ERROR - para_packing.Add : Cannot append row");
+                error(" ERROR - Cannot append row");
                 return null;
             }
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
+            log(" ERROR - para_packing.Add : Error Description", ex);
+            error(" ERROR - " + ex.getMessage());
             return null;
         }
-
-        return "addToView";
     }
 
     protected ParaPackingBean getParaPackingBean() {

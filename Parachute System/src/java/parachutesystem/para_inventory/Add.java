@@ -49,7 +49,7 @@ public class Add extends AbstractPageBean {
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
         para_inventoryRowSet.setTableName("para_inventory");
-        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"),new com.sun.webui.jsf.model.Option("returned", "returned")});
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"), new com.sun.webui.jsf.model.Option("returned", "returned")});
     }
     private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
 
@@ -239,30 +239,6 @@ public class Add extends AbstractPageBean {
      */
     @Override
     public void preprocess() {
-        if (typeDD.getSelected() == null) {
-            Object firstSelected = null;
-            try {
-                para_typeDataProvider.cursorFirst();
-                firstSelected = para_typeDataProvider.getValue("para_type_no");
-                typeDD.setSelected(firstSelected);
-                getPara_inventory_viewRowSet().setObject(1, firstSelected);
-                para_inventory_viewDataProvider.refresh();
-            } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
-            }
-        } else {
-            Object typeID = typeDD.getSelected();
-            try {
-                para_typeDataProvider.setCursorRow(
-                        para_typeDataProvider.findFirst("para_type_no", typeID));
-                getPara_inventory_viewRowSet().setObject(1, typeID);
-                para_inventory_viewDataProvider.refresh();
-            } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
-            }
-        }
     }
 
     /**
@@ -284,8 +260,19 @@ public class Add extends AbstractPageBean {
                 getPara_inventory_viewRowSet().setObject(1, firstSelected);
                 para_inventory_viewDataProvider.refresh();
             } catch (Exception ex) {
-                log("Error Description", ex);
-                error(ex.getMessage());
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        } else {
+            Object typeID = typeDD.getSelected();
+            try {
+                para_typeDataProvider.setCursorRow(
+                        para_typeDataProvider.findFirst("para_type_no", typeID));
+                getPara_inventory_viewRowSet().setObject(1, typeID);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
             }
         }
     }
@@ -322,28 +309,20 @@ public class Add extends AbstractPageBean {
                     para_inventoryDataProvider.refresh();
                     para_inventory_viewDataProvider.refresh();
                 }
+                return "addToView";
             } else {
-                error("Cannot append row");
-                log("Cannot append row");
+                log(" ERROR - para_inventory.Add : Cannot append row");
+                error(" ERROR - Cannot append row");
+                return null;
             }
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
+            log(" ERROR - para_type.Add : Error Description ", ex);
+            error(" ERROR - " + ex.getMessage());
+            return null;
         }
-        return "addToView";
     }
 
     public void typeDD_processValueChange(ValueChangeEvent event) {
-        Object typeID = typeDD.getSelected();
-        try {
-            para_typeDataProvider.setCursorRow(
-                    para_typeDataProvider.findFirst("para_type_no", typeID));
-            getPara_inventory_viewRowSet().setObject(1, typeID);
-            para_inventory_viewDataProvider.refresh();
-        } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
-        }
     }
 }
 

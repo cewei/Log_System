@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_inventory;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -23,7 +22,6 @@ import javax.faces.convert.LongConverter;
  * @version Created on Jun 3, 2009, 10:51:46 AM
  * @author Dell
  */
-
 public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -41,7 +39,7 @@ public class Edit extends AbstractPageBean {
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_type");
         para_typeRowSet.setTableName("para_type");
-        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"),new com.sun.webui.jsf.model.Option("returned", "returned")});
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"), new com.sun.webui.jsf.model.Option("returned", "returned")});
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
@@ -52,7 +50,6 @@ public class Edit extends AbstractPageBean {
     public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_inventoryDataProvider = crsdp;
     }
-
     private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_inventoryRowSet() {
@@ -71,7 +68,6 @@ public class Edit extends AbstractPageBean {
     public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_typeDataProvider = crsdp;
     }
-
     private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_typeRowSet() {
@@ -90,7 +86,6 @@ public class Edit extends AbstractPageBean {
     public void setDropDown1Converter(LongConverter lc) {
         this.dropDown1Converter = lc;
     }
-
     private SingleSelectOptionsList statusDDDefaultOptions = new SingleSelectOptionsList();
 
     public SingleSelectOptionsList getStatusDDDefaultOptions() {
@@ -102,7 +97,6 @@ public class Edit extends AbstractPageBean {
     }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -128,7 +122,7 @@ public class Edit extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -136,13 +130,13 @@ public class Edit extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Edit Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -185,12 +179,11 @@ public class Edit extends AbstractPageBean {
     public String save_action() {
         try {
             para_inventoryDataProvider.commitChanges();
+            return "editToView";
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error("Error :" + ex.getMessage());
+            log(" ERROR - para_inventory.Edit : Error Description", ex);
+            error(" ERROR - " + ex.getMessage());
+            return null;
         }
-
-        return "editToView";
     }
-    
 }

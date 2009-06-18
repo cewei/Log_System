@@ -25,12 +25,12 @@
                         <webuijsf:textField binding="#{para_type$Add.maxJumpText}" id="maxJumpText" required="true" style="left: 168px; top: 120px; position: absolute"/>
                         <webuijsf:textField binding="#{para_type$Add.repackCycleText}" id="repackCycleText" required="true" style="left: 168px; top: 144px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_type$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
-                        <webuijsf:messageGroup id="messageGroup1" style="left: 552px; top: 48px; position: absolute"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_type/Add" url="/faces/para_type/Add.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="left: 432px; top: 24px; position: absolute"/>
                         <webuijsf:message for="typePrefixText" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 48px"/>
                         <webuijsf:message for="nameText" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 72px"/>
                         <webuijsf:message for="lifeSpanText" id="message3" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 96px"/>

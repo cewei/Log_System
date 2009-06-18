@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_riggers;
 
 import com.sun.data.provider.RowKey;
@@ -24,7 +23,6 @@ import javax.faces.FacesException;
  * @version Created on Jun 10, 2009, 10:08:10 AM
  * @author Dell
  */
-
 public class Add extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -129,7 +127,7 @@ public class Add extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -137,13 +135,13 @@ public class Add extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Add Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -197,17 +195,16 @@ public class Add extends AbstractPageBean {
                     para_riggersDataProvider.commitChanges();
                     para_riggersDataProvider.refresh();
                 }
+                return "addToView";
             } else {
-                error("Cannot append row");
-                log("Cannot append row");
+                log(" ERROR - para_riggers.Add : Cannot append row");
+                error(" ERROR - Cannot append row");
                 return null;
             }
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error(ex.getMessage());
+            log(" ERROR - para_riggers.Add : Error Description ", ex);
+            error(" ERROR - " +ex.getMessage());
             return null;
         }
-        return "addToView";
     }
-    
 }

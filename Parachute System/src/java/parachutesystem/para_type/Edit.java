@@ -7,7 +7,6 @@ package parachutesystem.para_type;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.Button;
 import javax.faces.FacesException;
 
 /**
@@ -52,15 +51,6 @@ public class Edit extends AbstractPageBean {
 
     public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
         this.para_typeRowSet = crsxi;
-    }
-    private Button save = new Button();
-
-    public Button getSave() {
-        return save;
-    }
-
-    public void setSave(Button b) {
-        this.save = b;
     }
 
     // </editor-fold>
@@ -147,8 +137,8 @@ public class Edit extends AbstractPageBean {
             para_typeDataProvider.commitChanges();
             return "editToView";
         } catch (Exception ex) {
-            log("Error Description", ex);
-            error("Error :" + ex.getMessage());
+            log(" ERROR - para_type.Edit : Error Description", ex);
+            error(" ERROR - " + ex.getMessage());
             return null;
         }
     }

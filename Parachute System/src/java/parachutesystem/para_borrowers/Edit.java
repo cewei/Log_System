@@ -2,12 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package parachutesystem.para_type;
+package parachutesystem.para_borrowers;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
 
 /**
@@ -17,11 +16,11 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on May 21, 2009, 11:44:14 AM
+ * @version Edit.java
+ * @version Created on Jun 18, 2009, 11:35:52 AM
  * @author Dell
  */
-public class View extends AbstractPageBean {
+public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -30,44 +29,35 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
-        para_typeRowSet.setTableName("para_type");
+        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_borrowers$Edit.para_borrowersRowSet}"));
+        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
+        para_borrowersRowSet.setTableName("para_borrowers");
     }
-    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
+    private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetDataProvider getPara_typeDataProvider() {
-        return para_typeDataProvider;
-    }
-
-    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_typeDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
+    public CachedRowSetDataProvider getPara_borrowersDataProvider() {
+        return para_borrowersDataProvider;
     }
 
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
+    public void setPara_borrowersDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_borrowersDataProvider = crsdp;
     }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+    private CachedRowSetXImpl para_borrowersRowSet = new CachedRowSetXImpl();
 
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
+    public CachedRowSetXImpl getPara_borrowersRowSet() {
+        return para_borrowersRowSet;
     }
 
+    public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
+        this.para_borrowersRowSet = crsxi;
+    }
     // </editor-fold>
+
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Edit() {
     }
 
     /**
@@ -96,7 +86,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Edit Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
 
@@ -139,15 +129,18 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_typeDataProvider.close();
+        para_borrowersDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
-    }
-
-    public String edit_action() {
-        return "viewToEdit";
+    public String save_action() {
+        try {
+            para_borrowersDataProvider.commitChanges();
+            return "editToView";
+        } catch (Exception ex) {
+            log("ERROR - para_borrowers.Edit : Error Description : ", ex);
+            error("ERROR - " + ex.getMessage());
+            return null;
+        }
     }
 }
 

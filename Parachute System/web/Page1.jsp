@@ -17,15 +17,15 @@
                         <webuijsf:anchor id="para_type_link" style="position: absolute; left: 24px; top: 24px" text="Parachute Type" url="/faces/para_type/View.jsp"/>
                         <webuijsf:anchor id="para_inventory_link" style="left: 120px; top: 24px; position: absolute" text="Parachute Inventory" url="/faces/para_inventory/View.jsp"/>
                         <webuijsf:anchor id="para_packing_link" style="left: 240px; top: 24px; position: absolute" text="Parachute Packing" url="/faces/para_packing/View.jsp"/>
+                        <webuijsf:anchor id="para_loan_link" style="position: absolute; left: 360px; top: 24px" text="Parachute Loan" url="/faces/para_loan/View.jsp"/>
+                        <webuijsf:anchor id="para_riggers_link" style="left: 456px; top: 24px; position: absolute" text="Parachute Riggers" url="/faces/para_riggers/View.jsp"/>
+                        <webuijsf:anchor id="para_borrowers_link" style="left: 552px; top: 24px; position: absolute" text="Parachute Borrowers" url="/faces/para_borrowers/View.jsp"/>
                         <webuijsf:label id="label1" style="left: 24px; top: 48px; position: absolute" text="Loaned Out : "/>
                         <webuijsf:label id="label2" style="left: 24px; top: 72px; position: absolute" text="Serviceable : "/>
                         <webuijsf:label id="label3" style="left: 24px; top: 96px; position: absolute" text="Servicing : "/>
                         <webuijsf:staticText binding="#{Page1.loanT}" id="loanT" style="left: 120px; top: 48px; position: absolute"/>
                         <webuijsf:staticText binding="#{Page1.serviceableT}" id="serviceableT" style="left: 120px; top: 72px; position: absolute"/>
                         <webuijsf:staticText binding="#{Page1.servicingT}" id="servicingT" style="left: 120px; top: 96px; position: absolute"/>
-                        <webuijsf:anchor id="para_loan_link" style="position: absolute; left: 360px; top: 24px" text="Parachute Loan" url="/faces/para_loan/View.jsp"/>
-                        <webuijsf:anchor id="para_riggers_link" style="left: 456px; top: 24px; position: absolute" text="Parachute Riggers" url="/faces/para_riggers/View.jsp"/>
-                        <webuijsf:anchor id="para_borrowers_link" style="left: 552px; top: 24px; position: absolute" text="Parachute Borrowers" url="/faces/para_borrowers/View.jsp"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

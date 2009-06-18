@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_borrowers;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -21,7 +20,6 @@ import javax.faces.FacesException;
  * @version Created on Jun 11, 2009, 3:09:55 PM
  * @author Dell
  */
-
 public class View extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -31,7 +29,8 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_borrowers$View.para_borrowersRowSet}"));        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_borrowers$View.para_borrowersRowSet}"));
+        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
         para_borrowersRowSet.setTableName("para_borrowers");
     }
@@ -55,7 +54,6 @@ public class View extends AbstractPageBean {
     }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -81,7 +79,7 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -89,13 +87,13 @@ public class View extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -137,5 +135,8 @@ public class View extends AbstractPageBean {
     public String add_action() {
         return "viewToAdd";
     }
-    
+
+    public String edit_action() {
+        return "viewToEdit";
+    }
 }

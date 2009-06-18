@@ -16,33 +16,32 @@
                     <webuijsf:form id="form1" virtualFormsConfig="save | table1:tableRowGroup1:tableColumn2:textField1 table1:tableRowGroup1:tableColumn3:textField2 table1:tableRowGroup1:tableColumn4:textField3 table1:tableRowGroup1:tableColumn5:textField4 table1:tableRowGroup1:tableColumn6:textField5 | save">
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="para_type_no" id="tableColumn1" sort="para_type.para_type_no">
+                                <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Type Prefix" id="tableColumn2" sort="para_type.type_prefix">
+                                <webuijsf:tableColumn align="center" headerText="Type Prefix" id="tableColumn2" valign="middle">
                                     <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_type.type_prefix']}"/>
                                     <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Type Name" id="tableColumn3" sort="para_type.name">
+                                <webuijsf:tableColumn align="center" headerText="Type Name" id="tableColumn3" valign="middle">
                                     <webuijsf:textField id="textField2" required="true" text="#{currentRow.value['para_type.name']}"/>
                                     <webuijsf:message for="textField2" id="message2" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Life Span (Yrs)" id="tableColumn4" sort="para_type.life_span">
+                                <webuijsf:tableColumn align="center" headerText="Life Span (Yrs)" id="tableColumn4" valign="middle">
                                     <webuijsf:textField id="textField3" required="true" text="#{currentRow.value['para_type.life_span']}"/>
                                     <webuijsf:message for="textField3" id="message3" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Max No. Jumps" id="tableColumn5" sort="para_type.max_jump">
+                                <webuijsf:tableColumn align="center" headerText="Max No. Jumps" id="tableColumn5" valign="middle">
                                     <webuijsf:textField id="textField4" required="true" text="#{currentRow.value['para_type.max_jump']}"/>
                                     <webuijsf:message for="textField4" id="message4" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Repack Cycle (Days)" id="tableColumn6" sort="para_type.repack_cycle">
+                                <webuijsf:tableColumn align="center" headerText="Repack Cycle (Days)" id="tableColumn6" valign="middle">
                                     <webuijsf:textField id="textField5" required="true" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                     <webuijsf:message for="textField5" id="message5" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:button actionExpression="#{para_type$Edit.save_action}" binding="#{para_type$Edit.save}" id="save"
-                                         style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
+                        <webuijsf:button actionExpression="#{para_type$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>

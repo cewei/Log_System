@@ -17,17 +17,21 @@
                         <webuijsf:label for="nricTF" id="label1" style="left: 24px; top: 48px; position: absolute" text="NRIC"/>
                         <webuijsf:label for="nameTF" id="label2" style="left: 24px; top: 72px; position: absolute" text="Name"/>
                         <webuijsf:label for="rankTF" id="label3" style="left: 24px; top: 96px; position: absolute" text="Rank"/>
-                        <webuijsf:textField id="nricTF" required="true" style="left: 96px; top: 48px; position: absolute"/>
-                        <webuijsf:textField id="nameTF" required="true" style="left: 96px; top: 72px; position: absolute"/>
-                        <webuijsf:textField id="rankTF" required="true" style="left: 96px; top: 96px; position: absolute"/>
                         <webuijsf:label for="unitTF" id="label4" style="position: absolute; left: 24px; top: 120px" text="Unit"/>
-                        <webuijsf:textField id="unitTF" required="true" style="position: absolute; left: 96px; top: 120px"/>
+                        <webuijsf:textField binding="#{para_borrowers$Add.nricTF}" id="nricTF" required="true" style="left: 96px; top: 48px; position: absolute"/>
+                        <webuijsf:textField binding="#{para_borrowers$Add.nameTF}" id="nameTF" required="true" style="left: 96px; top: 72px; position: absolute"/>
+                        <webuijsf:textField binding="#{para_borrowers$Add.rankTF}" id="rankTF" required="true" style="left: 96px; top: 96px; position: absolute"/>
+                        <webuijsf:textField binding="#{para_borrowers$Add.unitTF}" id="unitTF" required="true" style="position: absolute; left: 96px; top: 120px"/>
                         <webuijsf:button actionExpression="#{para_borrowers$Add.add_action}" id="add" style="position: absolute; left: 24px; top: 144px" text="Add"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_borrowers/View" url="/faces/para_borrowers/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_borrowers/Add" url="/faces/para_borrowers/Add.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:message for="nricTF" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 240px; top: 48px"/>
+                        <webuijsf:message for="nameTF" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 240px; top: 72px"/>
+                        <webuijsf:message for="rankTF" id="message3" showDetail="false" showSummary="true" style="position: absolute; left: 240px; top: 96px"/>
+                        <webuijsf:message for="unitTF" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 240px; top: 120px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

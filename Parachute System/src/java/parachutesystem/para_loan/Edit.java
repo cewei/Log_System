@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package parachutesystem.para_type;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
+package parachutesystem.para_loan;
+
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
+import parachutesystem.RequestBean1;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -17,11 +18,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on May 21, 2009, 11:44:14 AM
+ * @version Edit.java
+ * @version Created on Jun 18, 2009, 4:56:36 PM
  * @author Dell
  */
-public class View extends AbstractPageBean {
+
+public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -30,44 +32,14 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
-        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
-        para_typeRowSet.setTableName("para_type");
-    }
-    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_typeDataProvider() {
-        return para_typeDataProvider;
-    }
-
-    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_typeDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_typeRowSet() {
-        return para_typeRowSet;
-    }
-
-    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
-        this.para_typeRowSet = crsxi;
-    }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
-
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
     }
 
     // </editor-fold>
+
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Edit() {
     }
 
     /**
@@ -89,21 +61,21 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-
+        
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
+            log("Edit Initialization Failure", e);
+            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
-
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
+        
+        // </editor-fold>
+        // Perform application initialization that must complete
+        // *after* managed components are initialized
+        // TODO - add your own initialization code here
     }
 
     /**
@@ -139,15 +111,34 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_typeDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String edit_action() {
-        return "viewToEdit";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
+    
 }
 
