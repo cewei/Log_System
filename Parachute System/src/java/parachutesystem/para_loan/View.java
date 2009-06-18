@@ -137,9 +137,7 @@ public class View extends AbstractPageBean {
     }
 
     public String edit_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
+        return "viewToEdit";
     }
 }
 

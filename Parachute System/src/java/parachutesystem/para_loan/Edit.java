@@ -2,14 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_loan;
 
+import com.sun.data.provider.RowKey;
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.TableRowGroup;
+import com.sun.webui.jsf.event.TableSelectPhaseListener;
 import javax.faces.FacesException;
-import parachutesystem.RequestBean1;
-import parachutesystem.ApplicationBean1;
-import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -22,7 +24,6 @@ import parachutesystem.SessionBean1;
  * @version Created on Jun 18, 2009, 4:56:36 PM
  * @author Dell
  */
-
 public class Edit extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -32,8 +33,94 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_loanDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Edit.para_loanRowSet}"));
+        para_loanRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_loanRowSet.setCommand("SELECT * FROM para_loan");
+        para_loanRowSet.setTableName("para_loan");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Edit.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
+    }
+    private CachedRowSetDataProvider para_loanDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_loanDataProvider() {
+        return para_loanDataProvider;
     }
 
+    public void setPara_loanDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_loanDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_loanRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_loanRowSet() {
+        return para_loanRowSet;
+    }
+
+    public void setPara_loanRowSet(CachedRowSetXImpl crsxi) {
+        this.para_loanRowSet = crsxi;
+    }
+    private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
+
+    public void setSelected(Object object) {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        if (rowKey != null) {
+            tablePhaseListener.setSelected(rowKey, object);
+        }
+    }
+
+    public Object getSelected() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.getSelected(rowKey);
+
+    }
+
+    public Object getSelectedValue() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return (rowKey != null) ? rowKey.getRowId() : null;
+
+    }
+
+    public boolean getSelectedState() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.isSelected(rowKey);
+    }
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
+    }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
+    }
     // </editor-fold>
 
     /**
@@ -61,7 +148,7 @@ public class Edit extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -69,13 +156,13 @@ public class Edit extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Edit Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -111,34 +198,41 @@ public class Edit extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_loanDataProvider.close();
+        para_inventoryDataProvider.close();
     }
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
-    }
+    public String edit_action() {
+        int selectedRows = getTableRowGroup1().getSelectedRowsCount();
+        if (selectedRows > 0) {
+            RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
+            for (int i = 0; i < selectedRowKeys.length; i++) {
+                para_loanDataProvider.setCursorRow(selectedRowKeys[i]);
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
+                para_loanDataProvider.setValue("date_in", calendar1.getValue());
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+                String[] fieldKeys = {"para_inventory.type_prefix_no", "para_inventory.chute_no", "para_inventory.serial_no"};
+                Object[] values = {para_loanDataProvider.getValue("type_prefix_no"), para_loanDataProvider.getValue("chute_no"), para_loanDataProvider.getValue("serial_no")};
+                RowKey[] rks = para_inventoryDataProvider.findAll(fieldKeys, values);
+
+                if (rks.length == 1) {
+                    para_inventoryDataProvider.setCursorRow(rks[0]);
+                    para_inventoryDataProvider.setValue("para_inventory.status", "returned");
+
+                    para_loanDataProvider.commitChanges();
+                    para_inventoryDataProvider.commitChanges();
+                } else {
+                    log(" ERROR - para_packing.Add : Too many parachutes");
+                    error(" ERROR - Too many parachutes");
+                    return null;
+                }
+            }
+            return "editToView";
+        } else {
+            log(" INFO - para_loan.Edit : No row selected");
+            info(" INFO - Please select a row.");
+            return null;
+        }
     }
-    
 }
 
