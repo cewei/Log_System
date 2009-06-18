@@ -8,6 +8,8 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.StaticText;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.FacesException;
 
 /**
@@ -108,6 +110,11 @@ public class Page1 extends AbstractPageBean {
         this.para_inventoryRowSet2 = crsxi;
     }
 
+    private List<Status> statues;
+
+    public List<Status> getStatues() {
+        return statues;
+    }
     // </editor-fold>
 
     /**
@@ -173,11 +180,17 @@ public class Page1 extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        statues = new ArrayList<Status>();
         loanT.setText(para_inventoryDataProvider.getValue("count(*)"));
+        statues.add(new Status("Loan", Integer.parseInt(para_inventoryDataProvider.getValue("count(*)").toString())));
+
         para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
         serviceableT.setText(para_inventoryDataProvider.getValue("count(*)"));
+        statues.add(new Status("Serviceable", Integer.parseInt(para_inventoryDataProvider.getValue("count(*)").toString())));
+
         para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
         servicingT.setText(para_inventoryDataProvider.getValue("count(*)"));
+        statues.add(new Status("Servicing", Integer.parseInt(para_inventoryDataProvider.getValue("count(*)").toString())));
     }
 
     /**

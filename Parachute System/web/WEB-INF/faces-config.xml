@@ -245,6 +245,11 @@
             <to-view-id>/para_loan/Add.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_loan/Edit.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>para_loan$Add</managed-bean-name>
@@ -259,12 +264,20 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
-    <application>
-        <message-bundle>parachutesystem.MyMessages</message-bundle>
-    </application>
     <managed-bean>
         <managed-bean-name>para_loan$Edit</managed-bean-name>
         <managed-bean-class>parachutesystem.para_loan.Edit</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_loan/Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_loan/View.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <application>
+        <message-bundle>parachutesystem.MyMessages</message-bundle>
+    </application>
 </faces-config>
