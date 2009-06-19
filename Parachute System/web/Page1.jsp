@@ -26,6 +26,7 @@
                         <webuijsf:staticText binding="#{Page1.loanT}" id="loanT" style="left: 120px; top: 48px; position: absolute"/>
                         <webuijsf:staticText binding="#{Page1.serviceableT}" id="serviceableT" style="left: 120px; top: 72px; position: absolute"/>
                         <webuijsf:staticText binding="#{Page1.servicingT}" id="servicingT" style="left: 120px; top: 96px; position: absolute"/>
+                        <webuijsf:image id="image1" style="position: absolute; left: 96px; top: 144px" url="/piechart.jpg"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
