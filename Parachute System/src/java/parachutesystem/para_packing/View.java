@@ -2,15 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package parachutesystem.para_packing;
 
-import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.TableRowGroup;
-import com.sun.webui.jsf.event.TableSelectPhaseListener;
-import java.util.Date;
 import javax.faces.FacesException;
 
 /**
@@ -21,9 +18,10 @@ import javax.faces.FacesException;
  * to respond to incoming events.</p>
  *
  * @version View.java
- * @version Created on Jun 3, 2009, 3:47:42 PM
+ * @version Created on Jun 22, 2009, 2:27:02 PM
  * @author Dell
  */
+
 public class View extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -35,7 +33,7 @@ public class View extends AbstractPageBean {
     private void _init() throws Exception {
         para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View.para_packing_viewRowSet}"));
         para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_packing_viewRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_packing_view");
+        para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view");
         para_packing_viewRowSet.setTableName("para_packing_view");
     }
     private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
@@ -56,42 +54,8 @@ public class View extends AbstractPageBean {
     public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
         this.para_packing_viewRowSet = crsxi;
     }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
-
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
-    }
-    private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
-
-    public void setSelected(Object object) {
-        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
-        if (rowKey != null) {
-            tablePhaseListener.setSelected(rowKey, object);
-        }
-    }
-
-    public Object getSelected() {
-        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
-        return tablePhaseListener.getSelected(rowKey);
-
-    }
-
-    public Object getSelectedValue() {
-        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
-        return (rowKey != null) ? rowKey.getRowId() : null;
-
-    }
-
-    public boolean getSelectedState() {
-        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
-        return tablePhaseListener.isSelected(rowKey);
-    }
-
     // </editor-fold>
+
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -117,7 +81,7 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-
+        
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -125,13 +89,13 @@ public class View extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
-
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
+        
+        // </editor-fold>
+        // Perform application initialization that must complete
+        // *after* managed components are initialized
+        // TODO - add your own initialization code here
     }
 
     /**
@@ -170,50 +134,9 @@ public class View extends AbstractPageBean {
         para_packing_viewDataProvider.close();
     }
 
-    public synchronized String select_action() {
-        int selectedRows = getTableRowGroup1().getSelectedRowsCount();
-
-        RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
-
-        if (selectedRows == 1) {
-            try {
-                para_packing_viewDataProvider.setCursorRow(selectedRowKeys[0]);
-                String serialNo = (String) para_packing_viewDataProvider.getValue("Serial No");
-                String chuteNo = (String) para_packing_viewDataProvider.getValue("chute_no");
-                Long paraTypeNo = (Long) para_packing_viewDataProvider.getValue("para_type_no");
-                String chute_No = (String) para_packing_viewDataProvider.getValue("Chute No");
-                Date datePacked = (Date) para_packing_viewDataProvider.getValue("Repacked Date");
-                String packBy = (String) para_packing_viewDataProvider.getValue("Pack By");
-                String inspectBy = (String) para_packing_viewDataProvider.getValue("Inspect By");
-                String checkType = (String) para_packing_viewDataProvider.getValue("Check Type");
-                String status = (String) para_packing_viewDataProvider.getValue("Status");
-
-                getParaPackingBean().setSerialNo(serialNo);
-                getParaPackingBean().setChuteNo(chuteNo);
-                getParaPackingBean().setParaTypeNo(paraTypeNo);
-                getParaPackingBean().setChute_No(chute_No);
-                getParaPackingBean().setDatePacked(datePacked);
-                getParaPackingBean().setPackBy(packBy);
-                getParaPackingBean().setInspectBy(inspectBy);
-                getParaPackingBean().setCheckType(checkType);
-                getParaPackingBean().setStatus(status);
-
-                return "viewToAdd";
-            } catch (Exception ex) {
-                log(" ERROR - para_packing.View : Error Description ", ex);
-                error(" ERROR - " +ex.getMessage());
-                return null;
-            }
-        }
-        else {
-            log(" INFO - para_packing.View : No row selected.");
-            info(" INFO - Please select a row.");
-            return null;
-        }
+    public String add_action() {
+        return "viewToAdd";
     }
-
-    protected ParaPackingBean getParaPackingBean() {
-        return (ParaPackingBean) getBean("para_packing$ParaPackingBean");
-    }
+    
 }
 
