@@ -19,16 +19,19 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/View" url="/faces/para_packing/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_packing/Add" url="/faces/para_packing/Add.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:label for="calendar1" id="label1" style="left: 24px; top: 72px; position: absolute" text="Repacked Date"/>
+                        <webuijsf:label for="repackDateCal" id="label1" style="left: 24px; top: 72px; position: absolute" text="Repacked Date"/>
                         <webuijsf:label for="packByDD" id="label2" style="left: 24px; top: 96px; position: absolute" text="Packed By"/>
                         <webuijsf:label for="inspectByDD" id="label3" style="left: 24px; top: 120px; position: absolute" text="Inspected By"/>
                         <webuijsf:label for="checkTypeDD" id="label4" style="left: 24px; top: 144px; position: absolute" text="Check Type"/>
                         <webuijsf:label for="statusDD" id="label5" style="left: 24px; top: 168px; position: absolute" text="Status"/>
-                        <webuijsf:calendar dateFormatPattern="dd-MM-yyyy" id="calendar1" required="true" style="left: 120px; top: 72px; position: absolute"/>
-                        <webuijsf:dropDown id="packByDD" items="#{para_packing$Add.packByDDDefaultOptions.options}" style="left: 120px; top: 96px; position: absolute"/>
-                        <webuijsf:dropDown id="inspectByDD" items="#{para_packing$Add.inspectByDDDefaultOptions.options}" style="left: 120px; top: 120px; position: absolute"/>
-                        <webuijsf:dropDown id="checkTypeDD" items="#{para_packing$Add.checkTypeDDDefaultOptions.options}" style="left: 120px; top: 144px; position: absolute"/>
-                        <webuijsf:dropDown id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}" style="left: 120px; top: 168px; position: absolute"/>
+                        <webuijsf:calendar binding="#{para_packing$Add.repackDateCal}" dateFormatPattern="dd-MM-yyyy" id="repackDateCal" required="true" style="left: 120px; top: 72px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.packByDD}" id="packByDD"
+                            items="#{para_packing$Add.para_riggersDataProvider.options['para_riggers.NRIC,para_riggers.NRIC']}" style="left: 120px; top: 96px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.inspectByDD}" id="inspectByDD"
+                            items="#{para_packing$Add.para_riggersDataProvider1.options['para_riggers.NRIC,para_riggers.NRIC']}" style="left: 120px; top: 120px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.checkTypeDD}" id="checkTypeDD"
+                            items="#{para_packing$Add.checkTypeDDDefaultOptions.options}" style="left: 120px; top: 144px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{para_packing$Add.statusDD}" id="statusDD" items="#{para_packing$Add.statusDDDefaultOptions.options}" style="left: 120px; top: 168px; position: absolute"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 192px" title="Parachute Packing" width="0">
                             <webuijsf:tableRowGroup binding="#{para_packing$Add.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_packing$Add.selectedState}" sourceData="#{para_packing$Add.para_packing_viewDataProvider}" sourceVar="currentRow">
@@ -63,7 +66,7 @@
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:button actionExpression="#{para_packing$Add.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save"/>
-                        <webuijsf:message for="calendar1" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 72px"/>
+                        <webuijsf:message for="repackDateCal" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 72px"/>
                         <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="left: 336px; top: 48px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
