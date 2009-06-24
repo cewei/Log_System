@@ -55,6 +55,7 @@ CREATE TABLE  `parachute_system`.`para_riggers` (
   `rank` varchar(45) NOT NULL,
   `rigger` tinyint(1) NOT NULL,
   `inspector` tinyint(1) NOT NULL,
+  `last_refresher_date` date NOT NULL,
   PRIMARY KEY (`NRIC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

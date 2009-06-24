@@ -33,6 +33,9 @@
                                 <webuijsf:tableColumn headerText="inspector" id="tableColumn5" sort="para_riggers.inspector">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_riggers.inspector']}"/>
                                 </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="last_refresher_date" id="tableColumn7" sort="para_riggers.last_refresher_date">
+                                    <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_riggers.last_refresher_date']}"/>
+                                </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
