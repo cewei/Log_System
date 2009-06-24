@@ -14,8 +14,10 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Riggers" width="0">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_riggers$Edit.para_riggersDataProvider}" sourceVar="currentRow">
+                        <webuijsf:table augmentTitle="false" id="table1" selectMultipleButton="true"
+                            style="left: 24px; top: 72px; position: absolute; width: 0px" title="Riggers" width="0">
+                            <webuijsf:tableRowGroup binding="#{para_riggers$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
+                                selected="#{para_riggers$Edit.selectedState}" sourceData="#{para_riggers$Edit.para_riggersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
                                     <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_riggers.NRIC']}"/>
                                     <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
@@ -33,6 +35,13 @@
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="inspector" id="tableColumn5" sort="para_riggers.inspector">
                                     <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_riggers.inspector']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="last_refresher_date" id="tableColumn6" sort="para_riggers.last_refresher_date">
+                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_riggers.last_refresher_date']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn id="tableRowGroup1SelectionColumn"
+                                    onClick="setTimeout(function(){document.getElementById('form1:table1').initAllRows()}, 0);" selectId="tableRowGroup1SelectionChild">
+                                    <webuijsf:checkbox id="tableRowGroup1SelectionChild" selected="#{para_riggers$Edit.selected}" selectedValue="#{para_riggers$Edit.selectedValue}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

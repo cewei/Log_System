@@ -24,7 +24,7 @@
                         <webuijsf:textField binding="#{para_riggers$Add.rankTF}" id="rankTF" required="true" style="left: 96px; top: 96px; position: absolute"/>
                         <webuijsf:checkbox binding="#{para_riggers$Add.riggerCB}" id="riggerCB" selected="false" style="left: 96px; top: 120px; position: absolute"/>
                         <webuijsf:checkbox binding="#{para_riggers$Add.inspectorCB}" id="inspectorCB" selected="false" style="left: 96px; top: 144px; position: absolute"/>
-                        <webuijsf:button actionExpression="#{para_riggers$Add.add_action}" id="add" style="left: 23px; top: 168px; position: absolute" text="Add"/>
+                        <webuijsf:button actionExpression="#{para_riggers$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_riggers/View" url="/faces/para_riggers/View.jsp"/>
@@ -34,6 +34,9 @@
                         <webuijsf:message for="nameTF" id="message2" showDetail="false" showSummary="true" style="left: 240px; top: 72px; position: absolute"/>
                         <webuijsf:message for="rankTF" id="message3" showDetail="false" showSummary="true" style="left: 240px; top: 96px; position: absolute"/>
                         <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="position: absolute; left: 384px; top: 48px"/>
+                        <webuijsf:calendar binding="#{para_riggers$Add.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" label="Last Refresher Date"
+                            required="true" style="left: 24px; top: 168px; position: absolute"/>
+                        <webuijsf:message for="calendar1" id="message4" showDetail="false" showSummary="true" style="left: 336px; top: 168px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

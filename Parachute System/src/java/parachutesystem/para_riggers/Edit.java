@@ -4,9 +4,12 @@
  */
 package parachutesystem.para_riggers;
 
+import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.TableRowGroup;
+import com.sun.webui.jsf.event.TableSelectPhaseListener;
 import javax.faces.FacesException;
 
 /**
@@ -51,6 +54,40 @@ public class Edit extends AbstractPageBean {
 
     public void setPara_riggersRowSet(CachedRowSetXImpl crsxi) {
         this.para_riggersRowSet = crsxi;
+    }
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
+    }
+    private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
+
+    public void setSelected(Object object) {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        if (rowKey != null) {
+            tablePhaseListener.setSelected(rowKey, object);
+        }
+    }
+
+    public Object getSelected() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.getSelected(rowKey);
+
+    }
+
+    public Object getSelectedValue() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return (rowKey != null) ? rowKey.getRowId() : null;
+
+    }
+
+    public boolean getSelectedState() {
+        RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
+        return tablePhaseListener.isSelected(rowKey);
     }
     // </editor-fold>
 
@@ -133,14 +170,29 @@ public class Edit extends AbstractPageBean {
     }
 
     public String save_action() {
-        try {
-            para_riggersDataProvider.commitChanges();
+        int selectedRows = getTableRowGroup1().getSelectedRowsCount();
+        if (selectedRows > 0) {
+            RowKey[] selectedRowKeys = getTableRowGroup1().getSelectedRowKeys();
+            for (int i = 0; i < selectedRowKeys.length; i++) {
+                int rowId = Integer.parseInt(selectedRowKeys[i].getRowId()) + 1;
+                info("Row " + rowId + " is selected");
+                log("Row " + rowId + " is selected");
+            }
             return "editToView";
-        } catch (Exception ex) {
-            log(" ERROR - para_riggers.Edit : Error Description ", ex);
-            error(" Error - " + ex.getMessage());
+        } else {
+            log(" INFO - para_riggers.Edit : No row selected");
+            info(" INFO - Please select a row.");
             return null;
         }
+
+//        try {
+//            para_riggersDataProvider.commitChanges();
+//            return "editToView";
+//        } catch (Exception ex) {
+//            log(" ERROR - para_riggers.Edit : Error Description ", ex);
+//            error(" Error - " + ex.getMessage());
+//            return null;
+//        }
     }
 }
 

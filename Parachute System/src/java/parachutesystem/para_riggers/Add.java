@@ -8,6 +8,7 @@ import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.Checkbox;
 import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
@@ -100,6 +101,15 @@ public class Add extends AbstractPageBean {
     public void setInspectorCB(Checkbox c) {
         this.inspectorCB = c;
     }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
+    }
     // </editor-fold>
 
     /**
@@ -191,6 +201,7 @@ public class Add extends AbstractPageBean {
                     para_riggersDataProvider.setValue("para_riggers.rank", rankTF.getText());
                     para_riggersDataProvider.setValue("para_riggers.rigger", riggerCB.getSelected());
                     para_riggersDataProvider.setValue("para_riggers.inspector", inspectorCB.getSelected());
+                    para_riggersDataProvider.setValue("para_riggers.last_refresher_date", calendar1.getSelectedDate());
                     // set values of other fields, if any
                     para_riggersDataProvider.commitChanges();
                     para_riggersDataProvider.refresh();

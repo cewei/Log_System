@@ -9,11 +9,11 @@ INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES(3, '0001', '3000', '2009-04-12', 0, 'loan');
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES(4, '0001', '4000', '2009-04-12', 0, 'servicing');
 
-INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S1234567A', 'Riggger A', '3SG', 1, 0);
-INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S2345678B', 'Inspector A', '3SG', 0, 1);
-INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S3456789C', 'Rigger B', '1SG', 1, 0);
-INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S4567890D', 'Inspector B', '1SG', 0, 1);
-INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector) VALUES ('S5678901E', 'Rigger & Inspector C', 'MWO', 1, 1);
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector, last_refresher_date) VALUES ('S1234567A', 'Riggger A', '3SG', 1, 0, '2009-01-01');
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector, last_refresher_date) VALUES ('S2345678B', 'Inspector A', '3SG', 0, 1, '2009-01-01');
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector, last_refresher_date) VALUES ('S3456789C', 'Rigger B', '1SG', 1, 0, '2009-01-01');
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector, last_refresher_date) VALUES ('S4567890D', 'Inspector B', '1SG', 0, 1, '2009-01-01');
+INSERT INTO para_riggers (NRIC, name, rank, rigger, inspector, last_refresher_date) VALUES ('S5678901E', 'Rigger & Inspector C', 'MWO', 1, 1, '2009-01-01');
 
 INSERT INTO para_borrowers (NRIC, name, rank, unit) VALUES ('S8470182C', 'Chris', '3SG', 'BMTC');
 INSERT INTO para_borrowers (NRIC, name, rank, unit) VALUES ('S8770182C', 'Lancer', 'SSG', 'HQ CDO');
