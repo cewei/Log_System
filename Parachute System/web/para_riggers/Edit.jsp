@@ -15,7 +15,7 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:table augmentTitle="false" id="table1" selectMultipleButton="true"
-                            style="left: 24px; top: 72px; position: absolute; width: 0px" title="Riggers" width="0">
+                            style="left: 24px; top: 96px; position: absolute; width: 0px" title="Riggers" width="0">
                             <webuijsf:tableRowGroup binding="#{para_riggers$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_riggers$Edit.selectedState}" sourceData="#{para_riggers$Edit.para_riggersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
@@ -51,6 +51,9 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_riggers/View" url="/faces/para_riggers/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_riggers/Edit" url="/faces/para_riggers/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:calendar binding="#{para_riggers$Edit.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" label="Refresher Date"
+                            required="true" style="position: absolute; left: 24px; top: 72px"/>
+                        <webuijsf:message for="calendar1" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 72px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

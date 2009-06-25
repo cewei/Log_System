@@ -8,6 +8,7 @@ import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.TableRowGroup;
 import com.sun.webui.jsf.event.TableSelectPhaseListener;
 import javax.faces.FacesException;
@@ -37,6 +38,7 @@ public class Edit extends AbstractPageBean {
         para_riggersRowSet.setCommand("SELECT * FROM para_riggers");
         para_riggersRowSet.setTableName("para_riggers");
     }
+    // <editor-fold defaultstate="collapsed" desc="para_riggers">
     private CachedRowSetDataProvider para_riggersDataProvider = new CachedRowSetDataProvider();
 
     public CachedRowSetDataProvider getPara_riggersDataProvider() {
@@ -55,15 +57,8 @@ public class Edit extends AbstractPageBean {
     public void setPara_riggersRowSet(CachedRowSetXImpl crsxi) {
         this.para_riggersRowSet = crsxi;
     }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
-
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
-    }
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Table Listener">
     private TableSelectPhaseListener tablePhaseListener = new TableSelectPhaseListener();
 
     public void setSelected(Object object) {
@@ -88,6 +83,25 @@ public class Edit extends AbstractPageBean {
     public boolean getSelectedState() {
         RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         return tablePhaseListener.isSelected(rowKey);
+    }
+    // </editor-fold>
+    private TableRowGroup tableRowGroup1 = new TableRowGroup();
+
+    public TableRowGroup getTableRowGroup1() {
+        return tableRowGroup1;
+    }
+
+    public void setTableRowGroup1(TableRowGroup trg) {
+        this.tableRowGroup1 = trg;
+    }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
     }
     // </editor-fold>
 
@@ -177,22 +191,16 @@ public class Edit extends AbstractPageBean {
                 int rowId = Integer.parseInt(selectedRowKeys[i].getRowId()) + 1;
                 info("Row " + rowId + " is selected");
                 log("Row " + rowId + " is selected");
+
+                para_riggersDataProvider.setValue("last_refresher_date", selectedRowKeys[i], calendar1.getSelectedDate());
             }
+            para_riggersDataProvider.commitChanges();
             return "editToView";
         } else {
             log(" INFO - para_riggers.Edit : No row selected");
             info(" INFO - Please select a row.");
             return null;
         }
-
-//        try {
-//            para_riggersDataProvider.commitChanges();
-//            return "editToView";
-//        } catch (Exception ex) {
-//            log(" ERROR - para_riggers.Edit : Error Description ", ex);
-//            error(" Error - " + ex.getMessage());
-//            return null;
-//        }
     }
 }
 
