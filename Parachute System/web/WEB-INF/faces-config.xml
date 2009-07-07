@@ -275,4 +275,9 @@
     <application>
         <message-bundle>parachutesystem.MyMessages</message-bundle>
     </application>
+    <managed-bean>
+        <managed-bean-name>IcePage1</managed-bean-name>
+        <managed-bean-class>parachutesystem.IcePage1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
