@@ -511,20 +511,26 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,-do-dist-with-manifest,-do-dist-without-manifest" name="do-dist"/>
     <target depends="init" if="dist.ear.dir" name="library-inclusion-in-manifest">
-        <copyfiles files="${libs.jsf12-support.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.jsf12-support.classpath" todir="${dist.ear.dir}"/>
-        <copyfiles files="${libs.woodstock-components.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.woodstock-components.classpath" todir="${dist.ear.dir}"/>
         <copyfiles files="${libs.woodstock-theme-default.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.woodstock-theme-default.classpath" todir="${dist.ear.dir}"/>
+        <copyfiles files="${libs.jsf12-support-runtime-modified.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.jsf12-support-runtime-modified.classpath" todir="${dist.ear.dir}"/>
+        <copyfiles files="${libs.icefaces-jsf12-bm.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.icefaces-jsf12-bm.classpath" todir="${dist.ear.dir}"/>
+        <copyfiles files="${libs.icefaces-jsf12-runtime-support.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.icefaces-jsf12-runtime-support.classpath" todir="${dist.ear.dir}"/>
+        <copyfiles files="${libs.woodstock-components-modified.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.woodstock-components-modified.classpath" todir="${dist.ear.dir}"/>
         <copyfiles files="${libs.exceptionhandler-runtime.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.icefaces-runtime-181.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${manifest.libs.jsf12-support.classpath} ${manifest.libs.woodstock-components.classpath} ${manifest.libs.woodstock-theme-default.classpath} "/>
+            <attribute name="Class-Path" value="${manifest.libs.woodstock-theme-default.classpath} ${manifest.libs.jsf12-support-runtime-modified.classpath} ${manifest.libs.icefaces-jsf12-bm.classpath} ${manifest.libs.icefaces-jsf12-runtime-support.classpath} ${manifest.libs.woodstock-components-modified.classpath} "/>
         </manifest>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
-        <copyfiles files="${libs.jsf12-support.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copyfiles files="${libs.woodstock-components.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.woodstock-theme-default.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.jsf12-support-runtime-modified.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.icefaces-jsf12-bm.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.icefaces-jsf12-runtime-support.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.woodstock-components-modified.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.exceptionhandler-runtime.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.icefaces-runtime-181.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>
