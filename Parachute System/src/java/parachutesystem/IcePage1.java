@@ -165,12 +165,12 @@ public class IcePage1 extends AbstractPageBean {
         temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
         data.add(temp);
 
-        color = new ArrayList()<Color>;
-        Color temp1 = Color.RED;
+        color = new ArrayList<Color>();
+        Color temp1 = Color.YELLOW;
         color.add(temp1);
         temp1 = Color.GREEN;
         color.add(temp1);
-        temp1 = Color.BLUE;
+        temp1 = Color.RED;
         color.add(temp1);
 
         // </editor-fold>
