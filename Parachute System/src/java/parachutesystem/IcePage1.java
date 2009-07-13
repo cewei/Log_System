@@ -82,33 +82,33 @@ public class IcePage1 extends AbstractPageBean {
         this.para_inventoryRowSet2 = crsxi;
     }
 
-    private List labels;
+    private List <String> labels;
 
     public List getLabels() {
         return labels;
     }
 
-    public void setLabels(List labels) {
+    public void setLabels(List <String> labels) {
         this.labels = labels;
     }
 
-    private List data;
+    private List <Double> data;
 
     public List getData() {
         return data;
     }
 
-    public void setData(List data) {
+    public void setData(List <Double> data) {
         this.data = data;
     }
 
-    private List color;
+    private List <Color> color;
 
     public List getColor() {
         return color;
     }
 
-    public void setColor(List color) {
+    public void setColor(List <Color> color) {
         this.color = color;
     }
 
@@ -133,6 +133,7 @@ public class IcePage1 extends AbstractPageBean {
      * values submitted with this request.  Instead, they represent the
      * property values that were saved for this view when it was rendered.</p>
      */
+    @Override
     public void init() {
         // Perform initializations inherited from our superclass
         super.init();
@@ -149,6 +150,7 @@ public class IcePage1 extends AbstractPageBean {
             log("IcePage1 Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
+        /**
         labels = new ArrayList<String>();
         labels.add(new String("Loaned out"));
         labels.add(new String("Serviceable"));
@@ -172,6 +174,7 @@ public class IcePage1 extends AbstractPageBean {
         color.add(temp1);
         temp1 = Color.RED;
         color.add(temp1);
+        **/
 
         // </editor-fold>
         // Perform application initialization that must complete
@@ -186,6 +189,7 @@ public class IcePage1 extends AbstractPageBean {
      * is processing a form submit.  Customize this method to allocate
      * resources that will be required in your event handlers.</p>
      */
+    @Override
     public void preprocess() {
     }
 
@@ -199,6 +203,29 @@ public class IcePage1 extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        labels = new ArrayList<String>();
+        labels.add(new String("Loaned out"));
+        labels.add(new String("Serviceable"));
+        labels.add(new String("Servicing"));
+
+        data = new ArrayList<Double>();
+        Double temp = null;
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        color = new ArrayList<Color>();
+        Color temp1 = Color.YELLOW;
+        color.add(temp1);
+        temp1 = Color.GREEN;
+        color.add(temp1);
+        temp1 = Color.RED;
+        color.add(temp1);
     }
 
     /**
@@ -209,6 +236,7 @@ public class IcePage1 extends AbstractPageBean {
      * <code>preprocess()</code>, or <code>prerender()</code> methods (or
      * acquired during execution of an event handler).</p>
      */
+    @Override
     public void destroy() {
         para_inventoryDataProvider.close();
     }
