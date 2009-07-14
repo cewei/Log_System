@@ -280,4 +280,9 @@
         <managed-bean-class>parachutesystem.IcePage1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment1</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
