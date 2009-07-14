@@ -10,6 +10,10 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.FacesException;
@@ -23,6 +27,7 @@ import javax.faces.FacesException;
  */
 public class IcePage1 extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
+
     private int __placeholder;
 
     /**
@@ -51,7 +56,6 @@ public class IcePage1 extends AbstractPageBean {
     public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
         this.para_inventoryDataProvider = crsdp;
     }
-
     private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_inventoryRowSet() {
@@ -61,7 +65,6 @@ public class IcePage1 extends AbstractPageBean {
     public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
         this.para_inventoryRowSet = crsxi;
     }
-
     private CachedRowSetXImpl para_inventoryRowSet1 = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_inventoryRowSet1() {
@@ -71,7 +74,6 @@ public class IcePage1 extends AbstractPageBean {
     public void setPara_inventoryRowSet1(CachedRowSetXImpl crsxi) {
         this.para_inventoryRowSet1 = crsxi;
     }
-
     private CachedRowSetXImpl para_inventoryRowSet2 = new CachedRowSetXImpl();
 
     public CachedRowSetXImpl getPara_inventoryRowSet2() {
@@ -81,40 +83,35 @@ public class IcePage1 extends AbstractPageBean {
     public void setPara_inventoryRowSet2(CachedRowSetXImpl crsxi) {
         this.para_inventoryRowSet2 = crsxi;
     }
-
-    private List <String> labels;
+    private List<String> labels;
 
     public List getLabels() {
         return labels;
     }
 
-    public void setLabels(List <String> labels) {
+    public void setLabels(List<String> labels) {
         this.labels = labels;
     }
-
-    private List <Double> data;
+    private List<Double> data;
 
     public List getData() {
         return data;
     }
 
-    public void setData(List <Double> data) {
+    public void setData(List<Double> data) {
         this.data = data;
     }
-
-    private List <Color> color;
+    private List<Color> color;
 
     public List getColor() {
         return color;
     }
 
-    public void setColor(List <Color> color) {
+    public void setColor(List<Color> color) {
         this.color = color;
     }
 
-
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -140,7 +137,7 @@ public class IcePage1 extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-            
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -148,9 +145,9 @@ public class IcePage1 extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("IcePage1 Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        /**
+
         labels = new ArrayList<String>();
         labels.add(new String("Loaned out"));
         labels.add(new String("Serviceable"));
@@ -174,12 +171,27 @@ public class IcePage1 extends AbstractPageBean {
         color.add(temp1);
         temp1 = Color.RED;
         color.add(temp1);
-        **/
 
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+        try {
+            File outputData = new File("../ampie/data.txt");
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write("Loaned out;" + data.get(0) + "\n");
+            out.write("Serviceable;" + data.get(1) + "\n");
+            out.write("Servicing;" + data.get(2) + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
