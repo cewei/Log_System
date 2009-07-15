@@ -51,6 +51,7 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:button actionExpression="#{para_loan$View.bulk_action}" id="bulk" style="position: absolute; left: 168px; top: 48px" text="Bulk"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

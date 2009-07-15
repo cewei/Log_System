@@ -4,10 +4,18 @@
  */
 package parachutesystem.para_loan;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Upload;
+import com.sun.webui.jsf.model.UploadedFile;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import javax.faces.FacesException;
+import javax.servlet.ServletContext;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.RequestBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -16,11 +24,11 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 9, 2009, 5:04:44 PM
+ * @version Bulk.java
+ * @version Created on Jul 15, 2009, 11:21:41 AM
  * @author Dell
  */
-public class View extends AbstractPageBean {
+public class Bulk extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -29,35 +37,33 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_loan_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$View.para_loan_viewRowSet}"));
-        para_loan_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_loan_viewRowSet.setCommand("SELECT ALL para_loan_view.`NRIC`, para_loan_view.`Rank`, para_loan_view.`Borrower`, para_loan_view.`Unit`, para_loan_view.`Serial No`, para_loan_view.`Name`, para_loan_view.`Chute No`, para_loan_view.`Date Out`, para_loan_view.`Date In`  FROM para_loan_view");
-        para_loan_viewRowSet.setTableName("para_loan_view");
     }
-    private CachedRowSetDataProvider para_loan_viewDataProvider = new CachedRowSetDataProvider();
+    private Upload fileUpload1 = new Upload();
 
-    public CachedRowSetDataProvider getPara_loan_viewDataProvider() {
-        return para_loan_viewDataProvider;
+    public Upload getFileUpload1() {
+        return fileUpload1;
     }
 
-    public void setPara_loan_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_loan_viewDataProvider = crsdp;
+    public void setFileUpload1(Upload u) {
+        this.fileUpload1 = u;
     }
-    private CachedRowSetXImpl para_loan_viewRowSet = new CachedRowSetXImpl();
+    private Button upload = new Button();
 
-    public CachedRowSetXImpl getPara_loan_viewRowSet() {
-        return para_loan_viewRowSet;
+    public Button getUpload() {
+        return upload;
     }
 
-    public void setPara_loan_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_loan_viewRowSet = crsxi;
+    public void setUpload(Button b) {
+        this.upload = b;
     }
+    private String realFilePath;
+    private static final String FILE_URL = "/resources/file";
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Bulk() {
     }
 
     /**
@@ -86,14 +92,16 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("Bulk Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
 
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
+        // </editor-fold>
+        // Perform application initialization that must complete
+        // *after* managed components are initialized
+        // TODO - add your own initialization code here
+        ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+        this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
     }
 
     /**
@@ -129,19 +137,74 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_loan_viewDataProvider.close();
     }
 
-    public String add_action() {
-        return "viewToAdd";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
-    public String edit_action() {
-        return "viewToEdit";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String bulk_action() {
-        return "viewToBulk";
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
+
+    public String upload_action() {
+        UploadedFile uploadedFile = fileUpload1.getUploadedFile();
+
+        if (uploadedFile == null) {
+            log("file null");
+            return null;
+        }
+
+        String uploadedFileName = uploadedFile.getOriginalName();
+        // Some browsers return complete path name, some don't
+        // Make sure we only have the file name
+        // First, try forward slash
+        int index = uploadedFileName.lastIndexOf('/');
+        String justFileName;
+        if (index >= 0) {
+            justFileName = uploadedFileName.substring(index + 1);
+        } else {
+            // Try backslash
+            index = uploadedFileName.lastIndexOf('\\');
+            if (index >= 0) {
+                justFileName = uploadedFileName.substring(index + 1);
+            } else {
+                // No forward or back slashes
+                justFileName = uploadedFileName;
+            }
+            try {
+                File file = new File(this.realFilePath +justFileName);
+                uploadedFile.write(file);
+                log("uploaded");
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                while (br.ready()) {
+                    br.readLine();
+                }
+            } catch (Exception ex) {
+                error("Cannot upload file: " + justFileName);
+            }
+        }
+        return null;
     }
 }
 
