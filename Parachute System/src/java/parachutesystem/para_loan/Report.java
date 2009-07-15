@@ -5,6 +5,7 @@
 
 package parachutesystem.para_loan;
 
+import com.icesoft.faces.component.jsfcl.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
 
@@ -29,6 +30,15 @@ public class Report extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+    }
+    private DefaultTableDataModel dataTable1Model = new DefaultTableDataModel();
+
+    public DefaultTableDataModel getDataTable1Model() {
+        return dataTable1Model;
+    }
+
+    public void setDataTable1Model(DefaultTableDataModel dtdm) {
+        this.dataTable1Model = dtdm;
     }
 
     // </editor-fold>

@@ -1,8 +1,8 @@
-INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve) VALUES
-('MA', 'MACH III ALPHA MAIN 325', 10, 100, 90, 0),
-('MAR', 'MACH III ALPHA RESERVE 325 (MAR)', 10, 100, 90, 1),
-('MC5', 'MC5 MAIN 370', 10, 100, 90, 0),
-('MCR', 'MC-5 RESERVE 370 (MCR)', 10, 100, 90, 1);
+INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve, static) VALUES
+('MA', 'MACH III ALPHA MAIN 325', 10, 100, 90, 0, 0),
+('MAR', 'MACH III ALPHA RESERVE 325 (MAR)', 10, 100, 90, 1, 0),
+('MC5', 'MC5 MAIN 370', 10, 100, 90, 0, 1),
+('MCR', 'MC-5 RESERVE 370 (MCR)', 10, 100, 90, 1, 1);
 
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES
 (1, '1', '975170002', '1997-06-01', 0, 'serviceable'),
