@@ -2,11 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package parachutesystem.para_loan;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
 
 /**
@@ -16,11 +15,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 9, 2009, 5:04:44 PM
+ * @version Report.java
+ * @version Created on Jul 15, 2009, 3:39:03 PM
  * @author Dell
  */
-public class View extends AbstractPageBean {
+
+public class Report extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -29,35 +29,14 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_loan_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$View.para_loan_viewRowSet}"));
-        para_loan_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_loan_viewRowSet.setCommand("SELECT ALL para_loan_view.`NRIC`, para_loan_view.`Rank`, para_loan_view.`Borrower`, para_loan_view.`Unit`, para_loan_view.`Serial No`, para_loan_view.`Name`, para_loan_view.`Chute No`, para_loan_view.`Date Out`, para_loan_view.`Date In`  FROM para_loan_view");
-        para_loan_viewRowSet.setTableName("para_loan_view");
-    }
-    private CachedRowSetDataProvider para_loan_viewDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_loan_viewDataProvider() {
-        return para_loan_viewDataProvider;
     }
 
-    public void setPara_loan_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_loan_viewDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_loan_viewRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_loan_viewRowSet() {
-        return para_loan_viewRowSet;
-    }
-
-    public void setPara_loan_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_loan_viewRowSet = crsxi;
-    }
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public Report() {
     }
 
     /**
@@ -79,21 +58,21 @@ public class View extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-
+        
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
+            log("Report Initialization Failure", e);
+            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
-
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
+        
+        // </editor-fold>
+        // Perform application initialization that must complete
+        // *after* managed components are initialized
+        // TODO - add your own initialization code here
     }
 
     /**
@@ -129,19 +108,7 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_loan_viewDataProvider.close();
     }
-
-    public String add_action() {
-        return "viewToAdd";
-    }
-
-    public String edit_action() {
-        return "viewToEdit";
-    }
-
-    public String bulk_action() {
-        return "viewToBulk";
-    }
+    
 }
 
