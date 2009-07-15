@@ -28,6 +28,7 @@ CREATE TABLE  `parachute_system`.`para_type` (
   `max_jump` int(10) unsigned NOT NULL,
   `repack_cycle` int(10) unsigned NOT NULL,
   `reserve` tinyint(1) NOT NULL,
+  `static` tinyint(1) NOT NULL,
   PRIMARY KEY (`para_type_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

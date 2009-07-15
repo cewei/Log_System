@@ -11,6 +11,7 @@ import com.sun.webui.jsf.model.UploadedFile;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.StringTokenizer;
 import javax.faces.FacesException;
 import javax.servlet.ServletContext;
 import parachutesystem.ApplicationBean1;
@@ -58,6 +59,36 @@ public class Bulk extends AbstractPageBean {
     }
     private String realFilePath;
     private static final String FILE_URL = "/resources/file";
+    private Upload fileUpload2 = new Upload();
+
+    public Upload getFileUpload2() {
+        return fileUpload2;
+    }
+
+    public void setFileUpload2(Upload u) {
+        this.fileUpload2 = u;
+    }
+
+    private String[] mainChute;
+
+    public String[] getMainChute() {
+        return mainChute;
+    }
+
+    public void setMainChute(String[] mainChute) {
+        this.mainChute = mainChute;
+    }
+
+    private String[] reserveChute;
+
+    public String[] getReserveChute() {
+        return reserveChute;
+    }
+
+    public void setReserveChute(String[] reserveChute) {
+        this.reserveChute = reserveChute;
+    }
+
     // </editor-fold>
 
     /**
@@ -167,14 +198,14 @@ public class Bulk extends AbstractPageBean {
     }
 
     public String upload_action() {
-        UploadedFile uploadedFile = fileUpload1.getUploadedFile();
+        UploadedFile uploadedFileMain = fileUpload1.getUploadedFile();
 
-        if (uploadedFile == null) {
+        if (uploadedFileMain == null) {
             log("file null");
             return null;
         }
 
-        String uploadedFileName = uploadedFile.getOriginalName();
+        String uploadedFileName = uploadedFileMain.getOriginalName();
         // Some browsers return complete path name, some don't
         // Make sure we only have the file name
         // First, try forward slash
@@ -193,12 +224,14 @@ public class Bulk extends AbstractPageBean {
             }
             try {
                 File file = new File(this.realFilePath +justFileName);
-                uploadedFile.write(file);
+                uploadedFileMain.write(file);
                 log("uploaded");
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
                 while (br.ready()) {
-                    br.readLine();
+                    StringTokenizer st = new StringTokenizer(br.readLine(), ";");
+                    while(st.hasMoreTokens())
+                    log(st.nextToken());
                 }
             } catch (Exception ex) {
                 error("Cannot upload file: " + justFileName);
