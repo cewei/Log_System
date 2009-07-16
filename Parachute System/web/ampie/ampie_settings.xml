@@ -8,7 +8,7 @@
 <settings> 
   <data_type>csv</data_type>                                  <!-- [xml] (xml / csv) -->
   <csv_separator>;</csv_separator>                             <!-- [;] (string) csv file data separator (you need it only if you are using csv file for your data) -->
-  <skip_rows>1</skip_rows>                                    <!-- [0] (Number) if you are using csv data type, you can set the number of rows which should be skipped here -->
+  <skip_rows>0</skip_rows>                                    <!-- [0] (Number) if you are using csv data type, you can set the number of rows which should be skipped here -->
   <font></font>                                               <!-- [Arial] (font name) use device fonts, such as Arial, Times New Roman, Tahoma, Verdana... -->
   <text_size></text_size>                                     <!-- [11] (Number) text size of all texts. Every text size can be set individually in the settings below -->
   <text_color></text_color>                                   <!-- [#000000] (hex color code) main text color. Every text color can be set individually in the settings below-->
@@ -186,7 +186,7 @@
       <text_color></text_color>                               <!-- [text_color] (hex color code) button text color -->
       <text_size>12</text_size>                               <!-- [text_size](Number) button text size -->
       <text>                                                  <!-- [] (text) html tags may be used (supports <b>, <i>, <u>, <font>, <a href="">, <br/>. Enter text between []: <![CDATA[your <b>bold</b> and <i>italic</i> text]]>-->
-        <![CDATA[<b>How often do you brush your teeth?</b>]]>
+        <![CDATA[<b>Parachute Status</b>]]>
       </text>        
     </label>
   </labels>

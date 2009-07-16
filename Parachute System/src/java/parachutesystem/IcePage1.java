@@ -13,10 +13,10 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.FacesException;
+import javax.servlet.ServletContext;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -111,6 +111,8 @@ public class IcePage1 extends AbstractPageBean {
         this.color = color;
     }
 
+    private String realFilePath;
+    private static final String FILE_URL = "/ampie/data.txt";
     // </editor-fold>
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -173,7 +175,9 @@ public class IcePage1 extends AbstractPageBean {
         color.add(temp1);
 
         try {
-            File outputData = new File("../ampie/data.txt");
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
             log(outputData.getPath());
 
             outputData.createNewFile();
@@ -215,29 +219,6 @@ public class IcePage1 extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        labels = new ArrayList<String>();
-        labels.add(new String("Loaned out"));
-        labels.add(new String("Serviceable"));
-        labels.add(new String("Servicing"));
-
-        data = new ArrayList<Double>();
-        Double temp = null;
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-
-        color = new ArrayList<Color>();
-        Color temp1 = Color.YELLOW;
-        color.add(temp1);
-        temp1 = Color.GREEN;
-        color.add(temp1);
-        temp1 = Color.RED;
-        color.add(temp1);
     }
 
     /**

@@ -19,7 +19,7 @@
             var so = new SWFObject("ampie/ampie.swf", "ampie", "520", "400", "8", "#FFFFFF");
             so.addVariable("path", "ampie/");
             so.addVariable("settings_file", encodeURIComponent("ampie/ampie_settings.xml"));                // you can set two or more different settings files here (separated by commas)
-            so.addVariable("data_file", encodeURIComponent("data.txt"));
+            so.addVariable("data_file", encodeURIComponent("ampie/data.txt"));
 
             //so.addVariable("chart_data", encodeURIComponent("Loaned out;100\nServiceable;80\nServicing;90"));                   // you can pass chart data as a string directly from this file
             //	so.addVariable("chart_settings", encodeURIComponent("data in CSV or XML format"));              // you can pass chart settings as a string directly from this file

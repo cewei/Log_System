@@ -5,9 +5,12 @@
 
 package parachutesystem.para_loan;
 
-import com.icesoft.faces.component.jsfcl.data.DefaultTableDataModel;
+import com.sun.data.provider.impl.ObjectArrayDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
+import parachutesystem.RequestBean1;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -17,7 +20,7 @@ import javax.faces.FacesException;
  * to respond to incoming events.</p>
  *
  * @version Report.java
- * @version Created on Jul 15, 2009, 3:39:03 PM
+ * @version Created on Jul 16, 2009, 2:32:29 PM
  * @author Dell
  */
 
@@ -31,14 +34,14 @@ public class Report extends AbstractPageBean {
      */
     private void _init() throws Exception {
     }
-    private DefaultTableDataModel dataTable1Model = new DefaultTableDataModel();
+    private ObjectArrayDataProvider objectArrayDataProvider1 = new ObjectArrayDataProvider();
 
-    public DefaultTableDataModel getDataTable1Model() {
-        return dataTable1Model;
+    public ObjectArrayDataProvider getObjectArrayDataProvider1() {
+        return objectArrayDataProvider1;
     }
 
-    public void setDataTable1Model(DefaultTableDataModel dtdm) {
-        this.dataTable1Model = dtdm;
+    public void setObjectArrayDataProvider1(ObjectArrayDataProvider oadp) {
+        this.objectArrayDataProvider1 = oadp;
     }
 
     // </editor-fold>
@@ -83,6 +86,7 @@ public class Report extends AbstractPageBean {
         // Perform application initialization that must complete
         // *after* managed components are initialized
         // TODO - add your own initialization code here
+        objectArrayDataProvider1 = new ObjectArrayDataProvider(getSessionBean1().getMainChute());
     }
 
     /**
@@ -118,6 +122,33 @@ public class Report extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
     
 }

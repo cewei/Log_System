@@ -19,10 +19,12 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_loan/Bulk" url="/faces/para_loan/Bulk.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:upload binding="#{para_loan$Bulk.fileUpload1}" id="fileUpload1" label="Main" style="left: 24px; top: 72px; position: absolute"/>
+                        <webuijsf:upload binding="#{para_loan$Bulk.fileUpload1}" id="fileUpload1" label="Main" required="true" style="left: 24px; top: 72px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_loan$Bulk.upload_action}" binding="#{para_loan$Bulk.upload}" id="upload"
                             style="left: 23px; top: 168px; position: absolute" text="Upload"/>
-                        <webuijsf:upload binding="#{para_loan$Bulk.fileUpload2}" id="fileUpload2" label="Reserve" style="left: 24px; top: 120px; position: absolute"/>
+                        <webuijsf:upload binding="#{para_loan$Bulk.fileUpload2}" id="fileUpload2" label="Reserve" required="true" style="left: 24px; top: 120px; position: absolute"/>
+                        <webuijsf:message for="fileUpload1" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 432px; top: 72px"/>
+                        <webuijsf:message for="fileUpload2" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 432px; top: 120px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
