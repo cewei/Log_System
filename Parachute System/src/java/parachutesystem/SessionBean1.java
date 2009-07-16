@@ -33,6 +33,16 @@ public class SessionBean1 extends AbstractSessionBean {
      */
     private void _init() throws Exception {
     }
+    private Chutes [] mainChute;
+
+    public Chutes[] getMainChute() {
+        return mainChute;
+    }
+
+    public void setMainChute(Chutes[] mainChute) {
+        this.mainChute = mainChute;
+    }
+    
     // </editor-fold>
 
     /**

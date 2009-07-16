@@ -11,10 +11,12 @@ import com.sun.webui.jsf.model.UploadedFile;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.faces.FacesException;
 import javax.servlet.ServletContext;
 import parachutesystem.ApplicationBean1;
+import parachutesystem.Chutes;
 import parachutesystem.RequestBean1;
 import parachutesystem.SessionBean1;
 
@@ -58,7 +60,7 @@ public class Bulk extends AbstractPageBean {
         this.upload = b;
     }
     private String realFilePath;
-    private static final String FILE_URL = "/resources/file";
+    private static final String FILE_URL = "/resources/upload";
     private Upload fileUpload2 = new Upload();
 
     public Upload getFileUpload2() {
@@ -68,29 +70,17 @@ public class Bulk extends AbstractPageBean {
     public void setFileUpload2(Upload u) {
         this.fileUpload2 = u;
     }
+    private Chutes[] listOfChutes;
 
-    private String[] mainChute;
-
-    public String[] getMainChute() {
-        return mainChute;
+    public Chutes[] getListOfChutes() {
+        return listOfChutes;
     }
 
-    public void setMainChute(String[] mainChute) {
-        this.mainChute = mainChute;
-    }
-
-    private String[] reserveChute;
-
-    public String[] getReserveChute() {
-        return reserveChute;
-    }
-
-    public void setReserveChute(String[] reserveChute) {
-        this.reserveChute = reserveChute;
+    public void setListOfChutes(Chutes[] listOfChutes) {
+        this.listOfChutes = listOfChutes;
     }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -199,43 +189,88 @@ public class Bulk extends AbstractPageBean {
 
     public String upload_action() {
         UploadedFile uploadedFileMain = fileUpload1.getUploadedFile();
+        UploadedFile uploadedFileReserve = fileUpload2.getUploadedFile();
 
         if (uploadedFileMain == null) {
-            log("file null");
+            log("Main file null");
             return null;
         }
+        if (uploadedFileReserve == null) {
+            log("Reserve file null");
+        }
 
-        String uploadedFileName = uploadedFileMain.getOriginalName();
+        String uploadedFileMainName = uploadedFileMain.getOriginalName();
+        String uploadedFileReserveName = uploadedFileReserve.getOriginalName();
         // Some browsers return complete path name, some don't
         // Make sure we only have the file name
         // First, try forward slash
-        int index = uploadedFileName.lastIndexOf('/');
-        String justFileName;
-        if (index >= 0) {
-            justFileName = uploadedFileName.substring(index + 1);
+        int indexMain = uploadedFileMainName.lastIndexOf('/');
+        int indexReserve = uploadedFileReserveName.lastIndexOf('/');
+        String justFileMainName;
+        String justFileReserveName;
+        if (indexMain >= 0) {
+            justFileMainName = uploadedFileMainName.substring(indexMain + 1);
         } else {
             // Try backslash
-            index = uploadedFileName.lastIndexOf('\\');
-            if (index >= 0) {
-                justFileName = uploadedFileName.substring(index + 1);
+            indexMain = uploadedFileMainName.lastIndexOf('\\');
+            if (indexMain >= 0) {
+                justFileMainName = uploadedFileMainName.substring(indexMain + 1);
             } else {
                 // No forward or back slashes
-                justFileName = uploadedFileName;
+                justFileMainName = uploadedFileMainName;
             }
-            try {
-                File file = new File(this.realFilePath +justFileName);
-                uploadedFileMain.write(file);
-                log("uploaded");
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                while (br.ready()) {
-                    StringTokenizer st = new StringTokenizer(br.readLine(), ";");
-                    while(st.hasMoreTokens())
-                    log(st.nextToken());
+
+        }
+        if (indexReserve >= 0) {
+            justFileReserveName = uploadedFileReserveName.substring(indexReserve + 1);
+        } else {
+            // Try backslash
+            indexReserve = uploadedFileReserveName.lastIndexOf('\\');
+            if (indexReserve >= 0) {
+                justFileReserveName = uploadedFileReserveName.substring(indexReserve + 1);
+            } else {
+                // No forward or back slashes
+                justFileReserveName = uploadedFileReserveName;
+            }
+
+        }
+        try {
+            File fileMain = new File(this.realFilePath + justFileMainName);
+            File fileReserve = new File(this.realFilePath + justFileReserveName);
+            uploadedFileMain.write(fileMain);
+            uploadedFileReserve.write(fileReserve);
+            log("uploaded");
+
+            ArrayList<Chutes> mainChuteTemp = new ArrayList<Chutes>();
+            FileReader frMain = new FileReader(fileMain);
+            FileReader frReserve = new FileReader(fileReserve);
+            BufferedReader brMain = new BufferedReader(frMain);
+            BufferedReader brReserve = new BufferedReader(frReserve);
+            while (brMain.ready() || brReserve.ready()) {
+                StringTokenizer stMain = new StringTokenizer(brMain.readLine(), ";");
+                StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), ";");
+
+                while (stMain.hasMoreTokens() && stReserve.hasMoreTokens()) {
+                    mainChuteTemp.add(new Chutes(stMain.nextToken(), stReserve.nextToken()));
+                    stMain.nextToken();stMain.nextToken();
+                    stReserve.nextToken();stReserve.nextToken();
                 }
-            } catch (Exception ex) {
-                error("Cannot upload file: " + justFileName);
             }
+            brMain.close();
+            brReserve.close();
+            frMain.close();
+            frReserve.close();
+//                mainChute = new String[mainChuteTemp.size()];
+//                mainChuteTemp.toArray(mainChute);
+//                getSessionBean1().setMainChute(mainChute);
+            listOfChutes = new Chutes[mainChuteTemp.size()];
+            mainChuteTemp.toArray(listOfChutes);
+            getSessionBean1().setMainChute(listOfChutes);
+            return "bulkToReport";
+        } catch (Exception ex) {
+            error("Cannot upload file: " + justFileMainName);
+            error("Cannot upload file: " + justFileReserveName);
+            error(ex.toString());
         }
         return null;
     }

@@ -33,24 +33,7 @@
                     <ice:outputLink id="outputLink6" style="position: absolute; left: 696px; top: 24px" value="./faces/para_borrowers/View.jsp">
                         <ice:outputText id="outputText6" value="Parachute Borrowers"/>
                     </ice:outputLink>
-                    <ice:outputChart chartTitle="Parachute Status" colors="#{IcePage1.color}" data="#{IcePage1.data}" id="outputChart1"
-                        labels="#{IcePage1.labels}" style="left: 24px; top: 120px; position: absolute" type="pie2d"/>
-                        <jsp:body>try {
-            File outputData = new File("../ampie/data.txt");
-            log(outputData.getPath());
-
-            outputData.createNewFile();
-            FileWriter fstream = new FileWriter(outputData);
-            BufferedWriter out = new BufferedWriter(fstream);
-            out.write("Loaned out;" + data.get(0) + "\n");
-            out.write("Serviceable;" + data.get(1) + "\n");
-            out.write("Servicing;" + data.get(2) + "\n");
-            out.close();
-            fstream.close();
-        } catch (Exception e) {
-            log(e.toString());
-        }</jsp:body>
-                    <div style="position: absolute; left: 360px; top: 264px">
+                    <div style="left: 216px; top: 72px; position: absolute">
                         <jsp:directive.include file="Fragment1.jspf"/>
                     </div>
                 </ice:form>
