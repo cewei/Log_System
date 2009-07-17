@@ -6,6 +6,7 @@
  */
 package parachutesystem;
 
+import com.icesoft.faces.component.ext.HtmlInputText;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
@@ -113,6 +114,15 @@ public class IcePage1 extends AbstractPageBean {
 
     private String realFilePath;
     private static final String FILE_URL = "/ampie/data.txt";
+    private HtmlInputText inputText1 = new HtmlInputText();
+
+    public HtmlInputText getInputText1() {
+        return inputText1;
+    }
+
+    public void setInputText1(HtmlInputText hit) {
+        this.inputText1 = hit;
+    }
     // </editor-fold>
     /**
      * <p>Construct a new Page bean instance.</p>
