@@ -30,6 +30,16 @@
         <managed-bean-class>parachutesystem.Page1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>IcePage1</managed-bean-name>
+        <managed-bean-class>parachutesystem.IcePage1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment1</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <!--Para Type-->
     <managed-bean>
         <managed-bean-name>para_type$View</managed-bean-name>
@@ -300,6 +310,11 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_loan$Report</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.Report</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <navigation-rule>
         <from-view-id>/para_loan/Report.jsp</from-view-id>
         <navigation-case>
@@ -308,19 +323,4 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>IcePage1</managed-bean-name>
-        <managed-bean-class>parachutesystem.IcePage1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>Fragment1</managed-bean-name>
-        <managed-bean-class>parachutesystem.Fragment1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_loan$Report</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_loan.Report</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
 </faces-config>

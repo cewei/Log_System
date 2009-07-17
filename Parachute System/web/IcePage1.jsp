@@ -36,6 +36,7 @@
                     <div style="left: 216px; top: 72px; position: absolute">
                         <jsp:directive.include file="Fragment1.jspf"/>
                     </div>
+                    <ice:inputText binding="#{IcePage1.inputText1}" id="inputText1" style="left: 358px; top: 190px; position: absolute; z-index: 500"/>
                 </ice:form>
             </body>
         </html>
