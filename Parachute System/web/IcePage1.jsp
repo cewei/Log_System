@@ -12,8 +12,13 @@
                 <ice:outputStyle href="./resources/stylesheet.css" id="outputStyle1"/>
                 <ice:outputStyle href="./xmlhttp/css/xp/xp.css" id="outputStyle2"/>
                 <title>Start Page</title>
+                <script type="text/javascript">
+                    function render() {
+                        document.getElementById("form1:button1").click();
+                    }
+                </script>
             </head>
-            <body id="outputBody1" style="-rave-layout: grid">
+            <body id="outputBody1" onload="render()" style="-rave-layout: grid">
                 <ice:form id="form1">
                     <ice:outputLink id="outputLink1" style="left: 24px; top: 24px; position: absolute" value="./faces/para_type/View.jsp">
                         <ice:outputText id="outputText1" value="Parachute Type"/>
@@ -33,10 +38,11 @@
                     <ice:outputLink id="outputLink6" style="position: absolute; left: 696px; top: 24px" value="./faces/para_borrowers/View.jsp">
                         <ice:outputText id="outputText6" value="Parachute Borrowers"/>
                     </ice:outputLink>
-                    <div style="left: 216px; top: 72px; position: absolute">
+                    <div style="left: 240px; top: 72px; position: absolute">
                         <jsp:directive.include file="Fragment1.jspf"/>
                     </div>
-                    <ice:inputText binding="#{IcePage1.inputText1}" id="inputText1" style="left: 358px; top: 190px; position: absolute; z-index: 500"/>
+                    <ice:inputText binding="#{IcePage1.inputText1}" id="inputText1" style="left: 334px; top: 94px; position: absolute; z-index: 500"/>
+                    <ice:commandButton action="#{IcePage1.button1_action}" id="button1" style="left: 480px; top: 96px; position: absolute; z-index: 499" value="submit"/>
                 </ice:form>
             </body>
         </html>

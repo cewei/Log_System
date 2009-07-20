@@ -35,32 +35,32 @@
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 192px" title="Parachute Packing" width="0">
                             <webuijsf:tableRowGroup binding="#{para_packing$Add.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_packing$Add.selectedState}" sourceData="#{para_packing$Add.para_packing_viewDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_inventory.Serial No">
+                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn1" sort="para_inventory.Serial No" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory.Serial No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Chute No" id="tableColumn2" sort="Chute No">
+                                <webuijsf:tableColumn headerText="Chute No" id="tableColumn2" sort="Chute No" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['Chute No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Repacked Date" id="tableColumn3" sort="para_packing.Repacked Date">
+                                <webuijsf:tableColumn headerText="Repacked Date" id="tableColumn3" sort="para_packing.Repacked Date" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_packing.Repacked Date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Repack Due Date" id="tableColumn4" sort="Repack Due Date">
+                                <webuijsf:tableColumn headerText="Repack Due Date" id="tableColumn4" sort="Repack Due Date" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['Repack Due Date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Pack By" id="tableColumn5" sort="para_packing.Pack By">
+                                <webuijsf:tableColumn headerText="Pack By" id="tableColumn5" sort="para_packing.Pack By" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_packing.Pack By']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Inspect By" id="tableColumn6" sort="para_packing.Inspect By">
+                                <webuijsf:tableColumn headerText="Inspect By" id="tableColumn6" sort="para_packing.Inspect By" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_packing.Inspect By']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Check Type" id="tableColumn7" sort="para_packing.Check Type">
+                                <webuijsf:tableColumn headerText="Check Type" id="tableColumn7" sort="para_packing.Check Type" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_packing.Check Type']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Status" id="tableColumn8" sort="para_inventory.Status">
+                                <webuijsf:tableColumn headerText="Status" id="tableColumn8" sort="para_inventory.Status" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_inventory.Status']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn id="tableRowGroup1SelectionColumn"
-                                    onClick="setTimeout(function(){document.getElementById('form1:table1').initAllRows()}, 0);" selectId="tableRowGroup1SelectionChild">
+                                    onClick="setTimeout(function(){document.getElementById('form1:table1').initAllRows()}, 0);" selectId="tableRowGroup1SelectionChild" align="center" valign="middle">
                                     <webuijsf:checkbox id="tableRowGroup1SelectionChild" selected="#{para_packing$Add.selected}" selectedValue="#{para_packing$Add.selectedValue}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
