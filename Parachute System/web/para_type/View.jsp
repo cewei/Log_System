@@ -18,7 +18,7 @@
                         <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="position: absolute; left: 120px; top: 48px" text="Edit"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
                             <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
-                                                    sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
+                                sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>
@@ -36,6 +36,12 @@
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Repack Cycle (Days)" id="tableColumn6" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_type.repack_cycle']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn7" valign="middle">
+                                    <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_type.reserve']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Static" id="tableColumn8" valign="middle">
+                                    <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_type.static']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

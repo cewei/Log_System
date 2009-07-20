@@ -8,6 +8,7 @@ import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Checkbox;
 import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
 
@@ -32,7 +33,7 @@ public class Add extends AbstractPageBean {
      */
     private void _init() throws Exception {
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT ALL para_type.para_type_no, para_type.type_prefix, para_type.name, para_type.life_span, para_type.max_jump, para_type.repack_cycle  FROM para_type");
+        para_typeRowSet.setCommand("SELECT * FROM para_type");
         para_typeRowSet.setTableName("para_type");
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$Add.para_typeRowSet}"));
     }
@@ -98,6 +99,24 @@ public class Add extends AbstractPageBean {
 
     public void setRepackCycleText(TextField tf) {
         this.repackCycleText = tf;
+    }
+    private Checkbox checkbox1 = new Checkbox();
+
+    public Checkbox getCheckbox1() {
+        return checkbox1;
+    }
+
+    public void setCheckbox1(Checkbox c) {
+        this.checkbox1 = c;
+    }
+    private Checkbox checkbox2 = new Checkbox();
+
+    public Checkbox getCheckbox2() {
+        return checkbox2;
+    }
+
+    public void setCheckbox2(Checkbox c) {
+        this.checkbox2 = c;
     }
 
     // </editor-fold>
@@ -190,6 +209,8 @@ public class Add extends AbstractPageBean {
                     para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
+                    para_typeDataProvider.setValue("PARA_TYPE.RESERVE", checkbox1.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.STATIC", checkbox2.isChecked());
                     // set values of other fields, if any
                     para_typeDataProvider.commitChanges();
                     para_typeDataProvider.refresh();
