@@ -159,7 +159,10 @@ public class IcePage1 extends AbstractPageBean {
             log("IcePage1 Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
         labels = new ArrayList<String>();
         labels.add(new String("Loaned out"));
         labels.add(new String("Serviceable"));
@@ -201,11 +204,6 @@ public class IcePage1 extends AbstractPageBean {
         } catch (Exception e) {
             log(e.toString());
         }
-
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
     }
 
     /**

@@ -39,6 +39,12 @@
                                     <webuijsf:textField id="textField5" required="true" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                     <webuijsf:message for="textField5" id="message5" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn7" valign="middle">
+                                    <webuijsf:checkbox id="checkbox1" selected="#{currentRow.value['para_type.reserve']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Static" id="tableColumn8" valign="middle">
+                                    <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_type.static']}"/>
+                                </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:button actionExpression="#{para_type$Edit.save_action}" id="save" style="position: absolute; left: 24px; top: 48px" text="Save Changes"/>
