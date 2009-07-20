@@ -14,13 +14,16 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 24px; position: absolute" width="700">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 24px; position: absolute" width="750">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_loan$Report.objectArrayDataProvider1}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="MAIN" id="tableColumn1" sort="main" width="350">
-                                    <webuijsf:staticText id="staticText1" text="#{currentRow.value['main']}"/>
+                                <webuijsf:tableColumn headerText="S/NO" id="tableColumn1" width="25">
+                                    <webuijsf:label id="label1" text=""/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="RESERVE" id="tableColumn2" sort="reserve" width="350">
-                                    <webuijsf:staticText id="staticText2" text="#{currentRow.value['reserve']}"/>
+                                <webuijsf:tableColumn headerText="MAIN" id="tableColumn2" sort="main" width="350">
+                                    <webuijsf:staticText id="staticText2" text="#{currentRow.value['main']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="RESERVE" id="tableColumn3" sort="reserve" width="350">
+                                    <webuijsf:staticText id="staticText3" text="#{currentRow.value['reserve']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

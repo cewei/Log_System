@@ -111,7 +111,6 @@ public class IcePage1 extends AbstractPageBean {
     public void setColor(List<Color> color) {
         this.color = color;
     }
-
     private String realFilePath;
     private static final String FILE_URL = "/ampie/data.txt";
     private HtmlInputText inputText1 = new HtmlInputText();
@@ -124,6 +123,7 @@ public class IcePage1 extends AbstractPageBean {
         this.inputText1 = hit;
     }
     // </editor-fold>
+
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -159,10 +159,10 @@ public class IcePage1 extends AbstractPageBean {
             log("IcePage1 Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-    // </editor-fold>
-    // Perform application initialization that must complete
-    // *after* managed components are initialized
-    // TODO - add your own initialization code here
+        // </editor-fold>
+        // Perform application initialization that must complete
+        // *after* managed components are initialized
+        // TODO - add your own initialization code here
         labels = new ArrayList<String>();
         labels.add(new String("Loaned out"));
         labels.add(new String("Serviceable"));
@@ -170,12 +170,19 @@ public class IcePage1 extends AbstractPageBean {
 
         data = new ArrayList<Double>();
         Double temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
         temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
         data.add(temp);
+
         para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
         temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
         data.add(temp);
+
         para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
         temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
         data.add(temp);
 
@@ -227,6 +234,7 @@ public class IcePage1 extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        button1_action();
     }
 
     /**
@@ -267,6 +275,59 @@ public class IcePage1 extends AbstractPageBean {
      */
     protected SessionBean1 getSessionBean1() {
         return (SessionBean1) getBean("SessionBean1");
+    }
+
+    public String button1_action() {
+        log("Button");
+        labels = new ArrayList<String>();
+        labels.add(new String("Loaned out"));
+        labels.add(new String("Serviceable"));
+        labels.add(new String("Servicing"));
+
+        data = new ArrayList<Double>();
+        Double temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        color = new ArrayList<Color>();
+        Color temp1 = Color.YELLOW;
+        color.add(temp1);
+        temp1 = Color.GREEN;
+        color.add(temp1);
+        temp1 = Color.RED;
+        color.add(temp1);
+
+        try {
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write("Loaned out;" + data.get(0) + "\n");
+            out.write("Serviceable;" + data.get(1) + "\n");
+            out.write("Servicing;" + data.get(2) + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+        return null;
     }
 }
 
