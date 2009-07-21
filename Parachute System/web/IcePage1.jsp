@@ -15,6 +15,7 @@
                 <script type="text/javascript">
                     function render() {
                         document.getElementById("form1:button1").click();
+                        document.getElementById("form1:button2").click();
                     }
                 </script>
             </head>
@@ -38,11 +39,22 @@
                     <ice:outputLink id="outputLink6" style="position: absolute; left: 696px; top: 24px" value="./faces/para_borrowers/View.jsp">
                         <ice:outputText id="outputText6" value="Parachute Borrowers"/>
                     </ice:outputLink>
+                    <ice:commandButton action="#{IcePage1.button1_action}" id="button1" style="left: 480px; top: 96px; position: absolute; z-index: 499" value="submit"/>
                     <div style="left: 240px; top: 72px; position: absolute">
                         <jsp:directive.include file="Fragment1.jspf"/>
                     </div>
-                    <ice:inputText binding="#{IcePage1.inputText1}" id="inputText1" style="left: 334px; top: 94px; position: absolute; z-index: 500"/>
-                    <ice:commandButton action="#{IcePage1.button1_action}" id="button1" style="left: 480px; top: 96px; position: absolute; z-index: 499" value="submit"/>
+                    <div style="left: 24px; top: 480px; position: absolute">
+                        <jsp:directive.include file="Fragment2.jspf"/>
+                    </div>
+                    <div style="position: absolute; left: 576px; top: 480px">
+                        <jsp:directive.include file="Fragment3.jspf"/>
+                    </div>
+                    <div style="left: 24px; top: 888px; position: absolute">
+                        <jsp:directive.include file="Fragment4.jspf"/>
+                    </div>
+                    <div style="position: absolute; left: 576px; top: 888px">
+                        <jsp:directive.include file="Fragment5.jspf"/>
+                    </div>
                 </ice:form>
             </body>
         </html>

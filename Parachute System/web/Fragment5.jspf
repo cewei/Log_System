@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : Fragment1
-    Created on : Jul 14, 2009, 11:34:25 AM
+    Document   : Fragment5
+    Created on : Jul 21, 2009, 3:01:25 PM
     Author     : Dell
 -->
 
-<div style="-rave-layout: grid; width: 520px; height: 400px" xmlns:f="http://java.sun.com/jsf/core">
-    <f:subview id="Fragment1">
+<div style="-rave-layout: grid; width: 520px; height: 400px" xmlns:f="http://java.sun.com/jsf/core" >
+    <f:subview id="Fragment5">
         <!-- ampie script-->
-        <script type="text/javascript" src="ampie/swfobject.js"></script>
-        <div id="flashcontent">
+        <script src="ampie/swfobject.js" type="text/javascript"></script>
+        <div id="flashcontent5">
             <strong>You need to upgrade your Flash Player</strong>
-
         </div>
-
         <script type="text/javascript">
             // <![CDATA[
             var so = new SWFObject("ampie/ampie.swf", "ampie", "520", "400", "8", "#FFFFFF");
             so.addVariable("path", "ampie/");
-            so.addVariable("settings_file", encodeURIComponent("ampie/frag1/ampie_settings.xml"));                // you can set two or more different settings files here (separated by commas)
-            so.addVariable("data_file", encodeURIComponent("ampie/frag1/data.txt"));
+            so.addVariable("settings_file", encodeURIComponent("ampie/frag5/ampie_settings.xml"));                // you can set two or more different settings files here (separated by commas)
+            so.addVariable("data_file", encodeURIComponent("ampie/frag5/data.txt"));
 
             //	so.addVariable("chart_data", encodeURIComponent("<settings>...</settings>"));                   // you can pass chart data as a string directly from this file
             //	so.addVariable("chart_settings", encodeURIComponent("data in CSV or XML format"));              // you can pass chart settings as a string directly from this file
@@ -27,9 +25,8 @@
             //  so.addVariable("loading_settings", "LOADING SETTINGS");                                         // you can set custom "loading settings" text here
             //  so.addVariable("loading_data", "LOADING DATA");                                                 // you can set custom "loading data" text here
             //  so.addVariable("preloader_color", "#999999");
-            so.write("flashcontent");
-            // ]]>
-        </script>
+            so.write("flashcontent5");
+            // ]]></script>
         <!-- end of ampie script -->
     </f:subview>
 </div>

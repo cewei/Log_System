@@ -49,7 +49,16 @@ public class Add extends AbstractPageBean {
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
         para_inventoryRowSet.setTableName("para_inventory");
-        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("serviceable", "serviceable"), new com.sun.webui.jsf.model.Option("servicing", "servicing"), new com.sun.webui.jsf.model.Option("loan", "loan"), new com.sun.webui.jsf.model.Option("returned", "returned")});
+        statusDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{
+            new com.sun.webui.jsf.model.Option("unpacked", "unpacked"),
+            new com.sun.webui.jsf.model.Option("packed", "packed"),
+            new com.sun.webui.jsf.model.Option("inspection", "inspection"),
+            new com.sun.webui.jsf.model.Option("repair", "repair"),
+            new com.sun.webui.jsf.model.Option("unserviceable", "unserviceable"),
+            new com.sun.webui.jsf.model.Option("others", "others"),
+            new com.sun.webui.jsf.model.Option("loan", "loan"),
+            new com.sun.webui.jsf.model.Option("returned", "returned")
+        });
     }
     private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
 
