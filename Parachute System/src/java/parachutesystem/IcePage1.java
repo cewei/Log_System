@@ -10,7 +10,6 @@ import com.icesoft.faces.component.ext.HtmlInputText;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -42,11 +41,26 @@ public class IcePage1 extends AbstractPageBean {
         para_inventoryRowSet.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"loan\"");
         para_inventoryRowSet.setTableName("para_inventory");
         para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet1.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"serviceable\"");
+        para_inventoryRowSet1.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unpacked\"");
         para_inventoryRowSet1.setTableName("para_inventory");
         para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet2.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"servicing\" OR `status` = \"returned\"");
+        para_inventoryRowSet2.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"packed\"");
         para_inventoryRowSet2.setTableName("para_inventory");
+        para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet3.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"inspection\"");
+        para_inventoryRowSet3.setTableName("para_inventory");
+        para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet4.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"repair\"");
+        para_inventoryRowSet4.setTableName("para_inventory");
+        para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet5.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unserviceable\"");
+        para_inventoryRowSet5.setTableName("para_inventory");
+        para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet6.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"others\"");
+        para_inventoryRowSet6.setTableName("para_inventory");
+        para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet7.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"returned\"");
+        para_inventoryRowSet7.setTableName("para_inventory");
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
@@ -84,6 +98,51 @@ public class IcePage1 extends AbstractPageBean {
     public void setPara_inventoryRowSet2(CachedRowSetXImpl crsxi) {
         this.para_inventoryRowSet2 = crsxi;
     }
+    private CachedRowSetXImpl para_inventoryRowSet3 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet3() {
+        return para_inventoryRowSet3;
+    }
+
+    public void setPara_inventoryRowSet3(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet3 = crsxi;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet4 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet4() {
+        return para_inventoryRowSet4;
+    }
+
+    public void setPara_inventoryRowSet4(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet4 = crsxi;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet5 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet5() {
+        return para_inventoryRowSet5;
+    }
+
+    public void setPara_inventoryRowSet5(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet5 = crsxi;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet6 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet6() {
+        return para_inventoryRowSet6;
+    }
+
+    public void setPara_inventoryRowSet6(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet6 = crsxi;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet7 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet7() {
+        return para_inventoryRowSet7;
+    }
+
+    public void setPara_inventoryRowSet7(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet7 = crsxi;
+    }
     private List<String> labels;
 
     public List getLabels() {
@@ -102,26 +161,8 @@ public class IcePage1 extends AbstractPageBean {
     public void setData(List<Double> data) {
         this.data = data;
     }
-    private List<Color> color;
-
-    public List getColor() {
-        return color;
-    }
-
-    public void setColor(List<Color> color) {
-        this.color = color;
-    }
     private String realFilePath;
-    private static final String FILE_URL = "/ampie/data.txt";
-    private HtmlInputText inputText1 = new HtmlInputText();
-
-    public HtmlInputText getInputText1() {
-        return inputText1;
-    }
-
-    public void setInputText1(HtmlInputText hit) {
-        this.inputText1 = hit;
-    }
+    private static String FILE_URL = "/ampie/frag1/data.txt";
     // </editor-fold>
 
     /**
@@ -159,58 +200,10 @@ public class IcePage1 extends AbstractPageBean {
             log("IcePage1 Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
-        labels = new ArrayList<String>();
-        labels.add(new String("Loaned out"));
-        labels.add(new String("Serviceable"));
-        labels.add(new String("Servicing"));
-
-        data = new ArrayList<Double>();
-        Double temp = null;
-
-        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
-        para_inventoryDataProvider.refresh();
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-
-        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
-        para_inventoryDataProvider.refresh();
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-
-        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
-        para_inventoryDataProvider.refresh();
-        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
-        data.add(temp);
-
-        color = new ArrayList<Color>();
-        Color temp1 = Color.YELLOW;
-        color.add(temp1);
-        temp1 = Color.GREEN;
-        color.add(temp1);
-        temp1 = Color.RED;
-        color.add(temp1);
-
-        try {
-            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
-            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
-            File outputData = new File(realFilePath);
-            log(outputData.getPath());
-
-            outputData.createNewFile();
-            FileWriter fstream = new FileWriter(outputData);
-            BufferedWriter out = new BufferedWriter(fstream);
-            out.write("Loaned out;" + data.get(0) + "\n");
-            out.write("Serviceable;" + data.get(1) + "\n");
-            out.write("Servicing;" + data.get(2) + "\n");
-            out.close();
-            fstream.close();
-        } catch (Exception e) {
-            log(e.toString());
-        }
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -278,14 +271,22 @@ public class IcePage1 extends AbstractPageBean {
     }
 
     public String button1_action() {
-        log("Button");
+        log("Button1");
         labels = new ArrayList<String>();
         labels.add(new String("Loaned out"));
-        labels.add(new String("Serviceable"));
-        labels.add(new String("Servicing"));
+        labels.add(new String("Unpacked"));
+        labels.add(new String("Packed"));
+        labels.add(new String("Inspection"));
+        labels.add(new String("Repair"));
+        labels.add(new String("Unserviceable"));
+        labels.add(new String("Others"));
+        labels.add(new String("Returned"));
 
+        Double temp;
+
+        // <editor-fold defaultstate="collapsed" desc="Fragment1">
         data = new ArrayList<Double>();
-        Double temp = null;
+        temp = null;
 
         para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
         para_inventoryDataProvider.refresh();
@@ -302,13 +303,30 @@ public class IcePage1 extends AbstractPageBean {
         temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
         data.add(temp);
 
-        color = new ArrayList<Color>();
-        Color temp1 = Color.YELLOW;
-        color.add(temp1);
-        temp1 = Color.GREEN;
-        color.add(temp1);
-        temp1 = Color.RED;
-        color.add(temp1);
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet3);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet4);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet5);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet6);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet7);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
 
         try {
             ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
@@ -319,14 +337,480 @@ public class IcePage1 extends AbstractPageBean {
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);
             BufferedWriter out = new BufferedWriter(fstream);
-            out.write("Loaned out;" + data.get(0) + "\n");
-            out.write("Serviceable;" + data.get(1) + "\n");
-            out.write("Servicing;" + data.get(2) + "\n");
+            out.write(labels.get(0) + ";" + data.get(0) + ";;" + "0D8ECF" + "\n");
+            out.write(labels.get(1) + ";" + data.get(1) + ";;" + "F8FF01" + "\n");
+            out.write(labels.get(2) + ";" + data.get(2) + ";;" + "04D215" + "\n");
+            out.write(labels.get(3) + ";" + data.get(3) + ";;" + "FCD202" + "\n");
+            out.write(labels.get(4) + ";" + data.get(4) + ";;" + "FF6600" + "\n");
+            out.write(labels.get(5) + ";" + data.get(5) + ";;" + "FF0F00" + "\n");
+            out.write(labels.get(6) + ";" + data.get(6) + ";;" + "2A0CD0" + "\n");
+            out.write(labels.get(7) + ";" + data.get(7) + ";;" + "333333" + "\n");
             out.close();
             fstream.close();
         } catch (Exception e) {
             log(e.toString());
         }
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Fragment2">
+        try {
+            para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{IcePage1.para_inventoryRowSet}"));
+            para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"loan\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet.setTableName("para_inventory");
+            para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet1.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unpacked\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet1.setTableName("para_inventory");
+            para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet2.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"packed\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet2.setTableName("para_inventory");
+            para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet3.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"inspection\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet3.setTableName("para_inventory");
+            para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet4.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"repair\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet4.setTableName("para_inventory");
+            para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet5.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unserviceable\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet5.setTableName("para_inventory");
+            para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet6.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"others\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet6.setTableName("para_inventory");
+            para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet7.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"returned\" AND `reserve` = 0 AND `static` = 1");
+            para_inventoryRowSet7.setTableName("para_inventory");
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+        FILE_URL = "/ampie/frag2/data.txt";
+
+        data = new ArrayList<Double>();
+        temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet3);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet4);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet5);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet6);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet7);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        try {
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(labels.get(0) + ";" + data.get(0) + ";;" + "0D8ECF" + "\n");
+            out.write(labels.get(1) + ";" + data.get(1) + ";;" + "F8FF01" + "\n");
+            out.write(labels.get(2) + ";" + data.get(2) + ";;" + "04D215" + "\n");
+            out.write(labels.get(3) + ";" + data.get(3) + ";;" + "FCD202" + "\n");
+            out.write(labels.get(4) + ";" + data.get(4) + ";;" + "FF6600" + "\n");
+            out.write(labels.get(5) + ";" + data.get(5) + ";;" + "FF0F00" + "\n");
+            out.write(labels.get(6) + ";" + data.get(6) + ";;" + "2A0CD0" + "\n");
+            out.write(labels.get(7) + ";" + data.get(7) + ";;" + "333333" + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Fragment3">
+        try {
+            para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{IcePage1.para_inventoryRowSet}"));
+            para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"loan\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet.setTableName("para_inventory");
+            para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet1.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unpacked\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet1.setTableName("para_inventory");
+            para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet2.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"packed\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet2.setTableName("para_inventory");
+            para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet3.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"inspection\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet3.setTableName("para_inventory");
+            para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet4.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"repair\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet4.setTableName("para_inventory");
+            para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet5.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unserviceable\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet5.setTableName("para_inventory");
+            para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet6.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"others\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet6.setTableName("para_inventory");
+            para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet7.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"returned\" AND `reserve` = 0 AND `static` = 0");
+            para_inventoryRowSet7.setTableName("para_inventory");
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+        FILE_URL = "/ampie/frag3/data.txt";
+
+        data = new ArrayList<Double>();
+        temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet3);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet4);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet5);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet6);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet7);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        try {
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(labels.get(0) + ";" + data.get(0) + ";;" + "0D8ECF" + "\n");
+            out.write(labels.get(1) + ";" + data.get(1) + ";;" + "F8FF01" + "\n");
+            out.write(labels.get(2) + ";" + data.get(2) + ";;" + "04D215" + "\n");
+            out.write(labels.get(3) + ";" + data.get(3) + ";;" + "FCD202" + "\n");
+            out.write(labels.get(4) + ";" + data.get(4) + ";;" + "FF6600" + "\n");
+            out.write(labels.get(5) + ";" + data.get(5) + ";;" + "FF0F00" + "\n");
+            out.write(labels.get(6) + ";" + data.get(6) + ";;" + "2A0CD0" + "\n");
+            out.write(labels.get(7) + ";" + data.get(7) + ";;" + "333333" + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Fragment4">
+        try {
+            para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{IcePage1.para_inventoryRowSet}"));
+            para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"loan\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet.setTableName("para_inventory");
+            para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet1.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unpacked\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet1.setTableName("para_inventory");
+            para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet2.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"packed\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet2.setTableName("para_inventory");
+            para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet3.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"inspection\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet3.setTableName("para_inventory");
+            para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet4.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"repair\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet4.setTableName("para_inventory");
+            para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet5.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unserviceable\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet5.setTableName("para_inventory");
+            para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet6.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"others\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet6.setTableName("para_inventory");
+            para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet7.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"returned\" AND `reserve` = 1 AND `static` = 1");
+            para_inventoryRowSet7.setTableName("para_inventory");
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+        FILE_URL = "/ampie/frag4/data.txt";
+
+        data = new ArrayList<Double>();
+        temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet3);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet4);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet5);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet6);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet7);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        try {
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(labels.get(0) + ";" + data.get(0) + ";;" + "0D8ECF" + "\n");
+            out.write(labels.get(1) + ";" + data.get(1) + ";;" + "F8FF01" + "\n");
+            out.write(labels.get(2) + ";" + data.get(2) + ";;" + "04D215" + "\n");
+            out.write(labels.get(3) + ";" + data.get(3) + ";;" + "FCD202" + "\n");
+            out.write(labels.get(4) + ";" + data.get(4) + ";;" + "FF6600" + "\n");
+            out.write(labels.get(5) + ";" + data.get(5) + ";;" + "FF0F00" + "\n");
+            out.write(labels.get(6) + ";" + data.get(6) + ";;" + "2A0CD0" + "\n");
+            out.write(labels.get(7) + ";" + data.get(7) + ";;" + "333333" + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+        // </editor-fold>
+        // <editor-fold defaultstate="collapsed" desc="Fragment5">
+        try {
+            para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{IcePage1.para_inventoryRowSet}"));
+            para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"loan\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet.setTableName("para_inventory");
+            para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet1.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unpacked\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet1.setTableName("para_inventory");
+            para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet2.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"packed\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet2.setTableName("para_inventory");
+            para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet3.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"inspection\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet3.setTableName("para_inventory");
+            para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet4.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"repair\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet4.setTableName("para_inventory");
+            para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet5.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"unserviceable\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet5.setTableName("para_inventory");
+            para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet6.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"others\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet6.setTableName("para_inventory");
+            para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet7.setCommand(
+                    "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                    "WHERE `status` = \"returned\" AND `reserve` = 1 AND `static` = 0");
+            para_inventoryRowSet7.setTableName("para_inventory");
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+        FILE_URL = "/ampie/frag5/data.txt";
+
+        data = new ArrayList<Double>();
+        temp = null;
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet1);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet2);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet3);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet4);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet5);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet6);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        para_inventoryDataProvider.setCachedRowSet(para_inventoryRowSet7);
+        para_inventoryDataProvider.refresh();
+        temp = new Double(para_inventoryDataProvider.getValue("count(*)").toString());
+        data.add(temp);
+
+        try {
+            ServletContext theApplicationsServletContext = (ServletContext) this.getExternalContext().getContext();
+            this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
+            File outputData = new File(realFilePath);
+            log(outputData.getPath());
+
+            outputData.createNewFile();
+            FileWriter fstream = new FileWriter(outputData);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(labels.get(0) + ";" + data.get(0) + ";;" + "0D8ECF" + "\n");
+            out.write(labels.get(1) + ";" + data.get(1) + ";;" + "F8FF01" + "\n");
+            out.write(labels.get(2) + ";" + data.get(2) + ";;" + "04D215" + "\n");
+            out.write(labels.get(3) + ";" + data.get(3) + ";;" + "FCD202" + "\n");
+            out.write(labels.get(4) + ";" + data.get(4) + ";;" + "FF6600" + "\n");
+            out.write(labels.get(5) + ";" + data.get(5) + ";;" + "FF0F00" + "\n");
+            out.write(labels.get(6) + ";" + data.get(6) + ";;" + "2A0CD0" + "\n");
+            out.write(labels.get(7) + ";" + data.get(7) + ";;" + "333333" + "\n");
+            out.close();
+            fstream.close();
+        } catch (Exception e) {
+            log(e.toString());
+        }
+        // </editor-fold>
         return null;
     }
 }

@@ -26,11 +26,6 @@
         <message-bundle>parachutesystem.MyMessages</message-bundle>
     </application>
     <managed-bean>
-        <managed-bean-name>Page1</managed-bean-name>
-        <managed-bean-class>parachutesystem.Page1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>IcePage1</managed-bean-name>
         <managed-bean-class>parachutesystem.IcePage1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -323,4 +318,24 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Fragment2</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment2</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment3</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment3</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment4</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment4</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment5</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment5</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
