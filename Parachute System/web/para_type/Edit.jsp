@@ -15,7 +15,8 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1" virtualFormsConfig="save | table1:tableRowGroup1:tableColumn2:textField1 table1:tableRowGroup1:tableColumn3:textField2 table1:tableRowGroup1:tableColumn4:textField3 table1:tableRowGroup1:tableColumn5:textField4 table1:tableRowGroup1:tableColumn6:textField5 | save">
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 0px" title="Parachute Types" width="0">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
+                            <webuijsf:tableRowGroup binding="#{para_type$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
+                                sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>

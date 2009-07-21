@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_riggers$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add"/>
                         <webuijsf:button actionExpression="#{para_riggers$View.edit_action}" id="edit" style="position: absolute; left: 96px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Riggers" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Riggers" width="100%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_riggers$View.para_riggersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_riggers.NRIC']}"/>

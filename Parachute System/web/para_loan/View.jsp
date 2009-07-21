@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_loan$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add"/>
                         <webuijsf:button actionExpression="#{para_loan$View.edit_action}" id="edit" style="position: absolute; left: 96px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Loans" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Loans" width="100%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_loan$View.para_loan_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn6" sort="para_loan_view.NRIC">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_loan_view.NRIC']}"/>

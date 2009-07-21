@@ -64,7 +64,7 @@
     <text_size></text_size>                                   <!-- [text_size] (Number) -->
     <max_width></max_width>                                   <!-- [120] (Number) -->
     <show>
-       <![CDATA[{title}: {percents}%]]>                       <!-- [] ({value} {title} {percents} {description}) You can format any data label: {value} - will be replaced with value and so on. You can add your own text or html code too. -->
+       <![CDATA[{title}: {percents}% ({value})]]>             <!-- [] ({value} {title} {percents} {description}) You can format any data label: {value} - will be replaced with value and so on. You can add your own text or html code too. -->
     </show>
     <show_lines></show_lines>                                 <!-- [true] (true / false) whether to show lines from slices to data labels or not -->                                                                                              
     <line_color></line_color>                                 <!-- [#000000] (hex color code) -->
@@ -92,7 +92,7 @@
   </background>
   
   <balloon>                                                   <!-- BALLOON -->
-    <enabled></enabled>                                       <!-- [true] (true / false) -->
+    <enabled>false</enabled>                                       <!-- [true] (true / false) -->
     <color></color>                                           <!-- [] (hex color code) balloon background color. If empty, slightly darker then current slice color will be used -->
     <alpha>80</alpha>                                         <!-- [80] (0 - 100) -->
     <text_color></text_color>                                 <!-- [#FFFFFF] (hex color code) -->
