@@ -6,7 +6,6 @@
  */
 package parachutesystem;
 
-import com.icesoft.faces.component.ext.HtmlInputText;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
@@ -36,31 +35,6 @@ public class IcePage1 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{Page1.para_inventoryRowSet}"));
-        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"loan\"");
-        para_inventoryRowSet.setTableName("para_inventory");
-        para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet1.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unpacked\"");
-        para_inventoryRowSet1.setTableName("para_inventory");
-        para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet2.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"packed\"");
-        para_inventoryRowSet2.setTableName("para_inventory");
-        para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet3.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"inspection\"");
-        para_inventoryRowSet3.setTableName("para_inventory");
-        para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet4.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"repair\"");
-        para_inventoryRowSet4.setTableName("para_inventory");
-        para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet5.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unserviceable\"");
-        para_inventoryRowSet5.setTableName("para_inventory");
-        para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet6.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"others\"");
-        para_inventoryRowSet6.setTableName("para_inventory");
-        para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventoryRowSet7.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"returned\"");
-        para_inventoryRowSet7.setTableName("para_inventory");
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
@@ -285,6 +259,38 @@ public class IcePage1 extends AbstractPageBean {
         Double temp;
 
         // <editor-fold defaultstate="collapsed" desc="Fragment1">
+        try {
+            para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{Page1.para_inventoryRowSet}"));
+            para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"loan\"");
+            para_inventoryRowSet.setTableName("para_inventory");
+            para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet1.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unpacked\"");
+            para_inventoryRowSet1.setTableName("para_inventory");
+            para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet2.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"packed\"");
+            para_inventoryRowSet2.setTableName("para_inventory");
+            para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet3.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"inspection\"");
+            para_inventoryRowSet3.setTableName("para_inventory");
+            para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet4.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"repair\"");
+            para_inventoryRowSet4.setTableName("para_inventory");
+            para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet5.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"unserviceable\"");
+            para_inventoryRowSet5.setTableName("para_inventory");
+            para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet6.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"others\"");
+            para_inventoryRowSet6.setTableName("para_inventory");
+            para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+            para_inventoryRowSet7.setCommand("SELECT COUNT(*)  FROM para_inventory WHERE `status` = \"returned\"");
+            para_inventoryRowSet7.setTableName("para_inventory");
+        } catch (Exception e) {
+            log(e.toString());
+        }
+
+        FILE_URL = "/ampie/frag1/data.txt";
+
         data = new ArrayList<Double>();
         temp = null;
 

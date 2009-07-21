@@ -54,6 +54,7 @@
                         <webuijsf:calendar binding="#{para_riggers$Edit.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" label="Refresher Date"
                             required="true" style="position: absolute; left: 24px; top: 72px"/>
                         <webuijsf:message for="calendar1" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 72px"/>
+                        <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="position: absolute; left: 504px; top: 24px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

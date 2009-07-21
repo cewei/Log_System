@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_inventory$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add new parachute"/>
                         <webuijsf:button actionExpression="#{para_inventory$View.edit_action}" id="edit" style="position: absolute; left: 144px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="100%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$View.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Serial No" id="tableColumn1" sort="para_inventory_view.Serial No" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory_view.Serial No']}"/>

@@ -19,7 +19,7 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_loan/Edit" url="/faces/para_loan/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 120px" title="Parachute Loan" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 120px" title="Parachute Loan" width="100%">
                             <webuijsf:tableRowGroup binding="#{para_loan$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_loan$Edit.selectedState}" sourceData="#{para_loan$Edit.para_loanDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="para_loan_no" id="tableColumn1" sort="para_loan.para_loan_no">
