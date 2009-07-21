@@ -29,36 +29,37 @@
                         <webuijsf:textField binding="#{para_inventory$Add.noOfJumpsTF}" id="noOfJumpsTF" required="true" style="position: absolute; left: 168px; top: 144px"/>
                         <webuijsf:dropDown binding="#{para_inventory$Add.statusDD}" id="statusDD" items="#{para_inventory$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 168px; top: 168px"/>
                         <webuijsf:button actionExpression="#{para_inventory$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="100%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Add.para_inventory_viewDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="Type Prefix No" id="tableColumn1" sort="para_inventory_view.Type Prefix No">
+                                <webuijsf:tableColumn align="center" headerText="Type Prefix No" id="tableColumn1" sort="para_inventory_view.Type Prefix No" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory_view.Type Prefix No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Serial No" id="tableColumn2" sort="para_inventory_view.Serial No">
+                                <webuijsf:tableColumn align="center" headerText="Serial No" id="tableColumn2" sort="para_inventory_view.Serial No" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_inventory_view.Serial No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Name" id="tableColumn3" sort="para_inventory_view.Name">
+                                <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn3" sort="para_inventory_view.Name" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_inventory_view.Name']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Chute No" id="tableColumn4" sort="para_inventory_view.Chute No">
+                                <webuijsf:tableColumn align="center" headerText="Chute No" id="tableColumn4" sort="para_inventory_view.Chute No" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_inventory_view.Chute No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Life Span" id="tableColumn5" sort="para_inventory_view.Life Span">
+                                <webuijsf:tableColumn align="center" headerText="Life Span" id="tableColumn5" sort="para_inventory_view.Life Span" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_inventory_view.Life Span']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Max Jumps" id="tableColumn6" sort="para_inventory_view.Max Jumps">
+                                <webuijsf:tableColumn align="center" headerText="Max Jumps" id="tableColumn6" sort="para_inventory_view.Max Jumps" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory_view.Max Jumps']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Jumps Left" id="tableColumn7" sort="para_inventory_view.Jumps Left">
+                                <webuijsf:tableColumn align="center" headerText="Jumps Left" id="tableColumn7" sort="para_inventory_view.Jumps Left" valign="middle">
                                     <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_inventory_view.Jumps Left']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Manufactured Date" id="tableColumn8" sort="para_inventory_view.Manufactured Date">
+                                <webuijsf:tableColumn align="center" headerText="Manufactured Date" id="tableColumn8"
+                                    sort="para_inventory_view.Manufactured Date" valign="middle">
                                     <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_inventory_view.Manufactured Date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Replacement Date" id="tableColumn9" sort="para_inventory_view.Replacement Date">
+                                <webuijsf:tableColumn align="center" headerText="Replacement Date" id="tableColumn9" sort="para_inventory_view.Replacement Date" valign="middle">
                                     <webuijsf:staticText id="staticText9" text="#{currentRow.value['para_inventory_view.Replacement Date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Current Status" id="tableColumn10" sort="para_inventory_view.Current Status">
+                                <webuijsf:tableColumn align="center" headerText="Current Status" id="tableColumn10" sort="para_inventory_view.Current Status" valign="middle">
                                     <webuijsf:staticText id="staticText10" text="#{currentRow.value['para_inventory_view.Current Status']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>

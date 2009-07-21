@@ -39,7 +39,7 @@ public class Add extends AbstractPageBean {
     private void _init() throws Exception {
         para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_inventory_viewRowSet}"));
         para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventory_viewRowSet.setCommand("SELECT ALL para_inventory_view.`Type Prefix No`, para_inventory_view.`Serial No`, para_inventory_view.`Name`, para_inventory_view.`Chute No`, para_inventory_view.`Life Span`, para_inventory_view.`Max Jumps`, para_inventory_view.`Jumps Left`, para_inventory_view.`Manufactured Date`, para_inventory_view.`Replacement Date`, para_inventory_view.`Current Status`  FROM para_inventory_view WHERE para_inventory_view.`Type Prefix No` = ?");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE para_inventory_view.`Type Prefix No` = ?");
         para_inventory_viewRowSet.setTableName("para_inventory_view");
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$Add.para_typeRowSet}"));
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
@@ -237,6 +237,30 @@ public class Add extends AbstractPageBean {
     // Perform application initialization that must complete
     // *after* managed components are initialized
     // TODO - add your own initialization code here
+        if (typeDD.getSelected() == null) {
+            Object firstSelected = null;
+            try {
+                para_typeDataProvider.cursorFirst();
+                firstSelected = para_typeDataProvider.getValue("para_type_no");
+                typeDD.setSelected(firstSelected);
+                getPara_inventory_viewRowSet().setObject(1, firstSelected);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        } else {
+            Object typeID = typeDD.getSelected();
+            try {
+                para_typeDataProvider.setCursorRow(
+                        para_typeDataProvider.findFirst("para_type_no", typeID));
+                getPara_inventory_viewRowSet().setObject(1, typeID);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        }
     }
 
     /**
@@ -332,6 +356,30 @@ public class Add extends AbstractPageBean {
     }
 
     public void typeDD_processValueChange(ValueChangeEvent event) {
+        if (typeDD.getSelected() == null) {
+            Object firstSelected = null;
+            try {
+                para_typeDataProvider.cursorFirst();
+                firstSelected = para_typeDataProvider.getValue("para_type_no");
+                typeDD.setSelected(firstSelected);
+                getPara_inventory_viewRowSet().setObject(1, firstSelected);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        } else {
+            Object typeID = typeDD.getSelected();
+            try {
+                para_typeDataProvider.setCursorRow(
+                        para_typeDataProvider.findFirst("para_type_no", typeID));
+                getPara_inventory_viewRowSet().setObject(1, typeID);
+                para_inventory_viewDataProvider.refresh();
+            } catch (Exception ex) {
+                log(" ERROR - para_inventory.Add : Error Description", ex);
+                error(" ERROR - " +ex.getMessage());
+            }
+        }
     }
 }
 
