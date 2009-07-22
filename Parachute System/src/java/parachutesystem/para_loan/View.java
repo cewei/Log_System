@@ -31,7 +31,7 @@ public class View extends AbstractPageBean {
     private void _init() throws Exception {
         para_loan_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$View.para_loan_viewRowSet}"));
         para_loan_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_loan_viewRowSet.setCommand("SELECT ALL para_loan_view.`NRIC`, para_loan_view.`Rank`, para_loan_view.`Borrower`, para_loan_view.`Unit`, para_loan_view.`Serial No`, para_loan_view.`Name`, para_loan_view.`Chute No`, para_loan_view.`Date Out`, para_loan_view.`Date In`  FROM para_loan_view");
+        para_loan_viewRowSet.setCommand("SELECT *  FROM para_loan_view");
         para_loan_viewRowSet.setTableName("para_loan_view");
     }
     private CachedRowSetDataProvider para_loan_viewDataProvider = new CachedRowSetDataProvider();

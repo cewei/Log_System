@@ -25,25 +25,25 @@
                         <webuijsf:label for="calendar1" id="label4" style="position: absolute; left: 24px; top: 144px" text="Date Loan"/>
                         <webuijsf:calendar binding="#{para_loan$Add.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" required="true" style="left: 96px; top: 144px; position: absolute"/>
                         <webuijsf:table augmentTitle="false" deselectMultipleButton="true" id="table1" selectMultipleButton="true"
-                            style="left: 24px; top: 192px; position: absolute; width: 0px" title="Inventory List" width="0">
+                            style="left: 24px; top: 192px; position: absolute" title="Inventory List" width="100%">
                             <webuijsf:tableRowGroup binding="#{para_loan$Add.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_loan$Add.selectedState}" sourceData="#{para_loan$Add.para_inventoryDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="type_prefix_no" id="tableColumn1" sort="para_inventory.type_prefix_no">
+                                    <webuijsf:tableColumn headerText="type_prefix_no" id="tableColumn1" sort="para_inventory.type_prefix_no" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory.type_prefix_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="chute_no" id="tableColumn2" sort="para_inventory.chute_no">
+                                <webuijsf:tableColumn headerText="chute_no" id="tableColumn2" sort="para_inventory.chute_no" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_inventory.chute_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="serial_no" id="tableColumn3" sort="para_inventory.serial_no">
+                                <webuijsf:tableColumn headerText="serial_no" id="tableColumn3" sort="para_inventory.serial_no" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_inventory.serial_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="date_of_mfg" id="tableColumn4" sort="para_inventory.date_of_mfg">
+                                <webuijsf:tableColumn headerText="date_of_mfg" id="tableColumn4" sort="para_inventory.date_of_mfg" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_inventory.date_of_mfg']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="no_of_jumps" id="tableColumn5" sort="para_inventory.no_of_jumps">
+                                <webuijsf:tableColumn headerText="no_of_jumps" id="tableColumn5" sort="para_inventory.no_of_jumps" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_inventory.no_of_jumps']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="status" id="tableColumn6" sort="para_inventory.status">
+                                <webuijsf:tableColumn headerText="status" id="tableColumn6" sort="para_inventory.status" align="center" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory.status']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn id="tableRowGroup1SelectionColumn"
