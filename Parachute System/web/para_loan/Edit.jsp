@@ -22,25 +22,25 @@
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 120px" title="Parachute Loan" width="100%">
                             <webuijsf:tableRowGroup binding="#{para_loan$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_loan$Edit.selectedState}" sourceData="#{para_loan$Edit.para_loanDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="para_loan_no" id="tableColumn1" sort="para_loan.para_loan_no">
+                                <webuijsf:tableColumn align="center" headerText="Loan No" id="tableColumn1" sort="para_loan.para_loan_no" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_loan.para_loan_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="NRIC" id="tableColumn2" sort="para_loan.NRIC">
+                                <webuijsf:tableColumn align="center" headerText="NRIC" id="tableColumn2" sort="para_loan.NRIC" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_loan.NRIC']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="type_prefix_no" id="tableColumn3" sort="para_loan.type_prefix_no">
+                                <webuijsf:tableColumn align="center" headerText="Type Prefix" id="tableColumn3" sort="para_loan.type_prefix_no" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_loan.type_prefix_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="chute_no" id="tableColumn4" sort="para_loan.chute_no">
+                                <webuijsf:tableColumn align="center" headerText="Chute No" id="tableColumn4" sort="para_loan.chute_no" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_loan.chute_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="serial_no" id="tableColumn5" sort="para_loan.serial_no">
+                                <webuijsf:tableColumn align="center" headerText="Serial No" id="tableColumn5" sort="para_loan.serial_no" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_loan.serial_no']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="date_out" id="tableColumn6" sort="para_loan.date_out">
+                                <webuijsf:tableColumn align="center" headerText="Date Out" id="tableColumn6" sort="para_loan.date_out" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_loan.date_out']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="date_in" id="tableColumn7" sort="para_loan.date_in">
+                                <webuijsf:tableColumn align="center" headerText="Date In" id="tableColumn7" sort="para_loan.date_in" valign="middle">
                                     <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_loan.date_in']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn id="tableColumn8"

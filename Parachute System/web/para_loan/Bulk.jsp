@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Bulk Loan">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
@@ -21,10 +21,16 @@
                         </webuijsf:breadcrumbs>
                         <webuijsf:upload binding="#{para_loan$Bulk.fileUpload1}" id="fileUpload1" label="Main" required="true" style="left: 24px; top: 72px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_loan$Bulk.upload_action}" binding="#{para_loan$Bulk.upload}" id="upload"
-                            style="left: 23px; top: 168px; position: absolute" text="Upload"/>
+                            style="left: 23px; top: 264px; position: absolute" text="Upload"/>
                         <webuijsf:upload binding="#{para_loan$Bulk.fileUpload2}" id="fileUpload2" label="Reserve" required="true" style="left: 24px; top: 120px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{para_loan$Bulk.nricDD}" id="nricDD"
+                            items="#{para_loan$Bulk.para_borrowersDataProvider.options['para_borrowers.NRIC,para_borrowers.name']}" label="NRIC" required="true" style="left: 24px; top: 168px; position: absolute"/>
+                        <webuijsf:calendar binding="#{para_loan$Bulk.calendar1}" dateFormatPattern="dd/MM/yyyy" id="calendar1" label="Date of Loan"
+                            required="true" style="left: 24px; top: 216px; position: absolute"/>
                         <webuijsf:message for="fileUpload1" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 432px; top: 72px"/>
                         <webuijsf:message for="fileUpload2" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 432px; top: 120px"/>
+                        <webuijsf:message for="nricDD" id="message3" showDetail="false" showSummary="true" style="left: 144px; top: 168px; position: absolute"/>
+                        <webuijsf:message for="calendar1" id="message4" showDetail="false" showSummary="true" style="left: 288px; top: 216px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

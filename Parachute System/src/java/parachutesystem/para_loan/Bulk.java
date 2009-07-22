@@ -4,8 +4,13 @@
  */
 package parachutesystem.para_loan;
 
+import com.sun.data.provider.RowKey;
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.Upload;
 import com.sun.webui.jsf.model.UploadedFile;
 import java.io.BufferedReader;
@@ -40,6 +45,94 @@ public class Bulk extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_borrowersRowSet}"));
+        para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");
+        para_borrowersRowSet.setTableName("para_borrowers");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
+        para_loanDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_loanRowSet}"));
+        para_loanRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_loanRowSet.setCommand("SELECT * FROM para_loan");
+        para_loanRowSet.setTableName("para_loan");
+        para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_typeRowSet}"));
+        para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_typeRowSet.setCommand("SELECT * FROM para_type");
+        para_typeRowSet.setTableName("para_type");
+    }
+    private CachedRowSetDataProvider para_borrowersDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_borrowersDataProvider() {
+        return para_borrowersDataProvider;
+    }
+
+    public void setPara_borrowersDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_borrowersDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_borrowersRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_borrowersRowSet() {
+        return para_borrowersRowSet;
+    }
+
+    public void setPara_borrowersRowSet(CachedRowSetXImpl crsxi) {
+        this.para_borrowersRowSet = crsxi;
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
+    }
+    private CachedRowSetDataProvider para_loanDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_loanDataProvider() {
+        return para_loanDataProvider;
+    }
+
+    public void setPara_loanDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_loanDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_loanRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_loanRowSet() {
+        return para_loanRowSet;
+    }
+
+    public void setPara_loanRowSet(CachedRowSetXImpl crsxi) {
+        this.para_loanRowSet = crsxi;
+    }
+    private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_typeDataProvider() {
+        return para_typeDataProvider;
+    }
+
+    public void setPara_typeDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_typeDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_typeRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_typeRowSet() {
+        return para_typeRowSet;
+    }
+
+    public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
+        this.para_typeRowSet = crsxi;
     }
     private Upload fileUpload1 = new Upload();
 
@@ -78,6 +171,24 @@ public class Bulk extends AbstractPageBean {
 
     public void setListOfChutes(Chutes[] listOfChutes) {
         this.listOfChutes = listOfChutes;
+    }
+    private DropDown nricDD = new DropDown();
+
+    public DropDown getNricDD() {
+        return nricDD;
+    }
+
+    public void setNricDD(DropDown dd) {
+        this.nricDD = dd;
+    }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
     }
 
     // </editor-fold>
@@ -158,6 +269,7 @@ public class Bulk extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_typeDataProvider.close();
     }
 
     /**
@@ -251,18 +363,104 @@ public class Bulk extends AbstractPageBean {
                 StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), "%");
 
                 while (stMain.hasMoreTokens() && stReserve.hasMoreTokens()) {
-                    mainChuteTemp.add(new Chutes(stMain.nextToken(), stReserve.nextToken()));
-                    stMain.nextToken();stMain.nextToken();
-                    stReserve.nextToken();stReserve.nextToken();
+                    String main = stMain.nextToken();
+                    String mainSerial = stMain.nextToken();
+                    String reserve = stReserve.nextToken();
+                    String reserveSerial = stReserve.nextToken();
+
+                    mainChuteTemp.add(new Chutes(main, reserve));
+                    stMain.nextToken();
+                    stReserve.nextToken();
+                    //for main
+                    if (para_loanDataProvider.canAppendRow()) {
+                        StringTokenizer stTemp = new StringTokenizer(main, "-");
+                        Object type_prefix = null;
+                        String chute_no = null;
+                        if (stTemp.countTokens() == 2) {
+                            type_prefix = stTemp.nextToken();
+                            chute_no = stTemp.nextToken();
+                        } else {
+                            log(" ERROR - para_loan.Add : Cannot resolve Type Prefix");
+                            return null;
+                        }
+                        RowKey row = para_typeDataProvider.findFirst("type_prefix", type_prefix);
+                        Object type_no = para_typeDataProvider.getValue("para_type_no", row);
+
+                        String[] fieldKeys = {"type_prefix_no", "chute_no", "serial_no"};
+                        Object[] value = {type_no, chute_no, mainSerial};
+
+                        RowKey[] rows = para_inventoryDataProvider.findAll(fieldKeys, value);
+                        if (rows.length == 1) {
+                            para_inventoryDataProvider.setCursorRow(rows[0]);
+                        } else {
+                            log(" ERROR - para_loan.Add : Too many inventory");
+                            return null;
+                        }
+
+                        RowKey appendRow = para_loanDataProvider.appendRow();
+                        para_loanDataProvider.setCursorRow(appendRow);
+                        para_loanDataProvider.setValue("nric", nricDD.getValue());
+                        para_loanDataProvider.setValue("type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
+                        para_loanDataProvider.setValue("chute_no", para_inventoryDataProvider.getValue("chute_no"));
+                        para_loanDataProvider.setValue("serial_no", para_inventoryDataProvider.getValue("serial_no"));
+                        para_loanDataProvider.setValue("date_out", calendar1.getValue());
+                        para_loanDataProvider.commitChanges();
+
+                        para_inventoryDataProvider.setValue("status", "loan");
+                        para_inventoryDataProvider.commitChanges();
+                    } else {
+                        log(" ERROR - para_loan.Add : Cannot append row");
+                        error(" ERROR - Cannot append row");
+                        return null;
+                    }
+                    // for reserve
+                    if (para_loanDataProvider.canAppendRow()) {
+                        StringTokenizer stTemp = new StringTokenizer(reserve, "-");
+                        Object type_prefix = null;
+                        String chute_no = null;
+                        if (stTemp.countTokens() == 2) {
+                            type_prefix = stTemp.nextToken();
+                            chute_no = stTemp.nextToken();
+                        } else {
+                            log(" ERROR - para_loan.Add : Cannot resolve Type Prefix");
+                            return null;
+                        }
+                        RowKey row = para_typeDataProvider.findFirst("type_prefix", type_prefix);
+                        Object type_no = para_typeDataProvider.getValue("para_type_no", row);
+
+                        String[] fieldKeys = {"type_prefix_no", "chute_no", "serial_no"};
+                        Object[] value = {type_no, chute_no, reserveSerial};
+
+                        RowKey[] rows = para_inventoryDataProvider.findAll(fieldKeys, value);
+                        if (rows.length == 1) {
+                            para_inventoryDataProvider.setCursorRow(rows[0]);
+                        } else {
+                            log(" ERROR - para_loan.Add : Too many inventory");
+                            return null;
+                        }
+
+                        RowKey appendRow = para_loanDataProvider.appendRow();
+                        para_loanDataProvider.setCursorRow(appendRow);
+                        para_loanDataProvider.setValue("nric", nricDD.getValue());
+                        para_loanDataProvider.setValue("type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
+                        para_loanDataProvider.setValue("chute_no", para_inventoryDataProvider.getValue("chute_no"));
+                        para_loanDataProvider.setValue("serial_no", para_inventoryDataProvider.getValue("serial_no"));
+                        para_loanDataProvider.setValue("date_out", calendar1.getValue());
+                        para_loanDataProvider.commitChanges();
+
+                        para_inventoryDataProvider.setValue("status", "loan");
+                        para_inventoryDataProvider.commitChanges();
+                    } else {
+                        log(" ERROR - para_loan.Add : Cannot append row");
+                        error(" ERROR - Cannot append row");
+                        return null;
+                    }
                 }
             }
             brMain.close();
             brReserve.close();
             frMain.close();
             frReserve.close();
-//                mainChute = new String[mainChuteTemp.size()];
-//                mainChuteTemp.toArray(mainChute);
-//                getSessionBean1().setMainChute(mainChute);
             listOfChutes = new Chutes[mainChuteTemp.size()];
             mainChuteTemp.toArray(listOfChutes);
             getSessionBean1().setMainChute(listOfChutes);
