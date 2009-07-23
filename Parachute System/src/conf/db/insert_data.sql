@@ -79,8 +79,8 @@ INSERT INTO para_borrowers (NRIC, name, rank, unit) VALUES
 ('S8470182C', 'Chris', '3SG', 'BMTC'),
 ('S8770182C', 'Lancer', 'SSG', 'HQ CDO');
 
-INSERT INTO para_loan (NRIC, type_prefix_no, chute_no, serial_no, date_out) VALUES
-('S8470182C', 3, '11', 'SL 21500X', '1997-06-01');
+--INSERT INTO para_loan (NRIC, type_prefix_no, chute_no, serial_no, date_out) VALUES
+--('S8470182C', 3, '11', 'SL 21500X', '1997-06-01');
 
 INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES
 (1, '1', '975170002', '1997-01-01', 'S1234567A', 'S2345678B', 'inspection'),

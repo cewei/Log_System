@@ -16,6 +16,8 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_loan$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add"/>
                         <webuijsf:button actionExpression="#{para_loan$View.edit_action}" id="edit" style="position: absolute; left: 96px; top: 48px" text="Edit"/>
+                        <webuijsf:button actionExpression="#{para_loan$View.bulk_action}" id="bulk" style="position: absolute; left: 168px; top: 48px" text="Bulk"/>
+                        <webuijsf:button actionExpression="#{para_loan$View.bulkReturn_action}" id="bulkReturn" style="position: absolute; left: 240px; top: 48px" text="Bulk Return"/>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Loans" width="100%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_loan$View.para_loan_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="NRIC" id="tableColumn6" sort="para_loan_view.NRIC" valign="middle">
@@ -51,7 +53,7 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:button actionExpression="#{para_loan$View.bulk_action}" id="bulk" style="position: absolute; left: 168px; top: 48px" text="Bulk"/>
+                        
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

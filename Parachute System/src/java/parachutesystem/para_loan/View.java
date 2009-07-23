@@ -143,5 +143,9 @@ public class View extends AbstractPageBean {
     public String bulk_action() {
         return "viewToBulk";
     }
+
+    public String bulkReturn_action() {
+        return "viewToBulkReturn";
+    }
 }
 
