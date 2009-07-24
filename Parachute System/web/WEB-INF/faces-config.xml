@@ -356,4 +356,44 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_1</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_2</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_2</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_3</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_3</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_4</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_4</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$View_1</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View_1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$View_2</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View_2</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$View_3</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View_3</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_packing$View_4</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View_4</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
