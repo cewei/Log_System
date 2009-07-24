@@ -105,7 +105,9 @@ para_type.max_jump AS `Max Jumps`,
 para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
 para_inventory.date_of_mfg AS `Manufactured Date`,
 para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`,
-para_inventory.status AS `Current Status`
+para_inventory.status AS `Current Status`,
+para_type.reserve AS `reserve`,
+para_type.static AS `static`
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
@@ -128,7 +130,9 @@ para_packing.inspect_by AS `Inspect By`,
 para_packing.check_type AS `Check Type`,
 para_inventory.status AS `Status`,
 para_type.para_type_no,
-para_inventory.chute_no
+para_inventory.chute_no,
+para_type.reserve,
+para_type.static
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no
