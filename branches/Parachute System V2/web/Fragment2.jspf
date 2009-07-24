@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : Fragment2
+    Created on : Jul 21, 2009, 12:01:46 PM
+    Author     : Dell
+-->
+<div style="-rave-layout: grid; width: 520px; height: 400px" xmlns:f="http://java.sun.com/jsf/core" xmlns:ice="http://www.icesoft.com/icefaces/component">
+    <f:subview id="Fragment2">
+        <!-- ampie script-->
+        <script src="ampie/swfobject.js" type="text/javascript"></script>
+        <div id="flashcontent2">
+            <strong>You need to upgrade your Flash Player</strong>
+        </div>
+        <script type="text/javascript">
+            // <![CDATA[
+            var so = new SWFObject("ampie/ampie.swf", "ampie", "520", "400", "8", "#FFFFFF");
+            so.addVariable("path", "ampie/");
+            so.addVariable("settings_file", encodeURIComponent("ampie/frag2/ampie_settings.xml"));                // you can set two or more different settings files here (separated by commas)
+            so.addVariable("data_file", encodeURIComponent("ampie/frag2/data.txt"));
+
+            //	so.addVariable("chart_data", encodeURIComponent("<settings>...</settings>"));                   // you can pass chart data as a string directly from this file
+            //	so.addVariable("chart_settings", encodeURIComponent("data in CSV or XML format"));              // you can pass chart settings as a string directly from this file
+            //	so.addVariable("additional_chart_settings", encodeURIComponent("<settings>...</settings>"));    // you can append some chart settings to the loaded ones
+            //  so.addVariable("loading_settings", "LOADING SETTINGS");                                         // you can set custom "loading settings" text here
+            //  so.addVariable("loading_data", "LOADING DATA");                                                 // you can set custom "loading data" text here
+            //  so.addVariable("preloader_color", "#999999");
+            so.write("flashcontent2");
+            // ]]></script>
+        <!-- end of ampie script -->
+    </f:subview>
+</div>
