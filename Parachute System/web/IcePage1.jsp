@@ -15,11 +15,10 @@
                 <script type="text/javascript">
                     function render() {
                         document.getElementById("form1:button1").click();
-                        document.getElementById("form1:button2").click();
                     }
                 </script>
             </head>
-            <body id="outputBody1" onload="render()" style="-rave-layout: grid">
+            <body id="outputBody1" onload="javascript:render()" style="-rave-layout: grid">
                 <ice:form id="form1">
                     <ice:outputLink id="outputLink1" style="left: 24px; top: 24px; position: absolute" value="./faces/para_type/View.jsp">
                         <ice:outputText id="outputText1" value="Parachute Type"/>

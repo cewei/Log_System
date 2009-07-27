@@ -359,8 +359,8 @@ public class Bulk extends AbstractPageBean {
             BufferedReader brMain = new BufferedReader(frMain);
             BufferedReader brReserve = new BufferedReader(frReserve);
             while (brMain.ready() || brReserve.ready()) {
-                StringTokenizer stMain = new StringTokenizer(brMain.readLine(), "%");
-                StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), "%");
+                StringTokenizer stMain = new StringTokenizer(brMain.readLine(), "%F");
+                StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), "%F");
 
                 while (stMain.hasMoreTokens() && stReserve.hasMoreTokens()) {
                     String main = stMain.nextToken();

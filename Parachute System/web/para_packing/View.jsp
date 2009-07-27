@@ -23,7 +23,7 @@
                                 <webuijsf:tableColumn align="center" headerText="Serial No" id="tableColumn1" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory.Serial No']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Chute No" id="tableColumn2" valign="middle">
+                                <webuijsf:tableColumn align="center" headerText="Chute No" id="tableColumn2" sort="Chute No" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['Chute No']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Repacked Date" id="tableColumn3" valign="middle">
