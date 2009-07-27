@@ -396,4 +396,14 @@
         <managed-bean-class>parachutesystem.para_packing.View_4</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_Combined</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_Combined</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>return_module$Return_page</managed-bean-name>
+        <managed-bean-class>parachutesystem.return_module.Return_page</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

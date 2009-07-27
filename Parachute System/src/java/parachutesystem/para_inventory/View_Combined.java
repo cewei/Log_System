@@ -3,11 +3,9 @@
  * and open the template in the editor.
  */
 
-package parachutesystem.para_packing;
+package parachutesystem.para_inventory;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
 
 /**
@@ -17,12 +15,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 22, 2009, 2:27:02 PM
- * @author Dell
+ * @version View_Combined.java
+ * @version Created on 27/07/2009, 10:06:01 AM
+ * @author user
  */
 
-public class View extends AbstractPageBean {
+public class View_Combined extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -31,35 +29,14 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View.para_packing_viewRowSet}"));
-        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view ORDER BY `CHUTE NO`");
-        para_packing_viewRowSet.setTableName("para_packing_view");
-    }
-    private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getPara_packing_viewDataProvider() {
-        return para_packing_viewDataProvider;
     }
 
-    public void setPara_packing_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_packing_viewDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_packing_viewRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_packing_viewRowSet() {
-        return para_packing_viewRowSet;
-    }
-
-    public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_packing_viewRowSet = crsxi;
-    }
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View() {
+    public View_Combined() {
     }
 
     /**
@@ -88,7 +65,7 @@ public class View extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("View_Combined Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -131,11 +108,6 @@ public class View extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_packing_viewDataProvider.close();
-    }
-
-    public String add_action() {
-        return "viewToAdd";
     }
     
 }
