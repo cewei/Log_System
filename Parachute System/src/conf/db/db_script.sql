@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `parachute_system`.`para_type`;
 CREATE TABLE  `parachute_system`.`para_type` (
   `para_type_no` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_prefix` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(125) NOT NULL,
   `life_span` int(10) unsigned NOT NULL,
   `max_jump` int(10) unsigned NOT NULL,
   `repack_cycle` int(10) unsigned NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
 
 CREATE TABLE  `parachute_system`.`para_borrowers` (
   `NRIC` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(125) NOT NULL,
   `rank` varchar(45) NOT NULL,
   `unit` varchar(45) NOT NULL,
   PRIMARY KEY (`NRIC`)
@@ -86,8 +86,8 @@ CREATE TABLE  `parachute_system`.`para_packing` (
   `serial_no` varchar(45) NOT NULL,
   `inner_no` varchar(45) NOT NULL,
   `date_packed` date NOT NULL,
-  `pack_by` varchar(45) NOT NULL,
-  `inspect_by` varchar(45) NOT NULL,
+  `pack_by` varchar(125) NOT NULL,
+  `inspect_by` varchar(125) NOT NULL,
   `check_type` enum('repacking','inspection') NOT NULL,
   `inspection` varchar(45) DEFAULT '',
   `repacking` tinyint(1) NOT NULL,
@@ -123,16 +123,16 @@ ON para_inventory.type_prefix_no=para_type.para_type_no;
 
 CREATE VIEW `parachute_system`.`para_consolidated_view` AS
 SELECT
-para_type.name,
-para_inventory.chute_no,
-para_packing.inner_no,
-para_inventory.date_of_mfg,
-para_packing.inspection,
-para_packing.repacking,
-para_inventory.no_of_jumps,
-para_packing.date_packed,
-para_packing.pack_by,
-para_packing.inspect_by
+para_type.name AS `Name`,
+CONCAT_WS('-', para_type.type_prefix, para_inventory.chute_no) AS `Chute No`,
+para_packing.inner_no AS `Inner No`,
+para_inventory.date_of_mfg AS `Date of MFG`,
+para_packing.inspection AS `Inspection`,
+para_packing.repacking AS `Repacking`,
+para_inventory.no_of_jumps AS `J/D`,
+para_packing.date_packed AS `Date Packed`,
+para_packing.pack_by AS `Packer`,
+para_packing.inspect_by AS `Checker / Inspector`
 FROM para_packing
 INNER JOIN para_inventory
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND

@@ -34,6 +34,7 @@ public class View_PackDue extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing View_PackDue>>");
         para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View_PackDue.para_inventory_viewRowSet}"));
         para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view");

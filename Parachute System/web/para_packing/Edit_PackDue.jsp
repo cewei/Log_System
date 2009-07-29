@@ -14,7 +14,7 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Pack Due Date" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Pack Due Date" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$Edit_PackDue.para_inventoryDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type Prefix No" id="tableColumn1" valign="middle">
                                     <webuijsf:dropDown converter="#{para_packing$Edit_PackDue.longConverter1}" id="dropDown1" disabled="true"

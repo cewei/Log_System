@@ -30,6 +30,7 @@ public class View extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_type View>>");
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM para_type");

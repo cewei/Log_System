@@ -16,24 +16,24 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_riggers$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add"/>
                         <webuijsf:button actionExpression="#{para_riggers$View.edit_action}" id="edit" style="position: absolute; left: 96px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Riggers" width="100%">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Riggers" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_riggers$View.para_riggersDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
+                                <webuijsf:tableColumn align="center" headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_riggers.NRIC']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="name" id="tableColumn2" sort="para_riggers.name">
+                                <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn2" sort="para_riggers.name" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_riggers.name']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rank" id="tableColumn3" sort="para_riggers.rank">
+                                <webuijsf:tableColumn align="center" headerText="Rank" id="tableColumn3" sort="para_riggers.rank" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_riggers.rank']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rigger" id="tableColumn4" sort="para_riggers.rigger">
+                                <webuijsf:tableColumn align="center" headerText="Packer" id="tableColumn4" sort="para_riggers.rigger" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_riggers.rigger']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="inspector" id="tableColumn5" sort="para_riggers.inspector">
+                                <webuijsf:tableColumn align="center" headerText="Checker / Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_riggers.inspector']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="last_refresher_date" id="tableColumn7" sort="para_riggers.last_refresher_date">
+                                <webuijsf:tableColumn align="center" headerText="Last Refresher Date" id="tableColumn7" sort="para_riggers.last_refresher_date" valign="middle">
                                     <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_riggers.last_refresher_date']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>

@@ -35,6 +35,7 @@ public class IcePage1 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering IcePage1>>");
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 

@@ -29,7 +29,7 @@
                         <webuijsf:textField binding="#{para_inventory$Add.noOfJumpsTF}" id="noOfJumpsTF" required="true" style="position: absolute; left: 168px; top: 144px"/>
                         <webuijsf:dropDown binding="#{para_inventory$Add.statusDD}" id="statusDD" items="#{para_inventory$Add.statusDDDefaultOptions.options}" style="position: absolute; left: 168px; top: 168px"/>
                         <webuijsf:button actionExpression="#{para_inventory$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="100%">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 240px" title="Parachute Inventory" width="98%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Add.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type Prefix No" id="tableColumn1" sort="para_inventory_view.Type Prefix No" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory_view.Type Prefix No']}"/>

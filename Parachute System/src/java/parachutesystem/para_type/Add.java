@@ -32,6 +32,7 @@ public class Add extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_type Add>>");
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_typeRowSet.setCommand("SELECT * FROM para_type");
         para_typeRowSet.setTableName("para_type");

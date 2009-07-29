@@ -16,18 +16,18 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_borrowers$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add"/>
                         <webuijsf:button actionExpression="#{para_borrowers$View.edit_action}" id="edit" style="position: absolute; left: 96px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Borrowers" width="100%">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Borrowers" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_borrowers$View.para_borrowersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_borrowers.NRIC">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_borrowers.NRIC']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="name" id="tableColumn2" sort="para_borrowers.name">
+                                <webuijsf:tableColumn headerText="Name" id="tableColumn2" sort="para_borrowers.name">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_borrowers.name']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rank" id="tableColumn3" sort="para_borrowers.rank">
+                                <webuijsf:tableColumn headerText="Rank" id="tableColumn3" sort="para_borrowers.rank">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_borrowers.rank']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="unit" id="tableColumn4" sort="para_borrowers.unit">
+                                <webuijsf:tableColumn headerText="Unit" id="tableColumn4" sort="para_borrowers.unit">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_borrowers.unit']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>

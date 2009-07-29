@@ -33,6 +33,7 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_riggers Edit>>");
         para_riggersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_riggers$Edit.para_riggersRowSet}"));
         para_riggersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet.setCommand("SELECT * FROM para_riggers");

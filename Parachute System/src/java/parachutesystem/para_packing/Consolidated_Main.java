@@ -31,6 +31,7 @@ public class Consolidated_Main extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing Consolidated_Main>>");
         para_consolidated_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Consolidated_Main.para_consolidated_viewRowSet1}"));
         para_consolidated_viewRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view");

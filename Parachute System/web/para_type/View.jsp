@@ -15,8 +15,8 @@
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_type$View.add_action}" id="add" style="left: 23px; top: 48px; position: absolute" text="Add new entry"/>
-                        <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="position: absolute; left: 120px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute" title="Parachute Types" width="100%">
+                        <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="left: 143px; top: 48px; position: absolute" text="Edit"/>
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute; width: 97%" title="Parachute Types" width="98%">
                             <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">

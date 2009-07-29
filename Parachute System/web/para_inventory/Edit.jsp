@@ -14,7 +14,7 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="98%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$Edit.para_inventoryDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type Prefix" id="tableColumn1" valign="middle">
                                     <webuijsf:dropDown converter="#{para_inventory$Edit.dropDown1Converter}" id="dropDown1"
