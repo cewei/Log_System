@@ -4,7 +4,6 @@
  */
 package parachutesystem.para_loan;
 
-import com.sun.data.provider.RowKey;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
@@ -170,6 +169,15 @@ public class Bulk_Generate extends AbstractPageBean {
     public void setListOfChutes(Chutes[] listOfChutes) {
         this.listOfChutes = listOfChutes;
     }
+    private Upload fileUpload3 = new Upload();
+
+    public Upload getFileUpload3() {
+        return fileUpload3;
+    }
+
+    public void setFileUpload3(Upload u) {
+        this.fileUpload3 = u;
+    }
 
     // </editor-fold>
     /**
@@ -282,6 +290,7 @@ public class Bulk_Generate extends AbstractPageBean {
     public String upload_action() {
         UploadedFile uploadedFileMain = fileUpload1.getUploadedFile();
         UploadedFile uploadedFileReserve = fileUpload2.getUploadedFile();
+        UploadedFile uploadedFileLifeJacket = fileUpload3.getUploadedFile();
 
         if (uploadedFileMain == null) {
             log("Main file null");
@@ -289,17 +298,25 @@ public class Bulk_Generate extends AbstractPageBean {
         }
         if (uploadedFileReserve == null) {
             log("Reserve file null");
+            return null;
+        }
+        if (uploadedFileLifeJacket == null) {
+            log("LifeJacket file null");
+            return null;
         }
 
         String uploadedFileMainName = uploadedFileMain.getOriginalName();
         String uploadedFileReserveName = uploadedFileReserve.getOriginalName();
+        String uploadedFileLifeJacketName = uploadedFileLifeJacket.getOriginalName();
         // Some browsers return complete path name, some don't
         // Make sure we only have the file name
         // First, try forward slash
         int indexMain = uploadedFileMainName.lastIndexOf('/');
         int indexReserve = uploadedFileReserveName.lastIndexOf('/');
+        int indexLifeJacket = uploadedFileLifeJacketName.lastIndexOf('/');
         String justFileMainName;
         String justFileReserveName;
+        String justFileLifeJacketName;
         if (indexMain >= 0) {
             justFileMainName = uploadedFileMainName.substring(indexMain + 1);
         } else {
@@ -326,116 +343,68 @@ public class Bulk_Generate extends AbstractPageBean {
             }
 
         }
+        if (indexLifeJacket >= 0) {
+            justFileLifeJacketName = uploadedFileLifeJacketName.substring(indexLifeJacket + 1);
+        } else {
+            // Try backslash
+            indexLifeJacket = uploadedFileLifeJacketName.lastIndexOf('\\');
+            if (indexReserve >= 0) {
+                justFileLifeJacketName = uploadedFileLifeJacketName.substring(indexLifeJacket + 1);
+            } else {
+                // No forward or back slashes
+                justFileLifeJacketName = uploadedFileLifeJacketName;
+            }
+
+        }
         try {
             File fileMain = new File(this.realFilePath + justFileMainName);
             File fileReserve = new File(this.realFilePath + justFileReserveName);
+            File fileLifeJacket = new File(this.realFilePath + justFileLifeJacketName);
             uploadedFileMain.write(fileMain);
             uploadedFileReserve.write(fileReserve);
-            log("uploaded");
+            uploadedFileLifeJacket.write(fileLifeJacket);
+            log("Uploaded All");
 
             ArrayList<Chutes> mainChuteTemp = new ArrayList<Chutes>();
             FileReader frMain = new FileReader(fileMain);
             FileReader frReserve = new FileReader(fileReserve);
+            FileReader frLifeJacket = new FileReader(fileLifeJacket);
             BufferedReader brMain = new BufferedReader(frMain);
             BufferedReader brReserve = new BufferedReader(frReserve);
-            while (brMain.ready() || brReserve.ready()) {
-                StringTokenizer stMain = new StringTokenizer(brMain.readLine(), "%F");
-                StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), "%F");
-
-                while (stMain.hasMoreTokens() && stReserve.hasMoreTokens()) {
-                    String main = stMain.nextToken();
-                    String mainSerial = stMain.nextToken();
-                    String reserve = stReserve.nextToken();
-                    String reserveSerial = stReserve.nextToken();
-
-                    mainChuteTemp.add(new Chutes(main, reserve));
-                    stMain.nextToken();
-                    stReserve.nextToken();
-                    //for main
-                    if (para_loanDataProvider.canAppendRow()) {
-                        StringTokenizer stTemp = new StringTokenizer(main, "-");
-                        Object type_prefix = null;
-                        String chute_no = null;
-                        if (stTemp.countTokens() == 2) {
-                            type_prefix = stTemp.nextToken();
-                            chute_no = stTemp.nextToken();
-                        } else {
-                            log(" ERROR - para_loan.Add : Cannot resolve Type Prefix");
-                            return null;
-                        }
-                        RowKey row = para_typeDataProvider.findFirst("type_prefix", type_prefix);
-                        Object type_no = para_typeDataProvider.getValue("para_type_no", row);
-
-                        String[] fieldKeys = {"type_prefix_no", "chute_no", "serial_no"};
-                        Object[] value = {type_no, chute_no, mainSerial};
-
-                        RowKey[] rows = para_inventoryDataProvider.findAll(fieldKeys, value);
-                        if (rows.length == 1) {
-                            para_inventoryDataProvider.setCursorRow(rows[0]);
-                        } else {
-                            log(" ERROR - para_loan.Add : Too many inventory");
-                            return null;
-                        }
-
-                        RowKey appendRow = para_loanDataProvider.appendRow();
-                        para_loanDataProvider.setCursorRow(appendRow);
-                        para_loanDataProvider.setValue("nric", nricDD.getValue());
-                        para_loanDataProvider.setValue("type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
-                        para_loanDataProvider.setValue("chute_no", para_inventoryDataProvider.getValue("chute_no"));
-                        para_loanDataProvider.setValue("serial_no", para_inventoryDataProvider.getValue("serial_no"));
-                        para_loanDataProvider.setValue("date_out", calendar1.getValue());
-                        para_loanDataProvider.commitChanges();
-
-                        para_inventoryDataProvider.setValue("status", "loan");
-                        para_inventoryDataProvider.commitChanges();
-                    } else {
-                        log(" ERROR - para_loan.Add : Cannot append row");
-                        error(" ERROR - Cannot append row");
-                        return null;
-                    }
-                    // for reserve
-                    if (para_loanDataProvider.canAppendRow()) {
-                        StringTokenizer stTemp = new StringTokenizer(reserve, "-");
-                        Object type_prefix = null;
-                        String chute_no = null;
-                        if (stTemp.countTokens() == 2) {
-                            type_prefix = stTemp.nextToken();
-                            chute_no = stTemp.nextToken();
-                        } else {
-                            log(" ERROR - para_loan.Add : Cannot resolve Type Prefix");
-                            return null;
-                        }
-                        RowKey row = para_typeDataProvider.findFirst("type_prefix", type_prefix);
-                        Object type_no = para_typeDataProvider.getValue("para_type_no", row);
-
-                        String[] fieldKeys = {"type_prefix_no", "chute_no", "serial_no"};
-                        Object[] value = {type_no, chute_no, reserveSerial};
-
-                        RowKey[] rows = para_inventoryDataProvider.findAll(fieldKeys, value);
-                        if (rows.length == 1) {
-                            para_inventoryDataProvider.setCursorRow(rows[0]);
-                        } else {
-                            log(" ERROR - para_loan.Add : Too many inventory");
-                            return null;
-                        }
-
-                        RowKey appendRow = para_loanDataProvider.appendRow();
-                        para_loanDataProvider.setCursorRow(appendRow);
-                        para_loanDataProvider.setValue("nric", nricDD.getValue());
-                        para_loanDataProvider.setValue("type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
-                        para_loanDataProvider.setValue("chute_no", para_inventoryDataProvider.getValue("chute_no"));
-                        para_loanDataProvider.setValue("serial_no", para_inventoryDataProvider.getValue("serial_no"));
-                        para_loanDataProvider.setValue("date_out", calendar1.getValue());
-                        para_loanDataProvider.commitChanges();
-
-                        para_inventoryDataProvider.setValue("status", "loan");
-                        para_inventoryDataProvider.commitChanges();
-                    } else {
-                        log(" ERROR - para_loan.Add : Cannot append row");
-                        error(" ERROR - Cannot append row");
-                        return null;
-                    }
+            BufferedReader brLifeJacket = new BufferedReader(frLifeJacket);
+            while (brMain.ready() || brReserve.ready() || brLifeJacket.ready()) {
+                StringTokenizer stMain = new StringTokenizer("");
+                StringTokenizer stReserve = new StringTokenizer("");
+                StringTokenizer stLifeJacket = new StringTokenizer("");
+                if (brMain.ready()) {
+                    stMain = new StringTokenizer(brMain.readLine(), "%F");
                 }
+                if (brReserve.ready()) {
+                    stReserve = new StringTokenizer(brReserve.readLine(), "%F");
+                }
+                if (brLifeJacket.ready()) {
+                    stLifeJacket = new StringTokenizer(brLifeJacket.readLine(), "%F");
+                }
+                String main = "";
+                String reserve = "";
+                String lifeJacket = "";
+                while (stMain.hasMoreTokens()) {
+                    main = stMain.nextToken();
+                    String mainSerial = stMain.nextToken();
+                    stMain.nextToken();
+                }
+                while (stReserve.hasMoreTokens()) {
+                    reserve = stReserve.nextToken();
+                    String reserveSerial = stReserve.nextToken();
+                    stReserve.nextToken();
+                }
+                while (stLifeJacket.hasMoreTokens()) {
+                    lifeJacket = stLifeJacket.nextToken();
+                    String lifeJacketSerial = stReserve.nextToken();
+                    stLifeJacket.nextToken();
+                }
+
+                mainChuteTemp.add(new Chutes(main, reserve, lifeJacket));
             }
             brMain.close();
             brReserve.close();
@@ -449,6 +418,7 @@ public class Bulk_Generate extends AbstractPageBean {
             error("Cannot upload file: " + justFileMainName);
             error("Cannot upload file: " + justFileReserveName);
             error(ex.toString());
+            ex.printStackTrace();
         }
         return null;
     }
