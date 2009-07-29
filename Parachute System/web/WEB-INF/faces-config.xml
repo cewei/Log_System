@@ -423,6 +423,20 @@
         </navigation-case>
     </navigation-rule>
     <managed-bean>
+        <managed-bean-name>para_loan$Bulk_Generate</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.Bulk_Generate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_loan/Bulk_Generate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>bulkToReport</from-outcome>
+            <to-view-id>/para_loan/Report.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+
+    <managed-bean>
         <managed-bean-name>para_inventory$View_1</managed-bean-name>
         <managed-bean-class>parachutesystem.para_inventory.View_1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -470,11 +484,6 @@
     <managed-bean>
         <managed-bean-name>return_module$Return_page</managed-bean-name>
         <managed-bean-class>parachutesystem.return_module.Return_page</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_loan$Bulk_Generate</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_loan.Bulk_Generate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>

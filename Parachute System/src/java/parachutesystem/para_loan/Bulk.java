@@ -367,8 +367,9 @@ public class Bulk extends AbstractPageBean {
                     String mainSerial = stMain.nextToken();
                     String reserve = stReserve.nextToken();
                     String reserveSerial = stReserve.nextToken();
+                    String lifeJacket = "";
 
-                    mainChuteTemp.add(new Chutes(main, reserve));
+                    mainChuteTemp.add(new Chutes(main, reserve, lifeJacket));
                     stMain.nextToken();
                     stReserve.nextToken();
                     //for main
