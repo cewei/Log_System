@@ -1,16 +1,16 @@
 INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve, static) VALUES
-('MA', 'MACH III ALPHA MAIN 325', 10, 100, 90, 0, 0),
-('MAR', 'MACH III ALPHA RESERVE 325', 10, 100, 90, 1, 0),
-('MC5', 'MC5 MAIN 370', 10, 100, 90, 0, 1),
-('MCR', 'MC-5 RESERVE 370', 10, 100, 90, 1, 1),
-('PD', 'PERFORMANCE DESIGN MAIN', 10, 100, 90, 0, 0),
-('PDR', 'PERFORMANCE DESIGN RESERVE 176 (PDR)', 10, 100, 90, 1, 0),
-('TP', 'TANDEM PHOENIX', 10, 100, 90, 0, 1),
-('HR', 'HEAVY RESERVE', 10, 100, 90, 1, 1),
-('CLASS', 'CLASSIC MAIN', 10, 100, 90, 0, 0),
-('PDR(C)', 'PERFORMANCE DESIGN RESERVE 176 (PDR(C))', 10, 100, 90, 1, 0),
-('TL', 'TRIATHLON MAIN 190', 10, 100, 90, 0, 1),
-('SR', 'SMART RESERVE 175' , 10, 100, 90, 1, 1);
+('MA', 'MACH III ALPHA MAIN 325', 10, 100, 4, 0, 0),
+('MAR', 'MACH III ALPHA RESERVE 325', 10, 100, 4, 1, 0),
+('MC5', 'MC5 MAIN 370', 10, 100, 4, 0, 1),
+('MCR', 'MC-5 RESERVE 370', 10, 100, 4, 1, 1),
+('PD', 'PERFORMANCE DESIGN MAIN', 10, 100, 4, 0, 0),
+('PDR', 'PERFORMANCE DESIGN RESERVE 176 (PDR)', 10, 100, 4, 1, 0),
+('TP', 'TANDEM PHOENIX', 10, 100, 4, 0, 1),
+('HR', 'HEAVY RESERVE', 10, 100, 4, 1, 1),
+('CLASS', 'CLASSIC MAIN', 10, 100, 4, 0, 0),
+('PDR(C)', 'PERFORMANCE DESIGN RESERVE 176 (PDR(C))', 10, 100, 4, 1, 0),
+('TL', 'TRIATHLON MAIN 190', 10, 100, 4, 0, 1),
+('SR', 'SMART RESERVE 175' , 10, 100, 4, 1, 1);
 
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES
 (1, '1', '975170002', '1997-06-01', 0, 'loan'),
@@ -82,10 +82,10 @@ INSERT INTO para_borrowers (NRIC, name, rank, unit) VALUES
 --INSERT INTO para_loan (NRIC, type_prefix_no, chute_no, serial_no, date_out) VALUES
 --('S8470182C', 3, '11', 'SL 21500X', '1997-06-01');
 
-INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, date_packed, pack_by, inspect_by, check_type) VALUES
-(1, '1', '975170002', '1997-01-01', 'S1234567A', 'S2345678B', 'inspection'),
-(1, '1', '975170002', '1997-01-01', 'S3456789C', 'S4567890D', 'repacking'),
-(1, '2', '975170003', '1997-01-01', 'S1234567A', 'S2345678B', 'inspection'),
-(2, '1', 'R00563', '1997-06-01', 'S3456789C', 'S4567890D', 'inspection'),
-(3, '11', 'SL 21500X', '1997-06-01', 'S1234567A', 'S2345678B', 'inspection'),
-(4, '11', 'SL 21561X', '1997-06-01', 'S3456789C', 'S4567890D', 'inspection');
+INSERT INTO para_packing (type_prefix_no, chute_no, serial_no, inner_no, date_packed, pack_by, inspect_by, check_type, inspection, repacking) VALUES
+(1, '1', '975170002', '1234', '1997-01-01', 'Riggger A', 'Inspector A', 'inspection', '', 1);
+--(1, '1', '975170002', '1997-01-01', 'S3456789C', 'S4567890D', 'repacking'),
+--(1, '2', '975170003', '1997-01-01', 'S1234567A', 'S2345678B', 'inspection'),
+--(2, '1', 'R00563', '1997-06-01', 'S3456789C', 'S4567890D', 'inspection'),
+--(3, '11', 'SL 21500X', '1997-06-01', 'S1234567A', 'S2345678B', 'inspection'),
+--(4, '11', 'SL 21561X', '1997-06-01', 'S3456789C', 'S4567890D', 'inspection');

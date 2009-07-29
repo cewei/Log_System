@@ -6,7 +6,9 @@
     xmlns="http://java.sun.com/xml/ns/javaee" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+    
     <!--JSF Level beans-->
+
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>parachutesystem.SessionBean1</managed-bean-class>
@@ -55,7 +57,9 @@
         <managed-bean-class>parachutesystem.Fragment5</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
     <!--Para Type-->
+
     <managed-bean>
         <managed-bean-name>para_type$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_type.View</managed-bean-class>
@@ -100,7 +104,9 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+
     <!--Para Inventory-->
+
     <managed-bean>
         <managed-bean-name>para_inventory$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_inventory.View</managed-bean-class>
@@ -145,7 +151,9 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+
     <!--Para Packing-->
+
     <managed-bean>
         <managed-bean-name>para_packing$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.View</managed-bean-class>
@@ -172,7 +180,61 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$Edit_PackDue</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Edit_PackDue</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_packing/Edit_PackDue.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_packing/View_PackDue.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$View_PackDue</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.View_PackDue</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_packing/View_PackDue.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_packing/Edit_PackDue.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$Consolidated_Main</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Consolidated_Main</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_packing/Consolidated_Main.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_packing/Consolidated_Main_Edit.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$Consolidated_Main_Edit</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Consolidated_Main_Edit</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_packing/Consolidated_Main_Edit.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editToView</from-outcome>
+            <to-view-id>/para_packing/Consolidated_Main.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+
     <!--Para Riggers-->
+
     <managed-bean>
         <managed-bean-name>para_riggers$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_riggers.View</managed-bean-class>
@@ -217,7 +279,9 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+
     <!--Para Borrowers-->
+
     <managed-bean>
         <managed-bean-name>para_borrowers$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_borrowers.View</managed-bean-class>
@@ -262,7 +326,9 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    
     <!--Para Loan-->
+
     <managed-bean>
         <managed-bean-name>para_loan$View</managed-bean-name>
         <managed-bean-class>parachutesystem.para_loan.View</managed-bean-class>
@@ -404,6 +470,11 @@
     <managed-bean>
         <managed-bean-name>return_module$Return_page</managed-bean-name>
         <managed-bean-class>parachutesystem.return_module.Return_page</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>para_loan$Bulk_Generate</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_loan.Bulk_Generate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>

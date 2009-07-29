@@ -36,7 +36,7 @@
                                     <webuijsf:textField id="textField4" required="true" text="#{currentRow.value['para_type.max_jump']}"/>
                                     <webuijsf:message for="textField4" id="message4" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Repack Cycle (Days)" id="tableColumn6" valign="middle">
+                                <webuijsf:tableColumn align="center" headerText="Repack Cycle (Months)" id="tableColumn6" valign="middle">
                                     <webuijsf:textField id="textField5" required="true" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                     <webuijsf:message for="textField5" id="message5" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
