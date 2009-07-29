@@ -43,6 +43,9 @@
                                 <webuijsf:tableColumn align="center" headerText="Jumps Left" id="tableColumn6" sort="para_inventory_view.Jumps Left" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory_view.Jumps Left']}"/>
                                 </webuijsf:tableColumn>
+                                <webuijsf:tableColumn headerText="Balance Lifespan" id="tableColumn9" sort="para_inventory_view.Balance Lifespan">
+                                    <webuijsf:staticText id="staticText9" text="#{currentRow.value['para_inventory_view.Balance Lifespan']}"/>
+                                </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">

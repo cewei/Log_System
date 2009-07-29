@@ -34,7 +34,7 @@
                                 <webuijsf:tableColumn align="center" headerText="Max No. Jumps" id="tableColumn5" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_type.max_jump']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Repack Cycle (Days)" id="tableColumn6" valign="middle">
+                                <webuijsf:tableColumn align="center" headerText="Repack Cycle (Months)" id="tableColumn6" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn7" valign="middle">

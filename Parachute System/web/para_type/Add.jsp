@@ -18,7 +18,7 @@
                         <webuijsf:label for="nameText" id="nameLbl" style="left: 24px; top: 72px; position: absolute" text="Type Name"/>
                         <webuijsf:label for="lifeSpanText" id="lifeSpanLbl" style="left: 24px; top: 96px; position: absolute" text="Life Span (Yrs)"/>
                         <webuijsf:label for="maxJumpText" id="maxJumpLbl" style="left: 24px; top: 120px; position: absolute" text="Max No. Jumps"/>
-                        <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 24px; top: 144px; position: absolute" text="Repack Cycle (Days)"/>
+                        <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 24px; top: 144px; position: absolute" text="Repack Cycle (Months)"/>
                         <webuijsf:label id="label1" style="position: absolute; left: 24px; top: 168px" text="Reserve"/>
                         <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 192px" text="Static"/>
                         <webuijsf:textField binding="#{para_type$Add.typePrefixText}" id="typePrefixText" required="true" style="left: 168px; top: 48px; position: absolute"/>

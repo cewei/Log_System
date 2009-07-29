@@ -6,6 +6,8 @@ DROP VIEW IF EXISTS `parachute_system`.`para_packing_view`;
 
 DROP VIEW IF EXISTS `parachute_system`.`para_packing_latest_view`;
 
+DROP VIEW IF EXISTS `parachute_system`.`para_consolidated_view`;
+
 DROP VIEW IF EXISTS `parachute_system`.`para_inventory_view`;
 
 DROP TABLE IF EXISTS `parachute_system`.`para_packing`;
@@ -38,6 +40,7 @@ CREATE TABLE  `parachute_system`.`para_inventory` (
   `serial_no` varchar(45) NOT NULL,
   `date_of_mfg` date NOT NULL,
   `no_of_jumps` int(10) unsigned NOT NULL,
+  `date_packed` date NOT NULL DEFAULT '2009-01-01',
   `status` enum('unpacked', 'packed', 'inspection', 'repair', 'unserviceable', 'others', 'loan', 'returned') NOT NULL,
   PRIMARY KEY (`type_prefix_no`,`chute_no`,`serial_no`),
   CONSTRAINT `FK_para_inventory_type` FOREIGN KEY (`type_prefix_no`) REFERENCES `para_type` (`para_type_no`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -81,17 +84,16 @@ CREATE TABLE  `parachute_system`.`para_packing` (
   `type_prefix_no` int(10) unsigned NOT NULL,
   `chute_no` varchar(45) NOT NULL,
   `serial_no` varchar(45) NOT NULL,
+  `inner_no` varchar(45) NOT NULL,
   `date_packed` date NOT NULL,
   `pack_by` varchar(45) NOT NULL,
   `inspect_by` varchar(45) NOT NULL,
   `check_type` enum('repacking','inspection') NOT NULL,
+  `inspection` varchar(45) DEFAULT '',
+  `repacking` tinyint(1) NOT NULL,
   PRIMARY KEY (`para_packing_no`),
   KEY `FK_para_packing_inventory_no` (`type_prefix_no`,`chute_no`,`serial_no`),
-  KEY `FK_para_packing_pack_by` (`pack_by`),
-  KEY `FK_para_packing_inspect_by` (`inspect_by`),
-  CONSTRAINT `FK_para_packing_inspect_by` FOREIGN KEY (`inspect_by`) REFERENCES `para_riggers` (`NRIC`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_para_packing_pack_by` FOREIGN KEY (`pack_by`) REFERENCES `para_riggers` (`NRIC`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_para_packing_inventory_no` FOREIGN KEY (`type_prefix_no`, `chute_no`, `serial_no`) REFERENCES `para_inventory` (`type_prefix_no`, `chute_no`, `serial_no`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE VIEW `parachute_system`.`para_inventory_view` AS
@@ -104,11 +106,38 @@ para_type.life_span AS `Life Span`,
 para_type.max_jump AS `Max Jumps`,
 para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
 para_inventory.date_of_mfg AS `Manufactured Date`,
-para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR AS `Replacement Date`,
+para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY AS `Replacement Date`,
 para_inventory.status AS `Current Status`,
 para_type.reserve AS `reserve`,
-para_type.static AS `static`
+para_type.static AS `static`,
+CONCAT(
+ CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/365) AS CHAR), ' Year(s) '),
+ CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/30.5)%12 AS CHAR), ' Month(s)')
+ ) AS `Balance Lifespan`,
+para_inventory.date_packed AS `Packed Date`,
+para_inventory.date_packed + INTERVAL para_type.repack_cycle MONTH - INTERVAL 5 DAY AS `Packing Due Date`,
+para_inventory.no_of_jumps AS `J/D`
 FROM para_inventory
+INNER JOIN para_type
+ON para_inventory.type_prefix_no=para_type.para_type_no;
+
+CREATE VIEW `parachute_system`.`para_consolidated_view` AS
+SELECT
+para_type.name,
+para_inventory.chute_no,
+para_packing.inner_no,
+para_inventory.date_of_mfg,
+para_packing.inspection,
+para_packing.repacking,
+para_inventory.no_of_jumps,
+para_packing.date_packed,
+para_packing.pack_by,
+para_packing.inspect_by
+FROM para_packing
+INNER JOIN para_inventory
+ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND
+para_inventory.chute_no=para_packing.chute_no AND
+para_inventory.serial_no=para_packing.serial_no
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no;
 
