@@ -307,6 +307,15 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
     public void setFollowUpDD(DropDown dd) {
         this.followUpDD = dd;
     }
+    private DropDown inspectorDD1 = new DropDown();
+
+    public DropDown getInspectorDD1() {
+        return inspectorDD1;
+    }
+
+    public void setInspectorDD1(DropDown dd) {
+        this.inspectorDD1 = dd;
+    }
 
     // </editor-fold>
     /**
@@ -468,7 +477,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                         para_packingDataProvider.setValue("inner_no", textField3.getText());
                         para_packingDataProvider.setValue("para_packing.date_packed", dateCal.getValue());
                         para_packingDataProvider.setValue("para_packing.pack_by", "-");
-                        para_packingDataProvider.setValue("para_packing.inspect_by", checkerDD.getSelected() +" / " +inspectorDD.getSelected());
+                        para_packingDataProvider.setValue("para_packing.inspect_by", inspectorDD.getSelected() +" / " +inspectorDD1.getSelected());
                         para_packingDataProvider.setValue("para_packing.check_type", "inspection");
                         para_packingDataProvider.setValue("para_packing.inspection", inspectionDD.getSelected());
                         para_packingDataProvider.setValue("para_packing.repacking", false);

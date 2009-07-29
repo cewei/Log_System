@@ -19,7 +19,7 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/Consolidated_Main" url="/faces/para_packing/Consolidated_Main.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_packing/Consolidated_Main_Edit" url="/faces/para_packing/Consolidated_Main_Edit.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 192px; position: absolute; width: 0px" title="Table" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 240px; position: absolute; width: 0px" title="Table" width="0">
                             <webuijsf:tableRowGroup binding="#{para_packing$Consolidated_Main_Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_packing$Consolidated_Main_Edit.selectedState}"
                                 sourceData="#{para_packing$Consolidated_Main_Edit.para_inventoryDataProvider}" sourceVar="currentRow">
@@ -42,16 +42,10 @@
                                 <webuijsf:tableColumn headerText="Date Packed" id="tableColumn6" sort="para_inventory.date_packed">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory.date_packed']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Status" id="tableColumn7" sort="para_inventory.status">
-                                    <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_inventory.status']}"/>
-                                </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" id="tableRowGroup1SelectionColumn"
                                     onClick="setTimeout(function(){document.getElementById('form1:table1').initAllRows()}, 0);"
                                     selectId="tableRowGroup1SelectionChild" valign="middle">
                                     <webuijsf:checkbox id="tableRowGroup1SelectionChild" selected="#{para_packing$Consolidated_Main_Edit.selected}" selectedValue="#{para_packing$Consolidated_Main_Edit.selectedValue}"/>
-                                </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Inner No" id="tableColumn8">
-                                    <webuijsf:textField binding="#{para_packing$Consolidated_Main_Edit.textField3}" id="textField3" text=" "/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
@@ -62,20 +56,23 @@
                             label="Packer" style="left: 24px; top: 120px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.inspectorDD}" id="inspectorDD"
                             items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider1.options['para_riggers.name,para_riggers.name']}"
-                            label="Inspector" style="left: 408px; top: 120px; position: absolute"/>
+                            label="Inspector 1" style="left: 408px; top: 120px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_packing$Consolidated_Main_Edit.save_action}" id="save"
-                            style="left: 23px; top: 168px; position: absolute" text="Save Changes"/>
+                            style="left: 23px; top: 216px; position: absolute" text="Save Changes"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.inspectionDD}" id="inspectionDD"
                             items="#{para_packing$Consolidated_Main_Edit.inspectionDDDefaultOptions.options}" label="Type of Inspection" style="left: 408px; top: 48px; position: absolute"/>
                         <webuijsf:radioButtonGroup binding="#{para_packing$Consolidated_Main_Edit.radioButtonGroup1}" id="radioButtonGroup1"
                             items="#{para_packing$Consolidated_Main_Edit.radioButtonGroup1DefaultOptions.options}" required="true" style="left: 24px; top: 48px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.checkerDD}" id="checkerDD"
                             items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider1.options['para_riggers.name,para_riggers.name']}"
-                            label="Checker" style="left: 216px; top: 120px; position: absolute"/>
+                            label="Checker" style="left: 24px; top: 168px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.followUpDD}" id="followUpDD"
                             items="#{para_packing$Consolidated_Main_Edit.followUpDDDefaultOptions.options}" label="Follow Up" style="left: 672px; top: 48px; position: absolute"/>
                         <webuijsf:message for="radioButtonGroup1" id="message1" showDetail="false" showSummary="true" style="left: 144px; top: 72px; position: absolute"/>
                         <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="position: absolute; left: 840px; top: 48px"/>
+                        <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.inspectorDD1}" id="inspectorDD1"
+                            items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider1.options['para_riggers.name,para_riggers.name']}"
+                            label="Inspector 2" style="left: 408px; top: 168px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
