@@ -18,24 +18,25 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/View_PackDue" url="/faces/para_packing/View_PackDue.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Pack Due Date" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Pack Due Date" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$View_PackDue.para_inventory_viewDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="Name" id="tableColumn3" sort="para_inventory_view.Name">
+                                <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn3" sort="para_inventory_view.Name" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_inventory_view.Name']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Chute No" id="tableColumn4" sort="para_inventory_view.Chute No">
+                                <webuijsf:tableColumn align="center" headerText="Chute No" id="tableColumn4" sort="para_inventory_view.Chute No" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_inventory_view.Chute No']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="J/D" id="tableColumn1" sort="para_inventory_view.J/D" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_inventory_view.J/D']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Packed date" id="tableColumn14" sort="para_inventory_view.Packed date">
+                                <webuijsf:tableColumn align="center" headerText="Packed date" id="tableColumn14" sort="para_inventory_view.Packed date" valign="middle">
                                     <webuijsf:staticText id="staticText12" text="#{currentRow.value['para_inventory_view.Packed date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Packing Due Date" id="tableColumn15" sort="para_inventory_view.Packing Due Date">
+                                <webuijsf:tableColumn align="center" headerText="Packing Due Date" id="tableColumn15"
+                                    sort="para_inventory_view.Packing Due Date" valign="middle">
                                     <webuijsf:staticText id="staticText13" text="#{currentRow.value['para_inventory_view.Packing Due Date']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Current Status" id="tableColumn10" sort="para_inventory_view.Current Status">
+                                <webuijsf:tableColumn align="center" headerText="Current Status" id="tableColumn10" sort="para_inventory_view.Current Status" valign="middle">
                                     <webuijsf:staticText id="staticText10" text="#{currentRow.value['para_inventory_view.Current Status']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>

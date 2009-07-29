@@ -9,11 +9,12 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import com.sun.webui.jsf.component.Calendar;
-import com.sun.webui.jsf.component.Checkbox;
 import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.RadioButtonGroup;
 import com.sun.webui.jsf.component.TableRowGroup;
 import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.event.TableSelectPhaseListener;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.convert.LongConverter;
 import parachutesystem.SessionBean1;
@@ -40,6 +41,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing Consolidated_Main_Edit>>");
         para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Consolidated_Main_Edit.para_inventoryRowSet}"));
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
@@ -60,6 +62,9 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
         para_riggersRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet1.setCommand("SELECT * FROM para_riggers WHERE para_riggers.inspector = 1");
         para_riggersRowSet1.setTableName("para_riggers");
+        inspectionDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Please Select"), new com.sun.webui.jsf.model.Option("Initial Inspection", "Initial Inspection"),new com.sun.webui.jsf.model.Option("Rigger Inspection", "Rigger Inspection")});
+        radioButtonGroup1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repacking", "Repacking"), new com.sun.webui.jsf.model.Option("inspection", "Inspection")});
+        followUpDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repair", "Repair"), new com.sun.webui.jsf.model.Option("unpacked", "Packing")});
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
@@ -203,24 +208,6 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
         RowKey rowKey = (RowKey) getValue("#{currentRow.tableRow}");
         return tablePhaseListener.isSelected(rowKey);
     }
-    private TextField inspectionTxt = new TextField();
-
-    public TextField getInspectionTxt() {
-        return inspectionTxt;
-    }
-
-    public void setInspectionTxt(TextField tf) {
-        this.inspectionTxt = tf;
-    }
-    private Checkbox repackCB = new Checkbox();
-
-    public Checkbox getRepackCB() {
-        return repackCB;
-    }
-
-    public void setRepackCB(Checkbox c) {
-        this.repackCB = c;
-    }
     private Calendar dateCal = new Calendar();
 
     public Calendar getDateCal() {
@@ -256,6 +243,69 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
 
     public void setTextField3(TextField tf) {
         this.textField3 = tf;
+    }
+    private SingleSelectOptionsList inspectionDDDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getInspectionDDDefaultOptions() {
+        return inspectionDDDefaultOptions;
+    }
+
+    public void setInspectionDDDefaultOptions(SingleSelectOptionsList ssol) {
+        this.inspectionDDDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList radioButtonGroup1DefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getRadioButtonGroup1DefaultOptions() {
+        return radioButtonGroup1DefaultOptions;
+    }
+
+    public void setRadioButtonGroup1DefaultOptions(SingleSelectOptionsList ssol) {
+        this.radioButtonGroup1DefaultOptions = ssol;
+    }
+    private RadioButtonGroup radioButtonGroup1 = new RadioButtonGroup();
+
+    public RadioButtonGroup getRadioButtonGroup1() {
+        return radioButtonGroup1;
+    }
+
+    public void setRadioButtonGroup1(RadioButtonGroup rbg) {
+        this.radioButtonGroup1 = rbg;
+    }
+    private DropDown inspectionDD = new DropDown();
+
+    public DropDown getInspectionDD() {
+        return inspectionDD;
+    }
+
+    public void setInspectionDD(DropDown dd) {
+        this.inspectionDD = dd;
+    }
+    private DropDown checkerDD = new DropDown();
+
+    public DropDown getCheckerDD() {
+        return checkerDD;
+    }
+
+    public void setCheckerDD(DropDown dd) {
+        this.checkerDD = dd;
+    }
+    private SingleSelectOptionsList followUpDDDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getFollowUpDDDefaultOptions() {
+        return followUpDDDefaultOptions;
+    }
+
+    public void setFollowUpDDDefaultOptions(SingleSelectOptionsList ssol) {
+        this.followUpDDDefaultOptions = ssol;
+    }
+    private DropDown followUpDD = new DropDown();
+
+    public DropDown getFollowUpDD() {
+        return followUpDD;
+    }
+
+    public void setFollowUpDD(DropDown dd) {
+        this.followUpDD = dd;
     }
 
     // </editor-fold>
@@ -384,7 +434,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                     //RowKey[] rks = para_inventoryDataProvider.findAll(fieldKeys, values);
 
                     RowKey appendedRow = para_packingDataProvider.appendRow();
-                    if (appendedRow != null) {
+                    if (appendedRow != null && radioButtonGroup1.getValue().equals("repacking")) {
                         para_packingDataProvider.setCursorRow(appendedRow);
                         para_packingDataProvider.setValue("para_packing.type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
                         para_packingDataProvider.setValue("para_packing.chute_no", para_inventoryDataProvider.getValue("chute_no"));
@@ -392,21 +442,46 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                         para_packingDataProvider.setValue("inner_no", textField3.getText());
                         para_packingDataProvider.setValue("para_packing.date_packed", dateCal.getValue());
                         para_packingDataProvider.setValue("para_packing.pack_by", packerDD.getSelected());
-                        para_packingDataProvider.setValue("para_packing.inspect_by", inspectorDD.getSelected());
+                        para_packingDataProvider.setValue("para_packing.inspect_by", checkerDD.getSelected());
                         para_packingDataProvider.setValue("para_packing.check_type", "repacking");
-                        para_packingDataProvider.setValue("para_packing.inspection", inspectionTxt.getText());
-                        para_packingDataProvider.setValue("para_packing.repacking", repackCB.getValue());
+                        para_packingDataProvider.setValue("para_packing.inspection", inspectionDD.getSelected());
+                        para_packingDataProvider.setValue("para_packing.repacking", true);
 
-                        if (repackCB.getValue().equals(true)) {
-                            para_inventoryDataProvider.setValue("para_inventory.date_packed", dateCal.getValue());
-                        }
+                        para_inventoryDataProvider.setValue("para_inventory.date_packed", dateCal.getValue());
+                        para_inventoryDataProvider.setValue("para_inventory.status", "packed");
 
                         para_packingDataProvider.commitChanges();
                         para_packingDataProvider.refresh();
 
                         para_inventoryDataProvider.commitChanges();
                         para_inventoryDataProvider.refresh();
-                    } else {
+                    } else if (appendedRow != null && radioButtonGroup1.getValue().equals("inspection")){
+                        if (inspectionDD.getSelected().equals("")) {
+                            log(" INFO - Please select a type of inspection");
+                            info(" INFO - Please select a type of inspection");
+                            return null;
+                        }
+                        para_packingDataProvider.setCursorRow(appendedRow);
+                        para_packingDataProvider.setValue("para_packing.type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
+                        para_packingDataProvider.setValue("para_packing.chute_no", para_inventoryDataProvider.getValue("chute_no"));
+                        para_packingDataProvider.setValue("para_packing.serial_no", para_inventoryDataProvider.getValue("serial_no"));
+                        para_packingDataProvider.setValue("inner_no", textField3.getText());
+                        para_packingDataProvider.setValue("para_packing.date_packed", dateCal.getValue());
+                        para_packingDataProvider.setValue("para_packing.pack_by", "-");
+                        para_packingDataProvider.setValue("para_packing.inspect_by", checkerDD.getSelected() +" / " +inspectorDD.getSelected());
+                        para_packingDataProvider.setValue("para_packing.check_type", "inspection");
+                        para_packingDataProvider.setValue("para_packing.inspection", inspectionDD.getSelected());
+                        para_packingDataProvider.setValue("para_packing.repacking", false);
+
+                        para_inventoryDataProvider.setValue("para_inventory.status", followUpDD.getValue());
+
+                        para_packingDataProvider.commitChanges();
+                        para_packingDataProvider.refresh();
+
+                        para_inventoryDataProvider.commitChanges();
+                        para_inventoryDataProvider.refresh();
+                    }
+                    else {
                         log(" ERROR - para_packing.Add : Append Row Error");
                         error(" ERROR - Append Row Error");
                         return null;
@@ -418,7 +493,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                 }
             }
             log(" INFO - para_packing.Add : Loop ended without incidents");
-            error(" INFO - Loop ended without incidents");
+            info(" INFO - Loop ended without incidents");
             return "editToView";
         } else {
             log(" INFO - para_loan.Add : No row selected");

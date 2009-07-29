@@ -19,21 +19,21 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_borrowers/View" url="/faces/para_borrowers/View.jsp"/>
                             <webuijsf:hyperlink id="hyperlink3" text="para_borrowers/Edit" url="/faces/para_borrowers/Edit.jsp"/>
                         </webuijsf:breadcrumbs>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Borrowers" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Borrowers" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_borrowers$Edit.para_borrowersDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_borrowers.NRIC">
                                     <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_borrowers.NRIC']}"/>
                                     <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="name" id="tableColumn2" sort="para_borrowers.name">
+                                <webuijsf:tableColumn headerText="Name" id="tableColumn2" sort="para_borrowers.name">
                                     <webuijsf:textField id="textField2" required="true" text="#{currentRow.value['para_borrowers.name']}"/>
                                     <webuijsf:message for="textField2" id="message2" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rank" id="tableColumn3" sort="para_borrowers.rank">
+                                <webuijsf:tableColumn headerText="Rank" id="tableColumn3" sort="para_borrowers.rank">
                                     <webuijsf:textField id="textField3" required="true" text="#{currentRow.value['para_borrowers.rank']}"/>
                                     <webuijsf:message for="textField3" id="message3" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="unit" id="tableColumn4" sort="para_borrowers.unit">
+                                <webuijsf:tableColumn headerText="Unit" id="tableColumn4" sort="para_borrowers.unit">
                                     <webuijsf:textField id="textField4" required="true" text="#{currentRow.value['para_borrowers.unit']}"/>
                                     <webuijsf:message for="textField4" id="message4" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>

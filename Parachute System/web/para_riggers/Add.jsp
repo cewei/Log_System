@@ -17,13 +17,13 @@
                         <webuijsf:label for="nricTF" id="label1" style="left: 24px; top: 48px; position: absolute" text="NRIC"/>
                         <webuijsf:label for="nameTF" id="label2" style="left: 24px; top: 72px; position: absolute" text="Name"/>
                         <webuijsf:label for="rankTF" id="label3" style="left: 24px; top: 96px; position: absolute" text="Rank"/>
-                        <webuijsf:label for="riggerCB" id="label4" style="left: 24px; top: 120px; position: absolute" text="Rigger"/>
-                        <webuijsf:label for="inspectorCB" id="label5" style="left: 24px; top: 144px; position: absolute" text="Inspector"/>
+                        <webuijsf:label for="riggerCB" id="label4" style="left: 24px; top: 120px; position: absolute" text="Packer"/>
+                        <webuijsf:label for="inspectorCB" id="label5" style="left: 24px; top: 144px; position: absolute" text="Checker / Inspector"/>
                         <webuijsf:textField binding="#{para_riggers$Add.nricTF}" id="nricTF" required="true" style="left: 96px; top: 48px; position: absolute"/>
                         <webuijsf:textField binding="#{para_riggers$Add.nameTF}" id="nameTF" required="true" style="left: 96px; top: 72px; position: absolute"/>
                         <webuijsf:textField binding="#{para_riggers$Add.rankTF}" id="rankTF" required="true" style="left: 96px; top: 96px; position: absolute"/>
-                        <webuijsf:checkbox binding="#{para_riggers$Add.riggerCB}" id="riggerCB" selected="false" style="left: 96px; top: 120px; position: absolute"/>
-                        <webuijsf:checkbox binding="#{para_riggers$Add.inspectorCB}" id="inspectorCB" selected="false" style="left: 96px; top: 144px; position: absolute"/>
+                        <webuijsf:checkbox binding="#{para_riggers$Add.riggerCB}" id="riggerCB" selected="false" style="left: 168px; top: 120px; position: absolute"/>
+                        <webuijsf:checkbox binding="#{para_riggers$Add.inspectorCB}" id="inspectorCB" selected="false" style="left: 168px; top: 144px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_riggers$Add.add_action}" id="add" style="left: 23px; top: 192px; position: absolute" text="Add"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>

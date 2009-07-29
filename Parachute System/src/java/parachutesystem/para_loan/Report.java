@@ -33,6 +33,7 @@ public class Report extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_loan Report>>");
     }
     private ObjectArrayDataProvider objectArrayDataProvider1 = new ObjectArrayDataProvider();
 

@@ -14,7 +14,7 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute; width: 100%" width="750">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_loan$Report.objectArrayDataProvider1}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="S/NO" id="tableColumn1" width="25">
                                     <webuijsf:label id="label1" text=""/>
@@ -30,7 +30,7 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:label id="label2" style="font-size: 18px; left: 456px; top: 24px; position: absolute" text="PARACHUTE NUMBERING RECORD FORM"/>
+                        <webuijsf:label id="label2" style="font-size: 18px; left: 384px; top: 24px; position: absolute" text="PARACHUTE NUMBERING RECORD FORM"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

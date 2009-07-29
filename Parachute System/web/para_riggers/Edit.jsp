@@ -14,29 +14,29 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:table augmentTitle="false" id="table1" selectMultipleButton="true"
-                            style="left: 24px; top: 96px; position: absolute; width: 0px" title="Riggers" width="0">
+                        <webuijsf:table augmentTitle="false" id="table1" selectMultipleButton="true" style="left: 24px; top: 96px; position: absolute"
+                            title="Parachute Riggers" width="97%">
                             <webuijsf:tableRowGroup binding="#{para_riggers$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 selected="#{para_riggers$Edit.selectedState}" sourceData="#{para_riggers$Edit.para_riggersDataProvider}" sourceVar="currentRow">
-                                <webuijsf:tableColumn headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC">
+                                <webuijsf:tableColumn align="center" headerText="NRIC" id="tableColumn1" sort="para_riggers.NRIC" valign="middle">
                                     <webuijsf:textField id="textField1" required="true" text="#{currentRow.value['para_riggers.NRIC']}"/>
                                     <webuijsf:message for="textField1" id="message1" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="name" id="tableColumn2" sort="para_riggers.name">
+                                <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn2" sort="para_riggers.name" valign="middle">
                                     <webuijsf:textField id="textField2" required="true" text="#{currentRow.value['para_riggers.name']}"/>
                                     <webuijsf:message for="textField2" id="message2" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rank" id="tableColumn3" sort="para_riggers.rank">
+                                <webuijsf:tableColumn align="center" headerText="Rank" id="tableColumn3" sort="para_riggers.rank" valign="middle">
                                     <webuijsf:textField id="textField3" required="true" text="#{currentRow.value['para_riggers.rank']}"/>
                                     <webuijsf:message for="textField3" id="message3" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="rigger" id="tableColumn4" sort="para_riggers.rigger">
+                                <webuijsf:tableColumn align="center" headerText="Packer" id="tableColumn4" sort="para_riggers.rigger" valign="middle">
                                     <webuijsf:checkbox id="checkbox1" selected="#{currentRow.value['para_riggers.rigger']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="inspector" id="tableColumn5" sort="para_riggers.inspector">
+                                <webuijsf:tableColumn align="center" headerText="Checker / Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
                                     <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_riggers.inspector']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="last_refresher_date" id="tableColumn6" sort="para_riggers.last_refresher_date">
+                                <webuijsf:tableColumn align="center" headerText="Last Refresher Date" id="tableColumn6" sort="para_riggers.last_refresher_date" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_riggers.last_refresher_date']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn id="tableRowGroup1SelectionColumn"
