@@ -25,8 +25,8 @@
                                 <webuijsf:tableColumn headerText="RESERVE" id="tableColumn3" sort="reserve" width="300">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['reserve']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="LIFEJACKET" id="tableColumn4" sort="reserve" width="150">
-                                    <webuijsf:staticText id="staticText4" text=""/>
+                                <webuijsf:tableColumn headerText="LIFEJACKET" id="tableColumn4" sort="lifeJacket" width="150">
+                                    <webuijsf:staticText id="staticText4" text="#{currentRow.value['lifeJacket']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

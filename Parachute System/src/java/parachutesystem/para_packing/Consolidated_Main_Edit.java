@@ -12,7 +12,6 @@ import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.RadioButtonGroup;
 import com.sun.webui.jsf.component.TableRowGroup;
-import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.event.TableSelectPhaseListener;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
@@ -235,15 +234,6 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
     public void setInspectorDD(DropDown dd) {
         this.inspectorDD = dd;
     }
-    private TextField textField3 = new TextField();
-
-    public TextField getTextField3() {
-        return textField3;
-    }
-
-    public void setTextField3(TextField tf) {
-        this.textField3 = tf;
-    }
     private SingleSelectOptionsList inspectionDDDefaultOptions = new SingleSelectOptionsList();
 
     public SingleSelectOptionsList getInspectionDDDefaultOptions() {
@@ -448,7 +438,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                         para_packingDataProvider.setValue("para_packing.type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
                         para_packingDataProvider.setValue("para_packing.chute_no", para_inventoryDataProvider.getValue("chute_no"));
                         para_packingDataProvider.setValue("para_packing.serial_no", para_inventoryDataProvider.getValue("serial_no"));
-                        para_packingDataProvider.setValue("inner_no", textField3.getText());
+                        para_packingDataProvider.setValue("inner_no", "");
                         para_packingDataProvider.setValue("para_packing.date_packed", dateCal.getValue());
                         para_packingDataProvider.setValue("para_packing.pack_by", packerDD.getSelected());
                         para_packingDataProvider.setValue("para_packing.inspect_by", checkerDD.getSelected());
@@ -474,7 +464,7 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
                         para_packingDataProvider.setValue("para_packing.type_prefix_no", para_inventoryDataProvider.getValue("type_prefix_no"));
                         para_packingDataProvider.setValue("para_packing.chute_no", para_inventoryDataProvider.getValue("chute_no"));
                         para_packingDataProvider.setValue("para_packing.serial_no", para_inventoryDataProvider.getValue("serial_no"));
-                        para_packingDataProvider.setValue("inner_no", textField3.getText());
+                        para_packingDataProvider.setValue("inner_no", "");
                         para_packingDataProvider.setValue("para_packing.date_packed", dateCal.getValue());
                         para_packingDataProvider.setValue("para_packing.pack_by", "-");
                         para_packingDataProvider.setValue("para_packing.inspect_by", inspectorDD.getSelected() +" / " +inspectorDD1.getSelected());

@@ -42,6 +42,15 @@ public class SessionBean1 extends AbstractSessionBean {
     public void setMainChute(Chutes[] mainChute) {
         this.mainChute = mainChute;
     }
+    private String date = "2009-01-01";
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
     
     // </editor-fold>
 

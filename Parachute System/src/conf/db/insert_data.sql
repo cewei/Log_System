@@ -1,4 +1,4 @@
-INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve, static) VALUES
+INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve_chute, static) VALUES
 ('MA', 'MACH III ALPHA MAIN 325', 10, 100, 4, 0, 0),
 ('MAR', 'MACH III ALPHA RESERVE 325', 10, 100, 4, 1, 0),
 ('MC5', 'MC5 MAIN 370', 10, 100, 4, 0, 1),

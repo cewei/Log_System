@@ -16,8 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
-                            <webuijsf:hyperlink id="hyperlink2" text="para_loan/View" url="/faces/para_loan/View.jsp"/>
-                            <webuijsf:hyperlink id="hyperlink3" text="para_loan/Bulk" url="/faces/para_loan/Bulk.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_loan/Bulk_Generate" url="/faces/para_loan/Bulk_Generate.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:upload binding="#{para_loan$Bulk_Generate.fileUpload1}" id="fileUpload1" label="Main" style="left: 24px; top: 72px; position: absolute"/>
                         <webuijsf:button actionExpression="#{para_loan$Bulk_Generate.upload_action}" binding="#{para_loan$Bulk_Generate.upload}" id="upload"

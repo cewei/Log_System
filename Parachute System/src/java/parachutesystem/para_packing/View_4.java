@@ -34,9 +34,10 @@ public class View_4 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing View_4>>");
         para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View_4.para_packing_viewRowSet}"));
         para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view WHERE `reserve` = 1 AND `static` = 0");
+        para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view WHERE `reserve_chute` = 1 AND `static` = 0");
         para_packing_viewRowSet.setTableName("para_packing_view");
     }
     private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();

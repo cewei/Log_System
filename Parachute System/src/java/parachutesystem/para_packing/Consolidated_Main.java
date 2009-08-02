@@ -2,13 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_packing;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
+import java.util.Date;
 import javax.faces.FacesException;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.RequestBean1;
+import parachutesystem.SessionBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -21,7 +25,6 @@ import javax.faces.FacesException;
  * @version Created on 28/07/2009, 1:34:49 PM
  * @author user
  */
-
 public class Consolidated_Main extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -55,9 +58,17 @@ public class Consolidated_Main extends AbstractPageBean {
     public void setPara_consolidated_viewRowSet1(CachedRowSetXImpl crsxi) {
         this.para_consolidated_viewRowSet1 = crsxi;
     }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
+    }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -83,7 +94,7 @@ public class Consolidated_Main extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -91,13 +102,13 @@ public class Consolidated_Main extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Consolidated_Main Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -136,9 +147,47 @@ public class Consolidated_Main extends AbstractPageBean {
         para_consolidated_viewDataProvider.close();
     }
 
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
+
     public String update_action() {
         return "viewToEdit";
     }
-    
+
+    public String button1_action() {
+        Date temp;
+        if (calendar1.getText() != null) {
+            temp = (Date) calendar1.getText();
+        }
+        else {
+            temp = new Date();
+        }
+        getSessionBean1().setDate((temp.getYear() + 1900) + "-" + (temp.getMonth() + 1) + "-" + temp.getDate());
+        return "viewToReport";
+    }
 }
 

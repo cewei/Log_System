@@ -33,6 +33,7 @@ public class Edit extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_loan Edit>>");
         para_loanDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Edit.para_loanRowSet}"));
         para_loanRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_loanRowSet.setCommand("SELECT * FROM para_loan");

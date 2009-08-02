@@ -401,7 +401,7 @@ public class Bulk_Generate extends AbstractPageBean {
                 }
                 while (stLifeJacket.hasMoreTokens()) {
                     lifeJacket = stLifeJacket.nextToken();
-                    String lifeJacketSerial = stReserve.nextToken();
+                    String lifeJacketSerial = stLifeJacket.nextToken();
                     stLifeJacket.nextToken();
                 }
 
