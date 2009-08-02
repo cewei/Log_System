@@ -14,13 +14,11 @@ import com.sun.webui.jsf.model.UploadedFile;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.faces.FacesException;
 import parachutesystem.SessionBean1;
 import parachutesystem.RequestBean1;
 import parachutesystem.ApplicationBean1;
-import parachutesystem.Chutes;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -42,6 +40,7 @@ public class BulkReturn extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_loan BulkReturn>>");
         para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_inventoryRowSet}"));
         para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");

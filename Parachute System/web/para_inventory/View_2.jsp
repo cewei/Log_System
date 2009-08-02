@@ -37,14 +37,14 @@
                                 <webuijsf:tableColumn align="center" headerText="Replacement Date" id="tableColumn8" sort="para_inventory_view.Replacement Date" valign="middle">
                                     <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_inventory_view.Replacement Date']}"/>
                                 </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Balance Lifespan" id="tableColumn9" sort="para_inventory_view.Balance Lifespan" valign="middle">
+                                    <webuijsf:staticText id="staticText9" text="#{currentRow.value['para_inventory_view.Balance Lifespan']}"/>
+                                </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Max Jumps" id="tableColumn5" sort="para_inventory_view.Max Jumps" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_inventory_view.Max Jumps']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Jumps Left" id="tableColumn6" sort="para_inventory_view.Jumps Left" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_inventory_view.Jumps Left']}"/>
-                                </webuijsf:tableColumn>
-                                <webuijsf:tableColumn headerText="Balance Lifespan" id="tableColumn9" sort="para_inventory_view.Balance Lifespan">
-                                    <webuijsf:staticText id="staticText9" text="#{currentRow.value['para_inventory_view.Balance Lifespan']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

@@ -218,6 +218,11 @@
             <to-view-id>/para_packing/Consolidated_Main_Edit.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToReport</from-outcome>
+            <to-view-id>/para_packing/Consolidated_Main_Report.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>para_packing$Consolidated_Main_Edit</managed-bean-name>
@@ -232,6 +237,11 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$Consolidated_Main_Report</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Consolidated_Main_Report</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
     <!--Para Riggers-->
 
@@ -474,11 +484,6 @@
     <managed-bean>
         <managed-bean-name>para_packing$View_4</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.View_4</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_inventory$View_Combined</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View_Combined</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>

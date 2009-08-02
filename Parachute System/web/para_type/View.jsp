@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_type$View.add_action}" id="add" style="left: 23px; top: 48px; position: absolute" text="Add new entry"/>
                         <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="left: 143px; top: 48px; position: absolute" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute; width: 97%" title="Parachute Types" width="98%">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute; width: 97%" title="Parachute Types" width="1050">
                             <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
@@ -37,8 +37,8 @@
                                 <webuijsf:tableColumn align="center" headerText="Repack Cycle (Months)" id="tableColumn6" valign="middle">
                                     <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn7" valign="middle">
-                                    <webuijsf:staticText id="staticText7" text="#{currentRow.value['para_type.reserve']}"/>
+                                <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn9" valign="middle">
+                                    <webuijsf:staticText id="staticText9" text="#{currentRow.value['para_type.reserve_chute']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Static" id="tableColumn8" valign="middle">
                                     <webuijsf:staticText id="staticText8" text="#{currentRow.value['para_type.static']}"/>

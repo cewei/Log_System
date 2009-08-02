@@ -45,6 +45,7 @@ public class Bulk extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_loan Bulk>>");
         para_borrowersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_loan$Bulk.para_borrowersRowSet}"));
         para_borrowersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_borrowersRowSet.setCommand("SELECT * FROM para_borrowers");

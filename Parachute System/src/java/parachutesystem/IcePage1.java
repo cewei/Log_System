@@ -341,6 +341,10 @@ public class IcePage1 extends AbstractPageBean {
             File outputData = new File(realFilePath);
             log(outputData.getPath());
 
+            if(outputData.exists()){
+                outputData.delete();
+            }
+
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);
             BufferedWriter out = new BufferedWriter(fstream);
@@ -364,42 +368,42 @@ public class IcePage1 extends AbstractPageBean {
             para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"loan\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"loan\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet.setTableName("para_inventory");
             para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet1.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unpacked\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"unpacked\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet1.setTableName("para_inventory");
             para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet2.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"packed\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"packed\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet2.setTableName("para_inventory");
             para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet3.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"inspection\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"inspection\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet3.setTableName("para_inventory");
             para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet4.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"repair\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"repair\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet4.setTableName("para_inventory");
             para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet5.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unserviceable\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"unserviceable\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet5.setTableName("para_inventory");
             para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet6.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"others\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"others\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet6.setTableName("para_inventory");
             para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet7.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"returned\" AND `reserve` = 0 AND `static` = 1");
+                    "WHERE `status` = \"returned\" AND `reserve_chute` = 0 AND `static` = 1");
             para_inventoryRowSet7.setTableName("para_inventory");
         } catch (Exception e) {
             log(e.toString());
@@ -456,6 +460,10 @@ public class IcePage1 extends AbstractPageBean {
             File outputData = new File(realFilePath);
             log(outputData.getPath());
 
+            if(outputData.exists()){
+                outputData.delete();
+            }
+
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);
             BufferedWriter out = new BufferedWriter(fstream);
@@ -479,42 +487,42 @@ public class IcePage1 extends AbstractPageBean {
             para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"loan\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"loan\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet.setTableName("para_inventory");
             para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet1.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unpacked\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"unpacked\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet1.setTableName("para_inventory");
             para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet2.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"packed\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"packed\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet2.setTableName("para_inventory");
             para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet3.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"inspection\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"inspection\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet3.setTableName("para_inventory");
             para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet4.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"repair\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"repair\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet4.setTableName("para_inventory");
             para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet5.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unserviceable\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"unserviceable\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet5.setTableName("para_inventory");
             para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet6.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"others\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"others\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet6.setTableName("para_inventory");
             para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet7.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"returned\" AND `reserve` = 0 AND `static` = 0");
+                    "WHERE `status` = \"returned\" AND `reserve_chute` = 0 AND `static` = 0");
             para_inventoryRowSet7.setTableName("para_inventory");
         } catch (Exception e) {
             log(e.toString());
@@ -571,6 +579,10 @@ public class IcePage1 extends AbstractPageBean {
             File outputData = new File(realFilePath);
             log(outputData.getPath());
 
+            if(outputData.exists()){
+                outputData.delete();
+            }
+
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);
             BufferedWriter out = new BufferedWriter(fstream);
@@ -594,42 +606,42 @@ public class IcePage1 extends AbstractPageBean {
             para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"loan\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"loan\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet.setTableName("para_inventory");
             para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet1.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unpacked\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"unpacked\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet1.setTableName("para_inventory");
             para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet2.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"packed\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"packed\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet2.setTableName("para_inventory");
             para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet3.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"inspection\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"inspection\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet3.setTableName("para_inventory");
             para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet4.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"repair\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"repair\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet4.setTableName("para_inventory");
             para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet5.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unserviceable\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"unserviceable\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet5.setTableName("para_inventory");
             para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet6.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"others\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"others\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet6.setTableName("para_inventory");
             para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet7.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"returned\" AND `reserve` = 1 AND `static` = 1");
+                    "WHERE `status` = \"returned\" AND `reserve_chute` = 1 AND `static` = 1");
             para_inventoryRowSet7.setTableName("para_inventory");
         } catch (Exception e) {
             log(e.toString());
@@ -686,6 +698,10 @@ public class IcePage1 extends AbstractPageBean {
             File outputData = new File(realFilePath);
             log(outputData.getPath());
 
+            if(outputData.exists()){
+                outputData.delete();
+            }
+
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);
             BufferedWriter out = new BufferedWriter(fstream);
@@ -709,42 +725,42 @@ public class IcePage1 extends AbstractPageBean {
             para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"loan\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"loan\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet.setTableName("para_inventory");
             para_inventoryRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet1.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unpacked\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"unpacked\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet1.setTableName("para_inventory");
             para_inventoryRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet2.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"packed\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"packed\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet2.setTableName("para_inventory");
             para_inventoryRowSet3.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet3.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"inspection\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"inspection\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet3.setTableName("para_inventory");
             para_inventoryRowSet4.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet4.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"repair\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"repair\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet4.setTableName("para_inventory");
             para_inventoryRowSet5.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet5.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"unserviceable\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"unserviceable\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet5.setTableName("para_inventory");
             para_inventoryRowSet6.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet6.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"others\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"others\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet6.setTableName("para_inventory");
             para_inventoryRowSet7.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
             para_inventoryRowSet7.setCommand(
                     "SELECT COUNT(*)  FROM para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
-                    "WHERE `status` = \"returned\" AND `reserve` = 1 AND `static` = 0");
+                    "WHERE `status` = \"returned\" AND `reserve_chute` = 1 AND `static` = 0");
             para_inventoryRowSet7.setTableName("para_inventory");
         } catch (Exception e) {
             log(e.toString());
@@ -800,6 +816,10 @@ public class IcePage1 extends AbstractPageBean {
             this.realFilePath = theApplicationsServletContext.getRealPath(FILE_URL);
             File outputData = new File(realFilePath);
             log(outputData.getPath());
+
+            if(outputData.exists()){
+                outputData.delete();
+            }
 
             outputData.createNewFile();
             FileWriter fstream = new FileWriter(outputData);

@@ -210,7 +210,7 @@ public class Add extends AbstractPageBean {
                     para_typeDataProvider.setValue("PARA_TYPE.LIFE_SPAN", lifeSpanText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
-                    para_typeDataProvider.setValue("PARA_TYPE.RESERVE", checkbox1.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.RESERVE_CHUTE", checkbox1.isChecked());
                     para_typeDataProvider.setValue("PARA_TYPE.STATIC", checkbox2.isChecked());
                     // set values of other fields, if any
                     para_typeDataProvider.commitChanges();

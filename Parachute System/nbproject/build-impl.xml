@@ -170,7 +170,8 @@
         url="jdbc:mysql://localhost:3306/parachute_system"
         userid="parachute_system"
         password="cdo">
-            <classpath path="D:\Java\NetBeans 6.5.1\ide10\modules\ext\mysql-connector-java-5.1.6-bin.jar" />
+            <!--classpath path="D:\Java\NetBeans 6.5.1\ide10\modules\ext\mysql-connector-java-5.1.6-bin.jar" /-->
+            <classpath path="C:\Java\NetBeans 6.5.1\ide10\modules\ext\mysql-connector-java-5.1.6-bin.jar" />
             <path>
                 <fileset dir="./src/conf/db/">
                     <include name="*.sql" />

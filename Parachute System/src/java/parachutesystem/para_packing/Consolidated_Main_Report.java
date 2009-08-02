@@ -3,10 +3,15 @@
  * and open the template in the editor.
  */
 
-package parachutesystem.para_inventory;
+package parachutesystem.para_packing;
 
+import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
+import parachutesystem.SessionBean1;
+import parachutesystem.ApplicationBean1;
+import parachutesystem.RequestBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -15,12 +20,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View_Combined.java
- * @version Created on 27/07/2009, 10:06:01 AM
+ * @version Consolidated_Main.java
+ * @version Created on 28/07/2009, 1:34:49 PM
  * @author user
  */
 
-public class View_Combined extends AbstractPageBean {
+public class Consolidated_Main_Report extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -29,6 +34,29 @@ public class View_Combined extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing Consolidated_Main_Report>>");
+        para_consolidated_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Consolidated_Main_Report.para_consolidated_viewRowSet1}"));
+        para_consolidated_viewRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view WHERE `Date Packed` = '" +getSessionBean1().getDate() +"'");
+        para_consolidated_viewRowSet1.setTableName("para_consolidated_view");
+    }
+    private CachedRowSetDataProvider para_consolidated_viewDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_consolidated_viewDataProvider() {
+        return para_consolidated_viewDataProvider;
+    }
+
+    public void setPara_consolidated_viewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_consolidated_viewDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_consolidated_viewRowSet1 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_consolidated_viewRowSet1() {
+        return para_consolidated_viewRowSet1;
+    }
+
+    public void setPara_consolidated_viewRowSet1(CachedRowSetXImpl crsxi) {
+        this.para_consolidated_viewRowSet1 = crsxi;
     }
 
     // </editor-fold>
@@ -36,7 +64,7 @@ public class View_Combined extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View_Combined() {
+    public Consolidated_Main_Report() {
     }
 
     /**
@@ -65,7 +93,7 @@ public class View_Combined extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View_Combined Initialization Failure", e);
+            log("Consolidated_Main Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -108,6 +136,34 @@ public class View_Combined extends AbstractPageBean {
      */
     @Override
     public void destroy() {
+        para_consolidated_viewDataProvider.close();
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
     
 }

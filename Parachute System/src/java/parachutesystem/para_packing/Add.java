@@ -35,6 +35,7 @@ public class Add extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        log("<<Entering para_packing Add>>");
         para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Add.para_packing_viewRowSet}"));
         para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view ORDER BY `CHUTE NO`");
