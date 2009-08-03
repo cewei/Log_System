@@ -8,6 +8,8 @@ package parachutesystem.para_packing;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
+import com.sun.webui.jsf.component.Calendar;
+import java.util.Date;
 import javax.faces.FacesException;
 import parachutesystem.SessionBean1;
 import parachutesystem.RequestBean1;
@@ -57,6 +59,15 @@ public class View_PackDue extends AbstractPageBean {
 
     public void setPara_inventory_viewRowSet(CachedRowSetXImpl crsxi) {
         this.para_inventory_viewRowSet = crsxi;
+    }
+    private Calendar calendar1 = new Calendar();
+
+    public Calendar getCalendar1() {
+        return calendar1;
+    }
+
+    public void setCalendar1(Calendar c) {
+        this.calendar1 = c;
     }
 
     // </editor-fold>
@@ -168,6 +179,19 @@ public class View_PackDue extends AbstractPageBean {
 
     public String edit_action() {
         return "viewToEdit";
+    }
+
+    public String report_action() {
+        Date temp;
+        if (calendar1.getText() != null) {
+            temp = (Date) calendar1.getText();
+        }
+        else {
+            temp = new Date();
+        }
+        getSessionBean1().setDate((temp.getYear() + 1900) + "-" + (temp.getMonth() + 1) + "-" + temp.getDate());
+        getSessionBean1().setDate2((temp.getYear() + 1900) + "-" + (temp.getMonth() + 2) + "-" + temp.getDate());
+        return "viewToReport";
     }
     
 }

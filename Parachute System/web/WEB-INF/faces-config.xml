@@ -205,7 +205,17 @@
             <to-view-id>/para_packing/Edit_PackDue.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToReport</from-outcome>
+            <to-view-id>/para_packing/Report_PackDue.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_packing$Report_PackDue</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_packing.Report_PackDue</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>para_packing$Consolidated_Main</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.Consolidated_Main</managed-bean-class>

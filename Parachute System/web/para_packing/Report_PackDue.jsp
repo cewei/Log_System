@@ -19,7 +19,7 @@
                             <webuijsf:hyperlink id="hyperlink2" text="para_packing/View_PackDue" url="/faces/para_packing/View_PackDue.jsp"/>
                         </webuijsf:breadcrumbs>
                         <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Pack Due Date" width="97%">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$View_PackDue.para_inventory_viewDataProvider}" sourceVar="currentRow">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_packing$Report_PackDue.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn3" sort="para_inventory_view.Name" valign="middle">
                                     <webuijsf:staticText id="staticText3" text="#{currentRow.value['para_inventory_view.Name']}"/>
                                 </webuijsf:tableColumn>
@@ -41,10 +41,6 @@
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>
-                        <webuijsf:button actionExpression="#{para_packing$View_PackDue.edit_action}" id="edit" style="position: absolute; left: 24px; top: 48px" text="Edit"/>
-                        <webuijsf:calendar binding="#{para_packing$View_PackDue.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" style="position: absolute; left: 96px; top: 48px"/>
-                        <webuijsf:button actionExpression="#{para_packing$View_PackDue.report_action}" id="report"
-                            style="position: absolute; left: 264px; top: 48px" text="Report"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

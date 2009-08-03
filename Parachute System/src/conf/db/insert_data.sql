@@ -1,16 +1,19 @@
-INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve_chute, static) VALUES
-('MA', 'MACH III ALPHA MAIN 325', 10, 100, 4, 0, 0),
-('MAR', 'MACH III ALPHA RESERVE 325', 10, 100, 4, 1, 0),
-('MC5', 'MC5 MAIN 370', 10, 100, 4, 0, 1),
-('MCR', 'MC-5 RESERVE 370', 10, 100, 4, 1, 1),
-('PD', 'PERFORMANCE DESIGN MAIN', 10, 100, 4, 0, 0),
-('PDR', 'PERFORMANCE DESIGN RESERVE 176 (PDR)', 10, 100, 4, 1, 0),
-('TP', 'TANDEM PHOENIX', 10, 100, 4, 0, 1),
-('HR', 'HEAVY RESERVE', 10, 100, 4, 1, 1),
-('CLASS', 'CLASSIC MAIN', 10, 100, 4, 0, 0),
-('PDR(C)', 'PERFORMANCE DESIGN RESERVE 176 (PDR(C))', 10, 100, 4, 1, 0),
-('TL', 'TRIATHLON MAIN 190', 10, 100, 4, 0, 1),
-('SR', 'SMART RESERVE 175' , 10, 100, 4, 1, 1);
+INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, reserve_chute, static_line, lifejacket, AD, container) VALUES
+('MA', 'MACH III ALPHA MAIN 325', 10, 100, 4, 0, 0, 0, 0, 0),
+('MAR', 'MACH III ALPHA RESERVE 325', 10, 100, 4, 1, 0, 0, 0, 0),
+('MC5', 'MC5 MAIN 370', 10, 100, 4, 0, 1, 0, 0, 0),
+('MCR', 'MC-5 RESERVE 370', 10, 100, 4, 1, 1, 0, 0, 0),
+('PD', 'PERFORMANCE DESIGN MAIN', 10, 100, 4, 0, 0, 0, 0, 0),
+('PDR', 'PERFORMANCE DESIGN RESERVE 176 (PDR)', 10, 100, 4, 1, 0, 0, 0, 0),
+('TP', 'TANDEM PHOENIX', 10, 100, 4, 0, 1, 0, 0, 0),
+('HR', 'HEAVY RESERVE', 10, 100, 4, 1, 1, 0, 0, 0),
+('CLASS', 'CLASSIC MAIN', 10, 100, 4, 0, 0, 0, 0, 0),
+('PDR(C)', 'PERFORMANCE DESIGN RESERVE 176 (PDR(C))', 10, 100, 4, 1, 0, 0, 0, 0),
+('TL', 'TRIATHLON MAIN 190', 10, 100, 4, 0, 1, 0, 0, 0),
+('SR', 'SMART RESERVE 175' , 10, 100, 4, 1, 1, 0, 0, 0),
+('LF', 'Life Jacket', 10, 0, 0, 0, 0, 1, 0, 0),
+('AD', 'Auto Deployer', 10, 0, 0, 0, 0, 0, 1, 0),
+('CON', 'Container', 10, 0, 0, 0, 0, 0, 0, 1);
 
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES
 (1, '1', '975170002', '1997-06-01', 0, 'loan'),

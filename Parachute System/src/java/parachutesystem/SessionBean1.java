@@ -51,6 +51,16 @@ public class SessionBean1 extends AbstractSessionBean {
     public void setDate(String date) {
         this.date = date;
     }
+    private String date2 = "2009-01-01";
+
+    public String getDate2() {
+        return date2;
+    }
+
+    public void setDate2(String date2) {
+        this.date2 = date2;
+    }
+    
     
     // </editor-fold>
 
