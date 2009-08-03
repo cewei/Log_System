@@ -13,10 +13,9 @@
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
-                    <webuijsf:form id="form1" virtualFormsConfig="save | table1:tableRowGroup1:tableColumn2:textField1 table1:tableRowGroup1:tableColumn3:textField2 table1:tableRowGroup1:tableColumn4:textField3 table1:tableRowGroup1:tableColumn5:textField4 table1:tableRowGroup1:tableColumn6:textField5 | save">
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute" title="Parachute Types" width="1050">
-                            <webuijsf:tableRowGroup binding="#{para_type$Edit.tableRowGroup1}" id="tableRowGroup1" rows="10"
-                                sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
+                    <webuijsf:form id="form1" virtualFormsConfig="">
+                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Types" width="0">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_type$Edit.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
                                     <webuijsf:staticText id="staticText1" text="#{currentRow.value['para_type.para_type_no']}"/>
                                 </webuijsf:tableColumn>
@@ -40,11 +39,20 @@
                                     <webuijsf:textField id="textField5" required="true" text="#{currentRow.value['para_type.repack_cycle']}"/>
                                     <webuijsf:message for="textField5" id="message5" showDetail="false" showSummary="true"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Reserve" id="tableColumn9" valign="middle">
-                                    <webuijsf:checkbox id="checkbox3" selected="#{currentRow.value['para_type.reserve_chute']}"/>
+                                <webuijsf:tableColumn align="center" headerText="Reserve Chute" id="tableColumn7" valign="middle">
+                                    <webuijsf:checkbox id="checkbox1" selected="#{currentRow.value['para_type.reserve_chute']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Static" id="tableColumn8" valign="middle">
-                                    <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_type.static']}"/>
+                                <webuijsf:tableColumn align="center" headerText="Static Line" id="tableColumn8" valign="middle">
+                                    <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_type.static_line']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Life Jacket" id="tableColumn9" valign="middle">
+                                    <webuijsf:checkbox id="checkbox3" selected="#{currentRow.value['para_type.lifejacket']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="AD" id="tableColumn10" valign="middle">
+                                    <webuijsf:checkbox id="checkbox4" selected="#{currentRow.value['para_type.AD']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Container" id="tableColumn11" valign="middle">
+                                    <webuijsf:checkbox id="checkbox5" selected="#{currentRow.value['para_type.container']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

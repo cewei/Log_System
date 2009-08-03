@@ -20,7 +20,7 @@
                         <webuijsf:label for="maxJumpText" id="maxJumpLbl" style="left: 24px; top: 120px; position: absolute" text="Max No. Jumps"/>
                         <webuijsf:label for="repackCycleText" id="repackCycleLbl" style="left: 24px; top: 144px; position: absolute" text="Repack Cycle (Months)"/>
                         <webuijsf:label id="label1" style="position: absolute; left: 24px; top: 168px" text="Reserve"/>
-                        <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 192px" text="Static"/>
+                        <webuijsf:label id="label2" style="position: absolute; left: 24px; top: 192px" text="Static Line"/>
                         <webuijsf:textField binding="#{para_type$Add.typePrefixText}" id="typePrefixText" required="true" style="left: 168px; top: 48px; position: absolute"/>
                         <webuijsf:textField binding="#{para_type$Add.nameText}" id="nameText" required="true" style="left: 168px; top: 72px; position: absolute"/>
                         <webuijsf:textField binding="#{para_type$Add.lifeSpanText}" id="lifeSpanText" required="true" style="left: 168px; top: 96px; position: absolute"/>
@@ -28,7 +28,7 @@
                         <webuijsf:textField binding="#{para_type$Add.repackCycleText}" id="repackCycleText" required="true" style="left: 168px; top: 144px; position: absolute"/>
                         <webuijsf:checkbox binding="#{para_type$Add.checkbox1}" id="checkbox1" style="position: absolute; left: 168px; top: 168px"/>
                         <webuijsf:checkbox binding="#{para_type$Add.checkbox2}" id="checkbox2" style="position: absolute; left: 168px; top: 192px"/>
-                        <webuijsf:button actionExpression="#{para_type$Add.add_action}" id="add" style="left: 23px; top: 216px; position: absolute" text="Add"/>
+                        <webuijsf:button actionExpression="#{para_type$Add.add_action}" id="add" style="left: 23px; top: 288px; position: absolute" text="Add"/>
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_type/View" url="/faces/para_type/View.jsp"/>
@@ -40,6 +40,12 @@
                         <webuijsf:message for="lifeSpanText" id="message3" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 96px"/>
                         <webuijsf:message for="maxJumpText" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 120px"/>
                         <webuijsf:message for="repackCycleText" id="message5" showDetail="false" showSummary="true" style="position: absolute; left: 312px; top: 144px"/>
+                        <webuijsf:label id="label3" style="position: absolute; left: 24px; top: 216px" text="Life Jacket"/>
+                        <webuijsf:label id="label4" style="position: absolute; left: 24px; top: 240px" text="AD"/>
+                        <webuijsf:label id="label5" style="position: absolute; left: 24px; top: 264px" text="Container"/>
+                        <webuijsf:checkbox binding="#{para_type$Add.checkbox3}" id="checkbox3" style="position: absolute; left: 168px; top: 216px"/>
+                        <webuijsf:checkbox binding="#{para_type$Add.checkbox4}" id="checkbox4" style="position: absolute; left: 168px; top: 240px"/>
+                        <webuijsf:checkbox binding="#{para_type$Add.checkbox5}" id="checkbox5" style="position: absolute; left: 168px; top: 264px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

@@ -30,7 +30,10 @@ CREATE TABLE  `parachute_system`.`para_type` (
   `max_jump` int(10) unsigned NOT NULL,
   `repack_cycle` int(10) unsigned NOT NULL,
   `reserve_chute` tinyint(1) NOT NULL,
-  `static` tinyint(1) NOT NULL,
+  `static_line` tinyint(1) NOT NULL,
+  `lifejacket` tinyint(1) NOT NULL,
+  `AD` tinyint(1) NOT NULL,
+  `container` tinyint(1) NOT NULL,
   PRIMARY KEY (`para_type_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -109,7 +112,7 @@ para_inventory.date_of_mfg AS `Manufactured Date`,
 para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY AS `Replacement Date`,
 para_inventory.status AS `Current Status`,
 para_type.reserve_chute AS `Reserve`,
-para_type.static AS `Static`,
+para_type.static_line AS `Static`,
 CONCAT(
  CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/365) AS CHAR), ' Year(s) '),
  CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/30.5)%12 AS CHAR), ' Month(s)')
@@ -161,7 +164,7 @@ para_inventory.status AS `Status`,
 para_type.para_type_no,
 para_inventory.chute_no,
 para_type.reserve_chute,
-para_type.static
+para_type.static_line
 FROM para_inventory
 INNER JOIN para_type
 ON para_inventory.type_prefix_no=para_type.para_type_no

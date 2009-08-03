@@ -7,7 +7,6 @@ package parachutesystem.para_type;
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
-import com.sun.webui.jsf.component.TableRowGroup;
 import javax.faces.FacesException;
 
 /**
@@ -53,15 +52,6 @@ public class Edit extends AbstractPageBean {
 
     public void setPara_typeRowSet(CachedRowSetXImpl crsxi) {
         this.para_typeRowSet = crsxi;
-    }
-    private TableRowGroup tableRowGroup1 = new TableRowGroup();
-
-    public TableRowGroup getTableRowGroup1() {
-        return tableRowGroup1;
-    }
-
-    public void setTableRowGroup1(TableRowGroup trg) {
-        this.tableRowGroup1 = trg;
     }
 
     // </editor-fold>

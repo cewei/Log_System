@@ -119,6 +119,33 @@ public class Add extends AbstractPageBean {
     public void setCheckbox2(Checkbox c) {
         this.checkbox2 = c;
     }
+    private Checkbox checkbox3 = new Checkbox();
+
+    public Checkbox getCheckbox3() {
+        return checkbox3;
+    }
+
+    public void setCheckbox3(Checkbox c) {
+        this.checkbox3 = c;
+    }
+    private Checkbox checkbox4 = new Checkbox();
+
+    public Checkbox getCheckbox4() {
+        return checkbox4;
+    }
+
+    public void setCheckbox4(Checkbox c) {
+        this.checkbox4 = c;
+    }
+    private Checkbox checkbox5 = new Checkbox();
+
+    public Checkbox getCheckbox5() {
+        return checkbox5;
+    }
+
+    public void setCheckbox5(Checkbox c) {
+        this.checkbox5 = c;
+    }
 
     // </editor-fold>
     /**
@@ -211,7 +238,10 @@ public class Add extends AbstractPageBean {
                     para_typeDataProvider.setValue("PARA_TYPE.MAX_JUMP", maxJumpText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.REPACK_CYCLE", repackCycleText.getText());
                     para_typeDataProvider.setValue("PARA_TYPE.RESERVE_CHUTE", checkbox1.isChecked());
-                    para_typeDataProvider.setValue("PARA_TYPE.STATIC", checkbox2.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.STATIC_LINE", checkbox2.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.LIFEJACKET", checkbox3.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.AD", checkbox4.isChecked());
+                    para_typeDataProvider.setValue("PARA_TYPE.CONTAINER", checkbox5.isChecked());
                     // set values of other fields, if any
                     para_typeDataProvider.commitChanges();
                     para_typeDataProvider.refresh();

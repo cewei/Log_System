@@ -9,8 +9,8 @@ import com.sun.data.provider.impl.CachedRowSetDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
-import parachutesystem.RequestBean1;
 import parachutesystem.SessionBean1;
+import parachutesystem.RequestBean1;
 import parachutesystem.ApplicationBean1;
 
 /**
@@ -20,12 +20,12 @@ import parachutesystem.ApplicationBean1;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version View.java
- * @version Created on Jun 22, 2009, 2:27:02 PM
- * @author Dell
+ * @version View_PackDue.java
+ * @version Created on 28/07/2009, 10:32:10 AM
+ * @author user
  */
 
-public class View_3 extends AbstractPageBean {
+public class Report_PackDue extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -34,36 +34,37 @@ public class View_3 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        log("<<Entering para_packing View_3>>");
-        para_packing_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$View_3.para_packing_viewRowSet}"));
-        para_packing_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_packing_viewRowSet.setCommand("SELECT * FROM para_packing_view WHERE `reserve_chute` = 1 AND `static_line` = 1");
-        para_packing_viewRowSet.setTableName("para_packing_view");
+        log("<<Entering para_packing Report_PackDue>>");
+        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Report_PackDue.para_inventory_viewRowSet}"));
+        para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `packing due date` BETWEEN '" +getSessionBean1().getDate() +"' AND '" +getSessionBean1().getDate2() +"'");
+        para_inventory_viewRowSet.setTableName("para_inventory_view");
     }
-    private CachedRowSetDataProvider para_packing_viewDataProvider = new CachedRowSetDataProvider();
+    private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();
 
-    public CachedRowSetDataProvider getPara_packing_viewDataProvider() {
-        return para_packing_viewDataProvider;
-    }
-
-    public void setPara_packing_viewDataProvider(CachedRowSetDataProvider crsdp) {
-        this.para_packing_viewDataProvider = crsdp;
-    }
-    private CachedRowSetXImpl para_packing_viewRowSet = new CachedRowSetXImpl();
-
-    public CachedRowSetXImpl getPara_packing_viewRowSet() {
-        return para_packing_viewRowSet;
+    public CachedRowSetDataProvider getPara_inventory_viewDataProvider() {
+        return para_inventory_viewDataProvider;
     }
 
-    public void setPara_packing_viewRowSet(CachedRowSetXImpl crsxi) {
-        this.para_packing_viewRowSet = crsxi;
+    public void setPara_inventory_viewDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventory_viewDataProvider = crsdp;
     }
+    private CachedRowSetXImpl para_inventory_viewRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventory_viewRowSet() {
+        return para_inventory_viewRowSet;
+    }
+
+    public void setPara_inventory_viewRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventory_viewRowSet = crsxi;
+    }
+
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View_3() {
+    public Report_PackDue() {
     }
 
     /**
@@ -92,7 +93,7 @@ public class View_3 extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("View Initialization Failure", e);
+            log("View_PackDue Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -135,20 +136,7 @@ public class View_3 extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        para_packing_viewDataProvider.close();
-    }
-
-    public String add_action() {
-        return "viewToAdd";
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+        para_inventory_viewDataProvider.close();
     }
 
     /**
@@ -158,6 +146,15 @@ public class View_3 extends AbstractPageBean {
      */
     protected SessionBean1 getSessionBean1() {
         return (SessionBean1) getBean("SessionBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
     /**

@@ -56,7 +56,7 @@
                         </webuijsf:table>
                         <webuijsf:button actionExpression="#{para_packing$Consolidated_Main.update_action}" id="update"
                             style="position: absolute; left: 24px; top: 48px" text="Update"/>
-                        <webuijsf:calendar binding="#{para_packing$Consolidated_Main.calendar1}" dateFormatPattern="yyyy-MM-dd" id="calendar1" style="position: absolute; left: 120px; top: 48px"/>
+                        <webuijsf:calendar binding="#{para_packing$Consolidated_Main.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" style="position: absolute; left: 120px; top: 48px"/>
                         <webuijsf:button actionExpression="#{para_packing$Consolidated_Main.button1_action}" id="button1"
                             style="left: 287px; top: 48px; position: absolute" text="Report"/>
                     </webuijsf:form>
