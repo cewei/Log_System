@@ -374,43 +374,59 @@ public class Bulk_Generate extends AbstractPageBean {
             BufferedReader brReserve = new BufferedReader(frReserve);
             BufferedReader brLifeJacket = new BufferedReader(frLifeJacket);
             while (brMain.ready() || brReserve.ready() || brLifeJacket.ready()) {
-                StringTokenizer stMain = new StringTokenizer("");
-                StringTokenizer stReserve = new StringTokenizer("");
-                StringTokenizer stLifeJacket = new StringTokenizer("");
-                if (brMain.ready()) {
-                    stMain = new StringTokenizer(brMain.readLine(), "%F");
-                }
-                if (brReserve.ready()) {
-                    stReserve = new StringTokenizer(brReserve.readLine(), "%F");
-                }
-                if (brLifeJacket.ready()) {
-                    stLifeJacket = new StringTokenizer(brLifeJacket.readLine(), "%F");
-                }
+//                StringTokenizer stMain = new StringTokenizer("");
+//                StringTokenizer stReserve = new StringTokenizer("");
+//                StringTokenizer stLifeJacket = new StringTokenizer("");
+//
+//                if (brMain.ready()) {
+//                    stMain = new StringTokenizer(brMain.readLine(), "%F");
+//                }
+//                if (brReserve.ready()) {
+//                    stReserve = new StringTokenizer(brReserve.readLine(), "%F");
+//                }
+//                if (brLifeJacket.ready()) {
+//                    stLifeJacket = new StringTokenizer(brLifeJacket.readLine(), "%F");
+//                }
+//                String main = "";
+//                String reserve = "";
+//                String lifeJacket = "";
+//                while (stMain.hasMoreTokens()) {
+//                    main = stMain.nextToken();
+//                    String mainSerial = stMain.nextToken();
+//                    stMain.nextToken();
+//                }
+//                while (stReserve.hasMoreTokens()) {
+//                    reserve = stReserve.nextToken();
+//                    String reserveSerial = stReserve.nextToken();
+//                    stReserve.nextToken();
+//                }
+//                while (stLifeJacket.hasMoreTokens()) {
+//                    lifeJacket = stLifeJacket.nextToken();
+//                    String lifeJacketSerial = stLifeJacket.nextToken();
+//                    stLifeJacket.nextToken();
+//                }
                 String main = "";
                 String reserve = "";
                 String lifeJacket = "";
-                while (stMain.hasMoreTokens()) {
-                    main = stMain.nextToken();
-                    String mainSerial = stMain.nextToken();
-                    stMain.nextToken();
+
+                if (brMain.ready()){
+                    main = brMain.readLine();
                 }
-                while (stReserve.hasMoreTokens()) {
-                    reserve = stReserve.nextToken();
-                    String reserveSerial = stReserve.nextToken();
-                    stReserve.nextToken();
+                if (brReserve.ready()) {
+                    reserve = brReserve.readLine();
                 }
-                while (stLifeJacket.hasMoreTokens()) {
-                    lifeJacket = stLifeJacket.nextToken();
-                    String lifeJacketSerial = stLifeJacket.nextToken();
-                    stLifeJacket.nextToken();
+                if (brLifeJacket.ready()) {
+                    lifeJacket = brReserve.readLine();
                 }
 
                 mainChuteTemp.add(new Chutes(main, reserve, lifeJacket));
             }
             brMain.close();
             brReserve.close();
+            brLifeJacket.close();
             frMain.close();
             frReserve.close();
+            frLifeJacket.close();
             listOfChutes = new Chutes[mainChuteTemp.size()];
             mainChuteTemp.toArray(listOfChutes);
             getSessionBean1().setMainChute(listOfChutes);

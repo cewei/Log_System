@@ -36,15 +36,15 @@
                         <ice:outputText id="outputText5" value="Pack Due Date Record"/>
                     </ice:outputLink>
                     <ice:outputLink id="outputLink6" style="position: absolute; left: 768px; top: 24px" value="./faces/para_loan/Bulk_Generate.jsp">
-                        <ice:outputText id="outputText6" value="Generate Form"/>
+                        <ice:outputText id="outputText6" value="Parachute Numbering Form"/>
                     </ice:outputLink>
-                    <ice:outputLink id="outputLink7" style="left: 912px; top: 24px; position: absolute" value="./faces/para_packing/View.jsp">
+                    <ice:outputLink id="outputLink7" style="left: 960px; top: 24px; position: absolute" value="./faces/para_packing/View.jsp">
                         <ice:outputText id="outputText7" value="Parachute Packing"/>
                     </ice:outputLink>
-                    <ice:outputLink id="outputLink8" style="left: 1056px; top: 24px; position: absolute" value="./faces/para_loan/View.jsp">
+                    <ice:outputLink id="outputLink8" style="left: 1104px; top: 24px; position: absolute" value="./faces/para_loan/View.jsp">
                         <ice:outputText id="outputText8" value="Parachute Loan"/>
                     </ice:outputLink>
-                    <ice:outputLink id="outputLink9" style="left: 1176px; top: 24px; position: absolute" value="./faces/para_borrowers/View.jsp">
+                    <ice:outputLink id="outputLink9" style="left: 1224px; top: 24px; position: absolute" value="./faces/para_borrowers/View.jsp">
                         <ice:outputText id="outputText9" value="Parachute Borrowers"/>
                     </ice:outputLink>
                     <ice:commandButton action="#{IcePage1.button1_action}" id="button1" style="left: 480px; top: 96px; position: absolute; z-index: 499" value="submit"/>
