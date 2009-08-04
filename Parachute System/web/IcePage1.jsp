@@ -63,6 +63,15 @@
                     <div style="position: absolute; left: 576px; top: 888px">
                         <jsp:directive.include file="Fragment5.jspf"/>
                     </div>
+                    <div style="left: 24px; top: 1296px; position: absolute">
+                        <jsp:directive.include file="Fragment6.jspf"/>
+                    </div>
+                    <div style="position: absolute; left: 576px; top: 1296px">
+                        <jsp:directive.include file="Fragment7.jspf"/>
+                    </div>
+                    <div style="left: 24px; top: 1704px; position: absolute">
+                        <jsp:directive.include file="Fragment8.jspf"/>
+                    </div>
                 </ice:form>
             </body>
         </html>

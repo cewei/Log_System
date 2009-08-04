@@ -359,6 +359,8 @@ public class Bulk extends AbstractPageBean {
             FileReader frReserve = new FileReader(fileReserve);
             BufferedReader brMain = new BufferedReader(frMain);
             BufferedReader brReserve = new BufferedReader(frReserve);
+
+            int serialNo = 0;
             while (brMain.ready() || brReserve.ready()) {
                 StringTokenizer stMain = new StringTokenizer(brMain.readLine(), "%F");
                 StringTokenizer stReserve = new StringTokenizer(brReserve.readLine(), "%F");
@@ -370,7 +372,8 @@ public class Bulk extends AbstractPageBean {
                     String reserveSerial = stReserve.nextToken();
                     String lifeJacket = "";
 
-                    mainChuteTemp.add(new Chutes(main, reserve, lifeJacket));
+                    serialNo++;
+                    mainChuteTemp.add(new Chutes(serialNo, main, reserve, lifeJacket));
                     stMain.nextToken();
                     stReserve.nextToken();
                     //for main

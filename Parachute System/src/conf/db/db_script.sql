@@ -62,6 +62,7 @@ CREATE TABLE  `parachute_system`.`para_riggers` (
   `name` varchar(45) NOT NULL,
   `rank` varchar(45) NOT NULL,
   `rigger` tinyint(1) NOT NULL,
+  `checker` tinyint(1) NOT NULL,
   `inspector` tinyint(1) NOT NULL,
   `last_refresher_date` date NOT NULL,
   PRIMARY KEY (`NRIC`)
@@ -111,8 +112,11 @@ para_type.max_jump-para_inventory.no_of_jumps AS `Jumps Left`,
 para_inventory.date_of_mfg AS `Manufactured Date`,
 para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY AS `Replacement Date`,
 para_inventory.status AS `Current Status`,
-para_type.reserve_chute AS `Reserve`,
-para_type.static_line AS `Static`,
+para_type.reserve_chute,
+para_type.static_line,
+para_type.lifejacket,
+para_type.AD,
+para_type.container,
 CONCAT(
  CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/365) AS CHAR), ' Year(s) '),
  CONCAT(CAST(FLOOR(DATEDIFF(para_inventory.date_of_mfg + INTERVAL para_type.life_span YEAR - INTERVAL 1 DAY, curdate())/30.5)%12 AS CHAR), ' Month(s)')

@@ -35,7 +35,7 @@ public class View_4 extends AbstractPageBean {
         log("<<Entering para_inventory View_4>>");
         para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View_4.para_inventory_viewRowSet}"));
         para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `reserve` = 1 AND `static_line` = 0");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `reserve_chute` = 1 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
         para_inventory_viewRowSet.setTableName("para_inventory_view");
     }
     private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();

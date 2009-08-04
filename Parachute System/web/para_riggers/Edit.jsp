@@ -33,7 +33,10 @@
                                 <webuijsf:tableColumn align="center" headerText="Packer" id="tableColumn4" sort="para_riggers.rigger" valign="middle">
                                     <webuijsf:checkbox id="checkbox1" selected="#{currentRow.value['para_riggers.rigger']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Checker / Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
+                                <webuijsf:tableColumn align="center" headerText="Checker" id="tableColumn7" sort="para_riggers.checker" valign="middle">
+                                    <webuijsf:checkbox id="checkbox3" selected="#{currentRow.value['para_riggers.checker']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
                                     <webuijsf:checkbox id="checkbox2" selected="#{currentRow.value['para_riggers.inspector']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Last Refresher Date" id="tableColumn6" sort="para_riggers.last_refresher_date" valign="middle">

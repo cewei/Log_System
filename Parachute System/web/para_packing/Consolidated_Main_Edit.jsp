@@ -64,12 +64,12 @@
                         <webuijsf:radioButtonGroup binding="#{para_packing$Consolidated_Main_Edit.radioButtonGroup1}" id="radioButtonGroup1"
                             items="#{para_packing$Consolidated_Main_Edit.radioButtonGroup1DefaultOptions.options}" required="true" style="left: 24px; top: 48px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.checkerDD}" id="checkerDD"
-                            items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider1.options['para_riggers.name,para_riggers.name']}"
+                            items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider2.options['para_riggers.name,para_riggers.name']}"
                             label="Checker" style="left: 24px; top: 168px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.followUpDD}" id="followUpDD"
-                            items="#{para_packing$Consolidated_Main_Edit.followUpDDDefaultOptions.options}" label="Follow Up" style="left: 672px; top: 48px; position: absolute"/>
+                            items="#{para_packing$Consolidated_Main_Edit.followUpDDDefaultOptions.options}" label="Follow Up" style="left: 720px; top: 48px; position: absolute"/>
                         <webuijsf:message for="radioButtonGroup1" id="message1" showDetail="false" showSummary="true" style="left: 144px; top: 72px; position: absolute"/>
-                        <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="position: absolute; left: 840px; top: 48px"/>
+                        <webuijsf:messageGroup id="messageGroup1" showGlobalOnly="true" style="left: 648px; top: 120px; position: absolute"/>
                         <webuijsf:dropDown binding="#{para_packing$Consolidated_Main_Edit.inspectorDD1}" id="inspectorDD1"
                             items="#{para_packing$Consolidated_Main_Edit.para_riggersDataProvider1.options['para_riggers.name,para_riggers.name']}"
                             label="Inspector 2" style="left: 408px; top: 168px; position: absolute"/>

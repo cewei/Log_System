@@ -61,7 +61,11 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
         para_riggersRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_riggersRowSet1.setCommand("SELECT * FROM para_riggers WHERE para_riggers.inspector = 1");
         para_riggersRowSet1.setTableName("para_riggers");
-        inspectionDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Please Select"), new com.sun.webui.jsf.model.Option("Initial Inspection", "Initial Inspection"),new com.sun.webui.jsf.model.Option("Rigger Inspection", "Rigger Inspection")});
+        para_riggersDataProvider2.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Consolidated_Main_Edit.para_riggersRowSet2}"));
+        para_riggersRowSet2.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_riggersRowSet2.setCommand("SELECT * FROM para_riggers WHERE para_riggers.checker = 1");
+        para_riggersRowSet2.setTableName("para_riggers");
+        inspectionDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Please Select"), new com.sun.webui.jsf.model.Option("Initial Inspection", "Initial Inspection"),new com.sun.webui.jsf.model.Option("Rigger Inspection", "Rigger Inspection"),new com.sun.webui.jsf.model.Option("Rigger Inspection (Water Jump)", "Rigger Inspection (Water Jump)"), new com.sun.webui.jsf.model.Option("Rigger Inspection (After Overseas)", "Rigger Inspection (Oversea Jump)"), new com.sun.webui.jsf.model.Option("Rigger Inspection (Malfunction)", "Rigger Inspection (Malfunction)"),new com.sun.webui.jsf.model.Option("Rigger Inspection (Tree Landing)", "Rigger Inspection (Tree Landing)")});
         radioButtonGroup1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repacking", "Repacking"), new com.sun.webui.jsf.model.Option("inspection", "Inspection")});
         followUpDDDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("repair", "Repair"), new com.sun.webui.jsf.model.Option("unpacked", "Packing")});
     }
@@ -305,6 +309,24 @@ public class Consolidated_Main_Edit extends AbstractPageBean {
 
     public void setInspectorDD1(DropDown dd) {
         this.inspectorDD1 = dd;
+    }
+    private CachedRowSetDataProvider para_riggersDataProvider2 = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_riggersDataProvider2() {
+        return para_riggersDataProvider2;
+    }
+
+    public void setPara_riggersDataProvider2(CachedRowSetDataProvider crsdp) {
+        this.para_riggersDataProvider2 = crsdp;
+    }
+    private CachedRowSetXImpl para_riggersRowSet2 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_riggersRowSet2() {
+        return para_riggersRowSet2;
+    }
+
+    public void setPara_riggersRowSet2(CachedRowSetXImpl crsxi) {
+        this.para_riggersRowSet2 = crsxi;
     }
 
     // </editor-fold>

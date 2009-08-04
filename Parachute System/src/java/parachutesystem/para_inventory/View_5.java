@@ -23,7 +23,7 @@ import parachutesystem.ApplicationBean1;
  * @version Created on May 24, 2009, 10:01:36 PM
  * @author Lancer-Matrix
  */
-public class View_1 extends AbstractPageBean {
+public class View_5 extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -32,10 +32,10 @@ public class View_1 extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        log("<<Entering para_inventory View_1>>");
-        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View_1.para_inventory_viewRowSet}"));
+        log("<<Entering para_inventory View_5>>");
+        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View_2.para_inventory_viewRowSet}"));
         para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `reserve_chute` = 0 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+        para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 1 AND `AD` = 0 AND `container` = 0");
         para_inventory_viewRowSet.setTableName("para_inventory_view");
     }
     private CachedRowSetDataProvider para_inventory_viewDataProvider = new CachedRowSetDataProvider();
@@ -61,7 +61,7 @@ public class View_1 extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public View_1() {
+    public View_5() {
     }
 
     /**

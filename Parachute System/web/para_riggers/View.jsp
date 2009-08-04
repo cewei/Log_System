@@ -30,7 +30,10 @@
                                 <webuijsf:tableColumn align="center" headerText="Packer" id="tableColumn4" sort="para_riggers.rigger" valign="middle">
                                     <webuijsf:staticText id="staticText4" text="#{currentRow.value['para_riggers.rigger']}"/>
                                 </webuijsf:tableColumn>
-                                <webuijsf:tableColumn align="center" headerText="Checker / Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
+                                <webuijsf:tableColumn align="center" headerText="Checker" id="tableColumn6" sort="para_riggers.checker" valign="middle">
+                                    <webuijsf:staticText id="staticText6" text="#{currentRow.value['para_riggers.checker']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Inspector" id="tableColumn5" sort="para_riggers.inspector" valign="middle">
                                     <webuijsf:staticText id="staticText5" text="#{currentRow.value['para_riggers.inspector']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Last Refresher Date" id="tableColumn7" sort="para_riggers.last_refresher_date" valign="middle">
