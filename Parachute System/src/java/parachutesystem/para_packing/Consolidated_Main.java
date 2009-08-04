@@ -182,12 +182,138 @@ public class Consolidated_Main extends AbstractPageBean {
         Date temp;
         if (calendar1.getText() != null) {
             temp = (Date) calendar1.getText();
-        }
-        else {
+        } else {
             temp = new Date();
         }
         getSessionBean1().setDate((temp.getYear() + 1900) + "-" + (temp.getMonth() + 1) + "-" + temp.getDate());
         return "viewToReport";
+    }
+
+    private void changeStatement(int i) {
+        try {
+            switch (i) {
+                case 0:
+                    log("Case 0");
+                    para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+
+                case 1:
+                    log("Case 1");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 0 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 2:
+                    log("Case 2");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 3:
+                    log("Case 3");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 1 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 4:
+                    log("Case 4");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 1 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 5:
+                    log("Case 5");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 1 AND `AD` = 0 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 6:
+                    log("Case 6");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 1 AND `container` = 0");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+                case 7:
+                    log("Case 7");
+                    para_consolidated_viewRowSet1.setCommand(
+                            "SELECT * FROM para_consolidated_view " +
+                            "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 1");
+                    para_consolidated_viewDataProvider.refresh();
+                    break;
+
+                default:
+                    log("Default");
+                    para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view");
+                    para_consolidated_viewDataProvider.refresh();
+
+            }
+        } catch (Exception ex) {
+            log(" ERROR - para_packing.Consolidated_Main : Error Description", ex);
+            error(" ERROR - " + ex.getMessage());
+        }
+    }
+
+    public String hyperlink3_action() {
+        log("static main");
+        getSessionBean1().setViewID(1);
+        changeStatement(1);
+        return null;
+    }
+
+    public String hyperlink10_action() {
+        log("overall");
+        getSessionBean1().setViewID(0);
+        changeStatement(0);
+        return null;
+    }
+
+    public String hyperlink4_action() {
+        log("freefall main");
+        getSessionBean1().setViewID(2);
+        changeStatement(2);
+        return null;
+    }
+
+    public String hyperlink5_action() {
+        log("static reserve");
+        getSessionBean1().setViewID(3);
+        changeStatement(3);
+        return null;
+    }
+
+    public String hyperlink6_action() {
+        log("freefall reserve");
+        getSessionBean1().setViewID(4);
+        changeStatement(4);
+        return null;
+    }
+
+    public String hyperlink7_action() {
+        log("life jacket");
+        getSessionBean1().setViewID(5);
+        changeStatement(5);
+        return null;
+    }
+
+    public String hyperlink8_action() {
+        log("ad");
+        getSessionBean1().setViewID(6);
+        changeStatement(6);
+        return null;
+    }
+
+    public String hyperlink9_action() {
+        log("container");
+        getSessionBean1().setViewID(7);
+        changeStatement(7);
+        return null;
     }
 }
 

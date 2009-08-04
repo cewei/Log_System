@@ -59,6 +59,22 @@
                         <webuijsf:calendar binding="#{para_packing$Consolidated_Main.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" style="position: absolute; left: 120px; top: 48px"/>
                         <webuijsf:button actionExpression="#{para_packing$Consolidated_Main.button1_action}" id="button1"
                             style="left: 287px; top: 48px; position: absolute" text="Report"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink3_action}" id="hyperlink3"
+                            style="left: 432px; top: 24px; position: absolute" text="Static - Main"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink4_action}" id="hyperlink4"
+                            style="left: 504px; top: 24px; position: absolute" text="Freefall - Main"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink5_action}" id="hyperlink5"
+                            style="left: 600px; top: 24px; position: absolute" text="Static - Reserve"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink6_action}" id="hyperlink6"
+                            style="left: 696px; top: 24px; position: absolute" text="Freefall - Reserve"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink7_action}" id="hyperlink7"
+                            style="left: 816px; top: 24px; position: absolute" text="Life Jacket"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink8_action}" id="hyperlink8"
+                            style="left: 888px; top: 24px; position: absolute" text="AD"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink9_action}" id="hyperlink9"
+                            style="left: 936px; top: 24px; position: absolute" text="Container"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$Consolidated_Main.hyperlink10_action}" id="hyperlink10"
+                            style="left: 384px; top: 24px; position: absolute" text="Overall"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

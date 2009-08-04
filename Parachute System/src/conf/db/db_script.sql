@@ -139,7 +139,12 @@ para_packing.repacking AS `Repacking`,
 para_inventory.no_of_jumps AS `J/D`,
 para_packing.date_packed AS `Date Packed`,
 para_packing.pack_by AS `Packer`,
-para_packing.inspect_by AS `Checker / Inspector`
+para_packing.inspect_by AS `Checker / Inspector`,
+para_type.reserve_chute,
+para_type.static_line,
+para_type.lifejacket,
+para_type.AD,
+para_type.container
 FROM para_packing
 INNER JOIN para_inventory
 ON para_inventory.type_prefix_no=para_packing.type_prefix_no AND

@@ -57,6 +57,70 @@ public class Edit_PackDue extends AbstractPageBean {
             new com.sun.webui.jsf.model.Option("loan", "loan"),
             new com.sun.webui.jsf.model.Option("returned", "returned")
         });
+
+        switch (getSessionBean1().getViewID()) {
+            case 0:
+                log("Case 0");
+                para_inventoryRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory");
+                para_inventoryDataProvider.refresh();
+                break;
+
+            case 1:
+                log("Case 1");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 2:
+                log("Case 2");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 3:
+                log("Case 3");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 1 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 4:
+                log("Case 4");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 1 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 5:
+                log("Case 5");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 1 AND `AD` = 0 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 6:
+                log("Case 6");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 1 AND `container` = 0");
+                para_inventoryDataProvider.refresh();
+                break;
+            case 7:
+                log("Case 7");
+                para_inventoryRowSet.setCommand(
+                        "SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory INNER JOIN para_type ON para_inventory.type_prefix_no=para_type.para_type_no " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 1");
+                para_inventoryDataProvider.refresh();
+                break;
+
+            default:
+                log("Default");
+                para_inventoryRowSet.setCommand("SELECT * FROM `PARACHUTE_SYSTEM`.para_inventory");
+                para_inventoryDataProvider.refresh();
+
+        }
     }
     private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
 
