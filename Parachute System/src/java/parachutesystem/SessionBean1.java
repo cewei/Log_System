@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem;
 
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
@@ -22,7 +21,6 @@ import javax.faces.FacesException;
  * @version Created on May 21, 2009, 11:43:48 AM
  * @author Dell
  */
-
 public class SessionBean1 extends AbstractSessionBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -33,7 +31,7 @@ public class SessionBean1 extends AbstractSessionBean {
      */
     private void _init() throws Exception {
     }
-    private Chutes [] mainChute;
+    private Chutes[] mainChute;
 
     public Chutes[] getMainChute() {
         return mainChute;
@@ -60,10 +58,17 @@ public class SessionBean1 extends AbstractSessionBean {
     public void setDate2(String date2) {
         this.date2 = date2;
     }
-    
-    
-    // </editor-fold>
+    private int editID;
 
+    public int getEditID() {
+        return editID;
+    }
+
+    public void setEditID(int editID) {
+        this.editID = editID;
+    }
+
+    // </editor-fold>
     /**
      * <p>Construct a new session data bean instance.</p>
      */
@@ -88,7 +93,7 @@ public class SessionBean1 extends AbstractSessionBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -96,13 +101,13 @@ public class SessionBean1 extends AbstractSessionBean {
             _init();
         } catch (Exception e) {
             log("SessionBean1 Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -143,7 +148,7 @@ public class SessionBean1 extends AbstractSessionBean {
     @Override
     public void destroy() {
     }
-    
+
     /**
      * <p>Return a reference to the scoped data bean.</p>
      *
@@ -152,5 +157,4 @@ public class SessionBean1 extends AbstractSessionBean {
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
-
 }
