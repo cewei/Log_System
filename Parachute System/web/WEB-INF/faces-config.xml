@@ -57,6 +57,21 @@
         <managed-bean-class>parachutesystem.Fragment5</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment6</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment6</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment7</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment7</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Fragment8</managed-bean-name>
+        <managed-bean-class>parachutesystem.Fragment8</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
     <!--Para Type-->
 
@@ -122,6 +137,96 @@
         <navigation-case>
             <from-outcome>viewToEdit</from-outcome>
             <to-view-id>/para_inventory/Edit.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_1</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/View_1.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_inventory/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit_1.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_2</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_2</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/View_2.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_inventory/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit_2.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_3</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_3</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/View_3.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_inventory/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit_3.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_4</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_4</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/View_4.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_inventory/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit_4.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>para_inventory$View_5</managed-bean-name>
+        <managed-bean-class>parachutesystem.para_inventory.View_5</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/para_inventory/View_5.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>viewToAdd</from-outcome>
+            <to-view-id>/para_inventory/Add.jsp</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewToEdit</from-outcome>
+            <to-view-id>/para_inventory/Edit_5.jsp</to-view-id>
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
@@ -456,26 +561,6 @@
         </navigation-case>
     </navigation-rule>
 
-    <managed-bean>
-        <managed-bean-name>para_inventory$View_1</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View_1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_inventory$View_2</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View_2</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_inventory$View_3</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View_3</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>para_inventory$View_4</managed-bean-name>
-        <managed-bean-class>parachutesystem.para_inventory.View_4</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
     <managed-bean>
         <managed-bean-name>para_packing$View_1</managed-bean-name>
         <managed-bean-class>parachutesystem.para_packing.View_1</managed-bean-class>

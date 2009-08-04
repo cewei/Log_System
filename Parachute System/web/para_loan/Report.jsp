@@ -17,7 +17,7 @@
                         <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 72px; position: absolute" width="97%">
                             <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_loan$Report.objectArrayDataProvider1}" sourceVar="currentRow">
                                 <webuijsf:tableColumn headerText="S/NO" id="tableColumn1" width="25">
-                                    <webuijsf:label id="label1" text=""/>
+                                    <webuijsf:label id="label1" text="#{currentRow.value['serialNo']}"/>
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn headerText="MAIN" id="tableColumn2" sort="main" width="300">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['main']}"/>

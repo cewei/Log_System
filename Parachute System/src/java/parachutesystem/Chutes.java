@@ -10,15 +10,26 @@ package parachutesystem;
  */
 public class Chutes {
 
+    private int serialNo;
     private String main;
     private String reserve;
     private String lifeJacket;
 
-    public Chutes(String main, String reserve, String lifeJacket) {
+    public Chutes(int serialNo, String main, String reserve, String lifeJacket) {
+        this.serialNo = serialNo;
         this.main = main;
         this.reserve = reserve;
         this.lifeJacket = lifeJacket;
     }
+
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
+    
 
     public String getMain() {
         return main;

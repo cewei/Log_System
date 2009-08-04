@@ -9,15 +9,16 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1" title="View Parachute Inventory">
+                <webuijsf:head id="head1" title="View Parachute Inventory (Static - Main)">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_inventory$View_1.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add new parachute"/>
-                        <webuijsf:button actionExpression="#{para_inventory$View_1.edit_action}" id="edit" style="position: absolute; left: 144px; top: 48px" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="position: absolute; left: 24px; top: 72px" title="Parachute Inventory" width="1050">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$View_1.para_inventory_viewDataProvider}" sourceVar="currentRow">
+                        <webuijsf:button actionExpression="#{para_inventory$View_1.edit_action}" id="edit" style="left: 191px; top: 48px; position: absolute" text="Edit"/>
+                        <webuijsf:table augmentTitle="false" id="table1" paginateButton="true" paginationControls="true"
+                            style="left: 24px; top: 96px; position: absolute; width: 98%" title="Parachute Inventory" width="98%">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="50" sourceData="#{para_inventory$View_1.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn2" sort="para_inventory_view.Name" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_inventory_view.Name']}"/>
                                 </webuijsf:tableColumn>
@@ -51,6 +52,7 @@
                         <webuijsf:breadcrumbs id="breadcrumbs1" style="left: 14px; top: 14px; position: absolute">
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
+                            <webuijsf:hyperlink id="hyperlink3" text="para_inventory/View_1" url="/faces/para_inventory/View_1.jsp"/>
                         </webuijsf:breadcrumbs>
                     </webuijsf:form>
                 </webuijsf:body>

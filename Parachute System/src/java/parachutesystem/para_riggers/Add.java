@@ -111,6 +111,15 @@ public class Add extends AbstractPageBean {
     public void setCalendar1(Calendar c) {
         this.calendar1 = c;
     }
+    private Checkbox checkerCB = new Checkbox();
+
+    public Checkbox getCheckerCB() {
+        return checkerCB;
+    }
+
+    public void setCheckerCB(Checkbox c) {
+        this.checkerCB = c;
+    }
     // </editor-fold>
 
     /**
@@ -201,6 +210,7 @@ public class Add extends AbstractPageBean {
                     para_riggersDataProvider.setValue("para_riggers.name", nameTF.getText());
                     para_riggersDataProvider.setValue("para_riggers.rank", rankTF.getText());
                     para_riggersDataProvider.setValue("para_riggers.rigger", riggerCB.getSelected());
+                    para_riggersDataProvider.setValue("para_riggers.checker", checkerCB.getSelected());
                     para_riggersDataProvider.setValue("para_riggers.inspector", inspectorCB.getSelected());
                     para_riggersDataProvider.setValue("para_riggers.last_refresher_date", calendar1.getSelectedDate());
                     // set values of other fields, if any

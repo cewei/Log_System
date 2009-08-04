@@ -16,9 +16,9 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_inventory$View.add_action}" id="add" style="position: absolute; left: 24px; top: 48px" text="Add new parachute"/>
                         <webuijsf:button actionExpression="#{para_inventory$View.edit_action}" id="edit" style="left: 191px; top: 48px; position: absolute" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute; width: 98%"
-                            title="Parachute Inventory" width="98%">
-                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="10" sourceData="#{para_inventory$View.para_inventory_viewDataProvider}" sourceVar="currentRow">
+                        <webuijsf:table augmentTitle="false" id="table1" paginateButton="true" paginationControls="true"
+                            style="left: 24px; top: 96px; position: absolute; width: 98%" title="Parachute Inventory" width="98%">
+                            <webuijsf:tableRowGroup id="tableRowGroup1" rows="50" sourceData="#{para_inventory$View.para_inventory_viewDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Name" id="tableColumn2" sort="para_inventory_view.Name" valign="middle">
                                     <webuijsf:staticText id="staticText2" text="#{currentRow.value['para_inventory_view.Name']}"/>
                                 </webuijsf:tableColumn>
@@ -53,6 +53,10 @@
                             <webuijsf:hyperlink id="hyperlink1" text="Page1" url="/"/>
                             <webuijsf:hyperlink id="hyperlink2" text="para_inventory/View" url="/faces/para_inventory/View.jsp"/>
                         </webuijsf:breadcrumbs>
+                        <webuijsf:hyperlink id="hyperlink3" style="position: absolute; left: 312px; top: 24px" text="Static - Main" url="./View_1.jsp"/>
+                        <webuijsf:hyperlink id="hyperlink4" style="position: absolute; left: 408px; top: 24px" text="Freefall - Main" url="./View_2.jsp"/>
+                        <webuijsf:hyperlink id="hyperlink5" style="position: absolute; left: 504px; top: 24px" text="Static - Reserve" url="./View_3.jsp"/>
+                        <webuijsf:hyperlink id="hyperlink6" style="position: absolute; left: 600px; top: 24px" text="Freefall - Reserve" url="./View_4.jsp"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

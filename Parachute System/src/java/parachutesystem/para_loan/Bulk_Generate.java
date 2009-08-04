@@ -373,6 +373,8 @@ public class Bulk_Generate extends AbstractPageBean {
             BufferedReader brMain = new BufferedReader(frMain);
             BufferedReader brReserve = new BufferedReader(frReserve);
             BufferedReader brLifeJacket = new BufferedReader(frLifeJacket);
+
+            int serialNo = 0;
             while (brMain.ready() || brReserve.ready() || brLifeJacket.ready()) {
 //                StringTokenizer stMain = new StringTokenizer("");
 //                StringTokenizer stReserve = new StringTokenizer("");
@@ -419,7 +421,8 @@ public class Bulk_Generate extends AbstractPageBean {
                     lifeJacket = brReserve.readLine();
                 }
 
-                mainChuteTemp.add(new Chutes(main, reserve, lifeJacket));
+                serialNo++;
+                mainChuteTemp.add(new Chutes(serialNo, main, reserve, lifeJacket));
             }
             brMain.close();
             brReserve.close();
