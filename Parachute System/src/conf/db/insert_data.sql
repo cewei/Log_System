@@ -12,7 +12,7 @@ INSERT INTO para_type (type_prefix, name, life_span, max_jump, repack_cycle, res
 ('TL', 'TRIATHLON MAIN 190', 10, 100, 4, 0, 1, 0, 0, 0),
 ('SR', 'SMART RESERVE 175' , 10, 100, 4, 1, 1, 0, 0, 0),
 ('LF', 'Life Jacket', 10, 0, 0, 0, 0, 1, 0, 0),
-('AD', 'Auto Deployer', 10, 0, 0, 0, 0, 0, 1, 0),
+('AD', 'Automatic Activation Device', 10, 0, 0, 0, 0, 0, 1, 0),
 ('CON', 'Container', 10, 0, 0, 0, 0, 0, 0, 1);
 
 INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no_of_jumps, status) VALUES
@@ -72,16 +72,16 @@ INSERT INTO para_inventory (type_prefix_no, chute_no, serial_no, date_of_mfg, no
 (12, '03', '266094', '2006-03-01', 0, 'inspection');
 
 INSERT INTO para_riggers (NRIC, name, rank, rigger, checker, inspector, last_refresher_date) VALUES
-('S9007568C', 'Jonathan Ho', 'PTE', 1, 1, 0, '2009-01-01'),
-('S9020997C', 'Aylwinns Tan', 'PTE', 1, 1, 0, '2009-01-01'),
-('S8823321B', 'Chua Lai Li', 'PTE', 1, 1, 0, '2009-01-01'),
-('S9038056G', 'Han Song Yuan', 'PTE', 1, 1, 0, '2009-01-01'),
-('S8922064E', 'Kenneth Chan', 'PTE', 1, 1, 0, '2009-01-01'),
+('S9007568C', 'Jonathan Ho', 'PTE', 1, 0, 1, '2009-01-01'),
+('S9020997C', 'Aylwinns Tan', 'PTE', 1, 0, 1, '2009-01-01'),
+('S8823321B', 'Chua Lai Li', 'PTE', 1, 0, 1, '2009-01-01'),
+('S9038056G', 'Han Song Yuan', 'PTE', 1, 0, 1, '2009-01-01'),
+('S8922064E', 'Kenneth Chan', 'PTE', 1, 0, 1, '2009-01-01'),
 ('S8436279D', 'Carol Lin', '1SG', 1, 1, 1, '2009-01-01'),
 ('S8142510H', 'Joyce Auyong', '1SG', 1, 1, 1, '2009-01-01'),
 ('S7937651E', 'Sharlway Lee', '1SG', 1, 1, 1, '2009-01-01'),
 ('S7713358E', 'Sithra Thevi', '1SG', 1, 1, 1, '2009-01-01'),
-('S7811279D', 'Lee Siok Hiem', '1SG', 1, 1, 1, '2009-01-01'),
+('S7811279D', 'Lee Siok Hiem', '1SG', 1, 0, 1, '2009-01-01'),
 ('S7830355G', 'Chow I Ling Michelle Evelyn', '1SG', 1, 1, 1, '2009-01-01'),
 ('S8240487B', 'Pramila D/O V.Purushothaman', '1SG', 1, 1, 1, '2009-01-01'),
 ('S7202730B', 'Teo Puay Puay', 'SSG', 1, 1, 1, '2009-01-01'),
@@ -100,7 +100,7 @@ INSERT INTO para_riggers (NRIC, name, rank, rigger, checker, inspector, last_ref
 ('S6915386J', 'Fong Pang Ping', '2WO', 1, 1, 1, '2009-01-01'),
 ('S1685313E', 'Wong Lee Chiow', '2WO', 1, 1, 1, '2009-01-01'),
 ('S1451908D', 'Kwek Poh Hwa', '1WO', 1, 1, 1, '2009-01-01'),
-('S1660807F', 'Tenh Huey Chai', '1WO', 1, 1, 1, '2009-01-01');
+('S1660807F', 'Tenh Huey Chai', '1WO', 1, 0, 1, '2009-12-08');
 
 
 INSERT INTO para_borrowers (NRIC, name, rank, unit) VALUES

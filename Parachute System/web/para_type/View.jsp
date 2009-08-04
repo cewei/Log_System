@@ -16,7 +16,7 @@
                     <webuijsf:form id="form1">
                         <webuijsf:button actionExpression="#{para_type$View.add_action}" id="add" style="left: 23px; top: 48px; position: absolute" text="Add new entry"/>
                         <webuijsf:button actionExpression="#{para_type$View.edit_action}" id="edit" style="left: 143px; top: 48px; position: absolute" text="Edit"/>
-                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute; width: 97%" title="Parachute Types" width="955">
+                        <webuijsf:table augmentTitle="false" id="table1" style="left: 24px; top: 96px; position: absolute" title="Parachute Types" width="97%">
                             <webuijsf:tableRowGroup binding="#{para_type$View.tableRowGroup1}" id="tableRowGroup1" rows="10"
                                 sourceData="#{para_type$View.para_typeDataProvider}" sourceVar="currentRow">
                                 <webuijsf:tableColumn align="center" headerText="Type No" id="tableColumn1" valign="middle">
@@ -51,6 +51,9 @@
                                 </webuijsf:tableColumn>
                                 <webuijsf:tableColumn align="center" headerText="Container" id="tableColumn11" valign="middle">
                                     <webuijsf:staticText id="staticText11" text="#{currentRow.value['para_type.container']}"/>
+                                </webuijsf:tableColumn>
+                                <webuijsf:tableColumn align="center" headerText="Holding" id="tableColumn8" valign="middle">
+                                    <webuijsf:staticText id="staticText8" text="#{currentRow.value['Holding']}"/>
                                 </webuijsf:tableColumn>
                             </webuijsf:tableRowGroup>
                         </webuijsf:table>

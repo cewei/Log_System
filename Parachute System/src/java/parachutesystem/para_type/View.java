@@ -33,8 +33,13 @@ public class View extends AbstractPageBean {
         log("<<Entering para_type View>>");
         para_typeDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_typeRowSet}"));
         para_typeRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_typeRowSet.setCommand("SELECT * FROM para_type");
+        //para_typeRowSet.setCommand("SELECT * FROM para_type");
+        para_typeRowSet.setCommand("SELECT *, COUNT(pi.type_prefix_no) AS 'Holding' FROM para_type pt LEFT JOIN para_inventory pi ON pt.para_type_no = pi.type_prefix_no GROUP BY pt.para_type_no");
         para_typeRowSet.setTableName("para_type");
+        para_inventoryDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_type$View.para_inventoryRowSet}"));
+        para_inventoryRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
+        para_inventoryRowSet.setCommand("SELECT * FROM para_inventory");
+        para_inventoryRowSet.setTableName("para_inventory");
     }
     private CachedRowSetDataProvider para_typeDataProvider = new CachedRowSetDataProvider();
 
@@ -62,6 +67,24 @@ public class View extends AbstractPageBean {
 
     public void setTableRowGroup1(TableRowGroup trg) {
         this.tableRowGroup1 = trg;
+    }
+    private CachedRowSetDataProvider para_inventoryDataProvider = new CachedRowSetDataProvider();
+
+    public CachedRowSetDataProvider getPara_inventoryDataProvider() {
+        return para_inventoryDataProvider;
+    }
+
+    public void setPara_inventoryDataProvider(CachedRowSetDataProvider crsdp) {
+        this.para_inventoryDataProvider = crsdp;
+    }
+    private CachedRowSetXImpl para_inventoryRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getPara_inventoryRowSet() {
+        return para_inventoryRowSet;
+    }
+
+    public void setPara_inventoryRowSet(CachedRowSetXImpl crsxi) {
+        this.para_inventoryRowSet = crsxi;
     }
 
     // </editor-fold>
@@ -141,6 +164,7 @@ public class View extends AbstractPageBean {
     @Override
     public void destroy() {
         para_typeDataProvider.close();
+        para_inventoryDataProvider.close();
     }
 
     public String add_action() {

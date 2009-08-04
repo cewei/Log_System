@@ -67,6 +67,15 @@ public class SessionBean1 extends AbstractSessionBean {
     public void setEditID(int editID) {
         this.editID = editID;
     }
+    private int viewID;
+
+    public int getViewID() {
+        return viewID;
+    }
+
+    public void setViewID(int viewID) {
+        this.viewID = viewID;
+    }
 
     // </editor-fold>
     /**

@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package parachutesystem.para_packing;
 
 import com.sun.data.provider.impl.CachedRowSetDataProvider;
@@ -24,7 +23,6 @@ import parachutesystem.RequestBean1;
  * @version Created on 28/07/2009, 1:34:49 PM
  * @author user
  */
-
 public class Consolidated_Main_Report extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
@@ -37,8 +35,79 @@ public class Consolidated_Main_Report extends AbstractPageBean {
         log("<<Entering para_packing Consolidated_Main_Report>>");
         para_consolidated_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_packing$Consolidated_Main_Report.para_consolidated_viewRowSet1}"));
         para_consolidated_viewRowSet1.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view WHERE `Date Packed` = '" +getSessionBean1().getDate() +"'");
+        para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view WHERE `Date Packed` = '" + getSessionBean1().getDate() + "'");
         para_consolidated_viewRowSet1.setTableName("para_consolidated_view");
+
+        switch (getSessionBean1().getViewID()) {
+            case 0:
+                log("Case 0");
+                para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view WHERE `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+
+            case 1:
+                log("Case 1");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 2:
+                log("Case 2");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 3:
+                log("Case 3");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 1 AND `static_line` = 1 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 4:
+                log("Case 4");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 1 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 5:
+                log("Case 5");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 1 AND `AD` = 0 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 6:
+                log("Case 6");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 1 AND `container` = 0 " +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+            case 7:
+                log("Case 7");
+                para_consolidated_viewRowSet1.setCommand(
+                        "SELECT * FROM para_consolidated_view " +
+                        "WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 0 AND `AD` = 0 AND `container` = 1" +
+                        "AND `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+                break;
+
+            default:
+                log("Default");
+                para_consolidated_viewRowSet1.setCommand("SELECT * FROM para_consolidated_view WHERE `Date Packed` = '" + getSessionBean1().getDate() + "'");
+                para_consolidated_viewDataProvider.refresh();
+
+        }
     }
     private CachedRowSetDataProvider para_consolidated_viewDataProvider = new CachedRowSetDataProvider();
 
@@ -60,7 +129,6 @@ public class Consolidated_Main_Report extends AbstractPageBean {
     }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -86,7 +154,7 @@ public class Consolidated_Main_Report extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -94,13 +162,13 @@ public class Consolidated_Main_Report extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("Consolidated_Main Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -165,6 +233,5 @@ public class Consolidated_Main_Report extends AbstractPageBean {
     protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
-    
 }
 

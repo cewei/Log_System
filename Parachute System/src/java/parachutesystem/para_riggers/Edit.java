@@ -36,7 +36,7 @@ public class Edit extends AbstractPageBean {
         log("<<Entering para_riggers Edit>>");
         para_riggersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_riggers$Edit.para_riggersRowSet}"));
         para_riggersRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
-        para_riggersRowSet.setCommand("SELECT * FROM para_riggers");
+        para_riggersRowSet.setCommand("SELECT * FROM para_riggers ORDER BY name");
         para_riggersRowSet.setTableName("para_riggers");
     }
     // <editor-fold defaultstate="collapsed" desc="para_riggers">

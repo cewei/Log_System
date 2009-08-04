@@ -45,6 +45,22 @@
                         <webuijsf:calendar binding="#{para_packing$View_PackDue.calendar1}" dateFormatPattern="dd-MM-yyyy" id="calendar1" style="position: absolute; left: 96px; top: 48px"/>
                         <webuijsf:button actionExpression="#{para_packing$View_PackDue.report_action}" id="report"
                             style="position: absolute; left: 264px; top: 48px" text="Report"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink3_action}" id="hyperlink3"
+                            style="left: 408px; top: 24px; position: absolute" text="Static - Main"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink4_action}" id="hyperlink4"
+                            style="left: 480px; top: 24px; position: absolute" text="Freefall - Main"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink5_action}" id="hyperlink5"
+                            style="left: 576px; top: 24px; position: absolute" text="Static - Reserve"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink6_action}" id="hyperlink6"
+                            style="left: 672px; top: 24px; position: absolute" text="Freefall - Reserve"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink7_action}" id="hyperlink7"
+                            style="left: 792px; top: 24px; position: absolute" text="Life Jacket"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink8_action}" id="hyperlink8"
+                            style="left: 864px; top: 24px; position: absolute" text="AD"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink9_action}" id="hyperlink9"
+                            style="left: 912px; top: 24px; position: absolute" text="Container"/>
+                        <webuijsf:hyperlink actionExpression="#{para_packing$View_PackDue.hyperlink10_action}" id="hyperlink10"
+                            style="left: 360px; top: 24px; position: absolute" text="Overall"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
