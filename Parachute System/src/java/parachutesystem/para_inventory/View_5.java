@@ -33,7 +33,7 @@ public class View_5 extends AbstractPageBean {
      */
     private void _init() throws Exception {
         log("<<Entering para_inventory View_5>>");
-        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View_2.para_inventory_viewRowSet}"));
+        para_inventory_viewDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{para_inventory$View_5.para_inventory_viewRowSet}"));
         para_inventory_viewRowSet.setDataSourceName("java:comp/env/jdbc/parachute_system_MySQL");
         para_inventory_viewRowSet.setCommand("SELECT * FROM para_inventory_view WHERE `reserve_chute` = 0 AND `static_line` = 0 AND `lifejacket` = 1 AND `AD` = 0 AND `container` = 0");
         para_inventory_viewRowSet.setTableName("para_inventory_view");
@@ -141,6 +141,7 @@ public class View_5 extends AbstractPageBean {
     }
 
     public String edit_action() {
+        getSessionBean1().setEditID(5);
         return "viewToEdit";
     }
 

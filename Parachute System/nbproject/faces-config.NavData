@@ -22,16 +22,20 @@
     </Scope>
     <Scope Scope="Project">
         <Node id="para_loan/Edit.jsp" x="642" y="385" zoom="true"/>
+        <Node id="para_inventory/Edit_4.jsp" x="1650" y="150" zoom="true"/>
         <Node id="para_inventory/View_2.jsp" x="900" y="150" zoom="true"/>
         <Node id="para_inventory/View_4.jsp" x="150" y="150" zoom="true"/>
+        <Node id="para_inventory/Edit_5.jsp" x="900" y="450" zoom="true"/>
+        <Node id="para_inventory/Edit_2.jsp" x="650" y="600" zoom="true"/>
         <Node id="para_packing/View_4.jsp" x="150" y="450" zoom="true"/>
         <Node id="para_loan/Report.jsp" x="897" y="325" zoom="true"/>
-        <Node id="para_packing/Consolidated_Main_Edit.jsp" x="400" y="600" zoom="true"/>
         <Node id="para_packing/View_2.jsp" x="150" y="300" zoom="true"/>
+        <Node id="para_packing/Consolidated_Main_Edit.jsp" x="400" y="600" zoom="true"/>
         <Node id="para_inventory/View_3.jsp" x="650" y="300" zoom="true"/>
-        <Node id="para_loan/Add.jsp" x="355" y="387" zoom="true"/>
         <Node id="para_borrowers/Edit.jsp" x="643" y="579" zoom="true"/>
+        <Node id="para_loan/Add.jsp" x="355" y="387" zoom="true"/>
         <Node id="para_type/Add.jsp" x="354" y="98" zoom="true"/>
+        <Node id="para_inventory/Edit_1.jsp" x="150" y="900" zoom="true"/>
         <Node id="para_packing/Edit_PackDue.jsp" x="900" y="300" zoom="true"/>
         <Node id="para_type/View.jsp" x="33" y="97" zoom="true"/>
         <Node id="para_loan/BulkReturn.jsp" x="898" y="264" zoom="true"/>
@@ -41,22 +45,27 @@
         <Node id="para_inventory/Edit.jsp" x="643" y="194" zoom="true"/>
         <Node id="para_packing/Add.jsp" x="355" y="292" zoom="true"/>
         <Node id="para_loan/View.jsp" x="33" y="387" zoom="true"/>
-        <Node id="para_riggers/View.jsp" x="35" y="484" zoom="true"/>
         <Node id="para_loan/Bulk_Generate.jsp" x="150" y="750" zoom="true"/>
-        <Node id="para_inventory/View_5.jsp" x="1150" y="300" zoom="true"/>
+        <Node id="para_riggers/View.jsp" x="35" y="484" zoom="true"/>
+        <Node id="para_inventory/Edit_3.jsp" x="1400" y="300" zoom="true"/>
         <Node id="para_type/Edit.jsp" x="641" y="99" zoom="true"/>
+        <Node id="para_inventory/View_7.jsp" x="1150" y="450" zoom="true"/>
+        <Node id="para_inventory/View_5.jsp" x="1150" y="300" zoom="true"/>
         <Node id="para_borrowers/Add.jsp" x="355" y="579" zoom="true"/>
-        <Node id="para_riggers/Edit.jsp" x="643" y="480" zoom="true"/>
         <Node id="para_packing/View.jsp" x="33" y="293" zoom="true"/>
+        <Node id="para_riggers/Edit.jsp" x="643" y="480" zoom="true"/>
         <Node id="para_riggers/Add.jsp" x="355" y="481" zoom="true"/>
         <Node id="para_inventory/Add.jsp" x="355" y="192" zoom="true"/>
         <Node id="para_inventory/View.jsp" x="33" y="194" zoom="true"/>
         <Node id="para_inventory/View_1.jsp" x="400" y="300" zoom="true"/>
-        <Node id="para_packing/View_1.jsp" x="650" y="150" zoom="true"/>
         <Node id="return_module/Return_page.jsp" x="1150" y="150" zoom="true"/>
+        <Node id="para_packing/View_1.jsp" x="650" y="150" zoom="true"/>
         <Node id="index.html" x="34" y="31" zoom="true"/>
+        <Node id="para_inventory/Edit_6.jsp" x="900" y="600" zoom="true"/>
+        <Node id="para_inventory/View_6.jsp" x="400" y="750" zoom="true"/>
         <Node id="para_packing/Consolidated_Main.jsp" x="650" y="450" zoom="true"/>
         <Node id="para_loan/Bulk.jsp" x="898" y="386" zoom="true"/>
+        <Node id="para_inventory/Edit_7.jsp" x="650" y="750" zoom="true"/>
         <Node id="para_packing/View_3.jsp" x="400" y="150" zoom="true"/>
         <Node id="para_packing/View_PackDue.jsp" x="150" y="600" zoom="true"/>
         <Node id="para_packing/Consolidated_Main_Report.jsp" x="1400" y="150" zoom="true"/>

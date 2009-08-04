@@ -141,6 +141,7 @@ public class View_2 extends AbstractPageBean {
     }
 
     public String edit_action() {
+        getSessionBean1().setEditID(2);
         return "viewToEdit";
     }
 
